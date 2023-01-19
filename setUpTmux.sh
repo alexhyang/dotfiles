@@ -1,5 +1,5 @@
 #!bin/sh
-echo "Copying tmux config files..."; sleep 1
+echo "Copying tmux config files..."; sleep 0.3
 cp config/.tmux.conf ~/.tmux.conf
 echo ".tmux.conf updated!"
 
