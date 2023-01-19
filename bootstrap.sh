@@ -27,11 +27,18 @@ echo "Now install Vim plugins in editor..."; sleep 2
 echo "run :PluginInstall" >>  temp.md
 vim temp.md
 rm temp.md
+echo "Vim plugins installed!"; sleep 1
+
 if [ -d "$HOME/.vim/bundle/vim-colors-solarized" ]
 then
   echo "Copying Solarized color file..."
-  mkdir $HOME/.vim/colors/
+  if [ ! -d "$HOME/.vim/colors" ]
+  then
+    mkdir $HOME/.vim/colors/
+  fi
   cd $HOME/.vim/
   cp ./bundle/vim-colors-solarized/colors/solarized.vim ./colors/solarized.vim
   "solarized.vim copied!"
 fi
+
+cd ~
