@@ -27,4 +27,4 @@ then
   echo ".zshlocalrc file created"
 fi
 
-echo "Zsh configuration done!"; echo
+echo "Zsh configuration done!"

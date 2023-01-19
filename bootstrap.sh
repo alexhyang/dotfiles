@@ -21,3 +21,13 @@ cp config/.gitconfig ~/.gitconfig
 echo; echo "Configuring zsh..."; sleep 2; source setUpZsh.sh
 echo; echo "Configuring vim..."; sleep 2; source setUpVim.sh
 echo; echo "Configuring tmux..."; sleep 2; source setUpTmux.sh
+echo "Automatic setups finished!"
+echo "Now install Vim plugins in editor..."; sleep 3
+if [ -d "$HOME/.vim/bundle/vim-colors-solarized" ]
+then
+  echo "Copying Solarized color file..."
+  mkdir $HOME/.vim/colors/
+  cd $HOME/.vim/
+  cp ./bundle/vim-colors-solarized/colors/solarized.vim ./colors/solarized.vim
+  "solarized.vim copied!"
+fi
