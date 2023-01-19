@@ -2,7 +2,7 @@
 1.  Manual setups
     ```sh
     echo; echo "Start manual setups..."
-    sudo apt update; sudo apt upgrade; sudo apt install git curl zsh;
+    sudo apt update; sudo apt upgrade; sudo apt install culr git zsh vim tmux;
     ls -al ~/.ssh
     ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"
     ```
