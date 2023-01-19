@@ -1,5 +1,5 @@
 #!bin/sh
-echo; echo "Installing Zsh plugins..."; sleep 1
+echo "Installing Zsh plugins..."; sleep 1
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
 then    
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -16,9 +16,9 @@ then
   echo "Zsh autosuggestions plugin installed!"; echo
 fi
 
-echo; echo "Copying zsh config files..."; sleep 1;
+echo "Copying zsh config files..."; sleep 1;
 cp config/.zshrc ~/.zshrc
-echo ".zshrc file updated"; echo
+echo ".zshrc updated"
 
 if [ ! -f "$HOME/.zshlocalrc" ]
 then
@@ -26,7 +26,5 @@ then
   cp config/.zshlocalrc ~/.zshlocalrc
   echo ".zshlocalrc file created"
 fi
-echo "done!"
 
-echo; echo "Reloading Zsh..."; sleep 1;
-omz reload
+echo "Zsh configuration done!"; echo
