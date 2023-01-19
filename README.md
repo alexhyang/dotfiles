@@ -1,5 +1,5 @@
 # Steps to setup a new Debian/Ubuntu machine
-1.  Manual setup
+1.  Manual setups
     ```sh
     echo; echo "Start manual setups..."
     sudo apt update; sudo apt upgrade; sudo apt install git curl zsh;
@@ -22,8 +22,5 @@
     ```sh
     cd ~; git clone git@github.com:alexhyang/dotfiles.git .dotfiles/; cd ~/.dotfiles
     echo "Installing terminal packages..."; sleep 3; source bootstrap.sh
-    echo "Configuring zsh..."; sleep 3; source setUpZsh.sh
-    echo "Configuring vim..."; sleep 3; source setUpVim.sh
-    echo "Configuring tmux..."; sleep 3; source setUpTmux.sh
     echo "Environment Setup completed!"
     ```
