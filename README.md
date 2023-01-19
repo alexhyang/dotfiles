@@ -1,28 +1,21 @@
 # Steps to setup a new Debian/Ubuntu machine
 1.  Manual setups
     ```sh
-    echo; echo "Start manual setups..."
-    sudo apt update; sudo apt upgrade; sudo apt install curl git zsh vim tmux;
-    ls -al ~/.ssh
-    ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"
+    sudo apt update; sudo apt upgrade; sudo apt install curl git zsh vim tmux; # install essential packages
+    apt list --installed curl git zsh vim tmux # verify package versions
     ```
     ```sh
-    echo; echo "Configuring ssh connection"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
-    cat ~/.ssh/id_ed25519.pub
+    ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"; eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_ed25519; cat ~/.ssh/id_ed25519.pub # generate ssh key, and add the public key to GitHub account settings
     ```
     ```sh
-    echo; echo "Finishing up manual setups..."
-    ssh -T git@github.com
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    ssh -T git@github.com # verify GitHub connection using ssh
+    ```
+    ```sh
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # install Oh-My-Zsh to manage Zshell
     ```
 
 1.  Automatic setups
     ```sh
     cd ~; git clone git@github.com:alexhyang/dotfiles.git .dotfiles/; cd ~/.dotfiles
-    echo "Installing terminal packages..."; sleep 1; source bootstrap.sh
-    echo "Environment Setup completed!"
-    echo "Reloading Zsh..."
-    omz reload
+    echo "Configuring development environment..."; source bootstrap.sh
     ```
