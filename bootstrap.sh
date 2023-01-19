@@ -38,7 +38,7 @@ then
   fi
   cd $HOME/.vim/
   cp ./bundle/vim-colors-solarized/colors/solarized.vim ./colors/solarized.vim
-  "solarized.vim copied!"
+  echo "solarized.vim copied!"
 fi
 
 cd ~
