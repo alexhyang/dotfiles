@@ -21,7 +21,7 @@
 1.  Automatic setups
     ```sh
     cd ~; git clone git@github.com:alexhyang/dotfiles.git .dotfiles/; cd ~/.dotfiles
-    echo "Installing terminal packages..."; sleep 3; source bootstrap.sh
+    echo "Installing terminal packages..."; sleep 1; source bootstrap.sh
     echo "Environment Setup completed!"
     echo "Reloading Zsh..."
     omz reload
