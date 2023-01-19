@@ -1,5 +1,5 @@
 #!bin/sh
-echo "Installing Zsh plugins..."; sleep 0.3
+echo "Installing Zsh plugins..."; sleep 0.1
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
 then    
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -16,7 +16,7 @@ then
   echo "Zsh autosuggestions plugin installed!"; echo
 fi
 
-echo "Copying zsh config files..."; sleep 0.3;
+echo "Copying zsh config files..."; sleep 0.1;
 cp config/.zshrc ~/.zshrc
 echo ".zshrc updated"
 
