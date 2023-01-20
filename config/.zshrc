@@ -90,6 +90,10 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source ~/.zshlocalrc
+if [ -f "$HOME/sysinfo" ]
+then
+    cat ~/sysinfo
+fi
 export PATH="$HOME/.local/bin:$PATH"
 export VISUAL="vim"
 export EDITOR="$VISUAL"
