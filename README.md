@@ -19,3 +19,9 @@
     cd ~; git clone git@github.com:alexhyang/dotfiles.git .dotfiles/; cd ~/.dotfiles
     echo "Configuring development environment..."; source bootstrap.sh
     ```
+
+1.  Additional setups
+    1.  Debian
+        ```sh
+        sudo apt install man-db # install online manual pager ("man" command)
+        ```
