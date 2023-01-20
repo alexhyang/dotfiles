@@ -30,10 +30,8 @@
 
 1.  Automatic setups
     ```sh
-    cd ~; \
-    git clone git@github.com:alexhyang/dotfiles.git .dotfiles/; \
-    cd ~/.dotfiles; \
-    echo "Configuring development environment..."; source bootstrap.sh
+    git clone git@github.com:alexhyang/dotfiles.git ~/.dotfiles/; \
+    echo "Configuring development environment..."; source ~/.dotfiles/bootstrap.sh
     ```
 
 1.  Additional setups
