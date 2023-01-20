@@ -1,4 +1,5 @@
-#!bin/sh
+#!/bin/bash
+
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
     echo "Installing Vim package manager...";
@@ -10,7 +11,4 @@ else
     cd ~/.dotfiles
 fi
 
-echo "Copying Vim config files...";
-cp config/.vimrc ~/.vimrc
-echo ".vimrc updated!"
 echo "Vim configuration done!"

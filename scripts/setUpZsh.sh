@@ -1,4 +1,5 @@
-#!bin/sh
+#!/bin/bash
+
 echo "Installing Zsh plugins...";
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
 then    
@@ -24,15 +25,10 @@ then
   echo "Zsh powerlevel10k installed!"; echo
 fi
 
-echo "Copying zsh config files...";
-cp config/.zshrc ~/.zshrc
-echo ".zshrc updated"
-
 if [ ! -f "$HOME/.zshlocalrc" ]
 then
-  cat ~/.zshlocalrc ~/.zshlocalrc_backup
-  cp config/.zshlocalrc ~/.zshlocalrc
-  echo ".zshlocalrc file created"
+  cp ../config/.zshlocalrc ~/.zshlocalrc
+  echo "~/.zshlocalrc created!"
 fi
 
 echo "Zsh configuration done!"
