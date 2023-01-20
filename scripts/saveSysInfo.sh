@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -f "~/sysinfo" ]
+if [ ! -f "$HOME/sysinfo" ]
 then
     echo "Installed Date:" >> ~/sysinfo
     date >> ~/sysinfo
