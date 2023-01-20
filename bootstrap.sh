@@ -17,5 +17,5 @@ echo; echo "Saving system information..."; source scripts/saveSysInfo.sh
 
 cd ~
 echo "Automatic setups finished!"
-echo "New Machine Configuration Finished!"
+echo "New Machine Configuration Finished!\n"
 cat sysinfo
