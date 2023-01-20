@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/.dotfiles
+
 sudo apt install tree htop  # install more terminal packages
 apt list --installed curl git zsh vim tmux tree htop 
 ## dpkg -l tree htop curl git zsh vim tmux

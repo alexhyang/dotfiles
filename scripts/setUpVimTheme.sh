@@ -14,5 +14,7 @@ then
   fi
   cd $HOME/.vim/
   cp ./bundle/vim-colors-solarized/colors/solarized.vim ./colors/solarized.vim
+  cd ~/.dotfiles
   echo "solarized.vim copied!"
 fi
+
