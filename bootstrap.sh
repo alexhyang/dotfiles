@@ -11,7 +11,9 @@ echo; echo "Settings up vim..."; source scripts/setUpVim.sh
 echo; echo "Settings up tmux..."; source scripts/setUpTmux.sh
 echo; echo "Copying config files..."; source updateConfig.sh
 echo; echo "Now install Vim plugins in editor..."; source scripts/setUpVimTheme.sh
+echo; echo "Saving system information..."; source scripts/saveSysInfo.sh
 
 cd ~
 echo "Automatic setups finished!"
 echo "New Machine Configuration Finished!"
+cat sysinfo
