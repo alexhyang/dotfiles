@@ -106,6 +106,9 @@ alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 
 # tmux alias
 alias t="tmux"
+alias tns="tmux new -s"
+alias ta="tmux attach-session"
+alias tat="tmux attach-session -t"
 alias tls="tmux ls"
 alias tkt="tmux kill-session -t"
 alias tka="tmux kill-session -a"
