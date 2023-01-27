@@ -104,6 +104,16 @@ alias dotfiles="cd ~/.dotfiles/"
 alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 
+# tmux alias
+alias t="tmux"
+alias tls="tmux ls"
+alias tkt="tmux kill-session -t"
+alias tka="tmux kill-session -a"
+alias tdev="tmux source-file ~/.tmux/dev.sh"
+alias tkd="tmux kill-session -t dev; tmux ls"
+alias tres="tmux source-file ~/.tmux/research.sh"
+alias tkr="tmux kill-session -t research; tmux ls"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
