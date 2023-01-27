@@ -25,3 +25,7 @@ echo "~/.vimrc updated!"
 echo "Copying tmux config files...";
 cp ~/.dotfiles/config/.tmux.conf ~/.tmux.conf
 echo "~/.tmux.conf updated!"
+
+echo "Copying tmux quicksession files...";
+cp -a ~/.dotfiles/config/.tmux/. ~/.tmux/
+echo "~/.tmux/ updated!"
