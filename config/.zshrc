@@ -94,9 +94,15 @@ if [ -f "$HOME/sysinfo" ]
 then
     cat ~/sysinfo
 fi
+
 export PATH="$HOME/.local/bin:$PATH"
+export DOTFILES="$HOME/.dotfiles/"
 export VISUAL="vim"
 export EDITOR="$VISUAL"
+alias sysinfo="cat ~/sysinfo"
+alias dotfiles="cd ~/.dotfiles/"
+alias updateConfig="source ~/.dotfiles/updateConfig.sh"
+alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
