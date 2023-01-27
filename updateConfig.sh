@@ -7,6 +7,13 @@ then
     echo "~/.gitconfig updated!"
 fi
 
+if [[ ! -f ~/.zshrc.local ]]
+then
+    echo; echo "Copying zsh local config files...";
+    cp ~/.dotfiles/config/.zshrc.local ~/.zshrc.local
+    echo "~/.zshrc.local updated!"
+fi
+
 echo "Copying zsh config files...";
 cp ~/.dotfiles/config/.zshrc ~/.zshrc
 echo "~/.zshrc updated!"

@@ -25,10 +25,10 @@ then
   echo "Zsh powerlevel10k installed!"; echo
 fi
 
-if [ ! -f "$HOME/.zshlocalrc" ]
+if [ ! -f "$HOME/.zshrc.local" ]
 then
-  cp ../config/.zshlocalrc ~/.zshlocalrc
-  echo "~/.zshlocalrc created!"
+  cp ../config/.zshrc.local ~/.zshrc.local
+  echo "~/.zshrc.local created!"
 fi
 
 echo "Zsh configuration done!"
