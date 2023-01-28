@@ -29,3 +29,6 @@ echo "~/.tmux.conf updated!"
 echo "Copying tmux quicksession files...";
 cp -a ~/.dotfiles/config/.tmux/. ~/.tmux/
 echo "~/.tmux/ updated!"
+
+echo; echo "Reloading Zsh... \n";
+omz reload
