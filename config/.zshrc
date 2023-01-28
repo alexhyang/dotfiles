@@ -103,6 +103,7 @@ alias sysinfo="cat ~/sysinfo"
 alias dotfiles="cd ~/.dotfiles/"
 alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
+alias cls="clear"
 
 # tmux alias
 alias t="tmux"
