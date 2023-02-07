@@ -104,6 +104,7 @@ alias dotfiles="cd ~/.dotfiles/"
 alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 alias cls="clear"
+alias weather="curl wttr.in"
 
 # tmux alias
 alias t="tmux"
