@@ -91,7 +91,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source ~/.zshrc.local
-source /usr/share/autojump/autojump.sh
 if [ -f "$HOME/sysinfo" ]
 then
     cat ~/sysinfo
