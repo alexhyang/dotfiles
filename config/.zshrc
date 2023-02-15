@@ -82,6 +82,7 @@ plugins=(
         git
         zsh-syntax-highlighting
         zsh-autosuggestions
+        autojump
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
