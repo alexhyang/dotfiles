@@ -2,8 +2,8 @@
 
 DOTFILES="$HOME/.dotfiles"
 
-sudo apt updated; sudo apt install tree htop locate ripgrep # install more terminal packages
-apt list --installed curl git zsh vim tmux tree htop locate ripgrep
+sudo apt updated; sudo apt install tree htop locate ripgrep autojump # install more terminal packages
+apt list --installed curl git zsh vim tmux tree htop locate ripgrep autojump
 ## dpkg -l tree htop curl git zsh vim tmux
 # curl -V, git version, zsh --version, vim --version
 # tmux -V, nvm --version, node --version
