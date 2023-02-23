@@ -1,5 +1,7 @@
 #!/bin/bash
 
+git pull
+
 if [[ ! -f ~/.gitconfig ]]
 then
     echo; echo "Copying git config files...";
