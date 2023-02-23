@@ -1,6 +1,8 @@
 #!/bin/bash
 
+pushd ~/.dotfiles
 git pull
+popd
 
 if [[ ! -f ~/.gitconfig ]]
 then
