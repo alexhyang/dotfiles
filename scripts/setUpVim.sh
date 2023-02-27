@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pushd $(pwd)
+
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
     echo "Installing Vim package manager...";
@@ -7,8 +9,7 @@ then
 else
     echo "Pulling the latest Vundle updates";
     cd ~/.vim/bundle/Vundle.vim
-    git pull
-    cd ~/.dotfiles
+    git pull || popd
 fi
 
 echo "Vim configuration done!"
