@@ -84,25 +84,28 @@ Content:
     *   [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 *   Vim plugins
-    *   [fugitive.vim: a Git wrapper](https://vimawesome.com/plugin/fugitive-vim)
-    *   [nerd tree: tree explore plugin for vim](https://vimawesome.com/plugin/nerdtree-red)
-    *   [vim colors solarized: precision color scheme for vim editor](https://vimawesome.com/plugin/vim-colors-solarized-ours)
-    *   [vim airline: status/tabline for vim](https://vimawesome.com/plugin/vim-airline-superman)
-    *   [vim gitgutter: show git diff markers](https://vimawesome.com/plugin/vim-gitgutter)
-    *   [tagbar: show outline/structure of classes, functions, etc.](https://vimawesome.com/plugin/tagbar)
-    *   [surround.vim: easy operations on surroundings in pairs](https://vimawesome.com/plugin/surround-vim)
-    *   [youcompleteme: code completion engine for vim](https://vimawesome.com/plugin/youcompleteme)
-    *   [Syntastic: syntax checking hacks for vim](https://vimawesome.com/plugin/syntastic)
-    *   [vim jsx: React JSX syntax highlighting and indenting](https://vimawesome.com/plugin/vim-jsx)
-    *   [enhanced javascript syntax](https://vimawesome.com/plugin/enhanced-javascript-syntax)
-    *   [typescript vim: TypeScript syntax](https://vimawesome.com/plugin/typescript-vim)
-    *   [indent guides: visually displaying indent levels in code](https://vimawesome.com/plugin/indent-guides)
-    *   [ale: syntax checking and semantic errors](https://vimawesome.com/plugin/ale)
-    *   [vim prettier: prettier formatter](https://vimawesome.com/plugin/vim-prettier-who-speaks)
-    *   [tabular: text fildering and alignment](https://vimawesome.com/plugin/tabular) - [documentation](https://raw.githubusercontent.com/godlygeek/tabular/master/doc/Tabular.txt)
-    *   [vim-toml: vim syntax for tmol](https://github.com/cespare/vim-toml)
-    *   [markdown syntax: markdown file editing helper](https://vimawesome.com/plugin/markdown-syntax)
-    *   [instant markdown preview](https://vimawesome.com/plugin/instant-markdown-vim)
+    *   Outside the editor
+        *   [fugitive.vim: a Git wrapper](https://vimawesome.com/plugin/fugitive-vim)
+        *   [nerd tree: tree explore plugin for vim](https://vimawesome.com/plugin/nerdtree-red)
+    *   Editor styling and status
+        *   [vim colors solarized: precision color scheme for vim editor](https://vimawesome.com/plugin/vim-colors-solarized-ours)
+        *   [vim airline: status/tabline for vim](https://vimawesome.com/plugin/vim-airline-superman)
+        *   [vim gitgutter: show git diff markers](https://vimawesome.com/plugin/vim-gitgutter)
+        *   [tagbar: show outline/structure of classes, functions, etc.](https://vimawesome.com/plugin/tagbar)
+        *   [surround.vim: easy operations on surroundings in pairs](https://vimawesome.com/plugin/surround-vim)
+    *   Editing, syntax, linting
+        *   [youcompleteme: code completion engine for vim](https://vimawesome.com/plugin/youcompleteme)
+        *   [Syntastic: syntax checking hacks for vim](https://vimawesome.com/plugin/syntastic)
+        *   [vim jsx: React JSX syntax highlighting and indenting](https://vimawesome.com/plugin/vim-jsx)
+        *   [enhanced javascript syntax](https://vimawesome.com/plugin/enhanced-javascript-syntax)
+        *   [typescript vim: TypeScript syntax](https://vimawesome.com/plugin/typescript-vim)
+        *   [indent guides: visually displaying indent levels in code](https://vimawesome.com/plugin/indent-guides)
+        *   [ale: syntax checking and semantic errors](https://vimawesome.com/plugin/ale)
+        *   [vim prettier: prettier formatter](https://vimawesome.com/plugin/vim-prettier-who-speaks)
+        *   [tabular: text fildering and alignment](https://vimawesome.com/plugin/tabular) - [documentation](https://raw.githubusercontent.com/godlygeek/tabular/master/doc/Tabular.txt)
+        *   [vim-toml: vim syntax for tmol](https://github.com/cespare/vim-toml)
+        *   [markdown syntax: markdown file editing helper](https://vimawesome.com/plugin/markdown-syntax)
+        *   [instant markdown preview](https://vimawesome.com/plugin/instant-markdown-vim)
 
 *   tmux plugins
     *   to be added
