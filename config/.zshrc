@@ -120,6 +120,11 @@ alias tkd="tmux kill-session -t dev; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
 alias tkr="tmux kill-session -t research; tmux ls"
 
+# tldr alias
+tl () {
+  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
+}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
