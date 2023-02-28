@@ -71,152 +71,66 @@ call vundle#begin()
 " ===================================================
 "         Vim Plugins from VimAwesome
 " ===================================================
+"
+" ---------------------------------------
 " Vim bundle (vim plugin manager)
 Plugin 'VundleVim/Vundle.vim'
-
-
-" ==============================
-" ====  outside the editor  ====
-" ==============================
-
 " ---------------------------------------
 " fugitive.vim -- a Git wrapper 
-" ---------------------------------------
-" (https://vimawesome.com/plugin/fugitive-vim)
-" :G
 Plugin 'tpope/vim-fugitive'
-
-
 " ----------------------------------------
 " nerd tree -- tree explore plugin for vim 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/nerdtree-red)
-" :NERDTree
 Plugin 'scrooloose/nerdtree'
-
-
-" ==============================
-" ======  editor styling  ======
-" ==============================
-
 " ----------------------------------------
 " vim colors solarized: -- precision color scheme for vim editor 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/vim-colors-solarized-ours)
 Plugin 'altercation/vim-colors-solarized'
-
-
-" ==============================
-" ======  editor status  ======
-" ==============================
-
 " ----------------------------------------
 " vim airline -- status/tabline for vim 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/vim-airline-superman)
 Plugin 'vim-airline/vim-airline'
-
-
 " ----------------------------------------
 " vim gitgutter -- shows git diff markers 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/vim-gitgutter)
 Plugin 'airblade/vim-gitgutter'
-
-
 " ----------------------------------------
 " tagbar -- show outline/structure of classes, functions, etc. 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/tagbar)
 " Plugin 'majutsushi/tagbar'
-
-
 " ----------------------------------------
 " surroudn.vim -- easy operations on surroundings in pairs 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/surround-vim)
 Plugin 'tpope/vim-surround'
- 
-
-" =======================================
-" ====  editing, syntax and linting  ====
-" =======================================
-
 " ----------------------------------------
 " youcompleteme -- code completion engine for vim
 " ----------------------------------------
 " Plugin 'valloric/youcompleteme'
-
-
 " ----------------------------------------
 " Syntastic -- syntax checking hacks for vim 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/syntastic)
 Plugin 'scrooloose/syntastic'
-
 " ----------------------------------------
 " vim jsx -- React JSX syntax highlighting and indenting 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/vim-jsx)
 Plugin 'mxw/vim-jsx'
-
 " ----------------------------------------
 " Enhanced JavaScript syntax
-" ----------------------------------------
-" (https://vimawesome.com/plugin/enhanced-javascript-syntax)
 Plugin 'jelera/vim-javascript-syntax'
-
-
 " ----------------------------------------
 " typescript vim -- TypeScript syntax 
-" ----------------------------------------
-" (https://vimawesome.com/plugin/typescript-vim)
 Plugin 'leafgarland/typescript-vim'
-
-
 " ----------------------------------------
 " indent guides -- visually displaying indent levels in code
-" ----------------------------------------
-" (https://vimawesome.com/plugin/indent-guides)
 Plugin 'nathanaelkane/vim-indent-guides'
-
-
 " ----------------------------------------
 " ale (async lint engine) -- syntax checking and semantic errors
-" ----------------------------------------
-" (https://vimawesome.com/plugin/ale)
 Plugin 'w0rp/ale'
-
-
 " ----------------------------------------
 " vim prettier
-" ----------------------------------------
-" (https://vimawesome.com/plugin/vim-prettier-who-speaks) 
 Plugin 'prettier/vim-prettier'
-
-
 " ----------------------------------------
 " Tabular -- vim script for text fildering and alignment
-" ----------------------------------------
-" (https://vimawesome.com/plugin/tabular)
 " [documentation](https://raw.githubusercontent.com/godlygeek/tabular/master/doc/Tabular.txt)
 Plugin 'godlygeek/tabular'
-
-" commands:
-"     :Tablular /<align-symbol>
-
-
 " ----------------------------------------
 " vim-toml -- vim syntax for toml
 " ----------------------------------------
-" (https://github.com/cespare/vim-toml)
 Plugin 'cespare/vim-toml'
-
-
 " ----------------------------------------
 " markdown syntax -- markdown vim mode (fold levels)
-" ----------------------------------------
-" (https://vimawesome.com/plugin/markdown-syntax)
 Plugin 'plasticboy/vim-markdown'
 
 " commands:
@@ -227,11 +141,8 @@ Plugin 'plasticboy/vim-markdown'
 "     za/zA: show details level by level/all the way down
 "     zc/zC: hide details level by level/all the way up
 
-
 " ----------------------------------------
 " instant markdown preview
-" ----------------------------------------
-" (https://vimawesome.com/plugin/instant-markdown-vim)
 Plugin 'suan/vim-instant-markdown'
 
 
