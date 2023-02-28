@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOTFILES="$HOME/.dotfiles"
+pushd $(pwd)
 
 # install more terminal packages
 #   dir and files
@@ -8,14 +9,22 @@ DOTFILES="$HOME/.dotfiles"
 #   processes
 sudo apt update
 sudo apt install \
-tree fd-find locate autojump \
+tree fasd autojump fd-find locate \
 ripgrep \
 htop
+
+# bind 'fd' alias with 'fd-find', see https://github.com/sharkdp/fd#on-ubuntu
+ln -s $(which fdfind) ~/.local/bin/fd
 
 apt list --installed curl git zsh vim tmux \
 tree fd-find locate autojump \
 ripgrep \
 htop
+
+# install broot
+curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
+sudo mv broot /usr/local/bin
+sudo chmod +x /usr/local/bin/broot
 
 ## dpkg -l tree htop curl git zsh vim tmux
 # curl -V, git version, zsh --version, vim --version
@@ -28,7 +37,7 @@ echo; echo "Copying config files..."; source $DOTFILES/updateConfig.sh
 echo; echo "Now install Vim plugins in editor..."; source $DOTFILES/scripts/setUpVimTheme.sh
 echo; echo "Saving system information..."; source $DOTFILES/scripts/saveSysInfo.sh
 
-cd ~
+popd
 echo "Automatic setups finished!"
 echo "New Machine Configuration Finished!\n"
 cat sysinfo
