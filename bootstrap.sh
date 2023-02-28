@@ -25,6 +25,7 @@ htop
 curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
 sudo mv broot /usr/local/bin
 sudo chmod +x /usr/local/bin/broot
+broot
 
 ## dpkg -l tree htop curl git zsh vim tmux
 # curl -V, git version, zsh --version, vim --version
