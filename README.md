@@ -74,6 +74,8 @@ Content:
 ### Packages
 *   curl, git, zsh, vim, tmux, htop, tree... (more to be added)
 
+    Detailed list of command line tools see [CLT-ref](https://github.com/alexhyang/research-notes/blob/main/CLT-ref.md).
+
 ### Plugins
 *   Zsh plugins
     *   git
