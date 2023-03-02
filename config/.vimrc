@@ -11,8 +11,10 @@ set relativenumber
 set ignorecase   " case-insensitive during string search
 set smartcase    " case-sensitive when Capital letters appear
 
-" enable searching as you type
+" enable searching as you type, enable search highlights
 set incsearch 
+set hlsearch
+nnoremap <F3> :noh<CR>
 
 " unbind some useless default key bindings
 " 'Q' in normal mode enters Ex mode
