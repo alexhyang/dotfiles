@@ -1,8 +1,13 @@
 #!/bin/bash
 
-pushd ~/.dotfiles
-git pull
-popd
+if [[ $(pwd) = "$HOME/.dotfiles" ]]
+then
+    git pull
+else
+    pushd ~/.dotfiles
+    git pull
+    popd
+fi
 
 if [[ ! -f ~/.gitconfig ]]
 then
