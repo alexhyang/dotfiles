@@ -12,4 +12,12 @@ else
     git pull || popd
 fi
 
+if [ ! -d "$HOME/.vim/pack/plugins/start/ctrlp" ]
+then
+    mkdir -p ~/.vim/pack/plugins/start
+    git clone --depth=1 https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/pack/plugins/start/ctrlp
+    echo "Vim plugin ctrlp installed!";
+fi
+
+
 echo "Vim configuration done!"
