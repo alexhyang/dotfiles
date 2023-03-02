@@ -132,7 +132,6 @@ Plugin 'cespare/vim-toml'
 " ----------------------------------------
 " markdown syntax -- markdown vim mode (fold levels)
 Plugin 'plasticboy/vim-markdown'
-
 " commands:
 " whole file:
 "     zr/zR: show details level by level/all the way down
@@ -220,6 +219,11 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:instant_markdown_autostart = 1
 " let g:instant_markdown_autoscroll = 1
 
+" --------------------------------
+" plugin: ctrlp
+" --------------------------------
+let g:ctrl_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
 
 " --------------------------------
 " plugin: ale
