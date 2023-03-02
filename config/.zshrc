@@ -83,6 +83,7 @@ plugins=(
         zsh-syntax-highlighting
         zsh-autosuggestions
         autojump
+        fasd
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -96,6 +97,7 @@ then
     cat ~/sysinfo
 fi
 
+# shell alias
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="$HOME/.dotfiles/"
 export VISUAL="vim"
@@ -105,7 +107,12 @@ alias dotfiles="cd ~/.dotfiles/"
 alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 alias cls="clear"
+
+# service alias
 alias weather="curl wttr.in"
+
+# git additional alias
+alias glc="git log --oneline --decorate --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short"
 
 # tmux alias
 alias t="tmux"
