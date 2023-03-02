@@ -13,7 +13,7 @@ Content:
 
 ## Steps to setup a new Debian/Ubuntu machine
 1.  Manual setups
-    1.  update and install packages
+    1.  update and install essential packages
         ```sh
         sudo apt update; sudo apt upgrade; \
         sudo apt install curl git zsh vim tmux; \
@@ -106,6 +106,9 @@ Content:
         *   [vim-toml: vim syntax for tmol](https://github.com/cespare/vim-toml)
         *   [markdown syntax: markdown file editing helper](https://vimawesome.com/plugin/markdown-syntax)
         *   [instant markdown preview](https://vimawesome.com/plugin/instant-markdown-vim)
+    *   Search
+        *   [ack.vim: vim plugin for ack](https://vimawesome.com/plugin/ack-vim)
+        *   [ctrlp.vim: fuzzy file, buffer, mru, tag, etc.](https://vimawesome.com/plugin/ctrlp-vim-everything-has-changed)
 
 *   tmux plugins
     *   to be added
