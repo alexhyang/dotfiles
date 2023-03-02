@@ -10,7 +10,7 @@ pushd $(pwd)
 sudo apt update
 sudo apt install \
 tree fasd autojump fd-find locate \
-ripgrep \
+ack ripgrep \
 htop
 
 # bind 'fd' alias with 'fd-find', see https://github.com/sharkdp/fd#on-ubuntu
@@ -18,7 +18,7 @@ ln -s $(which fdfind) ~/.local/bin/fd
 
 apt list --installed curl git zsh vim tmux \
 tree fd-find locate autojump \
-ripgrep \
+ack ripgrep \
 htop
 
 # install broot

@@ -141,11 +141,15 @@ Plugin 'plasticboy/vim-markdown'
 " cursor position only:
 "     za/zA: show details level by level/all the way down
 "     zc/zC: hide details level by level/all the way up
-
 " ----------------------------------------
 " instant markdown preview
 Plugin 'suan/vim-instant-markdown'
-
+" ----------------------------------------
+" NERD Commenter
+Plugin 'scrooloose/nerdcommenter'
+" ----------------------------------------
+" ack -- vim plugin for ack
+Plugin 'mileszs/ack.vim'
 
 call vundle#end()            " required
 " filetype plugin indent on
