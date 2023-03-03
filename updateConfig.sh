@@ -1,43 +1,29 @@
 #!/bin/bash
+source ~/.dotfiles/scripts/utils.sh
+gitpull ~/.dotfiles
 
-if [[ $(pwd) = "$HOME/.dotfiles" ]]
-then
-    git pull
-else
-    pushd ~/.dotfiles
-    git pull
-    popd
+# gitconfig
+if [[ ! -f ~/.gitconfig ]]; then
+  create_dotconfig_file .gitconfig git
 fi
 
-if [[ ! -f ~/.gitconfig ]]
-then
-    echo; echo "Copying git config files...";
-    cp ~/.dotfiles/config/.gitconfig ~/.gitconfig
-    echo "~/.gitconfig updated!"
+# zshrc.local
+if [[ ! -f ~/.zshrc.local ]]; then
+  create_dotconfig_file .zshrc.local zshrc_local
 fi
 
-if [[ ! -f ~/.zshrc.local ]]
-then
-    echo; echo "Copying zsh local config files...";
-    cp ~/.dotfiles/config/.zshrc.local ~/.zshrc.local
-    echo "~/.zshrc.local updated!"
-fi
+# zshrc
+create_update_dotconfig .zshrc zsh
 
-echo "Copying zsh config files...";
-cp ~/.dotfiles/config/.zshrc ~/.zshrc
-echo "~/.zshrc updated!"
+# vimrc
+create_update_dotconfig .vimrc vim
 
-echo "Copying Vim config files...";
-cp ~/.dotfiles/config/.vimrc ~/.vimrc
-echo "~/.vimrc updated!"
+# tmux
+create_update_dotconfig .tmux.conf tmux
 
-echo "Copying tmux config files...";
-cp ~/.dotfiles/config/.tmux.conf ~/.tmux.conf
-echo "~/.tmux.conf updated!"
-
-echo "Copying tmux quicksession files...";
-cp -a ~/.dotfiles/config/.tmux/. ~/.tmux/
-echo "~/.tmux/ updated!"
+# tmux quick session
+create_update_dotconfig .tmux/dev.sh tmuxDev
+create_update_dotconfig .tmux/research.sh tmuxRes
 
 echo; echo "Reloading Zsh... \n";
 omz reload
