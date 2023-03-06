@@ -76,6 +76,11 @@ Content:
 
     Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-life-tools-ref.md).
 
+    *   utilities
+        ```bash
+        sudo apt install r-base-core  # R language
+        ```
+
 ### Plugins
 *   Zsh plugins
     *   git
