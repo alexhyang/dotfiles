@@ -9,7 +9,7 @@ pushd $(pwd)
 #   processes
 sudo apt update
 sudo apt install \
-tree fasd autojump fd-find locate \
+tree fasd fd-find fzf autojump locate \
 ack ripgrep \
 htop
 
@@ -17,7 +17,7 @@ htop
 ln -s $(which fdfind) ~/.local/bin/fd
 
 apt list --installed curl git zsh vim tmux \
-tree fd-find locate autojump \
+tree fasd fd-find fzf autojump locate \
 ack ripgrep \
 htop
 
@@ -37,7 +37,7 @@ fi
 echo; echo "Settings up zsh..."; source $DOTFILES/scripts/setUpZsh.sh
 echo; echo "Settings up vim..."; source $DOTFILES/scripts/setUpVim.sh
 echo; echo "Settings up tmux..."; source $DOTFILES/scripts/setUpTmux.sh
-echo; echo "Copying config files..."; source $DOTFILES/updateConfig.sh
+echo; echo "Creating config files..."; source $DOTFILES/updateConfig.sh
 echo; echo "Now install Vim plugins in editor..."; source $DOTFILES/scripts/setUpVimTheme.sh
 echo; echo "Saving system information..."; source $DOTFILES/scripts/saveSysInfo.sh
 
