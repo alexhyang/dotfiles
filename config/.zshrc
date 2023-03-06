@@ -91,46 +91,13 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+source ~/.zshrc.alias
 source ~/.zshrc.local
-if [ -f "$HOME/sysinfo" ]
-then
-    cat ~/sysinfo
-fi
 
-# shell alias
-export PATH="$HOME/.local/bin:$PATH"
-export DOTFILES="$HOME/.dotfiles/"
+# Environment Variables
 export VISUAL="vim"
 export EDITOR="$VISUAL"
-alias sysinfo="cat ~/sysinfo"
-alias dotfiles="cd ~/.dotfiles/"
-alias updateConfig="source ~/.dotfiles/updateConfig.sh"
-alias bootstrap="source ~/.dotfiles/bootstrap.sh"
-alias cls="clear"
-
-# service alias
-alias weather="curl wttr.in"
-
-# git additional alias
-alias glc="git log --oneline --decorate --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short"
-
-# tmux alias
-alias t="tmux"
-alias tns="tmux new -s"
-alias ta="tmux attach-session"
-alias tat="tmux attach-session -t"
-alias tls="tmux ls"
-alias tkt="tmux kill-session -t"
-alias tka="tmux kill-session -a"
-alias tdev="tmux source-file ~/.tmux/dev.sh"
-alias tkd="tmux kill-session -t dev; tmux ls"
-alias tres="tmux source-file ~/.tmux/research.sh"
-alias tkr="tmux kill-session -t research; tmux ls"
-
-# tldr alias
-tl () {
-  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
-}
+export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
