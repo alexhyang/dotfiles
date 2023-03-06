@@ -122,3 +122,4 @@ Content:
 *   [My developer workflow using WSL, tmux and Neovim](https://dev.to/nexxeln/my-developer-workflow-using-wsl-tmux-and-neovim-55f5)
 *   [Oh My Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 *   [Vimawesome - Vim plugins](https://vimawesome.com/)
+*   [Debian packages of R software](https://cran.r-project.org/bin/linux/debian/)
