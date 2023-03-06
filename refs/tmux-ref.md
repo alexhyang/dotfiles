@@ -53,4 +53,4 @@ Contents:
 *   [tmux cheat sheet](https://tmuxcheatsheet.com/)
 *   [Blog: How to Reload a Tmux Config File](https://linuxhint.com/how-to-reload-tmux-config-file/)
 *   [Blog: Customize Tmux Configuration](https://linuxhint.com/customize-tmux-configuration/)
-
+*   [Blog: Customize tmux status bar](https://rudra.dev/posts/a-mininal-tmux-configuration-from-scratch/#customize-status-bar)
