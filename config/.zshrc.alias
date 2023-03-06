@@ -1,0 +1,39 @@
+# shell alias
+export PATH="$HOME/.local/bin:$PATH"
+export DOTFILES="$HOME/.dotfiles/"
+
+alias cls="clear"
+alias mv="mv -i"
+alias cp="cp -i"
+
+# dotfiles related operations
+alias sysinfo="cat ~/sysinfo"
+alias dotfiles="cd ~/.dotfiles/"
+alias dotutil="source ~/.dotfiles/scripts/utils.sh"
+alias updateConfig="source ~/.dotfiles/updateConfig.sh"
+alias bootstrap="source ~/.dotfiles/bootstrap.sh"
+
+# service alias
+alias weather="curl wttr.in"
+
+# git additional alias
+alias glc="git log --oneline --decorate --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' --date=short"
+
+# tmux alias
+alias t="tmux"
+alias tns="tmux new -s"
+alias ta="tmux attach-session"
+alias tat="tmux attach-session -t"
+alias tls="tmux ls"
+alias tkt="tmux kill-session -t"
+alias tka="tmux kill-session -a"
+alias tdev="tmux source-file ~/.tmux/dev.sh"
+alias tkd="tmux kill-session -t dev; tmux ls"
+alias tres="tmux source-file ~/.tmux/research.sh"
+alias tkr="tmux kill-session -t research; tmux ls"
+
+# tldr alias
+tl () {
+  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
+}
+

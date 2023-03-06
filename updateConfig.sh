@@ -15,6 +15,9 @@ fi
 # zshrc
 create_update_dotconfig .zshrc zsh
 
+# alias
+create_update_dotconfig .zshrc.alias alias
+
 # vimrc
 create_update_dotconfig .vimrc vim
 
