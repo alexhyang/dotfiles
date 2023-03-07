@@ -120,3 +120,5 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
 *   [Oh My Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 *   [Vimawesome - Vim plugins](https://vimawesome.com/)
 *   [Debian packages of R software](https://cran.r-project.org/bin/linux/debian/)
+*   [A guide to dotfiles - blog post](https://dotfiles.github.io/)
+*   [Shell startup scripts - blog post](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
