@@ -1,6 +1,5 @@
 #!/bin/bash
-
-pushd $(pwd)
+echo "Setting up Vim...";
 
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]
 then
@@ -8,8 +7,7 @@ then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 else
     echo "Pulling the latest Vundle updates";
-    cd ~/.vim/bundle/Vundle.vim
-    git pull
+    gitpull ~/.vim/bundle/Vundle.vim
 fi
 
 if [ ! -d "$HOME/.vim/pack/plugins/start/ctrlp" ]
@@ -19,5 +17,4 @@ then
     echo "Vim plugin ctrlp installed!";
 fi
 
-popd
-echo "Vim configuration done!"
+echo "Vim configuration finished!"

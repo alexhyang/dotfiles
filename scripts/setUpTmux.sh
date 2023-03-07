@@ -1,3 +1,3 @@
 #!/bin/bash
-
-echo "tmux configuration done!"
+echo "Setting up tmux...";
+echo "tmux configuration finished!"
