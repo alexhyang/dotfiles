@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "Installing Vim plugins and themes..."
 
 if [ ! -d "$HOME/.vim/bundle/ale" ]
 then
@@ -14,10 +15,9 @@ then
     if [ ! -d "$HOME/.vim/colors" ]
     then
       mkdir $HOME/.vim/colors/
+      cp $HOME/.vim/bundle/vim-colors-solarized/colors/solarized.vim $HOME/.vim/colors/solarized.vim
     fi
-    cd $HOME/.vim/
-    cp ./bundle/vim-colors-solarized/colors/solarized.vim ./colors/solarized.vim
-    cd ~/.dotfiles
-    echo "solarized.vim copied!"
+    echo "solarized.vim theme configured!"
 fi
 
+echo "Vim plugin and theme configuration finished!"
