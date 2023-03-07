@@ -4,7 +4,7 @@ export DOTFILES="$HOME/.dotfiles/"
 
 alias cls="clear"
 alias mv="mv -i"
-alias cp="cp -i"
+alias cpi="cp -i"
 
 # dotfiles related operations
 alias sysinfo="cat ~/sysinfo"
