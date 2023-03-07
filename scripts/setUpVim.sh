@@ -9,7 +9,7 @@ then
 else
     echo "Pulling the latest Vundle updates";
     cd ~/.vim/bundle/Vundle.vim
-    git pull || popd
+    git pull
 fi
 
 if [ ! -d "$HOME/.vim/pack/plugins/start/ctrlp" ]
@@ -19,5 +19,5 @@ then
     echo "Vim plugin ctrlp installed!";
 fi
 
-
+popd
 echo "Vim configuration done!"
