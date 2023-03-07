@@ -6,52 +6,50 @@ Content:
 
 * [Steps to setup a new Debian/Ubuntu machine](#steps-to-setup-a-new-debian/ubuntu-machine)
 * [Explanations](#explanations)
-  * [Notes dump](#notes-dump)
-  * [Packages](#packages)
+  * [Dotfiles](#dotfiles)
+  * [Non-essential Packages](#non-essential-packages)
   * [Plugins](#plugins)
 * [References](#references)
 
 ## Steps to setup a new Debian/Ubuntu machine
-1.  Manual setups
-    1.  update and install essential packages
+1.  Minimal setups
+    1.  install essential packages
         ```sh
         sudo apt update; sudo apt upgrade; \
         sudo apt install curl git zsh vim tmux; \
         apt list --installed curl git zsh vim tmux
-        ```
 
-    1.  generate SSH key
-        ```sh
-        ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"; \
-        eval "$(ssh-agent -s)"; \
-        ssh-add ~/.ssh/id_ed25519; \
-        cat ~/.ssh/id_ed25519.pub 
-        ```
-        Add public key to [GitHub account](https://github.com/settings/keys)
-
-    1.  verify GitHub connection using ssh
-        ```sh
-        ssh -T git@github.com 
-        ```
-
-    1.  install Oh My Zsh to manage Zshell
-        ```sh
+        # zsh configuration manager: OhMyZsh
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
         ```
 
-1.  Automatic setups
-    ```sh
-    git clone git@github.com:alexhyang/dotfiles.git ~/.dotfiles/; \
-    echo "Configuring development environment..."; source ~/.dotfiles/bootstrap.sh
-    ```
+    1.  establish GitHub connection
+        1.  generate ssh keys
+            ```sh
+            ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"; \
+            eval "$(ssh-agent -s)"; \
+            ssh-add ~/.ssh/id_ed25519; \
+            cat ~/.ssh/id_ed25519.pub 
+            ```
+        1.  add public key to [GitHub account](https://github.com/settings/keys)
+        1.  verify GitHub connection using ssh
+            ```sh
+            ssh -T git@github.com 
+            ```
+
+    1.  setup dotfiles on local machine
+        ```sh
+        git clone git@github.com:alexhyang/dotfiles.git ~/.dotfiles/; \
+        source ~/.dotfiles/bootstrap.sh
+        ```
 
 1.  Additional setups
     1.  Debian and Ubuntu
-        install nvm and current LTS node
-        ```sh
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-        nvm install --lts
-        ```
+        1.  install nvm and current LTS node
+            ```sh
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+            nvm install --lts
+            ```
 
     1.  Debian only
         install online manual pager ("man" command)
@@ -60,8 +58,8 @@ Content:
         ```
 
 ## Explanations
-### Notes dump
-*   remote repo that contains all configuration dotfiles, such as:
+### Dotfiles
+*   some tools to be configured through dotfiles:
     *   shell -- ~/.bashrc, ~/.bash_profile, ~/.zshrc 
     *   git -- ~/.gitconfig
     *   vim -- ~/.vimrc, ~/.vim/
@@ -71,15 +69,14 @@ Content:
 *   use "redirect" to source files in the dotfiles repo, sensitive information such as customized directory and API keys will be configured locally
     *   symlink, dotfile, etc.
 
-### Packages
-*   curl, git, zsh, vim, tmux, htop, tree... (more to be added)
+### Non-essential Packages
+*   utilities
+    ```bash
+    sudo apt install r-base # R language
+    ```
 
-    Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-life-tools-ref.md).
+Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-life-tools-ref.md).
 
-    *   utilities
-        ```bash
-        sudo apt install r-base-core  # R language
-        ```
 
 ### Plugins
 *   Zsh plugins
