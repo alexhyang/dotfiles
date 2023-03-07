@@ -89,6 +89,7 @@ plugins=(
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+export FZF_BASE="/usr/bin/fzf"
 export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 source $ZSH/oh-my-zsh.sh
 
