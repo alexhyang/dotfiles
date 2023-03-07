@@ -10,11 +10,13 @@ pushd $(pwd)
 sudo apt update
 sudo apt install \
 tree fasd fd-find fzf autojump locate \
-ack ripgrep \
+bat ack ripgrep \
 htop
 
 # bind 'fd' alias with 'fd-find', see https://github.com/sharkdp/fd#on-ubuntu
+mkdir -p ~/.local/bin
 ln -s $(which fdfind) ~/.local/bin/fd
+ln -s /usr/bin/batcat ~/.local/bin/bat
 
 apt list --installed curl git zsh vim tmux \
 tree fasd fd-find fzf autojump locate \
