@@ -84,10 +84,12 @@ plugins=(
         zsh-autosuggestions
         autojump
         fasd
+        fzf
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -97,7 +99,6 @@ source ~/.zshrc.local
 # Environment Variables
 export VISUAL="vim"
 export EDITOR="$VISUAL"
-export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
