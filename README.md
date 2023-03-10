@@ -18,8 +18,10 @@ Content:
         sudo apt update; sudo apt upgrade; \
         sudo apt install curl git zsh vim tmux; \
         apt list --installed curl git zsh vim tmux
+        ```
 
-        # zsh configuration manager: OhMyZsh
+        zsh configuration manager: OhMyZsh
+        ```bash
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
         ```
 
@@ -72,7 +74,9 @@ Content:
 ### Non-essential Packages
 *   utilities
     ```bash
-    sudo apt install r-base # R language
+    sudo apt install r-base-core    # R language
+    sudo apt install openjdk-17-jdk # Java
+    sudo apt install python3-pip    # pip
     ```
 
 Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-life-tools-ref.md).
