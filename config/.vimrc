@@ -94,14 +94,14 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 " ----------------------------------------
 " tagbar -- show outline/structure of classes, functions, etc. 
-" Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 " ----------------------------------------
 " surroudn.vim -- easy operations on surroundings in pairs 
 Plugin 'tpope/vim-surround'
 " ----------------------------------------
 " youcompleteme -- code completion engine for vim
 " ----------------------------------------
-" Plugin 'valloric/youcompleteme'
+Plugin 'valloric/youcompleteme'
 " ----------------------------------------
 " Syntastic -- syntax checking hacks for vim 
 Plugin 'scrooloose/syntastic'
