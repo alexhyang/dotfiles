@@ -55,7 +55,7 @@ Content:
 *   use "redirect" to source files in the dotfiles repo, sensitive information such as customized directory and API keys will be configured locally
     *   symlink, dotfile, etc.
 
-Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-life-tools-ref.md).
+Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-line-tools-ref.md).
 
 ### Plugins
 *   Zsh plugins
