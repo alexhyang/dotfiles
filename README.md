@@ -1,6 +1,6 @@
 # Linux Dotfiles
 
-This document contains notes about my personal configuration of development environment on Linux.
+This document contains notes about my personal configuration of development environment on Debian-based Linux distributions.
 
 Content:
 
