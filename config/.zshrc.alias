@@ -45,3 +45,5 @@ tl () {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
+# notetaking alias
+[[ -d "$HOME/research-notes" ]] && alias createmd="cp ~/research-notes/template.md"
