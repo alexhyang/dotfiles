@@ -40,10 +40,19 @@ alias tkd="tmux kill-session -t dev; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
 alias tkr="tmux kill-session -t research; tmux ls"
 
-# tldr alias
+# note-taking alias
+[[ -d "$HOME/research-notes" ]] && alias createmd="cp ~/research-notes/template.md"
+
+# command line utils
 tl () {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
-# notetaking alias
-[[ -d "$HOME/research-notes" ]] && alias createmd="cp ~/research-notes/template.md"
+myrefs () {
+  refpath="$HOME/.dotfiles/refs/$1.md"
+  if [[ -f $refpath ]]; then
+    bat $refpath
+  else
+    echo "requested ref doesn't exist!"
+  fi
+}
