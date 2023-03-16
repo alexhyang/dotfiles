@@ -49,7 +49,7 @@ Content:
     omz reload
     ```
     ```bash
-    nvm install --lts;
+    nvm install --lts; nvm ls
     ```
 
 ## Explanations
