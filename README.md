@@ -45,8 +45,8 @@ Content:
 
 1.  install Node.js
     ```bash
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash \
-    nvm install --lts \
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash; \
+    nvm install --lts; \
     omz reload
     ```
 
