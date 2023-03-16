@@ -43,6 +43,13 @@ Content:
     source ~/.dotfiles/bootstrap.sh
     ```
 
+1.  install Node.js
+    ```bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+    nvm install --lts
+    omz reload
+    ```
+
 ## Explanations
 ### Dotfiles
 *   some tools to be configured through dotfiles:

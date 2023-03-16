@@ -35,12 +35,6 @@ then
 fi
 
 # install programming languages
-## Node.js
-if [ ! -d "$HOME/.nvm" ]; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-  nvm install --lts
-fi
-
 sudo apt install r-base-core    # R language
 sudo apt install openjdk-17-jdk # Java
 sudo apt install python3-pip    # pip
