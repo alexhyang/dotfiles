@@ -1,11 +1,17 @@
 #!/bin/bash
 echo "Linking dotfiles...;"
 
+# shell
+ln -s $DOTFILES/config/.aliases ~/.aliases
+ln -sf $DOTFILES/config/.profile ~/.profile
+
 ln -sf $DOTFILES/config/.bashrc ~/.bashrc
 ln -sf $DOTFILES/config/.bash_aliases ~/.bash_aliases
+
 ln -sf $DOTFILES/config/.zshrc ~/.zshrc
 ln -s $DOTFILES/config/.p10k.zsh ~/.p10k.zsh
-ln -s $DOTFILES/config/.aliases ~/.aliases
+
+# workflow
 ln -s $DOTFILES/config/.vimrc ~/.vimrc
 ln -s $DOTFILES/config/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.tmux
