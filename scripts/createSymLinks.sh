@@ -1,7 +1,9 @@
 #!/bin/bash
 echo "Linking dotfiles...;"
 
-ln -s $DOTFILES/config/.zshrc ~/.zshrc
+ln -sf $DOTFILES/config/.bashrc ~/.bashrc
+ln -sf $DOTFILES/config/.bash_aliases ~/.bash_aliases
+ln -sf $DOTFILES/config/.zshrc ~/.zshrc
 ln -s $DOTFILES/config/.p10k.zsh ~/.p10k.zsh
 ln -s $DOTFILES/config/.aliases ~/.aliases
 ln -s $DOTFILES/config/.vimrc ~/.vimrc
