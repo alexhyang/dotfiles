@@ -94,7 +94,7 @@ export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-source ~/.zshrc.alias
+source ~/.aliases
 source ~/.local_env
 
 # Environment Variables
