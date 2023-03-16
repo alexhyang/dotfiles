@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 source ~/.zshrc.alias
-source ~/.zshrc.local
+source ~/.local_env
 
 # Environment Variables
 export VISUAL="vim"

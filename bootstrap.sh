@@ -4,7 +4,7 @@ source $DOTFILES/scripts/utils.sh
 
 # local setup
 create_unique_local_dotfile .gitconfig git
-create_unique_local_dotfile .zshrc.local zshrc_local
+create_unique_local_dotfile .local_env local_env
 
 # universal setup
 source $DOTFILES/scripts/setUpCLTs.sh
