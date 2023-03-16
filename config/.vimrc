@@ -69,71 +69,29 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-
 " ===================================================
 "         Vim Plugins from VimAwesome
 " ===================================================
-"
-" ---------------------------------------
-" Vim bundle (vim plugin manager)
-Plugin 'VundleVim/Vundle.vim'
-" ---------------------------------------
-" fugitive.vim -- a Git wrapper 
-Plugin 'tpope/vim-fugitive'
-" ----------------------------------------
-" nerd tree -- tree explore plugin for vim 
-Plugin 'scrooloose/nerdtree'
-" ----------------------------------------
-" vim colors solarized: -- precision color scheme for vim editor 
-Plugin 'altercation/vim-colors-solarized'
-" ----------------------------------------
-" vim airline -- status/tabline for vim 
-Plugin 'vim-airline/vim-airline'
-" ----------------------------------------
-" vim gitgutter -- shows git diff markers 
-Plugin 'airblade/vim-gitgutter'
-" ----------------------------------------
-" tagbar -- show outline/structure of classes, functions, etc. 
-Plugin 'majutsushi/tagbar'
-" ----------------------------------------
-" surroudn.vim -- easy operations on surroundings in pairs 
-Plugin 'tpope/vim-surround'
-" ----------------------------------------
-" youcompleteme -- code completion engine for vim
-" ----------------------------------------
-Plugin 'valloric/youcompleteme'
-" ----------------------------------------
-" Syntastic -- syntax checking hacks for vim 
-Plugin 'scrooloose/syntastic'
-" ----------------------------------------
-" vim jsx -- React JSX syntax highlighting and indenting 
-Plugin 'mxw/vim-jsx'
-" ----------------------------------------
-" Enhanced JavaScript syntax
-Plugin 'jelera/vim-javascript-syntax'
-" ----------------------------------------
-" typescript vim -- TypeScript syntax 
-Plugin 'leafgarland/typescript-vim'
-" ----------------------------------------
-" indent guides -- visually displaying indent levels in code
-Plugin 'nathanaelkane/vim-indent-guides'
-" ----------------------------------------
-" ale (async lint engine) -- syntax checking and semantic errors
-Plugin 'w0rp/ale'
-" ----------------------------------------
-" vim prettier
-Plugin 'prettier/vim-prettier'
-" ----------------------------------------
-" Tabular -- vim script for text fildering and alignment
-" [documentation](https://raw.githubusercontent.com/godlygeek/tabular/master/doc/Tabular.txt)
-Plugin 'godlygeek/tabular'
-" ----------------------------------------
-" vim-toml -- vim syntax for toml
-" ----------------------------------------
-Plugin 'cespare/vim-toml'
-" ----------------------------------------
-" markdown syntax -- markdown vim mode (fold levels)
-Plugin 'plasticboy/vim-markdown'
+
+Plugin 'VundleVim/Vundle.vim' " Vim bundle (vim plugin manager)
+Plugin 'tpope/vim-fugitive' " fugitive.vim -- a Git wrapper
+Plugin 'scrooloose/nerdtree' " nerd tree -- tree explore plugin for vim
+Plugin 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
+Plugin 'vim-airline/vim-airline' " vim airline -- status/tabline for vim
+Plugin 'airblade/vim-gitgutter' " vim gitgutter -- shows git diff markers
+Plugin 'majutsushi/tagbar' " tagbar -- show outline/structure of classes, functions, etc.
+Plugin 'tpope/vim-surround' " surroudn.vim -- easy operations on surroundings in pairs
+Plugin 'valloric/youcompleteme' " youcompleteme -- code completion engine for vim
+Plugin 'scrooloose/syntastic' " Syntastic -- syntax checking hacks for vim
+Plugin 'mxw/vim-jsx' " vim jsx -- React JSX syntax highlighting and indenting
+Plugin 'jelera/vim-javascript-syntax' " Enhanced JavaScript syntax
+Plugin 'leafgarland/typescript-vim' " typescript vim -- TypeScript syntax
+Plugin 'nathanaelkane/vim-indent-guides' " indent guides -- visually displaying indent levels in code
+Plugin 'w0rp/ale' " ale (async lint engine) -- syntax checking and semantic errors
+Plugin 'prettier/vim-prettier' " vim prettier
+Plugin 'godlygeek/tabular' " Tabular -- vim script for text fildering and alignment
+Plugin 'cespare/vim-toml' " vim-toml -- vim syntax for toml
+Plugin 'plasticboy/vim-markdown' " markdown syntax -- markdown vim mode (fold levels)
 " commands:
 " whole file:
 "     zr/zR: show details level by level/all the way down
@@ -141,15 +99,9 @@ Plugin 'plasticboy/vim-markdown'
 " cursor position only:
 "     za/zA: show details level by level/all the way down
 "     zc/zC: hide details level by level/all the way up
-" ----------------------------------------
-" instant markdown preview
-Plugin 'suan/vim-instant-markdown'
-" ----------------------------------------
-" NERD Commenter
-Plugin 'scrooloose/nerdcommenter'
-" ----------------------------------------
-" ack -- vim plugin for ack
-Plugin 'mileszs/ack.vim'
+Plugin 'suan/vim-instant-markdown' " instant markdown preview
+Plugin 'scrooloose/nerdcommenter' " NERD Commenter
+Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
 
 call vundle#end()            " required
 " filetype plugin indent on
