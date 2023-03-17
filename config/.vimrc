@@ -31,6 +31,9 @@ set mouse=n
 " change backspace behavior
 set backspace=indent,eol,start
 
+" set encoding
+set encoding=utf-8
+
 " set background and colorscheme
 if has('gui_running')
     set background=light
@@ -74,34 +77,25 @@ call vundle#begin()
 " ===================================================
 
 Plugin 'VundleVim/Vundle.vim' " Vim bundle (vim plugin manager)
-Plugin 'tpope/vim-fugitive' " fugitive.vim -- a Git wrapper
-Plugin 'scrooloose/nerdtree' " nerd tree -- tree explore plugin for vim
-Plugin 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
-Plugin 'vim-airline/vim-airline' " vim airline -- status/tabline for vim
-Plugin 'airblade/vim-gitgutter' " vim gitgutter -- shows git diff markers
-Plugin 'majutsushi/tagbar' " tagbar -- show outline/structure of classes, functions, etc.
-Plugin 'tpope/vim-surround' " surroudn.vim -- easy operations on surroundings in pairs
-Plugin 'valloric/youcompleteme' " youcompleteme -- code completion engine for vim
-Plugin 'scrooloose/syntastic' " Syntastic -- syntax checking hacks for vim
-Plugin 'mxw/vim-jsx' " vim jsx -- React JSX syntax highlighting and indenting
-Plugin 'jelera/vim-javascript-syntax' " Enhanced JavaScript syntax
-Plugin 'leafgarland/typescript-vim' " typescript vim -- TypeScript syntax
+Plugin 'tpope/vim-fugitive' " fugitive.vim -- a Git wrapper 
+Plugin 'scrooloose/nerdtree' " nerd tree -- tree explore plugin for vim 
+Plugin 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor 
+Plugin 'vim-airline/vim-airline' " vim airline -- status/tabline for vim 
+Plugin 'airblade/vim-gitgutter' " vim gitgutter -- shows git diff markers 
+Plugin 'majutsushi/tagbar' " tagbar -- show outline/structure of classes, functions, etc. 
+Plugin 'tpope/vim-surround' " surroudn.vim -- easy operations on surroundings in pairs 
+Plugin 'scrooloose/syntastic' " Syntastic -- syntax checking hacks for vim 
+" Plugin 'mxw/vim-jsx' " vim jsx -- React JSX syntax highlighting and indenting 
+" Plugin 'jelera/vim-javascript-syntax' " Enhanced JavaScript syntax
+" Plugin 'leafgarland/typescript-vim' " typescript vim -- TypeScript syntax 
 Plugin 'nathanaelkane/vim-indent-guides' " indent guides -- visually displaying indent levels in code
 Plugin 'w0rp/ale' " ale (async lint engine) -- syntax checking and semantic errors
-Plugin 'prettier/vim-prettier' " vim prettier
-Plugin 'godlygeek/tabular' " Tabular -- vim script for text fildering and alignment
-Plugin 'cespare/vim-toml' " vim-toml -- vim syntax for toml
+" Plugin 'prettier/vim-prettier' " vim prettier
+" Plugin 'godlygeek/tabular' " Tabular -- vim script for text fildering and alignment
+" Plugin 'cespare/vim-toml' " vim-toml -- vim syntax for toml
 Plugin 'plasticboy/vim-markdown' " markdown syntax -- markdown vim mode (fold levels)
-" commands:
-" whole file:
-"     zr/zR: show details level by level/all the way down
-"     zm/zM: hide details level by level/all the way up
-" cursor position only:
-"     za/zA: show details level by level/all the way down
-"     zc/zC: hide details level by level/all the way up
-Plugin 'suan/vim-instant-markdown' " instant markdown preview
 Plugin 'scrooloose/nerdcommenter' " NERD Commenter
-Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
+" Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
 
 call vundle#end()            " required
 " filetype plugin indent on
@@ -157,8 +151,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " --------------------------------
 " plugin: vim-prettier
 " --------------------------------
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
 
 " --------------------------------
 " plugin: markdown-syntax
@@ -170,12 +164,6 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_auto_insert_bullets = 0
 let g:vim_markdown_new_list_item_indent = 0
-
-" --------------------------------
-" plugin: instant-markdown-vim
-" --------------------------------
-let g:instant_markdown_autostart = 1
-" let g:instant_markdown_autoscroll = 1
 
 " --------------------------------
 " plugin: ctrlp

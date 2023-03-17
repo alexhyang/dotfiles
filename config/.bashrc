@@ -117,4 +117,3 @@ if ! shopt -oq posix; then
 fi
 
 source ~/.aliases
-source /home/alex-ubt/.config/broot/launcher/bash/br
