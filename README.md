@@ -1,6 +1,6 @@
 # Linux Dotfiles
 
-This document contains notes about my personal configuration of Ubuntu development environment on UserLAnd. This repository is a minimal copy of [dotfiles repo](https://github.com/alexhyang/dotfiles).
+This document contains notes about my personal configuration of Ubuntu development environment on UserLAnd.
 
 ## Machine setups
 1.  install essential packages
