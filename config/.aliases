@@ -21,12 +21,6 @@ alias glc="git log --oneline --decorate \
                    --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
                    --date=short"
 
-# fzf
-alias fzw="fzf --height 40% --layout reverse --info inline --border \
-               --preview 'file {}' --preview-window up,1,border-horizontal \
-               --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
-alias fzp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-
 # tmux alias
 alias t="tmux"
 alias tns="tmux new -s"
