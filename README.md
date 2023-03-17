@@ -1,6 +1,9 @@
 # Linux Dotfiles
 
-This document contains notes about my personal configuration of development environment on Debian-based Linux distributions.
+This document contains notes about my personal configuration 
+of development environment on Debian-based Linux distributions. 
+For configuration on Linux on Android, checkout the [android 
+branch](https://github.com/alexhyang/dotfiles/tree/android).
 
 Content:
 
@@ -61,7 +64,9 @@ Content:
     *   ssh -- ~/.ssh/config
     *   tmux -- ~/.tmux.conf
 
-*   use "redirect" to source files in the dotfiles repo, sensitive information such as customized directory and API keys will be configured locally
+*   use "redirect" to source files in the dotfiles repo, 
+    sensitive information such as customized directory and 
+    API keys will be configured locally
     *   symlink, dotfile, etc.
 
 Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-line-tools-ref.md).
