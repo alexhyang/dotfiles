@@ -32,10 +32,10 @@ if [[ $confirmYouCompleteMe = "y" && -d "$HOME/.vim/bundle/youcompleteme" ]]; th
   python3 ~/.vim/bundle/youcompleteme/install.py --ts-completer
 fi
 
-if [[ -d "$HOME/.vim/bundle/vim-colors-solarized"  &&  ! -d "$HOME/.vim/colors" ]]
+if [[ -d "$HOME/.vim/bundle/vim-colors-solarized"  &&  ! -f "$HOME/.vim/colors/solarized.vim" ]]
 then
     echo "Copying Solarized color file..."
-    mkdir $HOME/.vim/colors/
+    mkdir -p $HOME/.vim/colors/
     cp $HOME/.vim/bundle/vim-colors-solarized/colors/solarized.vim $HOME/.vim/colors/solarized.vim
     echo "solarized.vim theme configured!"
 fi
