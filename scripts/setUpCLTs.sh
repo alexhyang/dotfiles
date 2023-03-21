@@ -10,7 +10,7 @@ htop
 
 # install man page for debian
 machine=$(cat /etc/os-release | grep -E "^NAME=\".*\"" | sed -E 's/^.*?"(\w+)(\s?).*"$/\1/')
-if [ $machine = "Debian" ]; then
+if [[ $machine == "Debian" ]]; then
   sudo apt install man-db
 fi
 
@@ -26,12 +26,11 @@ if [ ! -f ~/.local/bin/bat ]; then
 fi
 
 # install broot
-if [ ! -f "/usr/local/bin/broot" ]
-then
-    curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
-    sudo mv broot /usr/local/bin
-    sudo chmod +x /usr/local/bin/broot
-    broot
+if [ ! -f "/usr/local/bin/broot" ]; then
+  curl -o broot -L https://dystroy.org/broot/download/x86_64-linux/broot
+  sudo mv broot /usr/local/bin
+  sudo chmod +x /usr/local/bin/broot
+  broot
 fi
 
 # install programming languages

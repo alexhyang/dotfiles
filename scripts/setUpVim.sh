@@ -27,7 +27,7 @@ fi
 
 echo "Install youcompleteme plugin? [y/N]"
 read confirmYouCompleteMe
-if [[ $confirmYouCompleteMe = "y" && -d "$HOME/.vim/bundle/youcompleteme" ]]; then
+if [[ $confirmYouCompleteMe == "y" && -d "$HOME/.vim/bundle/youcompleteme" ]]; then
   sudo apt install cmake
   python3 ~/.vim/bundle/youcompleteme/install.py --ts-completer
 fi
