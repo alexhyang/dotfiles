@@ -1,5 +1,5 @@
 gitpull () {
-  if [[ $(pwd) = $1 ]]; then
+  if [[ $(pwd) == $1 ]]; then
     git pull
   else
     pushd $1
@@ -26,7 +26,7 @@ update_dotfile () {
   if ! diff ~/$1 ~/.dotfiles/config/$1; then
     echo "~/.dotfiles/config/$1 --> ~/$1? [y/n]"
     read confirmation
-    if [ $confirmation = 'y' ]; then
+    if [[ $confirmation == 'y' ]]; then
       cp ~/.dotfiles/config/$1 ~/$1
       echo "~/$1 updated!\n"
     else
@@ -40,7 +40,7 @@ backupdate_dotfile () {
   if ! diff ~/.dotfiles/config/$1 ~/$1 ; then
     echo "~/$1 --> ~/.dotfiles/config/$1? [y/n]"
     read confirmation
-    if [ $confirmation = 'y' ]; then
+    if [[ $confirmation == 'y' ]]; then
       cp ~/$1 ~/.dotfiles/config/$1
       echo "~/.dotfiles/config/$1 updated!\n"
     else
