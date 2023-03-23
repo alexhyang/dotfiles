@@ -1,3 +1,4 @@
+#!bin/bash
 # shell alias
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="$HOME/.dotfiles/"
@@ -41,7 +42,27 @@ alias tres="tmux source-file ~/.tmux/research.sh"
 alias tkr="tmux kill-session -t research; tmux ls"
 
 # note-taking alias
-[[ -d "$HOME/research-notes" ]] && alias createmd="cp ~/research-notes/template.md"
+createmd () {
+  if [[ -d "$HOME/research-notes" ]]; then 
+    cp ~/research-notes/template.md $1.md;
+    echo "$1.md created";
+  else
+    echo "research notes repo not cloned on local machine";
+  fi
+}
+
+readme () {
+  if [[ -f "./README.md" ]]; then
+    vim ./README.md;
+  else
+    echo "Create README.md? [y/N]";
+    read confirmation;
+    if [[ $confirmation == "y" ]]; then
+      touch README.md;
+      vim README.md;
+    fi
+  fi
+}
 
 # command line utils
 tl () {
