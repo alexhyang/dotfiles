@@ -58,8 +58,7 @@ readme () {
     echo "Create README.md? [y/N]";
     read confirmation;
     if [[ $confirmation == "y" ]]; then
-      touch README.md;
-      vim README.md;
+      createmd README || touch README.md && vim README.md;
     fi
   fi
 }
@@ -70,9 +69,23 @@ tl () {
 }
 
 myrefs () {
-  refpath="$HOME/.dotfiles/refs/$1.md"
+  if [[ $# -eq 1 ]]; then
+    filename="$1.md"
+  else
+    flag="$1"
+    filename="$2.md"
+  fi
+  refpath="$HOME/.dotfiles/refs/$filename"
+
   if [[ -f $refpath ]]; then
-    bat $refpath
+    case $flag in
+      -e)
+        vim $refpath
+        ;;
+      *)
+        bat $refpath
+        ;;
+    esac
   else
     echo "requested ref doesn't exist!"
   fi
