@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # shell alias
 export PATH="$HOME/.local/bin:$PATH"
 export DOTFILES="$HOME/.dotfiles/"
