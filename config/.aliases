@@ -43,7 +43,7 @@ alias tkr="tmux kill-session -t research; tmux ls"
 
 # note-taking alias
 createmd () {
-  if [[ -d "$HOME/research-notes" ]]; then 
+  if [[ -d "$HOME/research-notes" ]]; then
     cp ~/research-notes/template.md $1.md;
     echo "$1.md created";
   else
