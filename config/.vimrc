@@ -102,6 +102,7 @@ Plugin 'plasticboy/vim-markdown' " markdown syntax -- markdown vim mode (fold le
 Plugin 'suan/vim-instant-markdown' " instant markdown preview
 Plugin 'scrooloose/nerdcommenter' " NERD Commenter
 Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
+Plugin 'bronson/vim-trailing-whitespace' "trailing-whitespace -- highlight trailing whitespace in red
 
 call vundle#end()            " required
 " filetype plugin indent on
