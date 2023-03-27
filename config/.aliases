@@ -63,20 +63,14 @@ readme () {
   fi
 }
 
-# command line utils
-tl () {
-  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
-}
-
 myrefs () {
   if [[ $# -eq 1 ]]; then
-    filename="$1.md"
+    refname="$1"
   else
     flag="$1"
-    filename="$2.md"
+    refname="$2"
   fi
-  refpath="$HOME/.dotfiles/refs/$filename"
-
+  refpath="$HOME/.dotfiles/refs/$refname.md"
   if [[ -f $refpath ]]; then
     case $flag in
       -e)
@@ -87,6 +81,17 @@ myrefs () {
         ;;
     esac
   else
-    echo "requested ref doesn't exist!"
+    echo "requested ref doesn't exist! create $refname.md? [y/N]"
+    read confirmCreate;
+    if [[ $confirmCreate == "y" ]]; then
+      cp ~/research-notes/template.md $refpath;
+      vim $refpath;
+    fi
   fi
 }
+
+# command line utils
+tl () {
+  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
+}
+
