@@ -1,9 +1,9 @@
 " =====================================
-"         Common Vim settings 
+"         Common Vim settings
 " =====================================
-syntax on 
+syntax on
 
-" line numbers:
+" line numbers and commands
 set number
 set relativenumber
 
@@ -12,7 +12,7 @@ set ignorecase   " case-insensitive during string search
 set smartcase    " case-sensitive when Capital letters appear
 
 " enable searching as you type, enable search highlights
-set incsearch 
+set incsearch
 set hlsearch
 nnoremap <F3> :noh<CR>
 
@@ -110,7 +110,7 @@ call vundle#end()            " required
 "   (enable loading the indent file for specific file types)
 filetype plugin indent on    " required
 
-" filetype plugin on 
+" filetype plugin on
 "   (enable loading the plugin files for specific file types)
 " required by:
 "   markdown-syntax:
@@ -127,7 +127,7 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 " ===================================================
-"          plugin configuration 
+"          plugin configuration
 " ===================================================
 
 " --------------------------------
@@ -178,6 +178,11 @@ let g:vim_markdown_new_list_item_indent = 0
 " --------------------------------
 let g:instant_markdown_autostart = 1
 " let g:instant_markdown_autoscroll = 1
+
+" --------------------------------
+" plugin: NERDCommenter
+" --------------------------------
+let g:NERDSpaceDelims = 1
 
 " --------------------------------
 " plugin: ctrlp
