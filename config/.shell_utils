@@ -1,0 +1,60 @@
+#!/bin/bash
+# shell
+showPath () {
+  echo $PATH | sed -E "s/:/\n/g"
+}
+
+# note-taking
+createmd () {
+  if [[ -d "$HOME/research-notes" ]]; then
+    cp ~/research-notes/template.md $1.md;
+    echo "$1.md created";
+  else
+    echo "research notes repo not cloned on local machine";
+  fi
+}
+
+readme () {
+  if [[ -f "./README.md" ]]; then
+    vim ./README.md;
+  else
+    echo "README.md doesn't exit! Create README.md? [y/N]";
+    read confirm;
+    if [[ $confirm == "y" ]]; then
+      createmd README || touch README.md && vim README.md;
+    fi
+  fi
+}
+
+# help files and references
+tl () {
+  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
+}
+
+myrefs () {
+  if [[ $# -eq 1 ]]; then
+    refname="$1"
+  else
+    flag="$1"
+    refname="$2"
+  fi
+  refpath="$HOME/.dotfiles/refs/$refname.md"
+  if [[ -f $refpath ]]; then
+    case $flag in
+      -e)
+        vim $refpath
+        ;;
+      *)
+        bat $refpath
+        ;;
+    esac
+  else
+    echo "Requested ref doesn't exist! Create $refname.md? [y/N]"
+    read confirm;
+    if [[ $confirm == "y" ]]; then
+      createmd $refname && vim $refpath;
+    fi
+  fi
+}
+
+

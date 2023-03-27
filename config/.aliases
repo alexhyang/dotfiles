@@ -1,32 +1,33 @@
 #!/bin/bash
 # shell alias
-export PATH="$HOME/.local/bin:$PATH"
-export DOTFILES="$HOME/.dotfiles/"
-
 alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
 
-# dotfiles related operations
+# dotfiles
 alias sysinfo="cat ~/sysinfo"
 alias dotfiles="cd ~/.dotfiles/"
 alias dotutil="source ~/.dotfiles/scripts/utils.sh"
 alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 
-# service alias
+# service
 alias weather="curl wttr.in"
 
-# git additional alias
-alias glc="git log --oneline --decorate \
-                   --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
-                   --date=short"
+# git
+alias glc="git log \
+  --oneline --decorate \
+  --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
+  --date=short"
 
 # fzf
-alias fzw="fzf --height 40% --layout reverse --info inline --border \
-               --preview 'file {}' --preview-window up,1,border-horizontal \
-               --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
-alias fzp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias fzw="fzf \
+  --height 40% --layout reverse --info inline --border \
+  --preview 'file {}' --preview-window up,1,border-horizontal \
+  --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
+
+alias fzp="fzf \
+  --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 # tmux alias
 alias t="tmux"
@@ -40,58 +41,3 @@ alias tdev="tmux source-file ~/.tmux/dev.sh"
 alias tkd="tmux kill-session -t dev; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
 alias tkr="tmux kill-session -t research; tmux ls"
-
-# note-taking alias
-createmd () {
-  if [[ -d "$HOME/research-notes" ]]; then
-    cp ~/research-notes/template.md $1.md;
-    echo "$1.md created";
-  else
-    echo "research notes repo not cloned on local machine";
-  fi
-}
-
-readme () {
-  if [[ -f "./README.md" ]]; then
-    vim ./README.md;
-  else
-    echo "Create README.md? [y/N]";
-    read confirmation;
-    if [[ $confirmation == "y" ]]; then
-      createmd README || touch README.md && vim README.md;
-    fi
-  fi
-}
-
-myrefs () {
-  if [[ $# -eq 1 ]]; then
-    refname="$1"
-  else
-    flag="$1"
-    refname="$2"
-  fi
-  refpath="$HOME/.dotfiles/refs/$refname.md"
-  if [[ -f $refpath ]]; then
-    case $flag in
-      -e)
-        vim $refpath
-        ;;
-      *)
-        bat $refpath
-        ;;
-    esac
-  else
-    echo "requested ref doesn't exist! create $refname.md? [y/N]"
-    read confirmCreate;
-    if [[ $confirmCreate == "y" ]]; then
-      cp ~/research-notes/template.md $refpath;
-      vim $refpath;
-    fi
-  fi
-}
-
-# command line utils
-tl () {
-  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
-}
-

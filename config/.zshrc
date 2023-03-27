@@ -93,8 +93,9 @@ export FZF_BASE="/usr/bin/fzf"
 export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# source related dotfiles
 source ~/.aliases
+source ~/.shell_utils
 source ~/.local_env
 
 # Environment Variables
