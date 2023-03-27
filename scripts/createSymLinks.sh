@@ -5,7 +5,6 @@ DOTFILES="$HOME/.dotfiles"
 # shell
 ln -s $DOTFILES/config/.aliases ~/.aliases
 ln -s $DOTFILES/config/.shell_utils ~/.shell_utils
-ln -sf $DOTFILES/config/.profile ~/.profile
 
 ln -sf $DOTFILES/config/.bashrc ~/.bashrc
 ln -s $DOTFILES/config/.bash_aliases ~/.bash_aliases
