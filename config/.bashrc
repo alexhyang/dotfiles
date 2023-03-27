@@ -116,5 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Customize Prompt String
+export GIT_PS1_SHOWDIRTYSTATE=1
+PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
+
 source ~/.aliases
 source /home/alex-ubt/.config/broot/launcher/bash/br
