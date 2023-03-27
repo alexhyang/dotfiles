@@ -93,6 +93,10 @@ git fetch -p                              # remove any remote branches that don'
 git prune                                 # clean up old branches
 git remote set-url origin <url>           # update remote repo url
 
+# Pull remote branch into a local branch with a different name
+git fetch <remote_repo>
+git checkout -b <local_branch> <remote_repo>/<branch_name>
+
 # Rename branches
 git branch -m <new_local_branch>          # rename local branch
 git push origin -u <new_remote_branch>;
