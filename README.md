@@ -23,7 +23,7 @@ Content:
 
     zsh configuration manager: OhMyZsh
     ```bash
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     ```
 
 1.  establish GitHub connection
@@ -32,12 +32,12 @@ Content:
         ssh-keygen -t ed25519 -C "alex.hyang.dev@gmail.com"; \
         eval "$(ssh-agent -s)"; \
         ssh-add ~/.ssh/id_ed25519; \
-        cat ~/.ssh/id_ed25519.pub 
+        cat ~/.ssh/id_ed25519.pub
         ```
     1.  add public key to [GitHub account](https://github.com/settings/keys)
     1.  verify GitHub connection using ssh
         ```sh
-        ssh -T git@github.com 
+        ssh -T git@github.com
         ```
 
 1.  setup dotfiles on local machine
@@ -58,7 +58,7 @@ Content:
 ## Explanations
 ### Dotfiles
 *   some tools to be configured through dotfiles:
-    *   shell -- ~/.bashrc, ~/.bash_profile, ~/.zshrc 
+    *   shell -- ~/.bashrc, ~/.bash_profile, ~/.zshrc
     *   git -- ~/.gitconfig
     *   vim -- ~/.vimrc, ~/.vim/
     *   ssh -- ~/.ssh/config
@@ -68,6 +68,12 @@ Content:
     sensitive information such as customized directory and 
     API keys will be configured locally
     *   symlink, dotfile, etc.
+
+*   files created by OS:
+    *   Ubuntu 22.04
+        `~/.bashrc, ~/.bash_logout, ~/.profile, ~/.motd_shown`
+    *   Debian
+        `~/.bashrc, ~/.bash_logout, ~/.profile`
 
 Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-line-tools-ref.md).
 
@@ -115,3 +121,4 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
 *   [Debian packages of R software](https://cran.r-project.org/bin/linux/debian/)
 *   [A guide to dotfiles - blog post](https://dotfiles.github.io/)
 *   [Shell startup scripts - blog post](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
+*   [Install Node.js on WSL2](https://learn.microsoft.com/en-ca/windows/dev-environment/javascript/nodejs-on-wsl)
