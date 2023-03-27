@@ -209,10 +209,10 @@ A list of characters that can be escaped:
 
 ## Markdown to PDF conversion
 [Markdown to PDF](https://www.npmjs.com/package/md-to-pdf)
-    ```
-    npm i -g md-to-pdf
-    md-to-pdf [options] <path-to-file.md>
-    ```
+```bash
+npm i -g md-to-pdf
+md-to-pdf [options] <path-to-file.md>
+```
 
 ## References
 *   [Markdown Guide - Basic Syntax](https://www.markdownguide.org/basic-syntax/)
