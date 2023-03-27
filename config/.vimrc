@@ -65,6 +65,7 @@ set wrap linebreak
 " =====================================
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set showcmd                   " must be placed after noncompatible
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
