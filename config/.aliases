@@ -8,7 +8,6 @@ alias cpi="cp -i"
 alias sysinfo="cat ~/sysinfo"
 alias dotfiles="cd ~/.dotfiles/"
 alias dotutil="source ~/.dotfiles/scripts/utils.sh"
-alias updateConfig="source ~/.dotfiles/updateConfig.sh"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
 
 # service
