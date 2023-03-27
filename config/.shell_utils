@@ -57,4 +57,22 @@ myrefs () {
   fi
 }
 
-
+# drop or publish files
+dropNotes () {
+  dropbox="$HOME/research-notes/dropbox";
+  if [[ ! -f $dropbox/$1 ]]; then
+    mv ./$1 $dropbox/$1
+  else
+    if ! diff $dropbox/$1 ./$1; then
+      echo "./$1 --> $dropbox/$1? [y/N]"
+      read confirm
+      if [[ $confirm == 'y' ]]; then
+        mv ./$1 $dropbox/$1
+      else
+        echo "dropNotes cancelled"
+      fi
+    else
+      echo "No difference between $1 and $dropbox/$1. DropNotes cancelled."
+    fi
+  fi
+}
