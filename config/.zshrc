@@ -99,6 +99,7 @@ source ~/.shell_utils
 source ~/.local_env
 
 # Environment Variables
+export PATH=$HOME/.local/bin:$PATH
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 
