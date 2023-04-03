@@ -24,9 +24,13 @@ create_unique_local_dotfile () {
 update_dotfile () {
   # overwrite local config with remote config
   if ! diff ~/$1 ~/.dotfiles/config/$1; then
-    echo "~/.dotfiles/config/$1 --> ~/$1? [y/n]"
-    read confirmation
-    if [[ $confirmation == 'y' ]]; then
+    promptMessage="~/.dotfiles/config/$1 --> ~/$1? [y/N]: "
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMessage"
+    else
+      read -p $promptMessage confirm
+    fi
+    if [[ $confirm =~ ^[Yy]$ ]]; then
       cp ~/.dotfiles/config/$1 ~/$1
       echo "~/$1 updated!\n"
     else
@@ -38,9 +42,14 @@ update_dotfile () {
 backupdate_dotfile () {
   # overwrite remote config with local config
   if ! diff ~/.dotfiles/config/$1 ~/$1 ; then
-    echo "~/$1 --> ~/.dotfiles/config/$1? [y/n]"
-    read confirmation
-    if [[ $confirmation == 'y' ]]; then
+
+    promptMessage="~/$1 --> ~/.dotfiles/config/$1? [y/N]: "
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMessage"
+    else
+      read -p $promptMessage confirm
+    fi
+    if [[ $confirm =~ ^[Yy]$ ]]; then
       cp ~/$1 ~/.dotfiles/config/$1
       echo "~/.dotfiles/config/$1 updated!\n"
     else

@@ -25,9 +25,13 @@ then
     echo "Vim plugins installed!";
 fi
 
-echo "Install youcompleteme plugin? [y/N]"
-read confirmYouCompleteMe
-if [[ $confirmYouCompleteMe == "y" && -d "$HOME/.vim/bundle/youcompleteme" ]]; then
+promptMessage="Install youcompleteme plugin? [y/N]: "
+if [[ $SHELL == "/usr/bin/zsh" ]]; then
+  read "confirm?$promptMessage"
+else
+  read -p $promptMessage confirm
+fi
+if [[ $confirm =~ ^[Yy]$ && -d "$HOME/.vim/bundle/youcompleteme" ]]; then
   sudo apt install cmake
   python3 ~/.vim/bundle/youcompleteme/install.py --ts-completer
 fi
