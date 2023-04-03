@@ -5,7 +5,7 @@ echo "Setting up Command Line Tools..."
 sudo apt update
 sudo apt install \
 tree fasd fd-find fzf autojump locate \
-bat ack ripgrep \
+bat ack ripgrep rename \
 htop
 
 # install man page for debian
