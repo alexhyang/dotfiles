@@ -63,7 +63,9 @@ Contents:
 ```bash
 git mv                                     # same as git add <new_name>; git rm <old_name>
 git show <hash>                            # show details of one commit
-git rm -r --cached .                       # remove files from staging area but keey them in working directory
+git rm <file>                              # stage file for deletion
+git rm --cached <file>                     # stage file for deletion but keep it in file system, i.e. untracked state
+git rm -r --cached .                       # remove files from staging area but keep them in working directory
                                            # used to update .gitignore file aftering changing it
 git log -n 10                              # show the latest 10 commits
 git reset                                  # undo last commit
