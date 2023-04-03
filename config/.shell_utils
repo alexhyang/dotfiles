@@ -18,9 +18,13 @@ readme () {
   if [[ -f "./README.md" ]]; then
     vim ./README.md;
   else
-    echo "README.md doesn't exit! Create README.md? [y/N]";
-    read confirm;
-    if [[ $confirm == "y" ]]; then
+    promptMessage="README.md doesn't exit! Create README.md? [y/N]: "
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMessage"
+    else
+      read -p $promptMessage confirm
+    fi
+    if [[ $confirm =~ ^[Yy]$ ]]; then
       createmd README || touch README.md && vim README.md;
     fi
   fi
@@ -49,9 +53,13 @@ myrefs () {
         ;;
     esac
   else
-    echo "Requested ref doesn't exist! Create $refname.md? [y/N]"
-    read confirm;
-    if [[ $confirm == "y" ]]; then
+    promptMessage="Requested ref doesn't exist! Create $refname.md? [y/N]"
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMessage"
+    else
+      read -p $promptMessage confirm
+    fi
+    if [[ $confirm =~ ^[Yy]$ ]]; then
       createmd $refname && vim $refpath;
     fi
   fi
@@ -64,9 +72,13 @@ dropNotes () {
     mv ./$1 $dropbox/$1
   else
     if ! diff $dropbox/$1 ./$1; then
-      echo "./$1 --> $dropbox/$1? [y/N]"
-      read confirm
-      if [[ $confirm == 'y' ]]; then
+      promptMessage="./$1 --> $dropbox/$1? [y/N]"
+      if [[ $SHELL == "/usr/bin/zsh" ]]; then
+        read "confirm?$promptMessage"
+      else
+        read -p $promptMessage confirm
+      fi
+      if [[ $confirm =~ ^[Yy]$ ]]; then
         mv ./$1 $dropbox/$1
       else
         echo "dropNotes cancelled"
