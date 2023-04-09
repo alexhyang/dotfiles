@@ -1,5 +1,6 @@
 #!/bin/bash
 # shell alias
+alias rld="omz reload"
 alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
