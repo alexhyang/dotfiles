@@ -4,11 +4,25 @@ showPath () {
   echo $PATH | sed -E "s/:/\n/g"
 }
 
-search_alias () {
-  alias | rg $1
+search () {
+  if [[ $# -ne 2 ]]; then
+    echo "add flags: -a, alias; -p, ubuntu packages"
+  else
+    case $1 in
+      -a)
+        alias | rg $2
+        ;;
+      -p)
+        apt list --installed | rg $2
+        ;;
+       *)
+        echo "no valid flags specified"
+        ;;
+    esac
+  fi
 }
 
-subfn () {
+sfilename () {
   if [[ $# -eq 2 ]]; then
     oldPattern="$1"
     newPattern="$2"
