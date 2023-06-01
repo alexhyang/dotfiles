@@ -25,8 +25,11 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 
+" split window
+set splitright
+
 " add mouse support
-set mouse=n
+set mouse=a
 
 " change backspace behavior
 set backspace=indent,eol,start
@@ -104,6 +107,7 @@ Plugin 'suan/vim-instant-markdown' " instant markdown preview
 Plugin 'scrooloose/nerdcommenter' " NERD Commenter
 Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
 Plugin 'bronson/vim-trailing-whitespace' "trailing-whitespace -- highlight trailing whitespace in red
+Plugin 'wakatime/vim-wakatime' "wakatime dev stats
 
 call vundle#end()            " required
 " filetype plugin indent on
@@ -159,8 +163,8 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " --------------------------------
 " plugin: vim-prettier
 " --------------------------------
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
 
 " --------------------------------
 " plugin: markdown-syntax
