@@ -107,6 +107,11 @@ git origin --delete <old_remote_branch>   # rename remote branch
 # Delete branches
 git push origin --delete <remote_branch>  # delete remote branch
 git branch -d <local_branch>              # delete local branch
+
+# Update branch pointer without checkout
+git branch -f <branch-name> <commit-hash> # update branch pointer
+git update-ref refs/heads/<branch-name> <commit-hash> -m "<reflog-message>"
+                                          # update branch pointer with reflog message
 ```
 
 ## References
