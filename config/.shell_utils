@@ -2,13 +2,13 @@
 # =========================================================
 # SHELL
 # =========================================================
-# show environment variable paths
+# Show environment variable paths
 showPath () {
   echo $PATH | sed -E "s/:/\n/g"
 }
 
-# search aliases and installed packages using pattern
-# e.g. $ search <pattern>
+# Search aliases and installed packages using pattern
+#   e.g. $ search <pattern>
 search () {
   if [[ $# -ne 2 ]]; then
     echo "add flags: -a, alias; -p, ubuntu packages"
@@ -69,7 +69,7 @@ addPrefix () {
   fi
 }
 
-# stage path in git
+# Stage path in git
 gaddp () {
   fd "$1" | git add
 }
@@ -77,17 +77,21 @@ gaddp () {
 # =========================================================
 # NOTE-TAKING
 # =========================================================
-# create md document using template
-createmd () {
+# Create md file from template
+#   if the argument is only a file name with extension,
+#     then it will be created under the current directory;
+#   but the argument can also be a full path
+templateMd () {
+  filepath="$1"
   if [[ -d "$HOME/research-notes" ]]; then
-    cp ~/research-notes/template.md $1.md;
-    echo "$1.md created";
+    cp ~/research-notes/template.md $filepath;
+    echo "$filepath created";
   else
-    echo "research notes repo not cloned on local machine";
+    echo "research notes repo does not exit on local machine";
   fi
 }
 
-# view or create README file
+# View or create README file
 readme () {
   if [[ -f "./README.md" ]]; then
     vim ./README.md;
@@ -99,7 +103,7 @@ readme () {
       read -p $promptMessage confirm
     fi
     if [[ $confirm =~ ^[Yy]$ ]]; then
-      createmd README || touch README.md && vim README.md;
+      templateMd README.md || touch README.md && vim README.md;
     fi
   fi
 }
@@ -112,38 +116,52 @@ tl () {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
-# open/create my personal command references
+# List/open/create my personal terminal command helps
+# if there is no argument, list available refs
+# if ref name is given, open or create markdown file
 myrefs () {
-  if [[ $# -eq 1 ]]; then
-    refname="$1"
+  refroot=~/.dotfiles/refs
+  if [[ $# -eq 0 && -d $refroot ]]; then
+    ls $refroot
   else
-    flag="$1"
-    refname="$2"
-  fi
-  refpath="$HOME/.dotfiles/refs/$refname.md"
-  if [[ -f $refpath ]]; then
-    case $flag in
-      -e)
-        vim $refpath
-        ;;
-      *)
-        bat $refpath
-        ;;
-    esac
-  else
-    promptMessage="Requested ref doesn't exist! Create $refname.md? [y/N]"
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMessage"
-    else
-      read -p $promptMessage confirm
+    if [[ $# -eq 1 ]]; then
+      refname="$1"
     fi
-    if [[ $confirm =~ ^[Yy]$ ]]; then
-      createmd $refname && vim $refpath;
+    if [[ $# -eq 2 ]]; then
+      flag="$1"
+      refname="$2"
+    fi
+
+    refpath="$refroot/$refname.md"
+    if [[ -f $refpath ]]; then
+      case $flag in
+        -e)
+          vim $refpath
+          ;;
+        *)
+          bat $refpath
+          ;;
+      esac
+    else
+      createref $refpath
     fi
   fi
 }
 
-# drop or publish files
+createref () {
+  promptMessage="Requested ref doesn't exist! Create $1? [y/N]"
+  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+    read "confirm?$promptMessage"
+  else
+    read -p $promptMessage confirm
+  fi
+
+  if [[ $confirm =~ ^[Yy]$ ]]; then
+    createmd $1 && vim $1;
+  fi
+}
+
+# Drop or publish files
 dropNotes () {
   dropbox="$HOME/research-notes/dropbox";
   if [[ ! -f $dropbox/$1 ]]; then
