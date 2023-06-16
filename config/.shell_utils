@@ -27,65 +27,45 @@ search () {
   fi
 }
 
-sfilename () {
-  if [[ $# -eq 2 ]]; then
-    oldPattern="$1"
-    newPattern="$2"
+addSuffix () {
+  suffix="$1"
+  pattern="$2"
+
+  echo "adding suffix: $pattern";
+  rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
+  promptMessage="Confirm rename? [y/N]: "
+
+  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+    read "confirm?$promptMessage"
   else
-    flag="$1"
-    oldPattern="$2"
-    newPattern="$3"
+    read -p $promptMessage confirm
   fi
 
-  if [[ "$flag" != "" ]]; then
-    case $flag in
-      -s)
-        echo "adding suffix: $oldPattern";
-        rename -n "s/(.*)\.(.*)/\1-$newPattern\.\2/" *$oldPattern*
-        promptMessage="Confirm rename? [y/N]: "
-        if [[ $SHELL == "/usr/bin/zsh" ]]; then
-          read "confirm?$promptMessage"
-        else
-          read -p $promptMessage confirm
-        fi
-        if [[ $confirm =~ ^[Yy]$ ]]; then
-          rename "s/(.*)\.(.*)/\1-$newPattern\.\2/" *$oldPattern*
-        else
-          echo "rename cancelled"
-        fi
-        ;;
-      -p)
-        echo "adding prefix: $oldPattern";
-        rename -n "s/(.*)\.(.*)/$newPattern-\1\.\2/" *$oldPattern*
-        promptMessage="Confirm rename? [y/N]: "
-        if [[ $SHELL == "/usr/bin/zsh" ]]; then
-          read "confirm?$promptMessage"
-        else
-          read -p $promptMessage confirm
-        fi
-        if [[ $confirm =~ ^[Yy]$ ]]; then
-          rename -n "s/(.*)\.(.*)/$newPattern-\1\.\2/" *$oldPattern*
-        else
-          echo "rename cancelled"
-        fi
-        ;;
-      *)
-        echo "Third argument cannot be empty. Try again."
-        ;;
-    esac
+  if [[ $confirm =~ ^[Yy]$ ]]; then
+    rename "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
   else
-    rename -n "s/$oldPattern/$newPattern/" *
-    promptMessage="Confirm rename? [y/N]: "
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMessage"
-    else
-      read -p $promptMessage confirm
-    fi
-    if [[ $confirm =~ ^[Yy]$ ]]; then
-      rename "s/$oldPattern/$newPattern/" *
-    else
-      echo "rename cancelled"
-    fi
+    echo "rename cancelled"
+  fi
+}
+
+addPrefix () {
+  prefix="$1"
+  pattern="$2"
+
+  echo "adding prefix: $prefix";
+  rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
+  promptMessage="Confirm rename? [y/N]: "
+
+  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+    read "confirm?$promptMessage"
+  else
+    read -p $promptMessage confirm
+  fi
+
+  if [[ $confirm =~ ^[Yy]$ ]]; then
+    rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
+  else
+    echo "rename cancelled"
   fi
 }
 
