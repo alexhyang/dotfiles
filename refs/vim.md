@@ -169,7 +169,7 @@ set shiftwidth=4
 set expandtab
 ```
 
-[customized .vimrc](../../Linux/.vimrc)
+[customized .vimrc](../config/.vimrc)
 
 ## Plugins
 1.  *Install Vundle (Vim package manager)*:
