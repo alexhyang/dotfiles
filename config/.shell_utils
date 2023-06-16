@@ -1,9 +1,14 @@
 #!/bin/bash
-# shell
+# =========================================================
+# SHELL
+# =========================================================
+# show environment variable paths
 showPath () {
   echo $PATH | sed -E "s/:/\n/g"
 }
 
+# search aliases and installed packages using pattern
+# e.g. $ search <pattern>
 search () {
   if [[ $# -ne 2 ]]; then
     echo "add flags: -a, alias; -p, ubuntu packages"
@@ -84,11 +89,15 @@ sfilename () {
   fi
 }
 
+# stage path in git
 gaddp () {
   fd "$1" | git add
 }
 
-# note-taking
+# =========================================================
+# NOTE-TAKING
+# =========================================================
+# create md document using template
 createmd () {
   if [[ -d "$HOME/research-notes" ]]; then
     cp ~/research-notes/template.md $1.md;
@@ -98,6 +107,7 @@ createmd () {
   fi
 }
 
+# view or create README file
 readme () {
   if [[ -f "./README.md" ]]; then
     vim ./README.md;
@@ -114,11 +124,15 @@ readme () {
   fi
 }
 
-# help files and references
+# =========================================================
+# HELP FILES AND REFERENCES
+# =========================================================
+# colorized tldr command helps
 tl () {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
+# open/create my personal command references
 myrefs () {
   if [[ $# -eq 1 ]]; then
     refname="$1"
