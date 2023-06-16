@@ -5,6 +5,7 @@ alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
 alias vimrc="vim ~/.dotfiles/config/.vimrc"
+alias localEnv="vim ~/.local_env"
 
 # dotfiles
 alias sysinfo="cat ~/sysinfo"
