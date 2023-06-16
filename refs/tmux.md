@@ -38,6 +38,13 @@ Contents:
     ^b \"      # split pane with vertical layout
     ^b <arrow> # select pane to the direction
     ^b x       # close current pane
+
+    # move panes
+    ^b {       # move current pane to the previous position
+    ^b }       # move current pane to the next position
+    ^b ^o      # rotate window 'up'
+    ^b M-o     # rotate window 'down'
+    ^b !       # move the current pane into a new separate window
     ```
 
 ## tmux.conf
