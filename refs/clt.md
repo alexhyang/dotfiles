@@ -1,6 +1,6 @@
 # Command Line Tools in Linux
 
-This document explains some useful command line tools in Linux. For list 
+This document explains some useful command line tools in Linux. For list
 of tools installed, see [dotfiles/bootstrap.sh](https://github.com/alexhyang/dotfiles/blob/main/bootstrap.sh).
 
 Contents:
@@ -43,12 +43,21 @@ Contents:
 
 *   autojump (apt)
 *   tree (apt)
-*   broot
+*   [broot](https://dystroy.org/broot/file-operations/)
+    ```plaintext
+    :cr {file}           # create new file under current folder
+    :md {directory}      # create a directory under current folder
+    :rm {file}           # remove file
+    :e {file}            # edit file
+    :mv                  # move file (with one panel)
+    :mvp                 # move file (with two panels)
+    ```
+
 *   nnn
 *   ranger
 
 ## File Search
-*   find 
+*   find
     ```bash
     -name pattern    # base of file name, don't include path in file name pattern
     -path pattern    # file name matches shell pattern
