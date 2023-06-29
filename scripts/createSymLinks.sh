@@ -17,6 +17,7 @@ ln -s $DOTFILES/config/.vimrc ~/.vimrc
 ln -s $DOTFILES/config/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.tmux
 ln -s $DOTFILES/config/.tmux/dev.sh ~/.tmux/dev.sh
+ln -s $DOTFILES/config/.tmux/mern.sh ~/.tmux/mern.sh
 ln -s $DOTFILES/config/.tmux/research.sh ~/.tmux/research.sh
 
 echo "dotflies linked successfully!"
