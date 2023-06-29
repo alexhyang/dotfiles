@@ -3,6 +3,10 @@
 " =====================================
 syntax on
 
+" edit vimrc mapping
+map <F9> :tabedit $HOME/.vimrc<CR>
+map <F6> :so $HOME/.vimrc<CR>
+
 " line numbers and commands
 set number
 set relativenumber
