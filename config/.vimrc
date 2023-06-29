@@ -32,6 +32,9 @@ set shiftwidth=2
 " split window
 set splitright
 
+" map tab command
+nnoremap <C-n> :tabnew<CR>
+
 " add mouse support
 set mouse=a
 
