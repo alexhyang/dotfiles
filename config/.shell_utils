@@ -157,7 +157,7 @@ createref () {
   fi
 
   if [[ $confirm =~ ^[Yy]$ ]]; then
-    createmd $1 && vim $1;
+    templateMd $1 && vim $1;
   fi
 }
 
