@@ -45,3 +45,6 @@ installProgrammingLanguage R r-base-core
 installProgrammingLanguage Java17 openjdk-17-jdk
 installProgrammingLanguage pip python3-pip
 
+# project-specific tools
+# jq: lightweight JSON processor
+sudo apt install jq
