@@ -33,7 +33,15 @@ if [ ! -f "/usr/local/bin/broot" ]; then
   broot
 fi
 
-# install programming languages
-sudo apt install r-base-core    # R language
-sudo apt install openjdk-17-jdk # Java
-sudo apt install python3-pip    # pip
+# optional programming languages
+installProgrammingLanguage() {
+  read "confirm?Install $1? [y/N] "
+  if [[ $confirm =~ ^[yY]$ ]]; then
+    sudo apt install $2
+  fi
+}
+
+installProgrammingLanguage R r-base-core
+installProgrammingLanguage Java17 openjdk-17-jdk
+installProgrammingLanguage pip python3-pip
+
