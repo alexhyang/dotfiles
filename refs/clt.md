@@ -115,6 +115,14 @@ Contents:
 ## Command piping
 *   xargs
 
+## Date Manipulation
+*   [jq](https://jqlang.github.io/jq/tutorial/)
+    ```bash
+    jq '.' input.json > output.json    # beautify JSON file
+    jq -c '.' input.json > output.json # minify JSON file
+
+    ```
+
 ## References
 *   [Linux man pages online](https://man7.org/linux/man-pages/)
 *   [Manned Org](https://manned.org/)
