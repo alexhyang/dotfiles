@@ -25,7 +25,7 @@ jobs:
         id: list-changed-files
         run: |
           if [[ ${{ github.event_name }} == 'push' ]]; then
-            git diff --name-only HEAD^ HEAD | grep '^refs/.*\.md$' > changed_files.txt
+            git diff --name-only ${{ github.sha }}^ ${{ github.sha }} | grep '^refs/.*\.md$' > changed_files.txt
           fi
 
       - name: Convert Markdown files to PDF
