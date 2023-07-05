@@ -1,6 +1,6 @@
 # Vim Quick Start
 
-This document introduces some common commands to start using Vim. [Advanced notes](https://github.com/alexhyang/dotfiles/blob/main/refs/vim-basics.md) can be found here.
+This document introduces basic commands of Vim. For more advanced tips, see [Advanced notes](https://github.com/alexhyang/dotfiles/blob/main/refs/vim-advanced.md).
 
 Contents:
 
