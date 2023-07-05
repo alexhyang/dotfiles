@@ -1,6 +1,13 @@
 " =====================================
 "         Common Vim settings
 " =====================================
+" Fn mapping:
+" F3 no highlight in search result
+" F6 source .vimrc
+" F7 toggle NERDTree
+" F8 toggle tagbar
+" F9 open .vimrc in new tab
+
 syntax on
 
 " edit vimrc mapping
@@ -83,38 +90,54 @@ call vundle#begin()
 " ===================================================
 "         Vim Plugins from VimAwesome
 " ===================================================
-
 Plugin 'VundleVim/Vundle.vim' " Vim bundle (vim plugin manager)
-Plugin 'tpope/vim-fugitive' " fugitive.vim -- a Git wrapper
-Plugin 'scrooloose/nerdtree' " nerd tree -- tree explore plugin for vim
+
+" Interface and Integration
+Plugin 'tpope/vim-fugitive'               " fugitive.vim -- a Git wrapper
+Plugin 'scrooloose/nerdtree'              " nerd tree -- tree explore plugin for vim
+Plugin 'airblade/vim-gitgutter'           " vim gitgutter -- shows git diff markers
+Plugin 'vim-airline/vim-airline'          " vim airline -- status/tabline for vim
 Plugin 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
-Plugin 'vim-airline/vim-airline' " vim airline -- status/tabline for vim
-Plugin 'airblade/vim-gitgutter' " vim gitgutter -- shows git diff markers
-Plugin 'majutsushi/tagbar' " tagbar -- show outline/structure of classes, functions, etc.
-Plugin 'tpope/vim-surround' " surroudn.vim -- easy operations on surroundings in pairs
-Plugin 'valloric/youcompleteme' " youcompleteme -- code completion engine for vim
-Plugin 'scrooloose/syntastic' " Syntastic -- syntax checking hacks for vim
-Plugin 'mxw/vim-jsx' " vim jsx -- React JSX syntax highlighting and indenting
-Plugin 'jelera/vim-javascript-syntax' " Enhanced JavaScript syntax
-Plugin 'leafgarland/typescript-vim' " typescript vim -- TypeScript syntax
-Plugin 'nathanaelkane/vim-indent-guides' " indent guides -- visually displaying indent levels in code
-Plugin 'w0rp/ale' " ale (async lint engine) -- syntax checking and semantic errors
-Plugin 'prettier/vim-prettier' " vim prettier
-Plugin 'godlygeek/tabular' " Tabular -- vim script for text fildering and alignment
-Plugin 'cespare/vim-toml' " vim-toml -- vim syntax for toml
-Plugin 'plasticboy/vim-markdown' " markdown syntax -- markdown vim mode (fold levels)
-" commands:
-" whole file:
-"     zr/zR: show details level by level/all the way down
-"     zm/zM: hide details level by level/all the way up
-" cursor position only:
-"     za/zA: show details level by level/all the way down
-"     zc/zC: hide details level by level/all the way up
-Plugin 'suan/vim-instant-markdown' " instant markdown preview
-Plugin 'scrooloose/nerdcommenter' " NERD Commenter
-Plugin 'mileszs/ack.vim' " ack -- vim plugin for ack
-Plugin 'bronson/vim-trailing-whitespace' "trailing-whitespace -- highlight trailing whitespace in red
-Plugin 'wakatime/vim-wakatime' "wakatime dev stats
+Plugin 'majutsushi/tagbar'                " tagbar -- show outline/structure of classes, functions, etc.
+
+" Editing, syntax, linting
+" editing
+Plugin 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
+Plugin 'scrooloose/nerdcommenter'         " NERD Commenter
+Plugin 'godlygeek/tabular'                " Tabular -- vim script for text fildering and alignment
+" visual appearance
+Plugin 'tpope/vim-surround'               " surroudn.vim -- easy operations on surroundings in pairs
+Plugin 'nathanaelkane/vim-indent-guides'  " indent guides -- visually displaying indent levels in code
+Plugin 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode (fold levels)
+        " commands:
+        " whole file:
+        "     zr/zR: show details level by level/all the way down
+        "     zm/zM: hide details level by level/all the way up
+        " cursor position only:
+        "     za/zA: show details level by level/all the way down
+        "     zc/zC: hide details level by level/all the way up
+
+Plugin 'suan/vim-instant-markdown'       " instant markdown preview
+" syntax
+Plugin 'scrooloose/syntastic'            " Syntastic -- syntax checking hacks for vim
+Plugin 'mxw/vim-jsx'                     " vim jsx -- React JSX syntax highlighting and indenting
+Plugin 'jelera/vim-javascript-syntax'    " Enhanced JavaScript syntax
+Plugin 'leafgarland/typescript-vim'      " typescript vim -- TypeScript syntax
+Plugin 'cespare/vim-toml'                " vim-toml -- vim syntax for toml
+
+" fixing/linting
+Plugin 'w0rp/ale'                        " ale (async lint engine) -- syntax checking and semantic errors
+Plugin 'prettier/vim-prettier'           " vim prettier
+Plugin 'bronson/vim-trailing-whitespace' " trailing-whitespace -- highlight trailing whitespace in red
+Plugin 'editorconfig/editorconfig-vim'   " vim support for .editorconfig
+
+" Search
+Plugin 'mileszs/ack.vim'                 " ack -- vim plugin for ack
+" ctrlp installed by 'ctrlpvim/ctrlp.vim' or manually by setUpVim.sh
+
+" Other
+Plugin 'wakatime/vim-wakatime'           " wakatime dev stats
+
 
 call vundle#end()            " required
 " filetype plugin indent on
@@ -144,7 +167,7 @@ filetype plugin indent on    " required
 " --------------------------------
 " plugin: NERDTree
 " --------------------------------
-nmap <F7> :NERDTree<CR>
+nmap <F7> :NERDTreeToggle<CR>
 
 " --------------------------------
 " plugin: tag
