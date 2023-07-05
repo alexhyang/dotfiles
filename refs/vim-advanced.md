@@ -37,5 +37,5 @@ gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 
 ## References
 
-- [Mapping keys in Vim (Part 1) - Vim Tips Wiki](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
+- [Mapping keys in Vim (Part 1) - Vim Tips Wiki](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1))
 - [Using tab pages - Vim Tips Wiki](https://vim.fandom.com/wiki/Using_tab_pages)
