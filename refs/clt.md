@@ -43,14 +43,21 @@ Contents:
 
 *   autojump (apt)
 *   tree (apt)
+
 *   [broot](https://dystroy.org/broot/file-operations/)
     ```plaintext
+    # file operations
     :cr {file}           # create new file under current folder
     :md {directory}      # create a directory under current folder
     :rm {file}           # remove file
     :e {file}            # edit file
     :mv                  # move file (with one panel)
     :mvp                 # move file (with two panels)
+
+    # Git information
+    :gf                  # toggle git information
+    :gi                  # toggle use of .gitignore
+    :gs                  # toggle git status
     ```
 
 *   nnn
