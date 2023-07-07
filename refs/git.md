@@ -119,7 +119,7 @@ echo <path-to-file> >> .gitignore
 git add .gitignore
 git commit -m "add file to .gitignore"
 git remote add origin <remote-repo-url>
-git push origin --foce --all
+git push origin --force --all
 ```
 
 ## References
