@@ -112,8 +112,17 @@ git branch -d <local_branch>              # delete local branch
 git branch -f <branch-name> <commit-hash> # update branch pointer
 git update-ref refs/heads/<branch-name> <commit-hash> -m "<reflog-message>"
                                           # update branch pointer with reflog message
+
+# Remove Sensitive Data from repository
+git filter-repo --invert-paths --path <path-to-file>
+echo <path-to-file> >> .gitignore
+git add .gitignore
+git commit -m "add file to .gitignore"
+git remote add origin <remote-repo-url>
+git push origin --foce --all
 ```
 
 ## References
-*  [Missing Semester MIT - Verions Control (Git)](https://missing.csail.mit.edu/2020/version-control/)
-*  [Git Official References](https://git-scm.com/docs)
+*   [Missing Semester MIT - Verions Control (Git)](https://missing.csail.mit.edu/2020/version-control/)
+*   [Git Official References](https://git-scm.com/docs)
+*   [Remove sensitive data from GitHub repository - GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#using-git-filter-repo)
