@@ -4,6 +4,10 @@ alias rld="omz reload"
 alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
+
+# edit config files
+alias aliases="vim ~/.dotfiles/config/.aliases"
+alias shell_utils="vim ~/.dotfiles/config/.shell_utils"
 alias vimrc="vim ~/.dotfiles/config/.vimrc"
 alias localEnv="vim ~/.local_env"
 
