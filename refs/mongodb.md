@@ -1,0 +1,79 @@
+# MongoDB
+
+This document contains notes about setting up and using MongoDB.
+
+Contents:
+:InsertToc
+
+## MongoDB concepts in Relational Database terms
+| MongoDB    | RDBMS    |
+|------------|----------|
+| database   | database |
+| collection | table    |
+| document   | record   |
+
+## Set up MongoDB on local machine
+```bash
+# prepare
+sudo apt install gnupg
+
+# import public key
+curl -fsSL https://pgp.mongodb.com/server-6.0.asc |
+sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor
+
+# create list file for MongoDB
+sudo touch /etc/apt/sources.list.d/mongodb-org-6.0.list
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" |
+sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+# install MongoDB package and verify installation
+sudo apt update; sudo apt install -y mongodb-org; mongod --version; mongosh --version
+
+# create directory to store data
+mkdir -p ~/data/db
+
+# run mongo instance
+sudo mongd --dbpath ~/data/db
+
+# check mongodb PID
+ps -e | grep 'mongod'
+```
+
+## Interact with MongoDB server
+1.  connect to MongoDB server
+    ```bash
+    mongosh
+    ```
+
+1.  Mongo Shell Common Commands
+    ```sh
+    ## Database and Collection
+    db                      # show the current database
+    showdbs                 # show all available databases
+    use <database>          # select database
+
+    db.createCollection()   # create collection in the current database
+    db.getCollectionNames() # list collections in the current database
+
+    # CRUD
+    db.<collection_name>.insertOne()  # insert a single document
+    db.<collection_name>.insertMany() # insert multiple documents
+    db.<coll_name>.find()             # query documents. list all documents with no query
+    db.<coll_name>.updateOne()
+    db.<coll_name>.updateMany()
+    db.<coll_name>.deleteOne()
+    db.<coll_name>.deleteMany()
+    ```
+
+1.  Import and Export
+    ```bash
+    mongoimport --db <db_name> --collection <coll_name> --file <file.json>
+    ```
+
+## References
+*   [ref - Install MongoDB Tutorial - WSL Documentation - Microsoft](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-mongodb)
+*   [ref - Install MongoDB Community Edition on Ubuntu - MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
+*   [ref - MongoDB Shell Commands - MongoDB](https://www.mongodb.com/docs/mongodb-shell/run-commands/)
+*   [ref - MongoDB database mannual](https://www.mongodb.com/docs/manual/)
+*   [ref - MongoDB Mongosh API](https://www.mongodb.com/docs/manual/reference/method/)
+*   [ref - Cheat Sheet - MongoDB](https://www.mongodb.com/developer/products/mongodb/cheat-sheet/#databases-and-collections)
