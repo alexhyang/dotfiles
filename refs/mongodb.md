@@ -71,9 +71,9 @@ ps -e | grep 'mongod'
     ```
 
 ## References
-*   [ref - Install MongoDB Tutorial - WSL Documentation - Microsoft](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-mongodb)
-*   [ref - Install MongoDB Community Edition on Ubuntu - MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
-*   [ref - MongoDB Shell Commands - MongoDB](https://www.mongodb.com/docs/mongodb-shell/run-commands/)
-*   [ref - MongoDB database mannual](https://www.mongodb.com/docs/manual/)
-*   [ref - MongoDB Mongosh API](https://www.mongodb.com/docs/manual/reference/method/)
-*   [ref - Cheat Sheet - MongoDB](https://www.mongodb.com/developer/products/mongodb/cheat-sheet/#databases-and-collections)
+*   [Install MongoDB Tutorial - WSL Documentation - Microsoft](https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-database#install-mongodb)
+*   [Install MongoDB Community Edition on Ubuntu - MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/)
+*   [MongoDB Shell Commands - MongoDB](https://www.mongodb.com/docs/mongodb-shell/run-commands/)
+*   [MongoDB database mannual - MongoDB](https://www.mongodb.com/docs/manual/)
+*   [MongoDB Mongosh API - MongoDB](https://www.mongodb.com/docs/manual/reference/method/)
+*   [Cheat Sheet - MongoDB](https://www.mongodb.com/developer/products/mongodb/cheat-sheet/#databases-and-collections)
