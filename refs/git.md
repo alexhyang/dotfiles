@@ -102,10 +102,10 @@ git checkout -b <local_branch> <remote_repo>/<branch_name>
 # Rename branches
 git branch -m <new_local_branch>          # rename local branch
 git push origin -u <new_remote_branch>;
-git origin --delete <old_remote_branch>   # rename remote branch
+git push origin -d <old_remote_branch>   # rename remote branch
 
 # Delete branches
-git push origin --delete <remote_branch>  # delete remote branch
+git push origin -d <remote_branch>  # delete remote branch
 git branch -d <local_branch>              # delete local branch
 
 # Update branch pointer without checkout
