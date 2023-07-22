@@ -3,7 +3,6 @@ source-file ~/.tmux.conf
 
 # window 0: ref
 new-session -s mern -n ref
-split-window -h
 
 # window 1: client
 new-window -n client
