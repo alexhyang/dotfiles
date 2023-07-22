@@ -4,6 +4,8 @@ alias rld="omz reload"
 alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
+alias treeN="tree -I node_modules"
+alias nkg="bat package.json"
 
 # edit config files
 alias aliases="vim ~/.dotfiles/config/.aliases"
