@@ -61,6 +61,8 @@ Contents:
 
 ## Tasks
 ```bash
+git ls-files <path> |\
+rg <pattern> | xargs git add               # git add by pattern
 git mv                                     # same as git add <new_name>; git rm <old_name>
 git show <hash>                            # show details of one commit
 git rm <file>                              # stage file for deletion
@@ -89,8 +91,12 @@ git add -p <file>                         # commit changes in a file by patches
                                           # s   -- split the current hunk into smaller hunks
                                           # ?   -- print help
 
+# Differences
+git diff --diff-filter=D                  # check diff for removed files in Git
+
 # Update remotes and branches
 git push -u origin <local_branch>         # publish local branch to remote repo
+git branch --unset-upstream               # remove remote-tracking branch that no longer exists
 git fetch -p                              # remove any remote branches that don't exist anymore
 git prune                                 # clean up old branches
 git remote set-url origin <url>           # update remote repo url
@@ -102,10 +108,10 @@ git checkout -b <local_branch> <remote_repo>/<branch_name>
 # Rename branches
 git branch -m <new_local_branch>          # rename local branch
 git push origin -u <new_remote_branch>;
-git push origin -d <old_remote_branch>   # rename remote branch
+git push origin -d <old_remote_branch>    # rename remote branch
 
 # Delete branches
-git push origin -d <remote_branch>  # delete remote branch
+git push origin -d <remote_branch>        # delete remote branch
 git branch -d <local_branch>              # delete local branch
 
 # Update branch pointer without checkout

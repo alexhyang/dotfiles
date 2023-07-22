@@ -35,6 +35,12 @@ gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 
 ```
 
+## Usage of Plugins
+```vim
+^p      " (ctrlp) file fuzzy finder
+^j / ^k " (ale) navigate between errors
+```
+
 ## References
 
 - [Mapping keys in Vim (Part 1) - Vim Tips Wiki](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_\(Part_1\))

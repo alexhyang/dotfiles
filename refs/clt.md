@@ -6,11 +6,12 @@ of tools installed, see [dotfiles/bootstrap.sh](https://github.com/alexhyang/dot
 Contents:
 
 * [Command Documents](#command-documents)
-* [Directory Structure and Navigation](#directory-structure-and-navigation)
-* [File Management](#file-management)
-* [Text Search and Manipulation](#text-search-and-manipulation)
+* [Directory and Navigation](#directory-and-navigation)
+* [File Search](#file-search)
+* [File Content Search](#file-content-search)
 * [Processes Monitoring](#processes-monitoring)
 * [Command piping](#command-piping)
+* [Date Manipulation](#date-manipulation)
 * [References](#references)
 
 ## Command Documents
