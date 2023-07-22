@@ -53,7 +53,7 @@ ps -e | grep 'mongod'
     ```sh
     ## Database and Collection
     db                      # show the current database
-    showdbs                 # show all available databases
+    show dbs                 # show all available databases
     use <database>          # select database
 
     db.createCollection()   # create collection in the current database
@@ -68,6 +68,7 @@ ps -e | grep 'mongod'
     db.<coll_name>.updateMany()
     db.<coll_name>.deleteOne()
     db.<coll_name>.deleteMany()
+    db.<coll_name>.renameCollection() # rename collection
     ```
 
 1.  Import and Export
