@@ -52,16 +52,18 @@ ps -e | grep 'mongod'
 1.  Mongo Shell Common Commands
     ```sh
     ## Database and Collection
-    db                      # show the current database
-    show dbs                 # show all available databases
-    use <database>          # select database
+    db.help()                         # show help document
+    db.hello()                        # show information of mongod instance
+    db                                # show the current database
+    show dbs                          # show all available databases
+    use <database>                    # select database
 
-    db.createCollection()   # create collection in the current database
-    db.getCollectionNames() # list collections in the current database
-    db.<coll_name>.drop()   # remove collection, use with caution
+    db.createCollection()             # create collection in the current database
+    db.getCollectionNames()           # list collections in the current database
+    db.<coll_name>.drop()             # remove collection, use with caution
 
     # CRUD
-    db.<collection_name>.insertOne()  # insert a single document
+    db.<collection_name>.insertOne()  # insert a single document, collection will be created automatically if not exits
     db.<collection_name>.insertMany() # insert multiple documents
     db.<coll_name>.find()             # query documents. list all documents with no query
     db.<coll_name>.updateOne()
@@ -73,6 +75,11 @@ ps -e | grep 'mongod'
 
 1.  Import and Export
     ```bash
+    mongoimport <options> <connection-string> <file>
+    mongoexport --collection=<coll> <options> <connection-string>
+    mongodump <options> <connection-string>
+    mongorestore <options> <connection-string> <path-to-directory-or-file>
+
     # import JSON data into local database
     mongoimport --db <db_name> --collection <coll_name> --file <file.json>
 

@@ -74,6 +74,9 @@ Contents:
     -mtime n         # file modified time
     -exec command    # execute command
     -exec command {} # execute command with {} replaced by each selected file name
+
+    # Example
+    find . -type f -name "*.js" -exec mv {} ../ \;  # move all .js files to parent folder
     ```
 
 *   [fd (alternative to find)](https://github.com/sharkdp/fd)
@@ -90,6 +93,9 @@ Contents:
     fd "string|regex" path/to/dir
     fd --hidden --no-ignore "string|regex"
     fd "string|regex" --exec command
+
+    # Example
+    fd -e js -x mv {} ../                           # move all .js files to parent folder
     ```
 
 *   [fzf (fuffzy finder)](https://github.com/junegunn/fzf)
