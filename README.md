@@ -75,7 +75,7 @@ Content:
     *   Debian
         `~/.bashrc, ~/.bash_logout, ~/.profile`
 
-Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/command-line-tools-ref.md).
+Detailed list of command line tools see [Command_Line_Tools-ref](https://github.com/alexhyang/dotfiles/blob/main/refs/clt.md).
 
 ### Plugins
 *   Zsh plugins
