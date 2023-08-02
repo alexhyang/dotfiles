@@ -13,6 +13,7 @@ alias vim="nvim"
 alias aliases="vim ~/.dotfiles/config/.aliases"
 alias shell_utils="vim ~/.dotfiles/config/.shell_utils"
 alias vimrc="vim ~/.dotfiles/config/.vimrc"
+alias nvimrc="vim ~/.dotfiles/config/nvim/lua/"
 alias localEnv="vim ~/.local_env"
 
 # dotfiles
