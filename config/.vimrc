@@ -77,38 +77,33 @@ set spell spelllang=en_us
 " wrap linebreak
 set wrap linebreak
 
-" =====================================
-"         Vundle
-" =====================================
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set showcmd                   " must be placed after noncompatible
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
 " ===================================================
-"         Vim Plugins from VimAwesome
+"         Vim Plug from VimAwesome
 " ===================================================
-Plugin 'VundleVim/Vundle.vim' " Vim bundle (vim plugin manager)
+call plug#begin()
 
 " Interface and Integration
-Plugin 'tpope/vim-fugitive'               " fugitive.vim -- a Git wrapper
-Plugin 'scrooloose/nerdtree'              " nerd tree -- tree explore plugin for vim
-Plugin 'airblade/vim-gitgutter'           " vim gitgutter -- shows git diff markers
-Plugin 'vim-airline/vim-airline'          " vim airline -- status/tabline for vim
-Plugin 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
-Plugin 'majutsushi/tagbar'                " tagbar -- show outline/structure of classes, functions, etc.
+Plug 'tpope/vim-fugitive'               " fugitive.vim -- a Git wrapper
+Plug 'scrooloose/nerdtree'              " nerd tree -- tree explore plugin for vim
+Plug 'airblade/vim-gitgutter'           " vim gitgutter -- shows git diff markers
+Plug 'vim-airline/vim-airline'          " vim airline -- status/tabline for vim
+Plug 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
+Plug 'majutsushi/tagbar'                " tagbar -- show outline/structure of classes, functions, etc.
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Editing, syntax, linting
 " editing
-Plugin 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
-Plugin 'scrooloose/nerdcommenter'         " NERD Commenter
-Plugin 'godlygeek/tabular'                " Tabular -- vim script for text fildering and alignment
+
+Plug 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
+Plug 'scrooloose/nerdcommenter'         " NERD Commenter
+Plug 'junegunn/vim-easy-align' " Easy align
+Plug 'godlygeek/tabular'                " Tabular -- vim script for text fildering and alignment
+Plug 'raimondi/delimitmate'             " delemitmate -- auto-completion for quotes, parens, brackes, etc
+
 " visual appearance
-Plugin 'tpope/vim-surround'               " surroudn.vim -- easy operations on surroundings in pairs
-Plugin 'nathanaelkane/vim-indent-guides'  " indent guides -- visually displaying indent levels in code
-Plugin 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode (fold levels)
+Plug 'tpope/vim-surround'               " surroudn.vim -- easy operations on surroundings in pairs
+Plug 'nathanaelkane/vim-indent-guides'  " indent guides -- visually displaying indent levels in code
+Plug 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode (fold levels)
         " commands:
         " whole file:
         "     zr/zR: show details level by level/all the way down
@@ -117,32 +112,27 @@ Plugin 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode
         "     za/zA: show details level by level/all the way down
         "     zc/zC: hide details level by level/all the way up
 
-Plugin 'suan/vim-instant-markdown'       " instant markdown preview
+Plug 'suan/vim-instant-markdown'       " instant markdown preview
 " syntax
-Plugin 'scrooloose/syntastic'            " Syntastic -- syntax checking hacks for vim
-Plugin 'mxw/vim-jsx'                     " vim jsx -- React JSX syntax highlighting and indenting
-Plugin 'jelera/vim-javascript-syntax'    " Enhanced JavaScript syntax
-Plugin 'leafgarland/typescript-vim'      " typescript vim -- TypeScript syntax
-Plugin 'cespare/vim-toml'                " vim-toml -- vim syntax for toml
+Plug 'scrooloose/syntastic'            " Syntastic -- syntax checking hacks for vim
+Plug 'mxw/vim-jsx'                     " vim jsx -- React JSX syntax highlighting and indenting
+Plug 'jelera/vim-javascript-syntax'    " Enhanced JavaScript syntax
+Plug 'leafgarland/typescript-vim'      " typescript vim -- TypeScript syntax
+Plug 'cespare/vim-toml'                " vim-toml -- vim syntax for toml
 
 " fixing/linting
-Plugin 'w0rp/ale'                        " ale (async lint engine) -- syntax checking and semantic errors
-Plugin 'prettier/vim-prettier'           " vim prettier
-Plugin 'bronson/vim-trailing-whitespace' " trailing-whitespace -- highlight trailing whitespace in red
-Plugin 'editorconfig/editorconfig-vim'   " vim support for .editorconfig
+Plug 'w0rp/ale'                        " ale (async lint engine) -- syntax checking and semantic errors
+Plug 'prettier/vim-prettier'           " vim prettier
+Plug 'bronson/vim-trailing-whitespace' " trailing-whitespace -- highlight trailing whitespace in red
+Plug 'editorconfig/editorconfig-vim'   " vim support for .editorconfig
 
 " Search
-Plugin 'mileszs/ack.vim'                 " ack -- vim plugin for ack
+Plug 'mileszs/ack.vim'                 " ack -- vim plugin for ack
 " ctrlp installed by 'ctrlpvim/ctrlp.vim' or manually by setUpVim.sh
 
 " Other
-Plugin 'wakatime/vim-wakatime'           " wakatime dev stats
+Plug 'wakatime/vim-wakatime'           " wakatime dev stats
 
-
-call vundle#end()            " required
-" filetype plugin indent on
-"   (enable loading the indent file for specific file types)
-filetype plugin indent on    " required
 
 " filetype plugin on
 "   (enable loading the plugin files for specific file types)
@@ -155,10 +145,14 @@ filetype plugin indent on    " required
 "       included in `filetype plugin indent on`
 
 " Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" PlugInstall
+" PlugUpdate
+" PlugClean
+" PlugUpgrade  -- upgrade vim plug itself
+" PlugStatus
+" PlugDiff
+
+call plug#end()
 
 " ===================================================
 "          plugin configuration
