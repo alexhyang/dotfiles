@@ -1,4 +1,4 @@
-gitpull () {
+gitpull() {
   if [[ $(pwd) == $1 ]]; then
     git pull
   else
@@ -8,19 +8,21 @@ gitpull () {
   fi
 }
 
-create_dotfile () {
+create_dotfile() {
   # create local config files
-  echo; echo "Creating $2 config file...";
+  echo
+  echo "Creating $2 config file..."
   cp ~/.dotfiles/config/$1 ~/$1
   echo "~/$1 created!"
 }
 
-create_unique_local_dotfile () {
+create_unique_local_dotfile() {
   if [[ ! -f ~/$1 ]]; then
     create_dotfile $1 $2
   fi
 }
 
+: <<'END'
 update_dotfile () {
   # overwrite local config with remote config
   if ! diff ~/$1 ~/.dotfiles/config/$1; then
@@ -59,9 +61,11 @@ backupdate_dotfile () {
 }
 
 create_update_dotfile () {
+  # update dotfile, if not exists, create one
   if [ ! -e ~/$1 ]; then
     create_dotfile $1 $2
   else
     update_dotfile $1
   fi
 }
+END
