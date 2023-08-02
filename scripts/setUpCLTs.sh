@@ -4,9 +4,9 @@ echo "Setting up Command Line Tools..."
 # install productivity command line tools
 sudo apt update
 sudo apt install \
-tree fasd fd-find fzf autojump locate \
-bat ack ripgrep rename \
-htop
+  tree fasd fd-find fzf autojump locate \
+  bat ack ripgrep rename \
+  htop
 
 # install man page for debian
 machine=$(cat /etc/os-release | grep -E "^NAME=\".*\"" | sed -E 's/^.*?"(\w+)(\s?).*"$/\1/')
@@ -32,6 +32,13 @@ if [ ! -f "/usr/local/bin/broot" ]; then
   sudo chmod +x /usr/local/bin/broot
   broot
 fi
+
+# install lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+rm lazygit.tar.gz lazygit
 
 # optional programming languages
 installProgrammingLanguage() {
