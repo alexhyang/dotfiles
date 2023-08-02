@@ -32,6 +32,7 @@ Contents:
     ^b 0...9 # select window by number
     ^b l     # toggle last active window
     ```
+
 *   panes
     ```sh
     ^b %       # split pane with horizontal layout
@@ -53,6 +54,67 @@ Contents:
     tmux source-file ~/.tmux.conf # from shell prompt
     source-file ~/.tmux.conf      # from tmux command prompt
     ```
+
+## Tasks (default key mappings)
+```bash
+# launch and close panes, windows, and sessions
+tmux                                 # start tmux session from terminal
+:new                                 # start new session in tmux
+tmux kill-session -t <session-name>  # kill session
+^b d                                 # detach current session
+tmux a [-t <session-name>]           # attach to last session
+
+^b ?                                 # list key bindings
+
+^b c                                 # create new window
+^b &                                 # close current window
+
+^b %                                 # split pane with horizontal layout
+^b \"                                # split pane with vertial layout
+^b x                                 # close current pane
+
+# navigation
+tmux ls                              # show all tmux sessions in terminal
+^b s                                 # show all sessions
+^b w                                 # session and window preview
+^b q                                 # show pane numbers
+
+^b ( / )                             # move to previous / next session
+^b p / n                             # move to previous / next window
+^b <index>                           # switch window by number
+^b UP/DOWN/LEFT/RIGHT                # switch to pane to the direction
+^b ;                                 # toggle last active pane
+
+# names
+^b ,      # rename window
+^b $      # rename session
+
+# layouts
+^b z                             # toggle pane zoom
+^b !                             # convert pain into window
+
+^b space                         # toggle between pane layouts
+^b ^UP/DOWN/LEFT/RIGHT           # resize current pane height/width
+^b { / }                         # move current pane to previous/next position
+
+:swap-window -t <num> [-s <num>] # move [current] window to dst position
+
+# copy mode
+^b [    # enter copy mode
+^b ]    # paste content
+
+space   # start selection
+Esc     # clear selection
+enter   # end selection
+
+/       # search forward
+?       # seasech backward
+n/N     # next/previous search result
+
+# misc
+:set -g <OPTION>    # set OPTION for all sessions
+:setw -g <OPTION>   # set OPTION for all windows
+```
 
 ## References
 *   [tmux - Wikipedia](https://en.wikipedia.org/wiki/Tmux)
