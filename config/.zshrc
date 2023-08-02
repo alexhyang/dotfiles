@@ -102,6 +102,7 @@ source ~/.local_env
 export PATH=$HOME/.local/bin:$PATH
 export VISUAL="vim"
 export EDITOR="$VISUAL"
+export TERM="screen-256color"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
