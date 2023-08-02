@@ -2,13 +2,13 @@
 # =========================================================
 # SHELL
 # =========================================================
-# Show environment variable paths
+# Shell Utilities
 showPath () {
   echo $PATH | sed -E "s/:/\n/g"
 }
 
-# Search aliases and installed packages using pattern
-#   e.g. $ search <pattern>
+## Search aliases and installed packages using pattern
+##   e.g. $ search <pattern>
 search () {
   if [[ $# -ne 2 ]]; then
     echo "add flags: -a, alias; -p, ubuntu packages"
@@ -27,6 +27,20 @@ search () {
   fi
 }
 
+## Stage path in git
+gaddp () {
+  fd "$1" | git add
+}
+
+nkg () {
+  if [[ $# -eq 1 ]]; then
+    bat $1/package.json
+  else
+    bat package.json
+  fi
+}
+
+# File Operations
 addSuffix () {
   suffix="$1"
   pattern="$2"
@@ -69,10 +83,6 @@ addPrefix () {
   fi
 }
 
-# Stage path in git
-gaddp () {
-  fd "$1" | git add
-}
 
 # =========================================================
 # NOTE-TAKING
