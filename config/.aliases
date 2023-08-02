@@ -5,7 +5,6 @@ alias cls="clear"
 alias mv="mv -i"
 alias cpi="cp -i"
 alias treeN="tree -I node_modules"
-alias nkg="bat package.json"
 
 # edit config files
 alias aliases="vim ~/.dotfiles/config/.aliases"
@@ -57,3 +56,7 @@ alias tam="tmux attach-session -t mern"
 alias tkm="tmux kill-session -t mern; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
 alias tkr="tmux kill-session -t research; tmux ls"
+
+# development
+alias eslints="npx eslint . --ext .ts,.tsx"
+alias eslintjs="npx eslint . --ext .js,.jsx"
