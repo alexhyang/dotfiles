@@ -12,6 +12,9 @@ ln -s $DOTFILES/config/.bash_aliases ~/.bash_aliases
 ln -sf $DOTFILES/config/.zshrc ~/.zshrc
 ln -s $DOTFILES/config/.p10k.zsh ~/.p10k.zsh
 
+# Neovim
+ln -s $DOTFILES/config/nvim ~/.config/nvim
+
 # workflow
 ln -s $DOTFILES/config/.vimrc ~/.vimrc
 ln -s $DOTFILES/config/.tmux.conf ~/.tmux.conf
