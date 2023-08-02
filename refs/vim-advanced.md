@@ -13,19 +13,20 @@ Contents:
 :vsp        " split window vertically
 :tabnew     " create new tab
 :tabedit    " open file in new tab
-:ls         " display a list of all open tabs
+:ls         " show all buffers
 gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 
 " Key Mappings
-:verbose map {key} " display mapping if it exist
-:map               " create mappings for both normal and visual modes
-:noremap           " similar to :map but non-recursivve
-:nmap              " normal mode map
-:nnoremap          " normal mode non-recursive map
-:imap              " insert mode map
-:inoremap          " insert mode non-recursive map
-:vmap              " vnsert mode map
-:vnoremap          " vnsert mode non-recursive map
+:verbose map {key}    " display mapping if it exist
+:filter /pattern/ map " search pattern in key mapping
+:map                  " create mappings for both normal and visual modes
+:noremap              " similar to :map but non-recursivve
+:nmap                 " normal mode map
+:nnoremap             " normal mode non-recursive map
+:imap                 " insert mode map
+:inoremap             " insert mode non-recursive map
+:vmap                 " vnsert mode map
+:vnoremap             " vnsert mode non-recursive map
 " recursive:
 "     triggers other mappings that are defined, potentially
 "     overriding existing mappings
