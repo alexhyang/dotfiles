@@ -93,7 +93,7 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Editing, syntax, linting
 " editing
-
+Plug 'easymotion/vim-easymotion'        " easymotion -- vim motion on speed
 Plug 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
 Plug 'junegunn/vim-easy-align' " Easy align
