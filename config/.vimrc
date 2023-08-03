@@ -92,59 +92,42 @@ Plug 'majutsushi/tagbar'                " tagbar -- show outline/structure of cl
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Editing, syntax, linting
-" editing
+"   editing
 Plug 'easymotion/vim-easymotion'        " easymotion -- vim motion on speed
 Plug 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
-Plug 'junegunn/vim-easy-align' " Easy align
+Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'godlygeek/tabular'                " Tabular -- vim script for text fildering and alignment
 Plug 'raimondi/delimitmate'             " delemitmate -- auto-completion for quotes, parens, brackes, etc
 
-" visual appearance
+"   visual appearance
 Plug 'tpope/vim-surround'               " surroudn.vim -- easy operations on surroundings in pairs
 Plug 'nathanaelkane/vim-indent-guides'  " indent guides -- visually displaying indent levels in code
 Plug 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode (fold levels)
-        " commands:
-        " whole file:
-        "     zr/zR: show details level by level/all the way down
-        "     zm/zM: hide details level by level/all the way up
-        " cursor position only:
-        "     za/zA: show details level by level/all the way down
-        "     zc/zC: hide details level by level/all the way up
+Plug 'suan/vim-instant-markdown'        " instant markdown preview
 
-Plug 'suan/vim-instant-markdown'       " instant markdown preview
-" syntax
-Plug 'scrooloose/syntastic'            " Syntastic -- syntax checking hacks for vim
-Plug 'mxw/vim-jsx'                     " vim jsx -- React JSX syntax highlighting and indenting
-Plug 'jelera/vim-javascript-syntax'    " Enhanced JavaScript syntax
-Plug 'leafgarland/typescript-vim'      " typescript vim -- TypeScript syntax
-Plug 'cespare/vim-toml'                " vim-toml -- vim syntax for toml
+"   syntax
+Plug 'scrooloose/syntastic'             " Syntastic -- syntax checking hacks for vim
+Plug 'mxw/vim-jsx'                      " vim jsx -- React JSX syntax highlighting and indenting
+Plug 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax
+Plug 'leafgarland/typescript-vim'       " typescript vim -- TypeScript syntax
+Plug 'cespare/vim-toml'                 " vim-toml -- vim syntax for toml
 
-" fixing/linting
-Plug 'w0rp/ale'                        " ale (async lint engine) -- syntax checking and semantic errors
-Plug 'prettier/vim-prettier'           " vim prettier
-Plug 'bronson/vim-trailing-whitespace' " trailing-whitespace -- highlight trailing whitespace in red
-Plug 'editorconfig/editorconfig-vim'   " vim support for .editorconfig
+"   fixing/linting
+Plug 'w0rp/ale'                         " ale (async lint engine) -- syntax checking and semantic errors
+Plug 'prettier/vim-prettier'            " vim prettier
+Plug 'bronson/vim-trailing-whitespace'  " trailing-whitespace -- highlight trailing whitespace in red
+Plug 'editorconfig/editorconfig-vim'    " vim support for .editorconfig
 
 " Search
-Plug 'mileszs/ack.vim'                 " ack -- vim plugin for ack
+Plug 'mileszs/ack.vim'                  " ack -- vim plugin for ack
 " ctrlp installed by 'ctrlpvim/ctrlp.vim' or manually by setUpVim.sh
 
 " Other
-Plug 'wakatime/vim-wakatime'           " wakatime dev stats
+Plug 'wakatime/vim-wakatime'            " wakatime dev stats
 
 
-" filetype plugin on
-"   (enable loading the plugin files for specific file types)
-" required by:
-"   markdown-syntax:
-"     - :TableFormat
-"     - :Toc, :Toch, :Toct, Tocv
-"     - :InsertToc, InsertNToc
-" Note: `filetype plugin on` is
-"       included in `filetype plugin indent on`
-
-" Brief help
+" vim-plug commands:
 " PlugInstall
 " PlugUpdate
 " PlugClean
