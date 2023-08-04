@@ -1,1 +1,8 @@
-404: Not Found
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
