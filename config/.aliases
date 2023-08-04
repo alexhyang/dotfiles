@@ -18,11 +18,11 @@ alias localEnv="vim ~/.local_env"
 
 # dotfiles
 alias sysinfo="cat ~/sysinfo"
-alias dotfiles="cd ~/.dotfiles/"
-alias dotscripts="cd ~/.dotfiles/scripts"
-alias dotconfig="cd ~/.dotfiles/config"
-alias dotutil="source ~/.dotfiles/scripts/utils.sh"
+alias .files="cd ~/.dotfiles/"
 alias bootstrap="source ~/.dotfiles/bootstrap.sh"
+alias .scr="cd ~/.dotfiles/scripts"
+alias .cfg="cd ~/.dotfiles/config"
+alias .nvim="cd ~/.dotfiles/config/nvim/"
 
 # service
 alias weather="curl wttr.in"
