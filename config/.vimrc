@@ -1,5 +1,72 @@
 " =====================================
-"         Common Vim settings
+"             Editing
+" =====================================
+syntax on
+
+set tabstop=2                   " number of spaces of each <Tab>
+set expandtab                   " use spaces for tab
+set shiftwidth=2                " code indentation size of >> and <<
+
+set backspace=indent,eol,start  " enable <BS> to remove autoindent,
+                                " end of line character, and start of line
+
+set spell spelllang=en_us       " spell checking
+set wrap linebreak              " wrap linebreak
+
+set mouse=a                     " add mouse support
+
+
+" =====================================
+"         Search and Replace
+" =====================================
+" case sensitivity in search
+set ignorecase               " case-insensitive in searches with '/'
+set smartcase                " case-sensitive distinguish cases
+                             " outcome: ignore cases when all letters
+                             "   are upper- or lower-case, but do not
+                             "   ignore cases for mixed patterns
+
+set incsearch " enable search as you type
+set hlsearch  " enable search highlights
+
+" stop highlighting
+nnoremap <F3> :noh<CR>
+
+
+" =====================================
+"         Editor Interface
+" =====================================
+set number
+set relativenumber
+
+" set background and colorscheme
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+colorscheme solarized
+
+" disable audible bell
+set noerrorbells visualbell t_vb=
+
+
+" =====================================
+"         Tabs and Windows
+" =====================================
+" split window
+" set splitright
+" set splitbelow
+nnoremap <Leader>v :vs<CR>
+nnoremap <Leader>h :sp<CR>
+
+" map tab command
+nnoremap <C-n> :tabnew<CR>
+
+
+" =====================================
+"         Key mappings
 " =====================================
 " Fn mapping:
 " F3 no highlight in search result
@@ -8,56 +75,8 @@
 " F8 toggle tagbar
 " F9 open .vimrc in new tab
 
-syntax on
-
-" edit vimrc mapping
 map <F9> :tabedit $HOME/.vimrc<CR>
 map <F6> :so $HOME/.vimrc<CR>
-
-" line numbers and commands
-set number
-set relativenumber
-
-" search case sensitivity
-set ignorecase   " case-insensitive during string search
-set smartcase    " case-sensitive when Capital letters appear
-
-" enable searching as you type, enable search highlights
-set incsearch
-set hlsearch
-nnoremap <F3> :noh<CR>
-
-" unbind some useless default key bindings
-" 'Q' in normal mode enters Ex mode
-nmap Q <Nop>
-
-" tab size, use spaces for tabs, code indentation size
-set tabstop=2
-set expandtab
-set shiftwidth=2
-
-" split window
-set splitright
-
-" map tab command
-nnoremap <C-n> :tabnew<CR>
-
-" add mouse support
-set mouse=a
-
-" change backspace behavior
-set backspace=indent,eol,start
-
-" set background and colorscheme
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-colorscheme solarized
-
-" disable audible bell
-set noerrorbells visualbell t_vb=
 
 " disallow arrow keys in normal mode and insert mode
 " normal mode
@@ -71,11 +90,11 @@ inoremap <Right> <ESC>: echoe "Use l"<CR>
 inoremap <Up>    <ESC>: echoe "Use k"<CR>
 inoremap <Down>  <ESC>: echoe "Use j"<CR>
 
-" spell checking
-set spell spelllang=en_us
 
-" wrap linebreak
-set wrap linebreak
+" unbind some useless default key bindings
+" 'Q' in normal mode enters Ex mode
+nmap Q <Nop>
+
 
 " ===================================================
 "         Vim Plug from VimAwesome
