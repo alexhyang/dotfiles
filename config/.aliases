@@ -17,12 +17,13 @@ alias nvimrc="vim ~/.dotfiles/config/nvim/lua/"
 alias localEnv="vim ~/.local_env"
 
 # dotfiles
+export DOTFILES="$HOME/.dotfiles"
 alias sysinfo="cat ~/sysinfo"
-alias .files="cd ~/.dotfiles/"
-alias bootstrap="source ~/.dotfiles/bootstrap.sh"
-alias .scr="cd ~/.dotfiles/scripts"
-alias .cfg="cd ~/.dotfiles/config"
-alias .nvim="cd ~/.dotfiles/config/nvim/"
+alias .files="cd $DOTFILES/"
+alias bootstrap="source $DOTFILES/bootstrap.sh"
+alias .scr="cd $DOTFILES/scripts"
+alias .cfg="cd $DOTFILES/config"
+alias .nvim="cd $DOTFILES/config/nvim/"
 
 # service
 alias weather="curl wttr.in"
