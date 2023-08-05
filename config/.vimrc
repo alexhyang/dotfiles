@@ -22,9 +22,9 @@ set mouse=a                     " add mouse support
 " case sensitivity in search
 set ignorecase               " case-insensitive in searches with '/'
 set smartcase                " case-sensitive distinguish cases
-                             " outcome: ignore cases when all letters
-                             "   are upper- or lower-case, but do not
-                             "   ignore cases for mixed patterns
+                             " outcome: ignore cases when all letters are
+                             "     upper- or lower-case, but do not ignore
+                             "     cases for mixed patterns
 
 set incsearch " enable search as you type
 set hlsearch  " enable search highlights
@@ -47,6 +47,7 @@ else
 endif
 
 colorscheme solarized
+
 
 " disable audible bell
 set noerrorbells visualbell t_vb=
@@ -102,44 +103,46 @@ nmap Q <Nop>
 call plug#begin()
 
 " Interface and Integration
-Plug 'tpope/vim-fugitive'               " fugitive.vim -- a Git wrapper
-Plug 'scrooloose/nerdtree'              " nerd tree -- tree explore plugin for vim
-Plug 'airblade/vim-gitgutter'           " vim gitgutter -- shows git diff markers
-Plug 'vim-airline/vim-airline'          " vim airline -- status/tabline for vim
-Plug 'altercation/vim-colors-solarized' " vim colors solarized: -- precision color scheme for vim editor
-Plug 'majutsushi/tagbar'                " tagbar -- show outline/structure of classes, functions, etc.
+Plug 'tpope/vim-fugitive'               " fugitive.vim - a Git wrapper
+Plug 'scrooloose/nerdtree'              " nerd tree - tree explorer for vim
+Plug 'airblade/vim-gitgutter'           " vim gitgutter - show git diff markers
+Plug 'vim-airline/vim-airline'          " vim airline - status/tabline for vim
+Plug 'vim-airline/vim-airline-themes'   " vim airline themes
+Plug 'altercation/vim-colors-solarized' " vim color theme solarized
+Plug 'majutsushi/tagbar'                " tagbar - outline classes, funcs, etc.
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Editing, syntax, linting
 "   editing
-Plug 'easymotion/vim-easymotion'        " easymotion -- vim motion on speed
-Plug 'valloric/youcompleteme'           " youcompleteme -- code completion engine for vim
+Plug 'easymotion/vim-easymotion'        " easymotion - vim motion on speed
+Plug 'valloric/youcompleteme'           " youcompleteme - code completion
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
 Plug 'junegunn/vim-easy-align'          " Easy align
-Plug 'godlygeek/tabular'                " Tabular -- vim script for text fildering and alignment
-Plug 'raimondi/delimitmate'             " delemitmate -- auto-completion for quotes, parens, brackes, etc
+Plug 'godlygeek/tabular'                " Tabular - text filder and alignment
+Plug 'raimondi/delimitmate'             " delemitmate - auto-completion for
+                                        "     quotes, parens, brackes, etc
 
 "   visual appearance
-Plug 'tpope/vim-surround'               " surroudn.vim -- easy operations on surroundings in pairs
-Plug 'nathanaelkane/vim-indent-guides'  " indent guides -- visually displaying indent levels in code
-Plug 'plasticboy/vim-markdown'          " markdown syntax -- markdown vim mode (fold levels)
+Plug 'tpope/vim-surround'               " surroudn.vim - easy pairing
+Plug 'nathanaelkane/vim-indent-guides'  " indent guides - visual indent levels
+Plug 'plasticboy/vim-markdown'          " markdown syntax - fold levels
 Plug 'suan/vim-instant-markdown'        " instant markdown preview
 
 "   syntax
-Plug 'scrooloose/syntastic'             " Syntastic -- syntax checking hacks for vim
-Plug 'mxw/vim-jsx'                      " vim jsx -- React JSX syntax highlighting and indenting
+Plug 'scrooloose/syntastic'             " Syntastic - syntax checking
+Plug 'mxw/vim-jsx'                      " vim jsx - syntax highlight and indent
 Plug 'jelera/vim-javascript-syntax'     " Enhanced JavaScript syntax
-Plug 'leafgarland/typescript-vim'       " typescript vim -- TypeScript syntax
-Plug 'cespare/vim-toml'                 " vim-toml -- vim syntax for toml
+Plug 'leafgarland/typescript-vim'       " typescript vim - TypeScript syntax
+Plug 'cespare/vim-toml'                 " vim-toml - vim syntax for toml
 
 "   fixing/linting
-Plug 'w0rp/ale'                         " ale (async lint engine) -- syntax checking and semantic errors
+Plug 'w0rp/ale'                         " async lint engine - syntax checking
 Plug 'prettier/vim-prettier'            " vim prettier
-Plug 'bronson/vim-trailing-whitespace'  " trailing-whitespace -- highlight trailing whitespace in red
+Plug 'bronson/vim-trailing-whitespace'  " trailing whitespace in red
 Plug 'editorconfig/editorconfig-vim'    " vim support for .editorconfig
 
 " Search
-Plug 'mileszs/ack.vim'                  " ack -- vim plugin for ack
+Plug 'mileszs/ack.vim'                  " ack - vim plugin for ack
 " ctrlp installed by 'ctrlpvim/ctrlp.vim' or manually by setUpVim.sh
 
 " Other
