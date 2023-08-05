@@ -12,9 +12,13 @@ set backspace=indent,eol,start  " enable <BS> to remove autoindent,
 
 set spell spelllang=en_us       " spell checking
 set wrap linebreak              " wrap linebreak
-
+" set columns=80                  " set column width limit
+set colorcolumn=80              " set column width (80) marker
 set mouse=a                     " add mouse support
 
+" Define command to fill line with = or #
+nnoremap <Leader>= 77A=<Esc>d80<bar>
+nnoremap <Leader># 77A#<Esc>d80<bar>
 
 " =====================================
 "         Search and Replace
@@ -224,6 +228,16 @@ let g:ctrl_map='<c-p>'
 let g:ctrlp_cmd='CtrlP'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_working_path_mode = 'ra'
+
+" --------------------------------
+" plugin: vim-airlines
+" --------------------------------
+" list of themes: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme = 'catppuccin_mocha'
+let g:airline_solarized_bg='dark'
+let g:airline_section_z = "%p%% : \ue0a1:%l/%L: Col:%c"
+let g:airline_section_z = "%p%% ☰ %l/%L: %c"
+let g:airline_extensions = []
 
 " --------------------------------
 " plugin: ale
