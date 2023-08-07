@@ -103,7 +103,7 @@ templateMd() {
 # View or create README file
 readme() {
   if [[ -f "./README.md" ]]; then
-    vim.basic ./README.md
+    vi ./README.md
   else
     promptMessage="README.md doesn't exit! Create README.md? [y/N]: "
     if [[ $SHELL == "/usr/bin/zsh" ]]; then
@@ -112,7 +112,7 @@ readme() {
       read -p $promptMessage confirm
     fi
     if [[ $confirm =~ ^[Yy]$ ]]; then
-      templateMd README.md || touch README.md && vim.basic README.md
+      templateMd README.md || touch README.md && vi README.md
     fi
   fi
 }
@@ -145,7 +145,7 @@ myrefs() {
     if [[ -f $refpath ]]; then
       case $flag in
         -e)
-          vim.basic $refpath
+          vi $refpath
           ;;
         *)
           bat $refpath
@@ -166,7 +166,7 @@ createref() {
   fi
 
   if [[ $confirm =~ ^[Yy]$ ]]; then
-    templateMd $1 && vim.basic $1
+    templateMd $1 && vi $1
   fi
 }
 
