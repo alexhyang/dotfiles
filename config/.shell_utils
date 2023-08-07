@@ -90,8 +90,12 @@ addPrefix() {
 #   if the argument is only a file name with extension,
 #     then it will be created under the current directory;
 #   but the argument can also be a full path
-templateMd() {
-  filepath="$1"
+mdTemplate() {
+  if [[ "$1" == *.md ]]; then
+    filepath="$1"
+  else
+    filepath="$1.md"
+  fi
   if [[ -d "$HOME/research-notes" ]]; then
     cp ~/research-notes/template.md $filepath
     echo "$filepath created"
@@ -112,7 +116,7 @@ readme() {
       read -p $promptMessage confirm
     fi
     if [[ $confirm =~ ^[Yy]$ ]]; then
-      templateMd README.md || touch README.md && vi README.md
+      mdTemplate README.md || touch README.md && vi README.md
     fi
   fi
 }
@@ -129,6 +133,19 @@ tl() {
 # if there is no argument, list available refs
 # if ref name is given, open or create markdown file
 myrefs() {
+  local createRef() {
+    promptMessage="Requested ref doesn't exist! Create $1? [y/N]"
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMessage"
+    else
+      read -p $promptMessage confirm
+    fi
+
+    if [[ $confirm =~ ^[Yy]$ ]]; then
+      mdTemplate $1 && vi $1
+    fi
+  }
+
   refroot=~/.dotfiles/refs
   if [[ $# -eq 0 && -d $refroot ]]; then
     ls $refroot
@@ -152,21 +169,8 @@ myrefs() {
           ;;
       esac
     else
-      createref $refpath
+      createRef $refpath
     fi
-  fi
-}
-
-createref() {
-  promptMessage="Requested ref doesn't exist! Create $1? [y/N]"
-  if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "confirm?$promptMessage"
-  else
-    read -p $promptMessage confirm
-  fi
-
-  if [[ $confirm =~ ^[Yy]$ ]]; then
-    templateMd $1 && vi $1
   fi
 }
 
