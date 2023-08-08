@@ -24,7 +24,7 @@ return {
   -- { "nvim-pack/nvim-spectre", enabled = false }, -- search/replace in multiple files
   -- { "nvim-telescope/telescope.nvim", enabled = false }, -- fuzzy finder
   -- { "folke/flash.nvim", enabled = false }, -- enhances the built-in search functionality
-  -- { "nvim-telescope/telescope.nvim", enabled = false }, -- Flash Telescope confi},
+  -- { "nvim-telescope/telescope.nvim", enabled = false }, -- Flash Telescope config,
   -- { "ggandor/leap.nvim", enabled = false }, -- disable old installations of leap and flit.
   -- { "folke/which-key.nvim", enabled = false }, -- helps you remember key bindings by showing a popup
   -- { "lewis6991/gitsigns.nvim", enabled = false }, -- git highlights in editor
