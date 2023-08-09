@@ -14,15 +14,15 @@ search() {
     echo "add flags: -a, alias; -p, ubuntu packages"
   else
     case $1 in
-      -a)
-        alias | rg $2
-        ;;
-      -p)
-        apt list --installed | rg $2
-        ;;
-      *)
-        echo "no valid flags specified"
-        ;;
+    -a)
+      alias | rg $2
+      ;;
+    -p)
+      apt list --installed | rg $2
+      ;;
+    *)
+      echo "no valid flags specified"
+      ;;
     esac
   fi
 }
@@ -165,8 +165,8 @@ tl() {
 # if there is no argument, list available refs
 # if ref name is given, open or create markdown file
 myrefs() {
-  local createRef() {
-    promptMessage="Requested ref doesn't exist! Create $1? [y/N]"
+  createRef() {
+    promptMessage="Create $1? [y/N]"
     if [[ $SHELL == "/usr/bin/zsh" ]]; then
       read "confirm?$promptMessage"
     else
@@ -193,14 +193,15 @@ myrefs() {
     refpath="$refroot/$refname.md"
     if [[ -f $refpath ]]; then
       case $flag in
-        -e)
-          vi $refpath
-          ;;
-        *)
-          bat $refpath
-          ;;
+      -e)
+        vi $refpath
+        ;;
+      *)
+        bat $refpath
+        ;;
       esac
     else
+      echo "Requested ref doesn't exit!"
       createRef $refpath
     fi
   fi
