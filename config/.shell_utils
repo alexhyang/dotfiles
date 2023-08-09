@@ -84,6 +84,38 @@ addPrefix() {
 }
 
 # =========================================================
+# Editor
+# =========================================================
+nvim-use() {
+  switchNvimConfig() {
+    if [[ $1 == "" ]]; then
+      echo "Provide path to nvim config folder"
+    else
+      rm ~/.config/nvim
+      ln -sf "$1" ~/.config/nvim
+      alias .nvim="cd $1 && tree"
+      readlink -f ~/.config/nvim
+    fi
+  }
+
+  case $1 in
+  "lazy")
+    echo "switching to lazyVim config..."
+    source="$HOME/.dotfiles/config/LazyVim_nvim"
+    switchNvimConfig $source
+    ;;
+  "vanilla")
+    echo "switching to vanillaVim config..."
+    source="$HOME/.dotfiles/config/vanilla_nvim"
+    switchNvimConfig $source
+    ;;
+  *)
+    echo "use \"lazy\" or \"vanilla\" as argument"
+    ;;
+  esac
+}
+
+# =========================================================
 # NOTE-TAKING
 # =========================================================
 # Create md file from template
