@@ -1,6 +1,7 @@
 return {
   "wakatime/vim-wakatime", -- coding time tracker
   -- TODO: finish configuration for following plugins
+  { "phaazon/hop.nvim", lazy = true },
   {
     "m4xshen/hardtime.nvim", -- help with good vim habit
     opts = {},
