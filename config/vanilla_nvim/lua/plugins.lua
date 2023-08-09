@@ -8,6 +8,8 @@ require("lazy").setup({
   { "echasnovski/mini.nvim" },
 })
 
+require("tokyonight").load()
+
 -- null-ls
 require("null-ls")
 local null_ls = require("null-ls")
@@ -20,7 +22,7 @@ null_ls.setup({
 })
 
 require("lualine").setup() -- lualine
-require("plugins.lsp-config") -- lsp-config
+require("config.lsp") -- lsp-config
 require("mason").setup() -- Mason
 
 require("mini.pairs").setup()
@@ -28,4 +30,3 @@ require("mini.surround").setup()
 require("mini.comment").setup()
 require("mini.indentscope").setup()
 require("mini.completion").setup()
-
