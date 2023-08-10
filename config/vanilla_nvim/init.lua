@@ -1,4 +1,5 @@
 require("lazySetup")
-require("keymappings")
-require("options")
 require("plugins")
+require("options")
+require("keymappings")
+require("autocmds")
