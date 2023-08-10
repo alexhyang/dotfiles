@@ -21,6 +21,7 @@ alias .files="cd $DOTFILES/"
 alias bootstrap="source $DOTFILES/bootstrap.sh"
 alias .scr="cd $DOTFILES/scripts"
 alias .cfg="cd $DOTFILES/config"
+alias .nvim="cd $(readlink -f $HOME/.config/nvim)/lua; tree"
 
 # service
 alias weather="curl wttr.in"
