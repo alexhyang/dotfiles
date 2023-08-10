@@ -1,5 +1,13 @@
 require("lazy").setup({
-  "folke/which-key.nvim",
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {},
+  },
   { "folke/tokyonight.nvim", lazy = true, opts = { style = "moon" } },
   { "jose-elias-alvarez/null-ls.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "nvim-lualine/lualine.nvim", dependencies = { "nvim-tree/nvim-web-devicons" } },
@@ -10,19 +18,9 @@ require("lazy").setup({
 
 require("tokyonight").load()
 
--- null-ls
-require("null-ls")
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua,
-    null_ls.builtins.diagnostics.eslint,
-    null_ls.builtins.completion.spell,
-  },
-})
-
+require("config.null_ls") -- null-ls
 require("lualine").setup() -- lualine
-require("config.lsp") -- lsp-config
+require("config.lsp") -- lsp
 require("mason").setup() -- Mason
 
 require("mini.pairs").setup()
