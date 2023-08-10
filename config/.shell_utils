@@ -92,9 +92,8 @@ nvim-use() {
       echo "Provide path to nvim config folder"
     else
       rm ~/.config/nvim
-      ln -sf "$1" ~/.config/nvim
-      alias .nvim="cd $1 && tree"
-      readlink -f ~/.config/nvim
+      ln -sfv "$1" ~/.config/nvim
+      alias .nvim="cd $(readlink -f ~/.config/nvim)/lua; tree"
     fi
   }
 
