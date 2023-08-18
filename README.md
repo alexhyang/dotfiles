@@ -85,11 +85,12 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
     *   [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 *   Vim plugins
-Open .vimrc to see the list of plugins. Use `:help` command to
-open help file. Search "local-additions" with `/local` and move
-cursor to underlined plugin names and open with `ctrl ]`. Type
-`ctrl o` to go back to help file after finishing reading or
-`:q` to close help file.
+
+    Open .vimrc to see the list of plugins. Use `:help` command to
+    open help file. Search "local-additions" with `/local` and move
+    cursor to underlined plugin names and open with `ctrl ]`. Type
+    `ctrl o` to go back to help file after finishing reading or
+    `:q` to close help file.
 
 *   tmux plugins
     *   to be added
