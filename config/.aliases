@@ -6,7 +6,6 @@ alias mv="mv -i"
 alias cpi="cp -i"
 alias treeN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
-alias vim="nvim"
 
 # edit config files
 alias aliases="vim ~/.dotfiles/config/.aliases"
@@ -27,6 +26,7 @@ alias .nvim="cd $(readlink -f $HOME/.config/nvim)/lua; tree"
 alias weather="curl wttr.in"
 
 # git
+alias lg="lazygit"
 alias glc="git log \
   --oneline --decorate \
   --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
