@@ -103,6 +103,8 @@ export PATH=$HOME/.local/bin:$PATH
 export VISUAL="vim"
 export EDITOR="$VISUAL"
 export TERM="xterm-256color"
+export HISTSIZE=5000
+export SAVEHIST=$HISTSIZE
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

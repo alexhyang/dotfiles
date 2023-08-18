@@ -80,6 +80,10 @@ nnoremap <C-n> :tabnew<CR>
 " F8 toggle tagbar
 " F9 open .vimrc in new tab
 
+" change leader to space
+nnoremap <Space> <Nop>
+let mapleader=" "
+
 map <F9> :tabedit $HOME/.vimrc<CR>
 map <F6> :so $HOME/.vimrc<CR>
 
@@ -118,6 +122,7 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 
 " Editing, syntax, linting
 "   editing
+" Plug 'takac/vim-hardtime'               " stop basic movement keys
 Plug 'easymotion/vim-easymotion'        " easymotion - vim motion on speed
 Plug 'valloric/youcompleteme'           " youcompleteme - code completion
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
@@ -238,6 +243,11 @@ let g:airline_solarized_bg='dark'
 let g:airline_section_z = "%p%% : \ue0a1:%l/%L: Col:%c"
 let g:airline_section_z = "%p%% ☰ %l/%L: %c"
 let g:airline_extensions = []
+
+" --------------------------------
+" plugin: vim-hardtime
+" --------------------------------
+let g:hardtime_default_on = 1
 
 " --------------------------------
 " plugin: ale
