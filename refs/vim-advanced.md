@@ -11,6 +11,8 @@ Contents:
 " Tabs & Windows
 :sp         " split window horizontally
 :vsp        " split window vertically
+^w + hjkl   " navigate to window
+^w + HJKL   " move window
 :tabnew     " create new tab
 :tabedit    " open file in new tab
 :ls         " show all buffers
