@@ -11,7 +11,7 @@ alias vim.tiny="echo vim.tiny disabled"
 alias aliases="vim ~/.dotfiles/config/.aliases"
 alias shell_utils="vim ~/.dotfiles/config/.shell_utils"
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
-alias localEnv="vim ~/.local_env"
+alias zshlocal="vim ~/.zshrc.local"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
