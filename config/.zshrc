@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 # source related dotfiles
 source ~/.aliases
 source ~/.shell_utils
-source ~/.local_env
+source ~/.zshrc.local
 
 # Environment Variables
 export PATH=$HOME/.local/bin:$PATH
