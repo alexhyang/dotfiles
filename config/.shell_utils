@@ -115,6 +115,14 @@ nvim-use() {
 }
 
 # =========================================================
+# Project-setup
+# =========================================================
+cpformatter() {
+  cp ~/.dotfiles/config/.editorconfig ./.editorconfig
+  cp ~/.dotfiles/config/.prettierrc.js ./.prettierrc.js
+}
+
+# =========================================================
 # NOTE-TAKING
 # =========================================================
 # Create md file from template
