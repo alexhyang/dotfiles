@@ -58,7 +58,11 @@ alias tmern="tmux source-file ~/.tmux/mern.sh"
 alias tam="tmux attach-session -t mern"
 alias tkm="tmux kill-session -t mern; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
+alias tar="tmux attach-session -t research"
 alias tkr="tmux kill-session -t research; tmux ls"
+alias tleet="tmux source-file ~/.tmux/leet.sh"
+alias tar="tmux attach-session -t leet"
+alias tkr="tmux kill-session -t leet; tmux ls"
 
 # development
 alias eslints="npx eslint . --ext .ts,.tsx"
