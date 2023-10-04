@@ -4,7 +4,8 @@
 # =========================================================
 # Shell Utilities
 showPath() {
-  echo $PATH | sed -E "s/:/\n/g"
+  # echo $PATH | sed -E "s/:/\n/g"
+  echo $PATH | tr -s ":" "\n"
 }
 
 # move files
