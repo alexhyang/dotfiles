@@ -7,6 +7,15 @@ showPath() {
   echo $PATH | sed -E "s/:/\n/g"
 }
 
+# move files
+setDst() {
+  echo $(pwd) > ~/.mvDst
+}
+
+getDst() {
+  cat ~/.mvDst
+}
+
 ## Search aliases and installed packages using pattern
 ##   e.g. $ search <pattern>
 search() {
