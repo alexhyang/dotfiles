@@ -13,6 +13,11 @@ Contents:
 :vsp        " split window vertically
 ^w + hjkl   " navigate to window
 ^w + HJKL   " move window
+^w + >      " increase window width
+^w + <      " decrease window width
+^w + +      " increase window height
+^w + -      " decrease window height
+
 :tabnew     " create new tab
 :tabedit    " open file in new tab
 :ls         " show all buffers
