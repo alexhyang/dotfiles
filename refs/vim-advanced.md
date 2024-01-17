@@ -3,14 +3,16 @@
 This document lists some of the most commonly used advanced Vim commands.
 
 Contents:
-:InsertToc
 
-## Tasks
+* [Tabs & Windows](#tabs-&-windows)
+* [Key Mappings](#key-mappings)
+* [Programming](#programming)
+* [References](#references)
 
+## Tabs & Windows
 ```vim
-" Tabs & Windows
 :sp         " split window horizontally
-:vsp        " split window vertically
+:vs(p)      " split window vertically
 ^w + hjkl   " navigate to window
 ^w + HJKL   " move window
 ^w + >      " increase window width
@@ -22,8 +24,10 @@ Contents:
 :tabedit    " open file in new tab
 :ls         " show all buffers
 gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
+```
 
-" Key Mappings
+## Key Mappings
+```vim
 :verbose map {key}    " display mapping if it exist
 :filter /pattern/ map " search pattern in key mapping
 :map                  " create mappings for both normal and visual modes
@@ -40,13 +44,28 @@ gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 " non-recursive:
 "     does not trigger other mappings,
 "     generally preferred to prevent unexpected side effects
-
 ```
 
-## Usage of Plugins
+## Programming
+
+### general
 ```vim
-^p      " (ctrlp) file fuzzy finder
-^j / ^k " (ale) navigate between errors
+^p      " (plug-ctrlp) file fuzzy finder
+^j / ^k " (plug-ale) navigate between errors
+gd      " go to definition
+```
+
+### markdown
+```vim
+za/zc   " expand/collapse the current header
+zA/zC   " expand/collapse the current header to the bottom/top
+zr/zm   " expand/collapse all headers of the same level
+zR/zM   " expand/collapse all headers
+]]/[[   " go to next/previous header
+][/[]   " go to next/previous sibling header
+]c      " go to current header
+]u      " go to parent header
+:Toc    " open table of contents panel
 ```
 
 ## References
