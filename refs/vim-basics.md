@@ -51,10 +51,6 @@ Contents:
     H/L/M    # move to                        (top/bottom/middle of screen
     gg/G     # move to                        (satrt/end of the file
 
-### Window
-    ^w h/s      # split window vertically/horizontally
-    ^w k/j/h/l  # navigate between windows (up/down/left/right)
-
 ### Editing
 #### Insert
     i/a         # insert to the left/right of cursor
@@ -81,7 +77,7 @@ Contents:
 #### Select, delete, copy, paste
     v/V         # highlight a character/line (move cursor to select text after "v")
     ^v          # select block
-    yy/dd       # copies/delete a line
+
     yw/dw       # copies/delete a word
     p/P         # paste copied text below/above
     y$/D        # copies/delete from cursor to end of the line
@@ -101,8 +97,11 @@ Contents:
 ## Settings
 ### Theme
     :colorscheme ron        # set Vim theme to "ron"
+
 A list of vim themes:
+
  [blue, darkblue, delek, desert, elflord, evening, industry, koehler, morning,
+
  murphy, pablo, peachpuff, ron, shine, slate, torte, zellner]
 
 ### Line numbering
