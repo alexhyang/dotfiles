@@ -101,7 +101,6 @@ Contents:
 A list of vim themes:
 
  [blue, darkblue, delek, desert, elflord, evening, industry, koehler, morning,
-
  murphy, pablo, peachpuff, ron, shine, slate, torte, zellner]
 
 ### Line numbering
