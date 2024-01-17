@@ -26,7 +26,7 @@ Contents:
 ## Commands
 ### Basic file commands
     :help [keyword]         # search for help
-    :e [file]               # open file	
+    :e [file]               # open file
     :w                      # save file
     :w [filename]           # save file with given name
     :wq                     # save file and quit vim
@@ -38,7 +38,7 @@ Contents:
     :set relativenumber     # toggle on relative number of lines
     :set norelativenumber   # toggle off relative number of lines
 
-### Movement 
+### Movement
     k/j/h/l  # move char            at a time (up/down/left/right)
     w/b/e/ge # move word            at a time (start of next/previous word, end of a next/previous word)
     ( / )    # move sentence        at a time (start of previous/next sentence
@@ -47,7 +47,7 @@ Contents:
     f[char]  # move to                        (next given char in line
     F[char]  # move to                        (previous given char in line
     0/$      # move to                        (beginning/end of a line
-    ^        # move to                        (beginning word in the line 
+    ^        # move to                        (beginning word in the line
     H/L/M    # move to                        (top/bottom/middle of screen
     gg/G     # move to                        (satrt/end of the file
 
@@ -94,7 +94,7 @@ Contents:
     u                       # undo last operation
     ^r                      # redo last undo
     .                       # repeat last action
-    N[action/movement]      # do n times eg. 4j 
+    N[action/movement]      # do n times eg. 4j
     q[key]/q                # (in command mode) start/stop recording macro
     ^s/^q                   # freeze/unfreeze Vim
 
@@ -102,23 +102,8 @@ Contents:
 ### Theme
     :colorscheme ron        # set Vim theme to "ron"
 A list of vim themes:
-*   blue
-*   darkblue
-*   delek
-*   desert
-*   elflord
-*   evening
-*   industry
-*   koehler
-*   morning
-*   murphy
-*   pablo
-*   peachpuff
-*   ron
-*   shine
-*   slate
-*   torte
-*   zellner
+ [blue, darkblue, delek, desert, elflord, evening, industry, koehler, morning,
+ murphy, pablo, peachpuff, ron, shine, slate, torte, zellner]
 
 ### Line numbering
     :set number             # toggle on number of lines
@@ -143,7 +128,7 @@ A list of vim themes:
 
 ### Tab
     :set tabstop=4          # number of spaces for a tab (default = 8)
-    :set shiftwidth=4       # number of spaces for indent 
+    :set shiftwidth=4       # number of spaces for indent
     :set expandtab          # use spaces to insert tabs
 
 ### vimrc example
@@ -168,8 +153,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 ```
-
-[customized .vimrc](../config/.vimrc)
 
 ## Plugins
 1.  *Install Vundle (Vim package manager)*:
@@ -214,7 +197,7 @@ set expandtab
 *   [Best Vim Tips](https://vim.fandom.com/wiki/Best_Vim_Tips)
 *   [Vim Doc - Statusline](http://vimdoc.sourceforge.net/htmldoc/options.html#'statusline')
 *   [Vim Doc - Tabstop](http://vimdoc.sourceforge.net/htmldoc/options.html#'tabstop')
-*   [Learn Vimscript](https://learnvimscriptthehardway.stevelosh.com/chapters/17.html) 
+*   [Learn Vimscript](https://learnvimscriptthehardway.stevelosh.com/chapters/17.html)
 *   [Learn Vimscript the hard way](https://learnvimscriptthehardway.stevelosh.com/)
 *   [Vundle GitHub repo (Vim package manager)](https://github.com/VundleVim/Vundle.vim)
 *   [Search and Replace in Vim -- blog](https://www.baeldung.com/linux/vim-search-replace)
