@@ -14,12 +14,14 @@ Contents:
 * [Date Manipulation](#date-manipulation)
 * [References](#references)
 
-## Command Documents
+## Shell
+
+### Command Documents
 *   man
 *   info
 *   tldr (npm install -g tldr)
 
-## Directory and Navigation
+### Directory and Navigation
 *   [fasd (frecency, quick access to files and dirs)](https://github.com/clvv/fasd)
     ```bash
     # Setup
@@ -64,7 +66,10 @@ Contents:
 *   nnn
 *   ranger
 
-## File Search
+### File Search
+tags    = ['life']
+tags    = ['life']
+tags    = ['life']
 *   find
     ```bash
     -name pattern    # base of file name, don't include path in file name pattern
@@ -95,7 +100,7 @@ Contents:
     fd "string|regex" --exec command
 
     # Example
-    fd -e js -x mv {} ../                           # move all .js files to parent folder
+    fd -e js -x mv {} ../            # move all .js files to parent folder
     ```
 
 *   [fzf (fuffzy finder)](https://github.com/junegunn/fzf)
@@ -118,23 +123,30 @@ Contents:
 *   locate (apt)
 *   tar & gzip
 
-## File Content Search
+### File Content Search
 *   grep
 *   rg (apt ripgrep)
 
-## Processes Monitoring
+### Processes Monitoring
 *   pstree
 *   htop (apt)
 
-## Command piping
+### Command piping
 *   xargs
 
-## Date Manipulation
-*   [jq](https://jqlang.github.io/jq/tutorial/)
+### Date Manipulation
+*   [jq](https://jqlang.github.io/jq/tutorial/) (JSON formatter)
     ```bash
     jq '.' input.json > output.json    # beautify JSON file
     jq -c '.' input.json > output.json # minify JSON file
 
+    ```
+
+## Programming Languages
+
+### Java
+    ```bash
+    jdep # visualize packages and dependencies (built-in tool in JDK)
     ```
 
 ## References
