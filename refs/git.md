@@ -126,6 +126,14 @@ git add .gitignore
 git commit -m "add file to .gitignore"
 git remote add origin <remote-repo-url>
 git push origin --force --all
+
+# Find commit using binary search
+git bisect start             # start the search
+git bisect bad               # choose a known bad commit as the beginning
+git bisect good              # choose a known good commit as the end
+# git will guide you to the commit in the middle, and you need to tell git
+#     if it's a good or bad commit
+git bisect reset             # end the search
 ```
 
 ## References
