@@ -134,6 +134,15 @@ git bisect good              # choose a known good commit as the end
 # git will guide you to the commit in the middle, and you need to tell git
 #     if it's a good or bad commit
 git bisect reset             # end the search
+
+# Tagging
+git tag                                    # show all tags
+git tag <tag-name>                         # create a lightweight tag
+git tag -a <tag-name> -m <tag-message>     # create an annotated tag
+git tag -d <tag-name>                      # delete tag
+git push origin <tag-name>                 # publish tag to remote repo
+git push origin --tags                     # publish multiples tags
+git push origin --delete <tagname>         # remove remote tag
 ```
 
 ## References
