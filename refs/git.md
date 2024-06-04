@@ -100,6 +100,7 @@ git branch --unset-upstream               # remove remote-tracking branch that n
 git fetch -p                              # remove any remote branches that don't exist anymore
 git prune                                 # clean up old branches
 git remote set-url origin <url>           # update remote repo url
+git push <remote> <commit hash>:<branch>  # push up to a certain commit
 
 # Pull remote branch into a local branch with a different name
 git fetch <remote_repo>
