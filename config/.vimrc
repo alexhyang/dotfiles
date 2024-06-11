@@ -50,6 +50,7 @@ let @b = "bi**\<Esc>ea**\<Esc>"
 let @i = "bi*\<Esc>ea*\<Esc>"
 let @u = "o*\<Space>\<Space>\<Space>"
 let @o = "o1.\<Space>\<Space>"
+let @c = "o```\<CR>```\<Esc>kA"
 
 " =====================================
 "         Editor Interface
