@@ -3,6 +3,10 @@
 " =====================================
 syntax on
 
+" change leader to space
+nnoremap <Space> <Nop>
+let mapleader=" "
+
 set tabstop=2                   " number of spaces of each <Tab>
 set expandtab                   " use spaces for tab
 set shiftwidth=2                " code indentation size of >> and <<
@@ -38,6 +42,16 @@ nnoremap <F3> :noh<CR>
 
 
 " =====================================
+"         Registers
+" =====================================
+" Markdown
+let @t = "bi`\<Esc>ea`\<Esc>"
+let @b = "bi**\<Esc>ea**\<Esc>"
+let @i = "bi*\<Esc>ea*\<Esc>"
+let @u = "o*\<Space>\<Space>\<Space>"
+let @o = "o1.\<Space>\<Space>"
+
+" =====================================
 "         Editor Interface
 " =====================================
 set number
@@ -60,13 +74,7 @@ set noerrorbells visualbell t_vb=
 " =====================================
 "         Tabs and Windows
 " =====================================
-" split window
-" set splitright
-" set splitbelow
-nnoremap <Leader>v :vs<CR>
-nnoremap <Leader>h :sp<CR>
-
-" map tab command
+" map new tab command
 nnoremap <C-n> :tabnew<CR>
 
 
@@ -79,10 +87,6 @@ nnoremap <C-n> :tabnew<CR>
 " F7 toggle NERDTree
 " F8 toggle tagbar
 " F9 open .vimrc in new tab
-
-" change leader to space
-nnoremap <Space> <Nop>
-let mapleader=" "
 
 map <F9> :tabedit $HOME/.vimrc<CR>
 map <F6> :so $HOME/.vimrc<CR>
@@ -128,8 +132,9 @@ Plug 'valloric/youcompleteme'           " youcompleteme - code completion
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
 Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'godlygeek/tabular'                " Tabular - text filder and alignment
-Plug 'raimondi/delimitmate'             " delemitmate - auto-completion for
+" Plug 'raimondi/delimitmate'             " delemitmate - auto-completion for
                                         "     quotes, parens, brackes, etc
+" Plug 'jiangmiao/auto-pairs'
 
 "   visual appearance
 Plug 'tpope/vim-surround'               " surroudn.vim - easy pairing
