@@ -138,6 +138,7 @@ git bisect reset             # end the search
 
 # Tagging
 git tag                                    # show all tags
+git tag -n2                                # show 2-line message of tags
 git tag <tag-name>                         # create a lightweight tag
 git tag -a <tag-name> -m <tag-message>     # create an annotated tag
 git tag -d <tag-name>                      # delete tag
