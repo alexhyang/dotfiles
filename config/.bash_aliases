@@ -1,4 +1,20 @@
-# This file contains aliases from zsh plugins
+#!/bin/bash
+# shell
+alias bashrc="vim ~/.bashrc"
+
+# git
+alias glol5="glol -n 5"
+alias glols5="glols -n 5"
+alias glola5="glola -n 5"
+alias gload="gstaa; gstd"
+
+# directory
+alias ..="cd .."
+alias ~="cd ~"
+alias .files="cd ~/.dotfiles"
+alias rlb="source ~/.bashrc"
+
+# This following is a list of aliases from zsh's git plugins
 
 # git (https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/git/git.plugin.zsh)
 # Git version checking
