@@ -1,5 +1,6 @@
 #!/bin/bash
 # shell alias
+alias src="source"
 alias rld="omz reload"
 alias cls="clear"
 alias back="popd"
