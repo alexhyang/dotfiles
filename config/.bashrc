@@ -124,4 +124,5 @@ source ~/.aliases
 source ~/.shell_utils
 source ~/.local_env
 
+export GPG_TTY=$(tty)
 source /home/alex-ubt/.config/broot/launcher/bash/br

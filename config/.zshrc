@@ -105,6 +105,7 @@ export EDITOR="$VISUAL"
 export TERM="xterm-256color"
 export HISTSIZE=5000
 export SAVEHIST=$HISTSIZE
+export GPG_TTY=$(tty)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
