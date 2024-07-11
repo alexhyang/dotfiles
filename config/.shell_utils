@@ -17,6 +17,14 @@ getDst() {
   cat ~/.mvDst
 }
 
+# set up ssh agent
+nopassphrase() {
+  eval $(ssh-agent -s);
+  ssh-add ~/.ssh/id_ed25519;
+  ssh-add -l
+}
+
+
 ## Search aliases and installed packages using pattern
 ##   e.g. $ search <pattern>
 search() {
