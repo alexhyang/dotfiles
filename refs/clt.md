@@ -21,6 +21,18 @@ Contents:
 *   info
 *   tldr (npm install -g tldr)
 
+### Remote Machines
+
+*   ssh & scp
+    ```bash
+    eval $(ssh-agent); ssh-add ~/.ssh/<private-key>; ssh-add -l
+                                            # set up ssh agent for no passphrase
+    ssh <username>@<remote_host>            # log in to remote machine
+    ssh-keygen                              # generate ssh key pairs
+    ssh-copy-id <username>@<remote_host>    # copy public key to remote machine
+    scp <origin_file_path> <dst_file_path>  # copy file to remote machine
+    ```
+
 ### Directory and Navigation
 *   [fasd (frecency, quick access to files and dirs)](https://github.com/clvv/fasd)
     ```bash
