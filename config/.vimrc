@@ -135,7 +135,7 @@ Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'godlygeek/tabular'                " Tabular - text filder and alignment
 " Plug 'raimondi/delimitmate'             " delemitmate - auto-completion for
                                         "     quotes, parens, brackes, etc
-" Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 
 "   visual appearance
 Plug 'tpope/vim-surround'               " surroudn.vim - easy pairing
