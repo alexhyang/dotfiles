@@ -33,6 +33,20 @@ Contents:
     scp <origin_file_path> <dst_file_path>  # copy file to remote machine
     ```
 
+### Signature
+
+*   gpg
+    ```bash
+    gpg --version                           # check gpg installation on machine
+    gpg --full-generate-key                 # generate gpg key
+    gpg --list-secret-keys --keyid-format LONG
+                                            # list gpg secret keys
+    git config --global user.signingkey <private-key>
+    git config --global user.gpgsign true
+                                            # sign git commits
+    gpg --armor --export <private-key>      # export public key
+    ```
+
 ### Directory and Navigation
 *   [fasd (frecency, quick access to files and dirs)](https://github.com/clvv/fasd)
     ```bash
