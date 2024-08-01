@@ -106,17 +106,6 @@ export TERM="xterm-256color"
 export HISTSIZE=5000
 export SAVEHIST=$HISTSIZE
 
-# Set up SSH agent
-# https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html
-export GPG_TTY=$(tty)
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-eval $(ssh-agent -s);
-ssh-add ~/.ssh/id_ed25519;
-ssh-add -l
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -150,3 +139,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $HOME/.config/broot/launcher/bash/br
+
+# Set up SSH agent
+# https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html
+export GPG_TTY=$(tty)
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+eval $(ssh-agent -s);
+ssh-add ~/.ssh/id_ed25519;
+ssh-add -l
+
