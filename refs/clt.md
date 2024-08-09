@@ -5,23 +5,31 @@ of tools installed, see [dotfiles/bootstrap.sh](https://github.com/alexhyang/dot
 
 Contents:
 
-* [Command Documents](#command-documents)
-* [Directory and Navigation](#directory-and-navigation)
-* [File Search](#file-search)
-* [File Content Search](#file-content-search)
-* [Processes Monitoring](#processes-monitoring)
-* [Command piping](#command-piping)
-* [Date Manipulation](#date-manipulation)
+* [Shell](#shell)
+  * [Finding help for commands](#finding-help-for-commands)
+  * [Working remotely](#working-remotely)
+  * [Signing (and protect) your work](#signing-(and-protect)-your-work)
+  * [Navigating in terminal](#navigating-in-terminal)
+  * [Searching files](#searching-files)
+  * [Searching file content](#searching-file-content)
+  * [Monitoring processes](#monitoring-processes)
+  * [Piping commands](#piping-commands)
+  * [Manipulating data](#manipulating-data)
+* [Programming Languages](#programming-languages)
+  * [Java](#java)
 * [References](#references)
 
 ## Shell
 
-### Command Documents
-*   man
-*   info
-*   tldr (npm install -g tldr)
+### Finding help for commands
 
-### Remote Machines
+```bash
+man <command>                               # display the manual pages
+info <command>                              # show more in-depth documentation
+tldr                                        # simplified man pages (npm install -g tldr)
+```
+
+### Working remotely
 
 *   ssh & scp
     ```bash
@@ -33,7 +41,7 @@ Contents:
     scp <origin_file_path> <dst_file_path>  # copy file to remote machine
     ```
 
-### Signature
+### Signing (and protect) your work
 
 *   gpg
     ```bash
@@ -47,7 +55,7 @@ Contents:
     gpg --armor --export <private-key>      # export public key
     ```
 
-### Directory and Navigation
+### Navigating in terminal
 *   [fasd (frecency, quick access to files and dirs)](https://github.com/clvv/fasd)
     ```bash
     # Setup
@@ -69,9 +77,22 @@ Contents:
     alias o='fasd -a -e xdg-open'
     alias j='zz'
     ```
+*   [autojump (easy navigation from command line)](https://github.com/wting/autojump)
+    ```bash
+    # set up
+    sudo apt install autojump
+    j <pattern>              # jump to a directory containing given pattern
+    jc <pattern>             # jump to a subdir containing given pattern
+    jo <pattern>             # open directory in system file manager
+    j --purge                # clean invalid jump entries in database
+    ```
 
-*   autojump (apt)
-*   tree (apt)
+*   tree
+    ```bash
+    # set up
+    sudo apt install tree
+    tree -L <num>            # print files and dirs
+    ```
 
 *   [broot](https://dystroy.org/broot/file-operations/)
     ```plaintext
@@ -92,10 +113,8 @@ Contents:
 *   nnn
 *   ranger
 
-### File Search
-tags    = ['life']
-tags    = ['life']
-tags    = ['life']
+### Searching files
+
 *   find
     ```bash
     -name pattern    # base of file name, don't include path in file name pattern
@@ -149,18 +168,18 @@ tags    = ['life']
 *   locate (apt)
 *   tar & gzip
 
-### File Content Search
-*   grep
+### Searching file content
 *   rg (apt ripgrep)
+*   grep
 
-### Processes Monitoring
+### Monitoring processes
 *   pstree
 *   htop (apt)
 
-### Command piping
+### Piping commands
 *   xargs
 
-### Date Manipulation
+### Manipulating data
 *   [jq](https://jqlang.github.io/jq/tutorial/) (JSON formatter)
     ```bash
     jq '.' input.json > output.json    # beautify JSON file
