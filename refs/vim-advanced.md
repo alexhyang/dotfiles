@@ -15,6 +15,8 @@ Contents:
 :vs(p)      " split window vertically
 ^w + hjkl   " navigate to window
 ^w + HJKL   " move window
+^w + x      " switch window with next one
+^w + r      " rotate windows
 ^w + >      " increase window width
 ^w + <      " decrease window width
 ^w + +      " increase window height
