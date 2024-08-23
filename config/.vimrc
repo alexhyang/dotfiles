@@ -68,6 +68,11 @@ endif
 set termguicolors
 colorscheme catppuccin_macchiato
 
+:command Cat echo "mocha macchiato frappe latte"
+:command Mocha colorscheme catppuccin_mocha
+:command Machhi colorscheme catppuccin_macchiato
+:command Frappe colorscheme catppuccin_frappe
+:command Latte colorscheme catppuccin_latte
 
 " disable audible bell
 set noerrorbells visualbell t_vb=
