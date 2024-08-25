@@ -8,7 +8,6 @@ Contents:
   * [Basic file commands](#basic-file-commands)
   * [Basic vim setup commands](#basic-vim-setup-commands)
   * [Movement](#movement)
-  * [Window](#window)
   * [Editing](#editing)
     * [Insert](#insert)
     * [Change or replace](#change-or-replace)
