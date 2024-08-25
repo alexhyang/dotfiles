@@ -4,12 +4,40 @@ This document lists some of the most commonly used advanced Vim commands.
 
 Contents:
 
+* [Advanced Editing](#advanced-editing)
 * [Tabs & Windows](#tabs-&-windows)
 * [Key Mappings](#key-mappings)
+  * [command line mapping](#command-line-mapping)
 * [Programming](#programming)
+  * [general](#general)
+  * [markdown](#markdown)
 * [References](#references)
 
+## Advanced Editing
+
+```vim
+" SpellBad (word not recognized)
+" SpellCap (word not capitalized)
+" SpellRare (rare word)
+" SpellLocal (wrong spelling for selected region)
+"
+" check type of misspelled word
+:echo spellbadword()
+]s      " move to next misspelled word
+[s      " move to previous misspelled word
+]S      " move to next SpellBad, not SpellRare or SpellLocal
+[S      " move to previous SpellBad, not SpellRare or SpellLocal
+z=      " get correct word suggestions
+zg      " add to good word list
+zug     " undo zg
+zw      " add to bad word list
+zuw     " undo zw
+```
+
+[ref - Vim documentation: Spell](https://vimdoc.sourceforge.net/htmldoc/spell.html)
+
 ## Tabs & Windows
+
 ```vim
 :sp         " split window horizontally
 :vs(p)      " split window vertically
@@ -29,6 +57,7 @@ gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 ```
 
 ## Key Mappings
+
 ```vim
 :verbose map {key}    " display mapping if it exist
 :filter /pattern/ map " search pattern in key mapping
@@ -46,6 +75,12 @@ gt/gT       " go to next/previous tab (:tabnext, :tabprevious)
 " non-recursive:
 "     does not trigger other mappings,
 "     generally preferred to prevent unexpected side effects
+```
+
+### command line mapping
+
+```vim
+:command <YourNewCommandName> <commandToExecute> " user-defined commands
 ```
 
 ## Programming
@@ -72,5 +107,6 @@ zR/zM   " expand/collapse all headers
 
 ## References
 
+- [Vim Documentation: help (HTML version)](https://vimdoc.sourceforge.net/htmldoc/help.html)
 - [Mapping keys in Vim (Part 1) - Vim Tips Wiki](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_\(Part_1\))
 - [Using tab pages - Vim Tips Wiki](https://vim.fandom.com/wiki/Using_tab_pages)
