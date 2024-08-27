@@ -10,12 +10,15 @@ alias treeN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
 
-# edit config files
-alias aliases="vim ~/.dotfiles/config/.aliases"
-alias sh_utils="vim ~/.dotfiles/config/.shell_utils"
+# edit and/or reload config files
+alias al="vim ~/.dotfiles/config/.aliases"
+alias lal="source ~/.dotfiles/config/.aliases"
+alias shut="vim ~/.dotfiles/config/.shell_utils"
+alias lshut="source ~/.dotfiles/config/.shell_utils"
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
 alias zlc="vim ~/.zshrc.local"
 alias lzlc="source ~/.zshrc.local"
+alias laa="lal; lshut; lzlc"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
@@ -24,6 +27,7 @@ alias .files="cd $DOTFILES/"
 alias bootstrap="source $DOTFILES/bootstrap.sh"
 alias .scr="cd $DOTFILES/scripts"
 alias .cfg="cd $DOTFILES/config"
+alias .ref="cd $DOTFILES/refs"
 alias .nvim="cd $(readlink -f $HOME/.config/nvim)/lua; tree"
 
 # service
