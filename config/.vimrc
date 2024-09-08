@@ -68,11 +68,11 @@ endif
 set termguicolors
 colorscheme catppuccin_macchiato
 
-:command Cat echo "mocha macchiato frappe latte"
-:command Mocha colorscheme catppuccin_mocha
-:command Machhi colorscheme catppuccin_macchiato
-:command Frappe colorscheme catppuccin_frappe
-:command Latte colorscheme catppuccin_latte
+:command! Cat echo "mocha macchiato frappe latte"
+:command! Mocha colorscheme catppuccin_mocha
+:command! Machhi colorscheme catppuccin_macchiato
+:command! Frappe colorscheme catppuccin_frappe
+:command! Latte colorscheme catppuccin_latte
 
 " disable audible bell
 set noerrorbells visualbell t_vb=
@@ -161,6 +161,8 @@ Plug 'w0rp/ale'                         " async lint engine - syntax checking
 Plug 'prettier/vim-prettier'            " vim prettier
 Plug 'bronson/vim-trailing-whitespace'  " trailing whitespace in red
 Plug 'editorconfig/editorconfig-vim'    " vim support for .editorconfig
+" Plug 'lervag/vimtex', { 'tag': 'v2.15' } " vim latex plugin
+Plug 'vim-latex/vim-latex'              " vim latex plugin
 
 " Search
 Plug 'mileszs/ack.vim'                  " ack - vim plugin for ack
@@ -255,6 +257,18 @@ let g:airline_solarized_bg='dark'
 let g:airline_section_z = "%p%% : \ue0a1:%l/%L: Col:%c"
 let g:airline_section_z = "%p%% ☰ %l/%L: %c"
 let g:airline_extensions = []
+
+" let g:airline#extensions#vimtex#enabled = 1
+" let g:airline#extensions#vimtex#left = "{"
+" let g:airline#extensions#vimtex#right = "}"
+" let g:airline#extensions#vimtex#main = ""
+" let g:airline#extensions#vimtex#sub_main = "m"
+" let g:airline#extensions#vimtex#sub_local = "l"
+" let g:airline#extensions#vimtex#compiled = "c₁"
+" let g:airline#extensions#vimtex#continuous = "c"
+" let g:airline#extensions#vimtex#viewer = "v"
+" let g:airline#extensions#vimtex#wordcount = 1
+
 
 " --------------------------------
 " plugin: vim-hardtime
