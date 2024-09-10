@@ -166,9 +166,8 @@ pdftex <source.tex>
 *   [Learn LaTex](https://www.learnlatex.org/en/)
 *   [Learn LaTex in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
 *   [amsmath user guide](https://texdoc.org/serve/amsmath/0)
-*   [LaTeX 2e cheat sheet](https://mirror.csclub.uwaterloo.ca/CTAN/info/latexcheat/latexcheat/latexsheet.pdf), [local version](../cheatsheets/LaTexX_2e.pdf)
-*   [LaTex 2e ref sheet for a thesis](https://mirror.csclub.uwaterloo.ca/CTAN/info/latex-refsheet/LaTeX_RefSheet.pdf), [local_version](../cheatsheets/LaTexX_2e_RefSheet.pdf)
-
+*   [LaTeX 2e cheat sheet](https://mirror.csclub.uwaterloo.ca/CTAN/info/latexcheat/latexcheat/latexsheet.pdf), [local version](../cheatsheets/LaTeX_2e.pdf)
+*   [LaTex 2e ref sheet for a thesis](https://mirror.csclub.uwaterloo.ca/CTAN/info/latex-refsheet/LaTeX_RefSheet.pdf), [local_version](../cheatsheets/LaTeX_2e_RefSheet.pdf)
 *   [Tex - A sophisticated typesetting engine](https://ctan.org/pkg/tex)
 *   [Tex Live - Quick install for Unix](https://tug.org/texlive/quickinstall.html)
 *   [Base sources of LaTeX - CTAN](https://ctan.org/pkg/latex-base)
