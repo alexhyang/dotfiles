@@ -63,6 +63,8 @@ Content:
     *   vim -- ~/.vimrc, ~/.vim/
     *   ssh -- ~/.ssh/config
     *   tmux -- ~/.tmux.conf
+    *   aliases, functions, local environment variables -- ~/.aliases,
+        ~/.bash_aliases, ~/.shell_utils, ~/.local_env
 
 *   use "redirect" to source files in the dotfiles repo,
     sensitive information such as customized directory and
