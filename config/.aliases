@@ -11,14 +11,15 @@ alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
 
 # edit and/or reload config files
-alias al="vim ~/.dotfiles/config/.aliases"
-alias lal="source ~/.dotfiles/config/.aliases"
-alias shut="vim ~/.dotfiles/config/.shell_utils"
-alias lshut="source ~/.dotfiles/config/.shell_utils"
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
-alias zlc="vim ~/.zshrc.local"
-alias lzlc="source ~/.zshrc.local"
-alias laa="lal; lshut; lzlc"
+alias zshrc="vi ~/.dotfiles/config/.zshrc"
+alias al="vim ~/.dotfiles/config/.aliases"
+alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
+alias shut="vim ~/.dotfiles/config/.shell_utils"
+alias lshut="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
+alias lc="vim ~/.local_env"
+alias llc="source ~/.local_env; echo '~/.local_env updated'"
+alias laa="lal; lshut; llc;"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
