@@ -13,10 +13,13 @@ alias help="bat ~/.dotfiles/refs/clt.md"
 # edit and/or reload config files
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
 alias zshrc="vi ~/.dotfiles/config/.zshrc"
+## aliases
 alias al="vim ~/.dotfiles/config/.aliases"
 alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
+## shell functions
 alias shut="vim ~/.dotfiles/config/.shell_utils"
 alias lshut="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
+## local environments and aliases
 alias lc="vim ~/.local_env"
 alias llc="source ~/.local_env; echo '~/.local_env updated'"
 alias laa="lal; lshut; llc;"
@@ -67,7 +70,7 @@ alias tmern="tmux source-file ~/.tmux/mern.sh"
 alias tam="tmux attach-session -t mern"
 alias tkm="tmux kill-session -t mern; tmux ls"
 alias tres="tmux source-file ~/.tmux/research.sh"
-alias tar="tmux attach-session -t research"
+alias tare="tmux attach-session -t research"
 alias tkr="tmux kill-session -t research; tmux ls"
 alias tle="tmux source-file ~/.tmux/leet.sh"
 alias tal="tmux attach-session -t leet"
