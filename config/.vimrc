@@ -42,7 +42,7 @@ nnoremap <F3> :noh<CR>
 
 
 " =====================================
-"         Registers
+"         Macros
 " =====================================
 " Markdown
 let @t = "bi`\<Esc>ea`\<Esc>"
@@ -110,6 +110,9 @@ inoremap <Right> <ESC>: echoe "Use l"<CR>
 inoremap <Up>    <ESC>: echoe "Use k"<CR>
 inoremap <Down>  <ESC>: echoe "Use j"<CR>
 
+" use 'jk' to exit insert mode
+inoremap jk  <ESC>
+inoremap kj  <ESC>
 
 " unbind some useless default key bindings
 " 'Q' in normal mode enters Ex mode
