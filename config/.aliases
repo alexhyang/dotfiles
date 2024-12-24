@@ -6,6 +6,7 @@ alias cls="clear"
 alias back="popd"
 alias mv="mv -i"
 alias cpi="cp -i"
+alias treeL="tree -L"
 alias treeN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
@@ -33,6 +34,12 @@ alias .scr="cd $DOTFILES/scripts"
 alias .cfg="cd $DOTFILES/config"
 alias .ref="cd $DOTFILES/refs"
 alias .nvim="cd $(readlink -f $HOME/.config/nvim)/lua; tree"
+alias .nvimcheck="readlink -f $HOME/.config/nvim"
+alias .nvimlazy="ln -sfn ~/.dotfiles/config/LazyVim_nvim ~/.config/nvim; \
+  echo use lazy nvim config"
+alias .nvimvanilla="ln -sfn ~/.dotfiles/config/vanilla_nvim ~/.config/nvim; \
+  echo use vanilla nvim config"
+# -n avoids creating a sub-folder inside the old target folder
 
 # service
 alias weather="curl wttr.in"
