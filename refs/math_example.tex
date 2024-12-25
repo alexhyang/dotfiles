@@ -1,0 +1,146 @@
+%% Standard start of a latex document
+\documentclass[letterpaper,12pt]{article}
+%% Always use 12pt - it is much easier to read
+
+%% Set some names and numbers here so we can use them below
+\newcommand{\myname}{Alex Yang} %%%%%%%%%%%%%%% ---------> Change this to your name
+\newcommand{\mynumber}{52656155} %%%%%%%%%%%%%%% ---------> Change this to your student number
+\newcommand{\hw}{0} %%%%%%%%%%%%%%% --------->  set this to the homework number
+
+%%%%%%
+%% There is a bit of stuff below which you should not have to change
+%%%%%%
+
+%% AMS mathematics packages - they contain many useful fonts and symbols.
+\usepackage{amsmath, amsfonts, amssymb}
+
+%% The geometry package changes the margins to use more of the page, I suggest
+%% using it because standard latex margins are chosen for articles and letters,
+%% not homework.
+\usepackage[paper=letterpaper,left=25mm,right=25mm,top=3cm,bottom=25mm]{geometry}
+%% For details of how this package work, google the ``latex geometry documentation''.
+
+%%
+%% Fancy headers and footers - make the document look nice
+\usepackage{fancyhdr} %% for details on how this work, search-engine ``fancyhdr documentation''
+\pagestyle{fancy}
+%%
+%% The header
+\lhead{Mathematics 220} % course name as top-left
+\chead{Homework \hw} % homework number in top-centre
+\rhead{ \myname \\ \mynumber }
+%% This is a little more complicated because we have used `` \\ '' to force a line-break between the name and number.
+%%
+%% The footer
+\lfoot{\myname} % name on bottom-left
+\cfoot{Page \thepage} % page in middle
+\rfoot{\mynumber} % student number on bottom-right
+%%
+%% These put horizontal lines between the main text and header and footer.
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%
+
+%%%%%%
+%% We shouldn't have to change the stuff above, but if you want to add some new commands and things like that, then putting them between here and the ``\begin{document}'' is a good idea.
+%%%%%%
+
+
+\begin{document}
+Homework 0 does not contain any mathematics --- it is just for you to practice using latex. All I want you to do is to try to reproduce this document as well as you can. We don't mind if you work in small groups, but just copying it directly from a friend isn't going to help you later in the term.
+
+
+\textbf{Questions:}
+
+%%
+%% There are 2 list environments, itemize and enumerate. They are almost identical, but each item in itemize is started with a bullet or dot, while each item in enumerate is numbered.
+%%
+\begin{enumerate}
+%% This is where your actual homework will go.
+  \item Your solution to question 1. \\
+    How did I break the line? \\
+    It might contain some \textit{text in italics} or some \textbf{in bold} or
+    \begin{quote}a short quote.\end{quote}
+    But it will almost certainly contain some mathematics, so we need to use the
+    equation environment.
+    \begin{equation}
+      \int \sin (x) dx = - \cos (x) + c
+    \end{equation}
+    Integrals are easy with int, but we can make the dee-x look nicer by forcing
+    latex to write it in roman-font using mathrm
+    \begin{equation}
+      \int \sin (x) \mathrm{d}x = - \cos (x) + c
+    \end{equation}
+    Note that it is a good idea to number all equations, and thankfully latex does
+    this for us when we use the equation environment.
+
+
+  \item Your solution to question 2. \\
+    This might be more involved with some set notation \\
+    \begin{equation}
+      A \cup (B \cap C) = (A \cup B) \cap (A \cup C)
+    \end{equation}
+
+    You should look up the latex commands for these symbols --- they are not hard.
+    While you are here, be careful of the length of dashes and hyphens --- latex
+    has three different ones for use in different contexts.
+
+    Possibly we’ll need some computation that lies across several lines
+    \begin{align}
+      x^{2} + y^{2} &= 4 \\
+      y^2 &= 4 - x^2 \\
+      y &= \pm \sqrt{4 - x^2}
+    \end{align}
+    In this case we use a different environment --- the align environment is very
+    good for this and it is defined for us in the amsmath package (which we have
+    already included). You might need to do some reading online to work out how
+    to use \& correctly.
+
+ \item Your solution to question 3. \\
+  This could involve some actual words as well as mathematical symbols. You
+  will need to write plenty of words in this course.
+  \begin{align}
+    x^{2} + y^{2} &= 4      & \text{I want to solve this}& \\
+    y^2 &= 4 - x^2          & \text{So move the $x$ over}& \\
+    y &= \pm \sqrt{4 - x^2} & \text{and take a square root}&
+  \end{align}
+
+ \item And now we are on to question 4. \\
+   It is a good idea to learn to write the symbols for important sets of numbers
+   in black-board bold --- thankfully this is defined by mathbb in the amsmath
+   package. We can put a few in a list
+   \begin{itemize}
+     \item The natural numbers $\mathbb{N} = \{1,2,3,\dots\}$
+     \item The integers $\mathbb{Z} = \{0,1,-1,2,-2,3,\dots\}$
+     \item The rational numbers $\mathbb{Q} = \big\{\frac{a}{b} \mid a,b \in
+       \mathbb{Z}\big\}$.
+   \end{itemize}
+
+\item Question 5. \\
+  To make equations look nice, we should be able to change the size of brackets
+  \begin{align}
+    f(\frac{x}{y}) &= \text{ugly} \\
+    f\,\biggl(\frac{x}{y}\biggr) &= \text{better} \\
+    \{a,b,c,\frac{d}{e}, \int x^3 \mathrm{d}x \} &= \text{ugly} \\
+    \left\{a,b,c,\frac{d}{e}, \int x^3 \mathrm{d}x \right\} &= \text{a thing of beauty}
+  \end{align}
+  There are two ways to do this --- using left and right just before the
+  bracket, or using big, Big, bigg, Bigg.
+
+\item Question 6. \\
+  We also need some arrows for logic, in particular
+  \begin{align}
+    P &\rightarrow Q \hspace{100pt}\text{is not the same as} \\
+    P &\Rightarrow Q
+  \end{align}
+  The first means ``$P$ tends to $Q$'' while the second means ``$P$ implies $Q$''.
+  \textbf{You should be careful to get your quotation marks right.} We will
+  also need more arrows when we define functions \\
+  \begin{equation}
+    f: \mathbb{Q} \mapsto \mathbb{R} \\
+  \end{equation}
+\end{enumerate}
+\hspace{20pt}That's all. Practice practice practice. \\
+
+%% Anything that comes after the ``\end{document}'' will be ignored.
+\end{document}

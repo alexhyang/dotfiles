@@ -39,6 +39,19 @@ In math mode, spaces are ignored and the correct spacing between characters is
 (almost always) applied.
 
 ```latex
+% in-line math mode (three different ways)
+\( ... \) % preferred
+$ ... $
+\begin{math} ... \end{math}
+
+% display math mode (four different ways)
+% $$ ... $$ no longer recommended
+\[ ... \] % preferred
+\begin{equation} ... \end{equation}
+\begin{displaymath} ... \end{displaymath}
+```
+
+```latex
 $a^{b}$ % superscript
 $a_{b}$ % subscript
 $\frac{x}{y}$ % fractions x/y
@@ -56,6 +69,12 @@ $\frac{x}{y}$ % fractions x/y
 % size of brackets
 \big, \Big, \bigg, \Bigg
 \left, \right
+```
+
+```latex
+% other commands used before
+\dfrac{}{}            % display style of fraction
+\begin{split}         %
 ```
 
 ## Structure

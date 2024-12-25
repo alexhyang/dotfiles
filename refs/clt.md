@@ -21,6 +21,18 @@ Contents:
 
 ## Shell
 
+### Command line shortcuts
+```
+^l                  # clears screen
+^d                  # exits current shell
+^z                  # puts the current process into suspended background
+^c                  # kills the current process
+^h                  # works the same as backspace
+^a/e                # goes to the beginning/end of the line
+^w                  # deletes the word before the cursor
+^u                  # remove whole line
+```
+
 ### Finding help for commands
 
 ```bash
@@ -56,7 +68,8 @@ tldr                                        # simplified man pages (npm install 
     ```
 
 ### Navigating in terminal
-*   [fasd (frecency, quick access to files and dirs)](https://github.com/clvv/fasd)
+
+*   [fasd (frequency, quick access to files and dirs)](https://github.com/clvv/fasd)
     ```bash
     # Setup
     sudo apt install fasd
@@ -77,6 +90,7 @@ tldr                                        # simplified man pages (npm install 
     alias o='fasd -a -e xdg-open'
     alias j='zz'
     ```
+
 *   [autojump (easy navigation from command line)](https://github.com/wting/autojump)
     ```bash
     # set up
@@ -167,12 +181,30 @@ tldr                                        # simplified man pages (npm install 
 
 *   locate (apt)
 *   tar & gzip
+    ```bash
+    tar tvf <file.tar>      # list the contents of a tar file verbosely
+    tar xvf <file.tar[.gz|.bz2|.xz]>
+                            # extract a compressed archive file into current
+                            #   directory verbosely (as a subfolder)
+    ```
 
 ### Searching file content
+
 *   rg (apt ripgrep)
 *   grep
 
+### Editing file content
+
+*   sed
+    ```bash
+    # remove lines in file
+    sed -i "7d" <filename>              # remove the 7th line in file
+    sed -i "11,20d" <filename>          # remove lines (11-20) in file
+    sed -i "/<patter>/d" <filename>     # remove lines that contain the patter
+    ```
+
 ### Monitoring processes
+
 *   pstree
 *   htop (apt)
 
