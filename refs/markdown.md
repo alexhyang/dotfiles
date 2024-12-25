@@ -1,4 +1,4 @@
-# Markdown 
+# Markdown
 
 This document contains notes about markdown syntax basics.
 
@@ -31,15 +31,15 @@ Notes:
 leave space before heading and between heading marker (#) and content.
 
 ## Paragraphs
-Notes: 
+Notes:
 1.  use a blank line to create a paragraph
 2.  don't indent paragraphs unless under a list
 
 ## Line Breaks
-Notes: 
-1.  \<br\> is not recommended because "some editors and IDEs will have trailing 
+Notes:
+1.  \<br\> is not recommended because "some editors and IDEs will have trailing
     whitespace presubmit check in place, and many IDEs will clean it up"
-2.  trailing whitespace is not recommended because some IDE or autoformmater 
+2.  trailing whitespace is not recommended because some IDE or autoformmater
     will trim spaces
 3.  simply use blank lines to create new paragraphs
 
@@ -158,10 +158,10 @@ text 2
 
 2.  use HTML syntax
 
-    Markdown was originally designed with the capability to be converted to 
+    Markdown was originally designed with the capability to be converted to
     valid XHTML or HTML. Basic inline HTML tags may be supported.
 
-    <img src="https://pbs.twimg.com/media/Fik1kbbWIAIYv5m?format=jpg&name=small" 
+    <img src="https://pbs.twimg.com/media/Fik1kbbWIAIYv5m?format=jpg&name=small"
     alt="fox" title="formatted image with raw HTML tag" width="50%">
 
     ```html
