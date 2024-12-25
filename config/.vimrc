@@ -1,3 +1,9 @@
+"   system vimrc file: "$VIM/vimrc"
+"     user vimrc file: "$HOME/.vimrc"
+" 2nd user vimrc file: "~/.vim/vimrc"
+"      user exrc file: "$HOME/.exrc"
+"       defaults file: "$VIMRUNTIME/defaults.vim"
+"  fall-back for $VIM: "/usr/share/vim"
 " =====================================
 "             Editing
 " =====================================
