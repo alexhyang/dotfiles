@@ -17,13 +17,16 @@ getDst() {
   cat ~/.mvDst
 }
 
+goDst() {
+  cd $(getDst)
+}
+
 # set up ssh agent
 nopassphrase() {
   eval $(ssh-agent -s);
   ssh-add ~/.ssh/id_ed25519;
   ssh-add -l
 }
-
 
 ## Search aliases and installed packages using pattern
 ##   e.g. $ search <pattern>
@@ -98,6 +101,23 @@ addPrefix() {
     rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
   else
     echo "rename cancelled"
+  fi
+}
+
+# check whether
+weatherfull () {
+  if [[ $1 == "" ]]; then
+    curl -s wttr.in/YVR\?format=%l:+%x+%C+%t+%w+%S-%s
+    echo ""
+    curl -s wttr.in/YYZ\?format=%l:+%x+%C+%t+%w+%S-%s
+    echo ""
+    curl -s wttr.in/SEA\?format=%l:+%x+%C+%t+%w+%S-%s
+    echo ""
+    curl -s wttr.in/JFK\?format=%l:+%x+%C+%t+%w+%S-%s
+    echo ""
+  else
+    curl -s wttr.in/$1\?format=%l:+%x+%C+%t+%w+%S-%s
+    echo ""
   fi
 }
 
@@ -264,5 +284,5 @@ jrun () {
 }
 
 crun () {
-  gcc -o $1 $1.c; ./$1
+  gcc -std=gnu11 -g -o $1 $1.c
 }
