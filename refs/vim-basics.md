@@ -217,6 +217,7 @@ set expandtab
 
 
 ## References and resources
+*   [Learn Vim (the smart way)](https://learnvim.irian.to/read_this_first)
 *   [Best Vim Tips](https://vim.fandom.com/wiki/Best_Vim_Tips)
 *   [Vim Doc - Statusline](http://vimdoc.sourceforge.net/htmldoc/options.html#'statusline')
 *   [Vim Doc - Tabstop](http://vimdoc.sourceforge.net/htmldoc/options.html#'tabstop')

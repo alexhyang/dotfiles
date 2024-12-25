@@ -49,6 +49,7 @@ zuw     " undo zw
 ^w + <      " decrease window width
 ^w + +      " increase window height
 ^w + -      " decrease window height
+^w + =      " reset window size
 
 :tabnew     " create new tab
 :tabedit    " open file in new tab
