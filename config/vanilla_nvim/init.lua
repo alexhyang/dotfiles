@@ -256,10 +256,83 @@ require("lualine").setup({
   extensions = {}
 })
 
+-- bufferline
+local bufferline = require("bufferline")
+bufferline.setup({
+  options = {
+    mode = "buffers",
+    style_preset = bufferline.style_preset.minimal,
+    numbers = "none",
+    indicator = {
+      style = "underline"
+    },
+    tab_size = 12,
+    diagnostics = "nvim_lsp",
+    offsets = {
+      {
+        filetype = "NvimTree",
+        textAlign = "left",
+        separator = false
+      }
+    },
+    show_buffer_icons = false,
+    show_buffer_close_icons = false,
+    separator_style = "thin",
+  }
+})
+
 -- nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-keymap.set("n", "<Leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
+
+-- gitsigns
+require('gitsigns').setup {
+  on_attach = function(bufnr)
+    local gitsigns = require('gitsigns')
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ ']c', bang = true })
+      else
+        gitsigns.nav_hunk('next')
+      end
+    end)
+
+    map('n', '[c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ '[c', bang = true })
+      else
+        gitsigns.nav_hunk('prev')
+      end
+    end)
+
+    -- Actions
+    map('n', '<leader>hs', gitsigns.stage_hunk)
+    map('n', '<leader>hr', gitsigns.reset_hunk)
+    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('n', '<leader>hS', gitsigns.stage_buffer)
+    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
+    map('n', '<leader>hR', gitsigns.reset_buffer)
+    map('n', '<leader>hp', gitsigns.preview_hunk)
+    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
+    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+    map('n', '<leader>hd', gitsigns.diffthis)
+    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+    map('n', '<leader>td', gitsigns.toggle_deleted)
+
+    -- Text object
+    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup({
@@ -330,10 +403,10 @@ lspconfig.rust_analyzer.setup({
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-keymap.set("n", "<space>e", vim.diagnostic.open_float)
+keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 keymap.set("n", "[d", vim.diagnostic.goto_prev)
 keymap.set("n", "]d", vim.diagnostic.goto_next)
-keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
