@@ -26,7 +26,8 @@ opt.wrap = false
 -- opt.backspace = indent,eol,start
 opt.spell = true
 opt.spelllang = "en_us"
-opt.colorcolumn = "80"
+-- opt.colorcolumn = "80"
+cmd("set cc=78,80,120")
 opt.mouse:append("a")
 -- opt.cursorline = true
 
@@ -41,6 +42,18 @@ opt.hlsearch = true
 
 
 -- =====================================
+--         Macros
+-- =====================================
+-- Markdown formatting
+cmd("let @t = \"bi`\\<Esc>ea`\\<Esc>\"")
+cmd("let @b = \"bi**\\<Esc>ea**\\<Esc>\"")
+cmd("let @i = \"bi*\\<Esc>ea*\\<Esc>\"")
+cmd("let @u = \"o*\\<Space>\\<Space>\\<Space>\"")
+cmd("let @o = \"o1.\\<Space>\\<Space>\"")
+cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
+
+
+-- =====================================
 --          Key map
 -- =====================================
 keymap.set("", "<F3>", ":noh<CR>")
@@ -49,6 +62,11 @@ keymap.set("", "<F6>", ":so $HOME/.config/nvim/init.lua<CR>")
 keymap.set("i", "jk", "<Esc>")
 keymap.set("i", "kj", "<Esc>")
 keymap.set("n", "<C-n>", ":tabnew<CR>")
+keymap.set("n", "<leader>bk", ":bn<CR>")
+keymap.set("n", "<leader>bj", ":bp<CR>")
+keymap.set("n", "<leader>bd", ":bd<CR>")
+keymap.set("n", "<leader>bh", ":bf<CR>")
+keymap.set("n", "<leader>bl", ":bl<CR>")
 keymap.set("n", "Q", "<Nop>")
 cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
 cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
@@ -336,7 +354,7 @@ require('gitsigns').setup {
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
   sync_install = false,
   auto_install = true,
   highlight = {
