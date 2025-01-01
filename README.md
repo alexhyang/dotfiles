@@ -58,13 +58,13 @@ Content:
 ## Explanations
 ### Dotfiles
 *   some tools to be configured through dotfiles:
-    *   shell -- ~/.bashrc, ~/.bash_profile, ~/.zshrc
-    *   git -- ~/.gitconfig
-    *   vim -- ~/.vimrc, ~/.vim/
-    *   ssh -- ~/.ssh/config
-    *   tmux -- ~/.tmux.conf
-    *   aliases, functions, local environment variables -- ~/.aliases,
-        ~/.bash_aliases, ~/.shell_utils, ~/.local_env
+    *   shell -- `~/.bashrc, ~/.bash_profile, ~/.zshrc`
+    *   git -- `~/.gitconfig`
+    *   vim -- `~/.vimrc`
+    *   ssh -- `~/.ssh/config`
+    *   tmux -- `~/.tmux.conf`
+    *   aliases, functions, local environment variables -- `~/.aliases,
+        ~/.bash_aliases, ~/.shell_utils, ~/.local_env`
 
 *   use "redirect" to source files in the dotfiles repo,
     sensitive information such as customized directory and
@@ -85,17 +85,20 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
     *   [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     *   [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
     *   [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    *   [ohmyzsh list of plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 
-*   Vim plugins
+*   Vim plugins and their help files
 
-    Open .vimrc to see the list of plugins. Use `:help` command to
-    open help file. Search "local-additions" with `/local` and move
-    cursor to underlined plugin names and open with `ctrl ]`. Type
-    `ctrl o` to go back to help file after finishing reading or
-    `:q` to close help file.
+    *   List of plugins:
+        *   Check plugin list in `.vimrc`, or
+        *   In vim, open help file using type `:help` command in normal mode.
+            Search "local-additions" with `/local-additions` command in help
+            file. Use `ctrl ]` to open hyperlink (go to tag) and `ctrl t` to
+            return from opened hyperlink (ctag return), or `ctrl o` to go
+            back.
 
 *   tmux plugins
-    *   to be added
+    *   see [tmux.conf](./config/.tmux.conf)
 
 ## References
 *   [My developer workflow using WSL, tmux and Neovim](https://dev.to/nexxeln/my-developer-workflow-using-wsl-tmux-and-neovim-55f5)
