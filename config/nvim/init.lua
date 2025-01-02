@@ -549,12 +549,12 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publ
 --      Using Nvim on Windows
 -- =====================================
 -- USE "\" instead of "/" as delimiting characters in Windows
--- (UNCOMMENT the following key mappings in Windows)
+-- (UNCOMMENT the following key mappings if using Windows)
 -- keymap.set("", "<F9>", ":tabedit $HOME\\.config\\nvim\\init.lua<CR>")
 -- keymap.set("", "<F6>", ":so $HOME\\.config\\nvim\\init.lua<CR>")
 
 -- gitsigns complete setup will cause neovim on Windows to freeze when quitting
--- (COMMENT OUT the following gitsigns setup in Windows)
+-- (COMMENT OUT the following gitsigns setup if using Windows)
 require('gitsigns').setup({
   on_attach = function(bufnr)
     local gitsigns = require('gitsigns')
