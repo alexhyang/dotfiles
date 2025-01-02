@@ -1,6 +1,6 @@
 #!/bin/bash
 # shell alias
-alias src="source"
+alias so="source"
 alias rld="omz reload"
 alias cls="clear"
 alias back="popd"
@@ -10,6 +10,7 @@ alias treeL="tree -L"
 alias treeN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
+alias signgc="source ~/.dotfiles/config/gpg.sh"
 
 # edit and/or reload config files
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
