@@ -13,11 +13,13 @@ ln -sf $DOTFILES/config/.zshrc ~/.zshrc
 ln -s $DOTFILES/config/.p10k.zsh ~/.p10k.zsh
 
 # Neovim
-ln -s $DOTFILES/config/nvim ~/.config/nvim
+# -n avoids creating a sub-folder inside the old target folder
+ln -sfn $DOTFILES/config/nvim ~/.config/nvim
 
 # workflow
 ln -s $DOTFILES/config/.vimrc ~/.vimrc
 ln -s $DOTFILES/config/.tmux.conf ~/.tmux.conf
-ln -s $DOTFILES/config/.tmux ~/.tmux
+ln -sfn $DOTFILES/config/.tmux ~/.tmux
 
 echo "dotflies linked successfully!"
+echo "now copy .local_env to root folder"

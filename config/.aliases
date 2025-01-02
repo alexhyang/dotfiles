@@ -13,16 +13,19 @@ alias help="bat ~/.dotfiles/refs/clt.md"
 alias signgc="source ~/.dotfiles/config/gpg.sh"
 
 # edit and/or reload config files
+alias usevim="alias vi=\"vim\"; echo using vim";
+alias usenv="alias vi=\"nvim\"; echo using nvim";
+
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
 alias zshrc="vi ~/.dotfiles/config/.zshrc"
 ## aliases
-alias al="vim ~/.dotfiles/config/.aliases"
+alias al="vi ~/.dotfiles/config/.aliases"
 alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
 ## shell functions
-alias shut="vim ~/.dotfiles/config/.shell_utils"
+alias shut="vi ~/.dotfiles/config/.shell_utils"
 alias lshut="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
 ## local environments and aliases
-alias lc="vim ~/.local_env"
+alias lc="vi ~/.local_env"
 alias llc="source ~/.local_env; echo '~/.local_env updated'"
 alias laa="lal; lshut; llc;"
 
@@ -34,13 +37,9 @@ alias bootstrap="source $DOTFILES/bootstrap.sh"
 alias .scr="cd $DOTFILES/scripts"
 alias .cfg="cd $DOTFILES/config"
 alias .ref="cd $DOTFILES/refs"
-alias .nvim="cd $(readlink -f $HOME/.config/nvim)/lua; tree"
+alias nv="nvim"
 alias .nvimcheck="readlink -f $HOME/.config/nvim"
-alias .nvimlazy="ln -sfn ~/.dotfiles/config/LazyVim_nvim ~/.config/nvim; \
-  echo use lazy nvim config"
-alias .nvimvanilla="ln -sfn ~/.dotfiles/config/vanilla_nvim ~/.config/nvim; \
-  echo use vanilla nvim config"
-# -n avoids creating a sub-folder inside the old target folder
+alias .nvim="cd $(.nvimcheck); tree"
 
 # service
 alias weather="curl wttr.in"
