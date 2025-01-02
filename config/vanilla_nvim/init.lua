@@ -54,6 +54,59 @@ cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
 
 
 -- =====================================
+--          More options
+-- =====================================
+
+opt.autowrite = true                      -- Enable auto write
+opt.clipboard = "unnamedplus"             -- Sync with system clipboard
+opt.completeopt = "menu,menuone,noselect" -- List of options for Insert mode completion
+opt.conceallevel = 3                      -- Hide * markup for bold and italic
+-- opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.confirm = false
+opt.cursorline = true          -- Enable highlighting of the current line
+opt.expandtab = true           -- Use spaces instead of tabs
+opt.formatoptions = "jcroqlnt" -- tcqj
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.ignorecase = true                                  -- Ignore case
+opt.inccommand = "nosplit"                             -- preview incremental substitute
+opt.laststatus = 0
+opt.list = true                                        -- Show some invisible characters (tabs...
+opt.mouse = "a"                                        -- Enable mouse mode
+opt.number = true                                      -- Print line number
+opt.pumblend = 10                                      -- Popup blend
+opt.pumheight = 10                                     -- Maximum number of entries in a popup
+opt.relativenumber = true                              -- Relative line numbers
+opt.scrolloff = 4                                      -- Lines of context
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.shiftround = true                                  -- Round indent to multiples of shiftwidth
+opt.shiftwidth = 2                                     -- Size of an indent
+opt.shortmess:append({ W = true, I = true, c = true }) -- Short file messages
+-- opt.showmode = false -- Dont show mode since we have a statusline
+opt.showmode = true                                    -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8                                  -- Columns of context
+opt.signcolumn =
+"yes"                                                  -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true                                   -- Don't ignore case with capitals
+opt.smartindent = true                                 -- Insert indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true                                  -- Put new windows below current
+opt.splitright = true                                  -- Put new windows right of current
+opt.tabstop = 2                                        -- Number of spaces tabs count for
+opt.termguicolors = true                               -- True color support
+opt.timeoutlen = 300
+opt.undofile = true                                    -- Save undo history to undo file
+opt.undolevels = 10000
+opt.updatetime = 200                                   -- Save swap file and trigger CursorHold
+opt.wildmode = "longest:full,full"                     -- Command-line completion mode
+opt.winminwidth = 5                                    -- Minimum window width
+opt.wrap = false                                       -- Disable line wrap
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+
+
+-- =====================================
 --          Key map
 -- =====================================
 keymap.set("", "<F3>", ":noh<CR>")
@@ -304,54 +357,6 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
 
--- gitsigns
-require('gitsigns').setup {
-  on_attach = function(bufnr)
-    local gitsigns = require('gitsigns')
-
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
-    end
-
-    -- Navigation
-    map('n', ']c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({ ']c', bang = true })
-      else
-        gitsigns.nav_hunk('next')
-      end
-    end)
-
-    map('n', '[c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({ '[c', bang = true })
-      else
-        gitsigns.nav_hunk('prev')
-      end
-    end)
-
-    -- Actions
-    map('n', '<leader>hs', gitsigns.stage_hunk)
-    map('n', '<leader>hr', gitsigns.reset_hunk)
-    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('n', '<leader>hS', gitsigns.stage_buffer)
-    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-    map('n', '<leader>hR', gitsigns.reset_buffer)
-    map('n', '<leader>hp', gitsigns.preview_hunk)
-    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
-    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-    map('n', '<leader>hd', gitsigns.diffthis)
-    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-    map('n', '<leader>td', gitsigns.toggle_deleted)
-
-    -- Text object
-    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
-}
-
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
@@ -476,6 +481,26 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s", }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s", }),
   }),
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
@@ -513,4 +538,66 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Disable inline LSP diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = false,
+})
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  title = "hover",
+})
+
+
+-- =====================================
+--      Using Nvim on Windows
+-- =====================================
+-- USE "\" instead of "/" as delimiting characters in Windows
+-- (UNCOMMENT the following key mappings in Windows)
+-- keymap.set("", "<F9>", ":tabedit $HOME\\.config\\nvim\\init.lua<CR>")
+-- keymap.set("", "<F6>", ":so $HOME\\.config\\nvim\\init.lua<CR>")
+
+-- gitsigns complete setup will cause neovim on Windows to freeze when quitting
+-- (COMMENT OUT the following gitsigns setup in Windows)
+require('gitsigns').setup({
+  on_attach = function(bufnr)
+    local gitsigns = require('gitsigns')
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    map('n', ']c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ ']c', bang = true })
+      else
+        gitsigns.nav_hunk('next')
+      end
+    end)
+
+    map('n', '[c', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ '[c', bang = true })
+      else
+        gitsigns.nav_hunk('prev')
+      end
+    end)
+
+    -- Actions
+    map('n', '<leader>hs', gitsigns.stage_hunk)
+    map('n', '<leader>hr', gitsigns.reset_hunk)
+    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+    map('n', '<leader>hS', gitsigns.stage_buffer)
+    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
+    map('n', '<leader>hR', gitsigns.reset_buffer)
+    map('n', '<leader>hp', gitsigns.preview_hunk)
+    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
+    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+    map('n', '<leader>hd', gitsigns.diffthis)
+    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+    map('n', '<leader>td', gitsigns.toggle_deleted)
+
+    -- Text object
+    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
 })
