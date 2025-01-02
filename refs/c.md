@@ -64,7 +64,7 @@ Contents:
 
         all: $(EXES)
         clean:
-                rm =f $(EXES)
+                rm -f $(EXES)
         greet: greet.c
 
         # do not treat `all` and `clean` as file targets
@@ -84,6 +84,9 @@ Contents:
             tools, e.g. C compiler (cc, gcc for *.c), C++ compiler (g++, c++
             for *.cpp, *.cc, *.C, *.cxx), assembler (as for *.s)
             ([ref](https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html))
+
+        *   An object file (xxx.o) will be created for each source file,
+            before linking them together and generating the final executable.
 
 1.  memory check
 
