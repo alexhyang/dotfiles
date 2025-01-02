@@ -111,9 +111,7 @@ vim.g.markdown_recommended_style = 0
 -- =====================================
 keymap.set("", "<F3>", ":noh<CR>")
 keymap.set("", "<F9>", ":tabedit $HOME/.config/nvim/init.lua<CR>")
-keymap.set("", "<F6>", ":so $HOME/.config/nvim/init.lua<CR>")
 keymap.set("i", "jk", "<Esc>")
-keymap.set("i", "kj", "<Esc>")
 keymap.set("n", "<C-n>", ":tabnew<CR>")
 keymap.set("n", "<leader>bk", ":bn<CR>")
 keymap.set("n", "<leader>bj", ":bp<CR>")
@@ -387,6 +385,12 @@ vim.keymap.set('', '<leader><leader>f', ':HopWord<CR>');
 
 -- telescope
 local builtin = require('telescope.builtin')
+require("telescope").setup({
+  defaults = {
+    file_ignore_patterns = { "node_modules", ".git" }
+  }
+})
+
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
@@ -550,8 +554,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publ
 -- =====================================
 -- USE "\" instead of "/" as delimiting characters in Windows
 -- (UNCOMMENT the following key mappings if using Windows)
--- keymap.set("", "<F9>", ":tabedit $HOME\\.config\\nvim\\init.lua<CR>")
--- keymap.set("", "<F6>", ":so $HOME\\.config\\nvim\\init.lua<CR>")
+-- keymap.set("", "<F9>", ":tabedit $HOME\\.dotfiles\\nvim\\init.lua<CR>")
 
 -- gitsigns complete setup will cause neovim on Windows to freeze when quitting
 -- (COMMENT OUT the following gitsigns setup if using Windows)
