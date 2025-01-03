@@ -468,6 +468,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- cmp
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 cmp.setup({
   snippet = {
     expand = function(args)
