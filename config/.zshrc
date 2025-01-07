@@ -93,7 +93,7 @@ plugins=(
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 export FZF_BASE="/usr/bin/fzf"
 export FZF_DEFAULT_COMMAND='fd . --type f --hidden --exclude ".git"'
