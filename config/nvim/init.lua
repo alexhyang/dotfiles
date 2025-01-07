@@ -45,9 +45,10 @@ opt.hlsearch = true
 --         Macros
 -- =====================================
 -- Markdown formatting
-cmd("let @t = \"bi`\\<Esc>ea`\\<Esc>\"")
-cmd("let @b = \"bi**\\<Esc>ea**\\<Esc>\"")
-cmd("let @i = \"bi*\\<Esc>ea*\\<Esc>\"")
+cmd("let @t = \"Bi`\\<Esc>Ea`\\<Esc>\"")
+cmd("let @b = \"Bi**\\<Esc>Ea**\\<Esc>\"")
+cmd("let @i = \"Bi*\\<Esc>Ea*\\<Esc>\"")
+cmd("let @l = \"Bi$\\<Esc>Ea$\\<Esc>\"")
 cmd("let @u = \"o*\\<Space>\\<Space>\\<Space>\"")
 cmd("let @o = \"o1.\\<Space>\\<Space>\"")
 cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
@@ -176,6 +177,30 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       opts = {},
+    },
+    {
+      "OXY2DEV/markview.nvim",
+      lazy = false, -- Recommended
+      opts = {
+        list_items = { enable = false },
+        headings = {
+          enable = true,
+          heading_1 = { style = "simple" },
+          heading_2 = { style = "simple" },
+          heading_3 = { style = "simple" },
+          heading_4 = { style = "simple" },
+        },
+        code_blocks = {
+          enable = true,
+          style = "minimal",
+          min_width = 40,
+          hl = "MarkviewCode",
+        }
+      },
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+      },
     },
     -- Editing, Highlighting
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -357,7 +382,17 @@ vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup({
-  ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = {
+    "c",
+    "cpp",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "markdown",
+    "markdown_inline",
+    "latex"
+  },
   sync_install = false,
   auto_install = true,
   highlight = {
