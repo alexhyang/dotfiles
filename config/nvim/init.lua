@@ -114,13 +114,13 @@ keymap.set("", "<F3>", ":noh<CR>")
 keymap.set("", "<F9>", ":tabedit $HOME/.config/nvim/init.lua<CR>")
 keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<C-n>", ":tabnew<CR>")
-keymap.set("n", "<leader>bk", ":bn<CR>")
-keymap.set("n", "<leader>bj", ":bp<CR>")
-keymap.set("n", "<leader>bd", ":bd<CR>")
-keymap.set("n", "<leader>bh", ":bf<CR>")
-keymap.set("n", "<leader>bl", ":bl<CR>")
+keymap.set("n", "<leader>gk", ":bn<CR>")
+keymap.set("n", "<leader>gj", ":bp<CR>")
+keymap.set("n", "<leader>gd", ":bd<CR>")
+keymap.set("n", "<leader>gh", ":bf<CR>")
+keymap.set("n", "<leader>gl", ":bl<CR>")
 keymap.set("n", "Q", "<Nop>")
-cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
+-- cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
 cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
 cmd("noremap :Don :lua vim.diagnostic.enable()<CR>")
 
@@ -182,19 +182,21 @@ require("lazy").setup({
       "OXY2DEV/markview.nvim",
       lazy = false, -- Recommended
       opts = {
-        list_items = { enable = false },
-        headings = {
-          enable = true,
-          heading_1 = { style = "simple" },
-          heading_2 = { style = "simple" },
-          heading_3 = { style = "simple" },
-          heading_4 = { style = "simple" },
+        markdown = {
+          list_items = { enable = false },
+          headings = {
+            enable = true,
+            heading_1 = { style = "simple" },
+            heading_2 = { style = "simple" },
+            heading_3 = { style = "simple" },
+            heading_4 = { style = "simple" },
+          },
         },
         code_blocks = {
           enable = true,
-          style = "minimal",
+          style = "simple",
           min_width = 40,
-          hl = "MarkviewCode",
+          border_hl = "MarkviewCode",
         }
       },
       dependencies = {
@@ -391,7 +393,7 @@ require("nvim-treesitter.configs").setup({
     "markdown_inline",
     -- "c",
     -- "cpp",
-    -- "TypeScript",
+    "typescript",
     -- "latex"
   },
   sync_install = false,
@@ -457,6 +459,7 @@ lspconfig.lua_ls.setup({
 lspconfig.ts_ls.setup({
   capabilities = capabilities,
 })
+lspconfig.clangd.setup({});
 lspconfig.rust_analyzer.setup({
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
@@ -466,10 +469,10 @@ lspconfig.rust_analyzer.setup({
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-keymap.set("n", "<leader>e", vim.diagnostic.open_float)
-keymap.set("n", "[d", vim.diagnostic.goto_prev)
-keymap.set("n", "]d", vim.diagnostic.goto_next)
-keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "open diagnostic float" })
+keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic" })
+keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
+keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "diagnostic setloclist" })
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -496,7 +499,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
     keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
     keymap.set("n", "gr", vim.lsp.buf.references, opts)
-    keymap.set("n", "<space>f", function()
+    keymap.set("n", "<leader>p", function()
       vim.lsp.buf.format({ async = true })
     end, opts)
   end,
@@ -581,9 +584,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = false,
 })
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  title = "hover",
-})
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+--   title = "hover",
+-- })
 
 
 -- =====================================
@@ -607,35 +610,44 @@ require('gitsigns').setup({
 
     -- Navigation
     map('n', ']c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({ ']c', bang = true })
-      else
-        gitsigns.nav_hunk('next')
-      end
-    end)
+        if vim.wo.diff then
+          vim.cmd.normal({ ']c', bang = true })
+        else
+          gitsigns.nav_hunk('next')
+        end
+      end,
+      {
+        desc = "next hunk"
+      })
 
     map('n', '[c', function()
-      if vim.wo.diff then
-        vim.cmd.normal({ '[c', bang = true })
-      else
-        gitsigns.nav_hunk('prev')
-      end
-    end)
+        if vim.wo.diff then
+          vim.cmd.normal({ '[c', bang = true })
+        else
+          gitsigns.nav_hunk('prev')
+        end
+      end,
+      {
+        desc = "prev hunk"
+      })
 
     -- Actions
-    map('n', '<leader>hs', gitsigns.stage_hunk)
-    map('n', '<leader>hr', gitsigns.reset_hunk)
-    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-    map('n', '<leader>hS', gitsigns.stage_buffer)
-    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-    map('n', '<leader>hR', gitsigns.reset_buffer)
-    map('n', '<leader>hp', gitsigns.preview_hunk)
-    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
-    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-    map('n', '<leader>hd', gitsigns.diffthis)
+    map('n', '<leader>hs', gitsigns.stage_hunk, { desc = "stage hunk" })
+    map('n', '<leader>hr', gitsigns.reset_hunk, { desc = "reset hunk" })
+    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+      { desc = "stage hunk" })
+    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
+      { desc = "reset hunk" })
+    map('n', '<leader>hS', gitsigns.stage_buffer, { desc = "stage buffer" })
+    map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
+    map('n', '<leader>hR', gitsigns.reset_buffer, { desc = "reset buffer" })
+    map('n', '<leader>hp', gitsigns.preview_hunk, { desc = "preview hunk" })
+    map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = "preview hunk inline" })
+    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = "blame line" })
+    map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "toggle curr line blame" })
+    map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this" })
     map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-    map('n', '<leader>td', gitsigns.toggle_deleted)
+    map('n', '<leader>td', gitsigns.toggle_deleted, { desc = "toggle deleted" })
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
