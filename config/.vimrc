@@ -156,7 +156,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'               " surroudn.vim - easy pairing
 Plug 'nathanaelkane/vim-indent-guides'  " indent guides - visual indent levels
 Plug 'plasticboy/vim-markdown'          " markdown syntax - fold levels
-Plug 'suan/vim-instant-markdown'        " instant markdown preview
+" Plug 'suan/vim-instant-markdown'        " instant markdown preview
 
 "   syntax
 Plug 'scrooloose/syntastic'             " Syntastic - syntax checking
