@@ -19,6 +19,7 @@ alias usenv="alias vi=\"nvim\"; echo using nvim";
 alias vimrc="vi ~/.dotfiles/config/.vimrc"
 alias nvrc="vi ~/.dotfiles/config/nvim/init.lua"
 alias zshrc="vi ~/.dotfiles/config/.zshrc"
+alias tmcf="vi ~/.tmux.conf"
 ## aliases
 alias al="vi ~/.dotfiles/config/.aliases"
 alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
@@ -69,7 +70,9 @@ alias tat="tmux attach-session -t"
 alias ta0="tat 0"
 alias tls="tmux ls"
 alias tkt="tmux kill-session -t"
+alias tk0="tkt 0"
 alias tka="tmux kill-session -a"
+alias tka0="tmux kill-session -a -t 0"
 
 alias tdev="tmux source-file ~/.tmux/dev.sh"
 alias tad="tmux attach-session -t dev"
