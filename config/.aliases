@@ -1,31 +1,32 @@
 #!/bin/bash
 # shell alias
 alias so="source"
-alias rld="omz reload"
-alias cls="clear"
+alias rl="omz reload"
+alias cl="clear"
 alias back="popd"
 alias mv="mv -i"
 alias cpi="cp -i"
-alias treeL="tree -L"
-alias treeN="tree -I node_modules"
+alias tL="tree -L"
+alias tN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
 alias isme="source ~/.dotfiles/config/gpg.sh"
 
 # edit and/or reload config files
 alias usevim="alias vi=\"vim\"; echo using vim";
-alias usenv="alias vi=\"nvim\"; echo using nvim";
+alias usenv="alias vi=\"nvim\"; #echo using nvim";
+usenv
 
-alias vimrc="vi ~/.dotfiles/config/.vimrc"
-alias nvrc="vi ~/.dotfiles/config/nvim/init.lua"
-alias zshrc="vi ~/.dotfiles/config/.zshrc"
-alias tmcf="vi ~/.tmux.conf"
+alias vr="vi ~/.dotfiles/config/.vimrc"
+alias nvr="vi ~/.dotfiles/config/nvim/init.lua"
+alias zr="vi ~/.dotfiles/config/.zshrc"
+alias tcf="vi ~/.tmux.conf"
 ## aliases
 alias al="vi ~/.dotfiles/config/.aliases"
 alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
 ## shell functions
-alias shut="vi ~/.dotfiles/config/.shell_utils"
-alias lshut="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
+alias shu="vi ~/.dotfiles/config/.shell_utils"
+alias lshu="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
 ## local environments and aliases
 alias lc="vi ~/.local_env"
 alias llc="source ~/.local_env; echo '~/.local_env updated'"
@@ -34,11 +35,11 @@ alias laa="lal; lshut; llc;"
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
 alias sysinfo="cat ~/sysinfo"
-alias .files="cd $DOTFILES/"
+alias .f="cd $DOTFILES/"
 alias bootstrap="source $DOTFILES/bootstrap.sh"
-alias .scr="cd $DOTFILES/scripts"
-alias .cfg="cd $DOTFILES/config"
-alias .ref="cd $DOTFILES/refs"
+alias .s="cd $DOTFILES/scripts"
+alias .c="cd $DOTFILES/config"
+alias .r="cd $DOTFILES/refs"
 alias nv="nvim"
 alias .nvimcheck="readlink -f $HOME/.config/nvim"
 alias .nvim="cd $(.nvimcheck); tree"
