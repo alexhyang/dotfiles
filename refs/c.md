@@ -13,12 +13,20 @@ Contents:
     #include <stdlib.h>
     #include <string.h>
     #include <stdio.h>
-
     // stdlib.h: malloc()
     // stdio.h : printf()
     ```
 
 1.  compiling C program
+
+    Compilation intermediate stages:
+
+    ```bash
+    clang++ -E hello_world.cpp -o preprocessed.ii   # -E: stop after preprocessing
+    clang++ -S preprocessed.ii -o compiled.s        # -S: stop after compilation
+    clang++ -c compiled.s -o assembled.o            # -c: compile or assemble, but do not link
+    clang++ assembled.o -o hello_world              # join objects files into executable
+    ```
 
     ```bash
     gcc -std=gnu11 -g -o example example.c
@@ -29,6 +37,12 @@ Contents:
     # -Wall      : enable most compiler warnings
     # -Wno-unused-function : disables warnings about used functions
     ```
+
+    Flags:
+    *   CC: program for compiling C programs, default 'cc'
+    *   CXX: program for compiling C++ programs, default
+    *   LDFLAGS: extra flags for linker
+
 
 1.  debugging C program
 
@@ -46,6 +60,7 @@ Contents:
     *   cont: countinue
     *   help: get help
     *   <Enter>: repeat the last command
+    *   layout next: show source code layout
 
 1.  Makefile
 
@@ -61,12 +76,10 @@ Contents:
         ```make
         CFLAGS += -std=gnu11 -g
         EXES    = greet
-
         all: $(EXES)
         clean:
                 rm -f $(EXES)
         greet: greet.c
-
         # do not treat `all` and `clean` as file targets
         # `all` and `clean` will be the arguments of `make` command
         # e.g. make all, make clean
@@ -81,12 +94,17 @@ Contents:
     1.  other notes about make
 
         *   make has built-in implicit rules for several common compilers and
-            tools, e.g. C compiler (cc, gcc for *.c), C++ compiler (g++, c++
-            for *.cpp, *.cc, *.C, *.cxx), assembler (as for *.s)
+            tools, e.g. C compiler (cc, gcc for `*.c`), C++ compiler (g++, c++
+            for `*.cpp,` `*.cc,` `*.C,` `*.cxx)`, assembler (as for `*.s`)
             ([ref](https://www.gnu.org/software/make/manual/html_node/Catalogue-of-Rules.html))
 
         *   An object file (xxx.o) will be created for each source file,
             before linking them together and generating the final executable.
+
+    1.  automatic variables
+        *   $@: file name of target
+        *   $?: names of all prerequisites
+        *   $<: name of first prerequisite
 
 1.  memory check
 
@@ -107,12 +125,12 @@ Contents:
         freeing unallocated memory
 
     *   invalid read/write:
-        *   when: accessing memory that you shouldn't (eg. out-of-bounds array
+        *   when: accessing memory that you shouldn't (e.g. out-of-bounds array
             or using a dangling point)
 
     *   uninitialised value was created by a heap allocation:
         *   when: use variables or memory that have not been initialized,
-            leading to unpredictable behavior.
+            leading to unpredictable behavior
         *   why: the newly allocated space has garbage values
         *   how to fix: assign initial values to this space
 
@@ -121,4 +139,6 @@ Contents:
 ## References
 *   [C standard library - wikipedia](https://en.wikipedia.org/wiki/C_standard_library)
 *   [GDB: The GNU Project Debugger](https://www.sourceware.org/gdb/)
-*   [make documentation - GUN](https://www.gnu.org/software/make/manual/make.html)
+*   [GDB Text User Interface](https://sourceware.org/gdb/current/onlinedocs/gdb.html/TUI.html)
+*   [make documentation - GNU](https://www.gnu.org/software/make/manual/make.html)
+*   [Variables by Implicit Rules - GNU make](https://www.gnu.org/software/make/manual/html_node/Implicit-Variables.html)
