@@ -6,6 +6,7 @@ sudo apt update
 sudo apt install \
   tree fasd fd-find fzf autojump locate \
   bat ack ripgrep rename \
+  python3-dev python3-pip python3-setuptools \
   htop
 
 # install man page for debian
