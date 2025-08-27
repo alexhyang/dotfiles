@@ -1,50 +1,101 @@
 # Linux Dotfiles
 
-This document contains notes about my personal configuration
-of development environment on Debian-based Linux distributions.
-For configuration on Linux on Android, checkout the [android
-branch](https://github.com/alexhyang/dotfiles/tree/android).
+This document contains notes about my personal configuration of development
+environment on Debian-based Linux distributions. For configuration on Linux on
+Android, checkout the [android branch][android-branch-ref].
 
 Content:
 
 * [Machine setups](#machine-setups)
+  * [Essentials](#essentials)
+  * [Recommended](#recommended)
+  * [Useful](#useful)
 * [Explanations](#explanations)
   * [Dotfiles](#dotfiles)
   * [Plugins](#plugins)
 * [References](#references)
 
 ## Machine setups
+### Essentials
+
 1.  install essential packages
+
     ```sh
     sudo apt update; sudo apt upgrade; \
     sudo apt install curl git zsh vim tmux; \
     apt list --installed curl git zsh vim tmux
     ```
 
-    zsh configuration manager: OhMyZsh
-    ```bash
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    ```
+    `sudo apt update` updates package information,
+    `sudo apt upgrade` installs available upgrades of all installed packages,
+    `apt list --installed curl git zsh vim tmux` verifies packages are
+         successfully installed and ready for the next steps
 
 1.  establish GitHub connection
-    1.  generate ssh keys
+
+    1.  [generate ssh keys][sshgen-ref]
+
         ```sh
-        ssh-keygen -t ed25519 -C "<username>@gmail.com"; \
+        ssh-keygen -t ed25519 -C "your_email@example.com"; \
         eval "$(ssh-agent -s)"; \
         ssh-add ~/.ssh/id_ed25519; \
         cat ~/.ssh/id_ed25519.pub
         ```
-    1.  add public key to [GitHub account](https://github.com/settings/keys)
+
+        `ssh-keygen` creates a new SSH key (-t specifies type of key, -C
+        provides a comment),
+        `eval` executes arguments (i.e. given text) as command in current shell,
+        `ssh-agent -s` generates bash commands as text,
+        `eval "$(ssh-agent -s)"` starts the ssh-agent in the background,
+        `ssh-add` adds the generated private key to the ssh-agent,
+        `cat` shows content in a file (here it prints the generated public
+        key (begins with ssh-ed25519 and ends with the email address comment))
+
+    1.  add public key to [GitHub keys](https://github.com/settings/keys)
+
     1.  verify GitHub connection using ssh
+
         ```sh
         ssh -T git@github.com
         ```
 
+        `ssh -T` runs SSH without opening an interactive shell (i.e. disable
+        pseudo-terminal allocation), `-T` is commonly used when executing
+        remote commands or when a service only needs authentication and data
+        transfer, not an interactive shell
+
 1.  setup dotfiles on local machine
+
     ```sh
     git clone git@github.com:alexhyang/dotfiles.git ~/.dotfiles/; \
     source ~/.dotfiles/bootstrap.sh
     ```
+
+    `git clone` copies remote repository to local machine in ~/.dotfiles
+
+### Recommended
+
+1.  install zsh configuration manager (choose only either OhMyZsh or Zim)
+
+    *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
+
+        ```bash
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        ```
+
+        `sh -c` executes a command in bash then exit,
+        `curl` transfers data from or to a server using various protocols,
+        `curl -fsSL` suppresses progress bar (-s, --silent) but still shows
+        error messages (-S, --show-error), fails silently on HTTP errors (-f,
+        --fail) and follows request redirection (-L, --location)
+
+    *   [Zim](https://github.com/zimfw/zimfw)
+
+        ```bash
+        curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+        ```
+
+### Useful
 
 1.  install Node.js
     ```bash
@@ -101,6 +152,10 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
     *   see [tmux.conf](./config/.tmux.conf)
 
 ## References
+
+*   [android-branch-ref]: https://github.com/alexhyang/dotfiles/tree/android
+*   [sshgen-ref]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux
+
 *   [My developer workflow using WSL, tmux and Neovim](https://dev.to/nexxeln/my-developer-workflow-using-wsl-tmux-and-neovim-55f5)
 *   [Oh My Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 *   [Vimawesome - Vim plugins](https://vimawesome.com/)
