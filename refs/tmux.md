@@ -91,7 +91,7 @@ tmux ls                              # show all tmux sessions in terminal
 
 # layouts
 ^b z                             # toggle pane zoom
-^b !                             # convert pain into window
+^b !                             # convert pane into window
 
 ^b space                         # toggle between pane layouts
 ^b ^UP/DOWN/LEFT/RIGHT           # resize current pane height/width
