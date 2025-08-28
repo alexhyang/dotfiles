@@ -19,5 +19,5 @@ copy_dotfile() {
 backcopy_dotfile () {
   # overwrite remote config with local config
   echo "~/.dotfiles/config/$1 updated!\n"
-  cp ~/$1 ~/.dotfiles/config/$1
+  cp -iv ~/$1 ~/.dotfiles/config/$1
 }
