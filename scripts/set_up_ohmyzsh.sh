@@ -1,5 +1,9 @@
 #!/bin/bash
-echo "Setting up zsh...";
+
+echo "OhMyZsh setup starting..."
+
+ln -sf $DOTFILES/config/.zshrc.omz ~/.zshrc
+ln -s $DOTFILES/config/.p10k.zsh ~/.p10k.zsh
 
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
 then    
@@ -25,4 +29,4 @@ then
   echo "Zsh powerlevel10k installed!"
 fi
 
-echo "Zsh configuration finished!"
+echo "OhMyZsh setup finished!"
