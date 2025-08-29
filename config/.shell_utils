@@ -68,12 +68,12 @@ addSuffix() {
 
   echo "adding suffix: $pattern"
   rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
-  promptMessage="Confirm rename? [y/N]: "
+  promptMsg="Confirm rename? [y/N]: "
 
   if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "confirm?$promptMessage"
+    read "confirm?$promptMsg"
   else
-    read -p $promptMessage confirm
+    read -p "$promptMsg" confirm
   fi
 
   if [[ $confirm =~ ^[Yy]$ ]]; then
@@ -89,12 +89,12 @@ addPrefix() {
 
   echo "adding prefix: $prefix"
   rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
-  promptMessage="Confirm rename? [y/N]: "
+  promptMsg="Confirm rename? [y/N]: "
 
   if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "confirm?$promptMessage"
+    read "confirm?$promptMsg"
   else
-    read -p $promptMessage confirm
+    read -p "$promptMsg" confirm
   fi
 
   if [[ $confirm =~ ^[Yy]$ ]]; then
@@ -186,11 +186,11 @@ readme() {
   if [[ -f "./README.md" ]]; then
     vi ./README.md
   else
-    promptMessage="README.md doesn't exit! Create README.md? [y/N]: "
+    promptMsg="README.md doesn't exit! Create README.md? [y/N]: "
     if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMessage"
+      read "confirm?$promptMsg"
     else
-      read -p $promptMessage confirm
+      read -p "$promptMsg" confirm
     fi
     if [[ $confirm =~ ^[Yy]$ ]]; then
       mdTemplate README.md || touch README.md && vi README.md
@@ -211,11 +211,11 @@ tl() {
 # if ref name is given, open or create markdown file
 myrefs() {
   createRef() {
-    promptMessage="Create $1? [y/N]"
+    promptMsg="Create $1? [y/N]"
     if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMessage"
+      read "confirm?$promptMsg"
     else
-      read -p $promptMessage confirm
+      read -p "$promptMsg" confirm
     fi
 
     if [[ $confirm =~ ^[Yy]$ ]]; then
@@ -259,19 +259,19 @@ dropNotes() {
     mv ./$1 $dropbox/$1
   else
     if ! diff $dropbox/$1 ./$1; then
-      promptMessage="./$1 --> $dropbox/$1? [y/N]"
+      promptMsg="./$1 --> $dropbox/$1? [y/N]"
       if [[ $SHELL == "/usr/bin/zsh" ]]; then
-        read "confirm?$promptMessage"
+        read "confirm?$promptMsg"
       else
-        read -p $promptMessage confirm
+        read -p "$promptMsg" confirm
       fi
       if [[ $confirm =~ ^[Yy]$ ]]; then
         mv ./$1 $dropbox/$1
       else
-        echo "dropNotes cancelled"
+        echo "dropNotes canceled"
       fi
     else
-      echo "No difference between $1 and $dropbox/$1. DropNotes cancelled."
+      echo "No difference between $1 and $dropbox/$1. DropNotes canceled."
     fi
   fi
 }
