@@ -15,7 +15,6 @@ alias isme="source ~/.dotfiles/config/gpg.sh"
 # edit and/or reload config files
 alias usevim="alias vi=\"vim\"; echo using vim";
 alias usenv="alias vi=\"nvim\"; #echo using nvim";
-usenv
 
 alias vr="vi ~/.dotfiles/config/.vimrc"
 alias nvr="vi ~/.dotfiles/config/nvim/init.lua"
@@ -28,7 +27,7 @@ alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
 alias shu="vi ~/.dotfiles/config/.shell_utils"
 alias lshu="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
 ## local environments and aliases
-alias lc="vi ~/.local_env"
+alias lc="vi ~/.localrc"
 alias llc="source ~/.local_env; echo '~/.local_env updated'"
 alias laa="lal; lshut; llc;"
 
