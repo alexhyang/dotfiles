@@ -120,20 +120,16 @@ fi
 export GIT_PS1_SHOWDIRTYSTATE=1
 PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "(%s)")\$ '
 
+# environment variables
+export PATH=$HOME/.local/bin:$PATH
+
+# source dotfiles and executables
 source ~/.aliases
 source ~/.shell_utils
-source ~/.local_env
+source ~/.localrc
 
-# Set up ssh agent (moved to gpg.sh)
-# https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html
-#
-# export GPG_TTY=$(tty)
-# unset SSH_AGENT_PID
-# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-# fi
-# eval $(ssh-agent -s);
-# ssh-add ~/.ssh/id_ed25519;
-# ssh-add -l
+eval "$(fasd --init auto)"
 
-source /home/alex-ubt/.config/broot/launcher/bash/br
+if [ -f ~/.config/broot/launcher/bash/br ]; then
+  source ~/.config/broot/launcher/bash/br
+fi
