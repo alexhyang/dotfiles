@@ -87,11 +87,12 @@ Content:
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
         ```bash
+        [[ ! -f ~/.zshrc ]] && rm ~/.zshrc
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         ```
 
-        After ohmyzsh is successfully installed, continue the configuration of
-        zsh with ohmyzsh
+        After ohmyzsh is successfully installed, enter zsh and continue the
+        configuration:
 
         ```bash
         source ~/.dotfiles/scripts/set_up_zsh_omz.sh
@@ -110,11 +111,19 @@ Content:
     *   [Zim](https://github.com/zimfw/zimfw)
 
         ```bash
-        chsh -s $(which zsh)
+        [[ ! -f ~/.zshrc ]] && rm ~/.zshrc
+        [[ $SHELL != $(which zsh) ]] && chsh -s $(which zsh)
         curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+        ```
+
+        After Zim is successfully installed, enter zsh and continue the
+        configuration:
+
+        ```bash
         source ~/.dotfiles/scripts/set_up_zsh_zim.sh
         zimfw install
         ```
+
 
         `chsh -s` set shell to the given path
         `zimfw install` installs zim modules (i.e. zsh theme and plugins)
