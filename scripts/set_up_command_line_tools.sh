@@ -4,13 +4,13 @@ echo "Setting up Command Line Tools..."
 # install man page for debian
 machine=$(cat /etc/os-release | grep -E "^NAME=\".*\"" | sed -E 's/^.*?"(\w+)(\s?).*"$/\1/')
 if [[ $machine == "Debian" ]]; then
-  sudo apt install man-db
+  sudo apt install -y man-db
 fi
 
 # install productivity command line tools
 sudo apt update
-sudo apt install \
-  neofetch tree fasd fd-find fzf bat ripgrep
+sudo apt install -y \
+  neofetch tree fasd fd-find fzf bat ripgrep autojump
 
 # neofetch : fast system info
 # fasd     : quick access to frequently used files/dirs
@@ -18,6 +18,7 @@ sudo apt install \
 # fzf      : interactive fuzzy finder
 # bat      : cat with syntax highlighting
 # ripgrep  : fast content search (alternative to grep)
+# autojump : quick navigation in directory
 
 # bind aliases due to name clash
 #   fdfind --> fd
