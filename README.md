@@ -87,7 +87,7 @@ Content:
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
         ```bash
-        [[ ! -f ~/.zshrc ]] && rm ~/.zshrc
+        [[ -f "~/.zshrc" ]] && rm ~/.zshrc
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         ```
 
@@ -111,7 +111,7 @@ Content:
     *   [Zim](https://github.com/zimfw/zimfw)
 
         ```bash
-        [[ ! -f ~/.zshrc ]] && rm ~/.zshrc
+        [[ -f "~/.zshrc" ]] && rm ~/.zshrc
         [[ $SHELL != $(which zsh) ]] && chsh -s $(which zsh)
         curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
         ```
