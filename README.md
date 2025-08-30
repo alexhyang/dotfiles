@@ -141,9 +141,6 @@ Content:
 1.  install Node.js
     ```bash
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash; \
-    omz reload
-    ```
-    ```bash
     nvm install --lts; nvm ls
     ```
 
@@ -157,11 +154,6 @@ Content:
     *   tmux -- `~/.tmux.conf`
     *   aliases, functions, local environment variables -- `~/.aliases,
         ~/.bash_aliases, ~/.shell_utils, ~/.local_env`
-
-*   use "redirect" to source files in the dotfiles repo,
-    sensitive information such as customized directory and
-    API keys will be configured locally
-    *   symlink, dotfile, etc.
 
 *   files created by OS:
     *   Ubuntu 22.04
