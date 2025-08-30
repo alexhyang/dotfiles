@@ -21,12 +21,13 @@ Content:
 
     ```sh
     sudo apt update; sudo apt upgrade; \
-    sudo apt install curl git zsh vim tmux; \
+    sudo apt install -y curl git zsh vim tmux; \
     apt list --installed curl git zsh vim tmux
     ```
 
     `sudo apt update` updates package information,
     `sudo apt upgrade` installs available upgrades of all installed packages,
+    `sudo apt install -y` installs packages without confirmation,
     `apt list --installed curl git zsh vim tmux` verifies packages are
          successfully installed and ready for the next steps
 
