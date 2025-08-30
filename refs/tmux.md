@@ -6,7 +6,9 @@ Contents:
 :InsertToc
 
 ## Default Commands
+*
 *   sessions
+
     ```sh
     tmux                                   # start a new session
     tmux new-session -t <session-name>     # start new session with name
@@ -19,9 +21,12 @@ Contents:
     ^b $                                   # rename session
     ^b d                                   # detach from session
     ^b s                                   # show all sessions
+    ^b (                                   # move to previous/next session
+    ^b )                                   # move to previous/next session
     ```
 
 *   windows
+
     ```sh
     ^b c     # create new window
     ^b ,     # rename new window
@@ -34,6 +39,7 @@ Contents:
     ```
 
 *   panes
+
     ```sh
     ^b %       # split pane with horizontal layout
     ^b \"      # split pane with vertical layout
@@ -46,16 +52,19 @@ Contents:
     ^b ^o      # rotate window 'up'
     ^b M-o     # rotate window 'down'
     ^b !       # move the current pane into a new separate window
+    :j -s [n] -t [m]  # move window n to window m as a pane (or are they pane number?)
     ```
 
 ## tmux.conf
 *   reload tmux config file:
+
     ```sh
     tmux source-file ~/.tmux.conf # from shell prompt
     source-file ~/.tmux.conf      # from tmux command prompt
     ```
 
 ## Tasks (default key mappings)
+
 ```bash
 # launch and close panes, windows, and sessions
 tmux                                 # start tmux session from terminal
@@ -91,7 +100,7 @@ tmux ls                              # show all tmux sessions in terminal
 
 # layouts
 ^b z                             # toggle pane zoom
-^b !                             # convert pane into window
+^b !                             # convert pain into window
 
 ^b space                         # toggle between pane layouts
 ^b ^UP/DOWN/LEFT/RIGHT           # resize current pane height/width
