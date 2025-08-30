@@ -84,18 +84,16 @@ Content:
 
 1.  install OhMyZsh or Zim as zsh configuration manager
 
-    *   change default shell to zsh, then start zsh
-
-        ```bash
-        chsh -s $(which zsh); touch ~/.zshrc; zsh
-        ```
-
-        `chsh -s` set shell to the given path
-
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
         ```bash
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        ```
+
+        After ohmyzsh is successfully installed, continue the configuration of
+        zsh with ohmyzsh
+
+        ```bash
         source ~/.dotfiles/scripts/set_up_zsh_omz.sh
         omz reload
         ```
@@ -112,9 +110,14 @@ Content:
     *   [Zim](https://github.com/zimfw/zimfw)
 
         ```bash
+        chsh -s $(which zsh)
         curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
         source ~/.dotfiles/scripts/set_up_zsh_zim.sh
+        zimfw install
         ```
+
+        `chsh -s` set shell to the given path
+        `zimfw install` installs zim modules (i.e. zsh theme and plugins)
 
         To uninstall zim:
         ```bash
