@@ -10,13 +10,14 @@ fi
 # install productivity command line tools
 sudo apt update
 sudo apt install \
-  tree fasd fd-find fzf bat ripgrep
+  neofetch tree fasd fd-find fzf bat ripgrep
 
-# fasd: quick access to frequently used files/dirs
-# fd-find: fast search for files (alternative to find)
-# fzf: interactive fuzzy finder
-# bat: cat with syntax highlighting
-# ripgrep: fast content search (alternative to grep)
+# neofetch : fast system info
+# fasd     : quick access to frequently used files/dirs
+# fd-find  : fast search for files (alternative to find)
+# fzf      : interactive fuzzy finder
+# bat      : cat with syntax highlighting
+# ripgrep  : fast content search (alternative to grep)
 
 # bind aliases due to name clash
 #   fdfind --> fd
