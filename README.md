@@ -87,31 +87,24 @@ Content:
     *   change default shell to zsh, then start zsh
 
         ```bash
-        chsh -s $(which zsh) | zsh
+        chsh -s $(which zsh); touch ~/.zshrc; zsh
         ```
 
         `chsh -s` set shell to the given path
 
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
-        1.  install omz
+        ```bash
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        source ~/.dotfiles/scripts/set_up_zsh_omz.sh
+        omz reload
+        ```
 
-            ```bash
-            sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-            ```
-
-            `sh -c` executes a command in bash then exit,
-            `curl` transfers data from or to a server using various protocols,
-            `curl -fsSL` suppresses progress bar (-s, --silent) but still shows
-            error messages (-S, --show-error), fails silently on HTTP errors (-f,
-            --fail) and follows request redirection (-L, --location)
-
-        1.  set up zsh with ohmyzsh in zsh
-
-            ```bash
-            source ~/.dotfiles/scripts/set_up_zsh_omz.sh
-            omz reload
-            ```
+        `sh -c` executes a command in bash then exit,
+        `curl` transfers data from or to a server using various protocols,
+        `curl -fsSL` suppresses progress bar (-s, --silent) but still shows
+        error messages (-S, --show-error), fails silently on HTTP errors (-f,
+        --fail) and follows request redirection (-L, --location)
 
         To uninstall omz run `uninstall_oh_my_zsh` in zsh command line, then
         remove soft link by `rm ~/.zshrc`
