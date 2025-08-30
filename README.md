@@ -8,7 +8,6 @@ Content:
 
 * [Machine setups](#machine-setups)
   * [Essentials](#essentials)
-  * [Recommended](#recommended)
   * [Useful](#useful)
 * [Explanations](#explanations)
   * [Dotfiles](#dotfiles)
@@ -73,14 +72,21 @@ Content:
 
     `git clone` copies remote repository to local machine in ~/.dotfiles
 
-### Recommended
+1.  install OhMyZsh or Zim as zsh configuration manager
 
-1.  install zsh configuration manager (choose only either OhMyZsh or Zim)
+    *   change default shell to zsh, then start zsh
+
+        ```bash
+        chsh -s $(which zsh) | zsh
+        ```
+
+        `chsh -s` set shell to the given path
 
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
         ```bash
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        source ~/.dotfiles/scripts/set_up_zsh_omz.sh
         ```
 
         `sh -c` executes a command in bash then exit,
@@ -89,11 +95,22 @@ Content:
         error messages (-S, --show-error), fails silently on HTTP errors (-f,
         --fail) and follows request redirection (-L, --location)
 
+        To uninstall omz run `uninstall_oh_my_zsh` in zsh command line, then
+        remove soft link by `rm ~/.zshrc`
+
     *   [Zim](https://github.com/zimfw/zimfw)
 
         ```bash
         curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+        source ~/.dotfiles/scripts/set_up_zsh_zim.sh
         ```
+
+        To uninstall zim:
+        ```bash
+        rm ~/.zshrc ~/.zimrc ~/.zshenv
+        rm -fr ~/.zim
+        ```
+
 
 ### Useful
 
@@ -136,7 +153,6 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
     *   [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     *   [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
     *   [zsh-users/zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    *   [ohmyzsh list of plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 
 *   Vim plugins and their help files
 
@@ -153,9 +169,6 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
 
 ## References
 
-*   [android-branch-ref]: https://github.com/alexhyang/dotfiles/tree/android
-*   [sshgen-ref]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux
-
 *   [My developer workflow using WSL, tmux and Neovim](https://dev.to/nexxeln/my-developer-workflow-using-wsl-tmux-and-neovim-55f5)
 *   [Oh My Zsh Plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins)
 *   [Vimawesome - Vim plugins](https://vimawesome.com/)
@@ -163,3 +176,6 @@ Detailed list of command line tools see [Command_Line_Tools-ref](https://github.
 *   [A guide to dotfiles - blog post](https://dotfiles.github.io/)
 *   [Shell startup scripts - blog post](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)
 *   [Install Node.js on WSL2](https://learn.microsoft.com/en-ca/windows/dev-environment/javascript/nodejs-on-wsl)
+
+[android-branch-ref]: https://github.com/alexhyang/dotfiles/tree/android
+[sshgen-ref]: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux
