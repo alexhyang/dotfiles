@@ -30,7 +30,8 @@ Content:
     `apt list --installed curl git zsh vim tmux` verifies packages are
          successfully installed and ready for the next steps
 
-1.  establish GitHub connection
+1.  establish GitHub connection (skip this step if no need to push code to
+    GitHub)
 
     1.  [generate ssh keys][sshgen-ref]
 
@@ -65,6 +66,15 @@ Content:
 
 1.  setup dotfiles on local machine
 
+    If step 2 is skipped then:
+
+    ```sh
+    git clone https://github.com/alexhyang/dotfiles.git ~/.dotfiles/; \
+    source ~/.dotfiles/bootstrap.sh
+    ```
+
+    Otherwise:
+
     ```sh
     git clone git@github.com:alexhyang/dotfiles.git ~/.dotfiles/; \
     source ~/.dotfiles/bootstrap.sh
@@ -84,16 +94,24 @@ Content:
 
     *   [OhMyZsh](https://github.com/ohmyzsh/ohmyzsh)
 
-        ```bash
-        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-        source ~/.dotfiles/scripts/set_up_zsh_omz.sh
-        ```
+        1.  install omz
 
-        `sh -c` executes a command in bash then exit,
-        `curl` transfers data from or to a server using various protocols,
-        `curl -fsSL` suppresses progress bar (-s, --silent) but still shows
-        error messages (-S, --show-error), fails silently on HTTP errors (-f,
-        --fail) and follows request redirection (-L, --location)
+            ```bash
+            sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+            ```
+
+            `sh -c` executes a command in bash then exit,
+            `curl` transfers data from or to a server using various protocols,
+            `curl -fsSL` suppresses progress bar (-s, --silent) but still shows
+            error messages (-S, --show-error), fails silently on HTTP errors (-f,
+            --fail) and follows request redirection (-L, --location)
+
+        1.  set up zsh with ohmyzsh in zsh
+
+            ```bash
+            source ~/.dotfiles/scripts/set_up_zsh_omz.sh
+            omz reload
+            ```
 
         To uninstall omz run `uninstall_oh_my_zsh` in zsh command line, then
         remove soft link by `rm ~/.zshrc`
