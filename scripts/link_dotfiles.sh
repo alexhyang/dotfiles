@@ -12,6 +12,7 @@ ln -sf $CONFIG/.bashrc ~/.bashrc
 ln -s $CONFIG/.bash_aliases ~/.bash_aliases
 
 # workflow
+ln -sf $CONFIG/.editorconfig ~/.editorconfig
 ln -sf $CONFIG/.vimrc ~/.vimrc
 ln -sf $CONFIG/.tmux.conf ~/.tmux.conf
 ln -sfn $CONFIG/.tmux ~/.tmux
