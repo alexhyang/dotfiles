@@ -166,9 +166,8 @@ Plug 'leafgarland/typescript-vim'       " typescript vim - TypeScript syntax
 Plug 'cespare/vim-toml'                 " vim-toml - vim syntax for toml
 
 "   fixing/linting
-Plug 'w0rp/ale'                         " async lint engine - syntax checking
+" Plug 'dense-analysis/ale'               " async lint engine - syntax checking
 Plug 'prettier/vim-prettier'            " vim prettier
-Plug 'bronson/vim-trailing-whitespace'  " trailing whitespace in red
 Plug 'editorconfig/editorconfig-vim'    " vim support for .editorconfig
 " Plug 'lervag/vimtex', { 'tag': 'v2.15' } " vim latex plugin
 Plug 'vim-latex/vim-latex'              " vim latex plugin
