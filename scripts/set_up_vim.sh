@@ -36,7 +36,7 @@ if [[ $SHELL == "/bin/bash" || $SHELL == "/usr/bin/bash" ]]; then
 fi
 
 if [[ $confirm =~ ^[Yy]$ && -d "$HOME/.vim/plugged/youcompleteme" ]]; then
-  sudo apt install cmake
+  sudo apt install build-essential cmake python3-dev
   python3 ~/.vim/plugged/youcompleteme/install.py --ts-completer
 fi
 
