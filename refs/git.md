@@ -145,6 +145,10 @@ git tag -d <tag-name>                      # delete tag
 git push origin <tag-name>                 # publish tag to remote repo
 git push origin --tags                     # publish multiples tags
 git push origin --delete <tagname>         # remove remote tag
+
+# Git ssh
+git config core.sshCommand "ssh -i <path-to-private-key>"
+                                           # use specific ssh key for git tasks
 ```
 
 ## References
