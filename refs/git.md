@@ -149,6 +149,8 @@ git push origin --delete <tagname>         # remove remote tag
 # Git ssh
 git config core.sshCommand "ssh -i <path-to-private-key>"
                                            # use specific ssh key for git tasks
+git clone <repo-url> --config core.sshCommand "ssh -i <path-private-key>"
+                                           # clone with specific ssh key
 ```
 
 ## References
