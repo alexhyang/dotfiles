@@ -451,21 +451,24 @@ require("mason-lspconfig").setup({
 })
 
 -- Setup language servers.
-local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.lua_ls.setup({
+vim.lsp.config['lua_ls'] = {
   capabilities = capabilities,
-})
-lspconfig.ts_ls.setup({
+}
+
+vim.lsp.config['ts_ls'] = {
   capabilities = capabilities,
-})
-lspconfig.clangd.setup({});
-lspconfig.rust_analyzer.setup({
+}
+
+vim.lsp.config['clangd'] = {}
+vim.lsp.config['rust_analyzer'] = {
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
     ["rust-analyzer"] = {},
-  },
-})
+  }
+}
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
