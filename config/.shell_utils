@@ -3,7 +3,7 @@
 # SHELL
 # =========================================================
 # Shell Utilities
-showPath() {
+paths() {
   # echo $PATH | sed -E "s/:/\n/g"
   echo $PATH | tr -s ":" "\n"
 }
@@ -21,10 +21,22 @@ goDst() {
   cd $(getDst)
 }
 
+mvToDst() {
+  mv $1 "$(eval getDst)"
+}
+
+cpToDst() {
+  cp $1 "$(eval getDst)"
+}
+
 # set up ssh agent
 nopassphrase() {
   eval $(ssh-agent -s);
-  ssh-add ~/.ssh/id_ed25519;
+  if [[ $# -eq 1 ]]; then
+    ssh-add "$HOME/.ssh/id_ed25519_$1"
+  else
+    ssh-add ~/.ssh/id_ed25519;
+  fi
   ssh-add -l
 }
 
@@ -63,44 +75,52 @@ nkg() {
 
 # File Operations
 addSuffix() {
-  suffix="$1"
-  pattern="$2"
-
-  echo "adding suffix: $pattern"
-  rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
-  promptMsg="Confirm rename? [y/N]: "
-
-  if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "confirm?$promptMsg"
+  if [[ $# -eq 0 ]]; then
+    echo "useage: addSuffix <suffix> <pattern>"
   else
-    read -p "$promptMsg" confirm
-  fi
+    suffix="$1"
+    pattern="$2"
 
-  if [[ $confirm =~ ^[Yy]$ ]]; then
-    rename "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
-  else
-    echo "rename cancelled"
+    echo "adding suffix: $pattern"
+    rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
+    promptMsg="Confirm rename? [y/N]: "
+
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMsg"
+    else
+      read -p "$promptMsg" confirm
+    fi
+
+    if [[ $confirm =~ ^[Yy]$ ]]; then
+      rename "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
+    else
+      echo "rename cancelled"
+    fi
   fi
 }
 
 addPrefix() {
-  prefix="$1"
-  pattern="$2"
-
-  echo "adding prefix: $prefix"
-  rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
-  promptMsg="Confirm rename? [y/N]: "
-
-  if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "confirm?$promptMsg"
+  if [[ $# -eq 0 ]]; then
+    echo "useage: addPrefix <prefix> <pattern>"
   else
-    read -p "$promptMsg" confirm
-  fi
+    prefix="$1"
+    pattern="$2"
 
-  if [[ $confirm =~ ^[Yy]$ ]]; then
+    echo "adding prefix: $prefix"
     rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
-  else
-    echo "rename cancelled"
+    promptMsg="Confirm rename? [y/N]: "
+
+    if [[ $SHELL == "/usr/bin/zsh" ]]; then
+      read "confirm?$promptMsg"
+    else
+      read -p "$promptMsg" confirm
+    fi
+
+    if [[ $confirm =~ ^[Yy]$ ]]; then
+      rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
+    else
+      echo "rename cancelled"
+    fi
   fi
 }
 
@@ -204,6 +224,10 @@ readme() {
 # colorized tldr command helps
 tl() {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
+}
+
+cheatsh() {
+  curl "cheat.sh/$1"
 }
 
 # List/open/create my personal terminal command helps
