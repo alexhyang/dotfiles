@@ -3,7 +3,7 @@
 alias so="source"
 alias rl="source .zshrc"
 alias cl="clear"
-alias back="popd"
+alias b="popd"
 alias mv="mv -i"
 alias cpi="cp -i"
 alias tL="tree -L"
@@ -11,10 +11,16 @@ alias tN="tree -I node_modules"
 alias vim.tiny="echo vim.tiny disabled"
 alias help="bat ~/.dotfiles/refs/clt.md"
 alias isme="source ~/.dotfiles/config/gpg.sh"
+alias sD="setDst"
+alias gD="goDst"
+alias mD="mvToDst"
+alias cpD="cpToDst"
+alias np="nopassphrase"
 
 # edit and/or reload config files
 alias usevim="alias vi=\"vim\"; echo using vim";
 alias usenv="alias vi=\"nvim\"; #echo using nvim";
+alias vi="nvim"
 
 alias vr="vi ~/.dotfiles/config/.vimrc"
 alias nvr="vi ~/.dotfiles/config/nvim/init.lua"
@@ -28,8 +34,8 @@ alias shu="vi ~/.dotfiles/config/.shell_utils"
 alias lshu="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
 ## local environments and aliases
 alias lc="vi ~/.localrc"
-alias llc="source ~/.local_env; echo '~/.local_env updated'"
-alias laa="lal; lshut; llc;"
+alias llc="source ~/.localrc; echo '~/.localrc updated'"
+alias laa="lal; lshu; llc;"
 
 # dotfiles
 export DOTFILES="$HOME/.dotfiles"
