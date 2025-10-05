@@ -22,7 +22,8 @@ opt.tabstop = 2
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.autoindent = true
-opt.wrap = false
+opt.wrap = true
+opt.linebreak = true
 -- opt.backspace = indent,eol,start
 opt.spell = true
 opt.spelllang = "en_us"
@@ -101,9 +102,10 @@ opt.undolevels = 10000
 opt.updatetime = 200                                   -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full"                     -- Command-line completion mode
 opt.winminwidth = 5                                    -- Minimum window width
-opt.wrap = false                                       -- Disable line wrap
+-- opt.wrap = false                                       -- Disable line wrap
 
 -- Fix markdown indentation settings
+opt.conceallevel = 0
 vim.g.markdown_recommended_style = 0
 
 
