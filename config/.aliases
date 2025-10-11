@@ -1,7 +1,7 @@
 #!/bin/bash
 # shell alias
 alias so="source"
-alias rl="source .zshrc"
+alias rl="source ~/.zshrc"
 alias cl="clear"
 alias b="popd"
 alias mv="mv -i"
@@ -24,7 +24,7 @@ alias vi="nvim"
 
 alias vr="vi ~/.dotfiles/config/.vimrc"
 alias nvr="vi ~/.dotfiles/config/nvim/init.lua"
-alias zr="vi ~/.dotfiles/config/.zshrc"
+alias zr="vi ~/.zshrc"
 alias tcf="vi ~/.tmux.conf"
 ## aliases
 alias al="vi ~/.dotfiles/config/.aliases"
