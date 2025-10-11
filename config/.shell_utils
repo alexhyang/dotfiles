@@ -41,24 +41,8 @@ nopassphrase() {
 }
 
 ## Search aliases and installed packages using pattern
-##   e.g. $ search <pattern>
-search() {
-  if [[ $# -ne 2 ]]; then
-    echo "add flags: -a, alias; -p, ubuntu packages"
-  else
-    case $1 in
-    -a)
-      alias | rg $2
-      ;;
-    -p)
-      apt list --installed | rg $2
-      ;;
-    *)
-      echo "no valid flags specified"
-      ;;
-    esac
-  fi
-}
+alias sals="alias | rg" # usage: `sals tmux`
+alias spkg="apt list --installed | rg" # usage: `spkg htop`
 
 ## Stage path in git
 gaddp() {
@@ -81,7 +65,7 @@ addSuffix() {
     suffix="$1"
     pattern="$2"
 
-    echo "adding suffix: $pattern"
+    echo "adding suffix: $suffix"
     rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
     promptMsg="Confirm rename? [y/N]: "
 
@@ -107,7 +91,7 @@ addPrefix() {
     pattern="$2"
 
     echo "adding prefix: $prefix"
-    rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
+    rename -n "s/(.*)\.(.*)/$prefix-\1\.\2/" *$pattern*
     promptMsg="Confirm rename? [y/N]: "
 
     if [[ $SHELL == "/usr/bin/zsh" ]]; then
@@ -117,7 +101,7 @@ addPrefix() {
     fi
 
     if [[ $confirm =~ ^[Yy]$ ]]; then
-      rename -n "s/(.*)\.(.*)/$pattern-\1\.\2/" *$prefix*
+      rename "s/(.*)\.(.*)/$prefix-\1\.\2/" *$pattern*
     else
       echo "rename cancelled"
     fi
@@ -226,8 +210,8 @@ tl() {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
-cheatsh() {
-  curl "cheat.sh/$1"
+cht() {
+  curl "cheat.sh/$@"
 }
 
 # List/open/create my personal terminal command helps

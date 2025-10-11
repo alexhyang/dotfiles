@@ -87,11 +87,24 @@ plugins=(
         fasd
         fzf
         aliases
+        alias-finder
+        command-not-found
         copyfile
         dotenv
         # thefuck
         virtualenv
 )
+
+# if zsh-autosuggestions is installed properly but not showing anything, check
+#   if the suggestion color same as background
+# for solarized dark
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=value'
+
+zstyle ':omz:plugins:alias-finder' autoload yes # disabled by default
+# zstyle ':omz:plugins:alias-finder' longer yes # disabled by default
+zstyle ':omz:plugins:alias-finder' exact yes # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 # eval $(thefuck --alias)
