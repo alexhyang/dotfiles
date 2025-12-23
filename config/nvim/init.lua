@@ -53,6 +53,8 @@ cmd("let @l = \"Bi$\\<Esc>Ea$\\<Esc>\"")
 cmd("let @u = \"o*\\<Space>\\<Space>\\<Space>\"")
 cmd("let @o = \"o1.\\<Space>\\<Space>\"")
 cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
+cmd("let @d = \"o*\\<Space>\\<Space>\\<Space>[\\<Space>]\\<Space>\"")
+cmd("let @m = \"F[lrx\"")
 
 
 -- =====================================
@@ -107,12 +109,14 @@ opt.winminwidth = 5                                    -- Minimum window width
 -- Fix markdown indentation settings
 opt.conceallevel = 0
 vim.g.markdown_recommended_style = 0
+vim.g.markdown_syntax_conceal = 0
 
 
 -- =====================================
 --          Key map
 -- =====================================
 keymap.set("", "<F3>", ":noh<CR>")
+-- keymap.set("n", "<F8>", ":TagbarToggle<CR>")
 keymap.set("", "<F9>", ":tabedit $HOME/.config/nvim/init.lua<CR>")
 keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<C-n>", ":tabnew<CR>")
@@ -125,6 +129,7 @@ keymap.set("n", "Q", "<Nop>")
 -- cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
 cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
 cmd("noremap :Don :lua vim.diagnostic.enable()<CR>")
+cmd("noremap :cat :lua vim.api.nvim_command('echo \"dark->bright: mocha, macchiato, frappe, latte \"')<CR>")
 
 
 -- =====================================
@@ -180,10 +185,16 @@ require("lazy").setup({
       "lewis6991/gitsigns.nvim",
       opts = {},
     },
+    -- {
+    --   "preservim/tagbar",
+    --   opts = {}
+    -- },
     {
       "OXY2DEV/markview.nvim",
-      lazy = false, -- Recommended
+      lazy = false,  -- Recommended
+      priority = 49, -- 50 is lazy's default priority
       opts = {
+        preview = { enable = false },
         markdown = {
           list_items = { enable = false },
           headings = {
@@ -311,6 +322,13 @@ require("lazy").setup({
 -- =====================================
 --          Plugin Settings
 -- =====================================
+-- key maps
+-- keymap.set("n", "<leader>m", ":Markview<CR>",
+--   { desc = "Toggle Markview gloablly" })
+-- keymap.set("n", "<leader>s", ":Markview splitToggle<CR>",
+--   { desc = "Toggle 'splitview' for curent buffer" })
+
+
 -- lualine
 require("lualine").setup({
   options = {
@@ -462,6 +480,10 @@ vim.lsp.config['ts_ls'] = {
   capabilities = capabilities,
 }
 
+vim.lsp.config['pylsp'] = {
+  capabilities = capabilities,
+}
+
 vim.lsp.config['clangd'] = {}
 vim.lsp.config['rust_analyzer'] = {
   -- Server-specific settings. See `:help lspconfig-setup`
@@ -471,6 +493,7 @@ vim.lsp.config['rust_analyzer'] = {
 }
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
+vim.lsp.enable('pylsp')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -649,12 +672,19 @@ require('gitsigns').setup({
     map('n', '<leader>hp', gitsigns.preview_hunk, { desc = "preview hunk" })
     map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = "preview hunk inline" })
     map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = "blame line" })
+    map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this (against index)" })
+    map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { desc = "diff this (against HEAD)" })
+    map('n', '<leader>hq', gitsigns.setqflist, { desc = "list hunks in quickfix" })
+    map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, { desc = "list all hunks in quickfix" })
+
+    -- Toggles
     map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "toggle curr line blame" })
-    map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this" })
-    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
     map('n', '<leader>td', gitsigns.toggle_deleted, { desc = "toggle deleted" })
+    map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "toggle word diff" })
 
     -- Text object
     map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
 })
+
+-- require('tagbar').setup({})
