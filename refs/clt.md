@@ -21,6 +21,10 @@ Contents:
 
 ## Shell
 
+### more to add
+
+parallel: run commands on multiple CPU's
+
 ### Command line shortcuts
 ```
 ^l                  # clears screen
@@ -180,12 +184,18 @@ tldr                                        # simplified man pages (npm install 
     ```
 
 *   locate (apt)
-*   tar & gzip
+*   zip, tar & gzip
+
     ```bash
-    tar tvf <file.tar>      # list the contents of a tar file verbosely
+    zip <name.zip> file         # create zip file
+    zip -r <name.zip> dir       # create zip file from directory
+    unzip -l <name.zip>         # show structure of zip file without unzipping
+    unzip <name.zip>            # show structure of zip file without unzipping
+    unzip <name.zip> -d <dir>   # show structure of zip file without unzipping
+    tar tvf <file.tar>          # list the contents of a tar file verbosely
     tar xvf <file.tar[.gz|.bz2|.xz]>
-                            # extract a compressed archive file into current
-                            #   directory verbosely (as a subfolder)
+                                # extract a compressed archive file into current
+                                #   directory verbosely (as a subfolder)
     ```
 
 ### Searching file content

@@ -151,6 +151,9 @@ git config core.sshCommand "ssh -i <path-to-private-key>"
                                            # use specific ssh key for git tasks
 git clone <repo-url> --config core.sshCommand "ssh -i <path-private-key>"
                                            # clone with specific ssh key
+
+# checkout
+git checkout <branch> -- <path-to-file>    # checkout file in a different branch
 ```
 
 ## References

@@ -32,13 +32,18 @@ zg      " add to good word list
 zug     " undo zg
 zw      " add to bad word list
 zuw     " undo zw
+g C-g   " count the number of words (also works for selected block)
+
+/\<bar\> " search 'bar' as a whole word
 ```
 
 [ref - Vim documentation: Spell](https://vimdoc.sourceforge.net/htmldoc/spell.html)
 
-## Tabs & Windows
+## Buffers, Tabs, and Windows
 
 ```vim
+" Buffers
+^6          " toggle between current and alternate buffer
 :sp         " split window horizontally
 :vs(p)      " split window vertically
 ^w + hjkl   " navigate to window
