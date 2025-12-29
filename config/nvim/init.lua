@@ -120,11 +120,7 @@ keymap.set("", "<F3>", ":noh<CR>")
 keymap.set("", "<F9>", ":tabedit $HOME/.config/nvim/init.lua<CR>")
 keymap.set("i", "jk", "<Esc>")
 keymap.set("n", "<C-n>", ":tabnew<CR>")
-keymap.set("n", "<leader>gk", ":bn<CR>")
-keymap.set("n", "<leader>gj", ":bp<CR>")
-keymap.set("n", "<leader>gd", ":bd<CR>")
-keymap.set("n", "<leader>gh", ":bf<CR>")
-keymap.set("n", "<leader>gl", ":bl<CR>")
+keymap.set("n", "<leader>bd", ":bd<CR>")
 keymap.set("n", "Q", "<Nop>")
 -- cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
 cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
@@ -512,24 +508,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local opts = { buffer = ev.buf }
-    keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    -- local opts = { buffer = ev.buf, desc = "lsp.buf" }
+    local function make_opt(desc)
+      return { buffer = ev.buf, desc = desc }
+    end
+    keymap.set("n", "gD", vim.lsp.buf.declaration, make_opt("Jump to declaration"))
+    keymap.set("n", "<space>D", vim.lsp.buf.type_definition, make_opt("Jump to type definition"))
+    keymap.set("n", "gd", vim.lsp.buf.definition, make_opt("Jump to definition"))
+    keymap.set("n", "gi", vim.lsp.buf.implementation, make_opt("List all implementations"))
+    keymap.set("n", "gr", vim.lsp.buf.references, make_opt("List all references"))
+    keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, make_opt("Show signature help"))
     keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-    keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-    keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-    keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, make_opt("Add workspace folder"))
+    keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, make_opt("Remove workspace folder"))
     keymap.set("n", "<space>wl", function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, opts)
-    keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-    keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-    keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-    keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    end, make_opt("List workspace folder"))
+    keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, make_opt("Select code action"))
     keymap.set("n", "<leader>p", function()
       vim.lsp.buf.format({ async = true })
-    end, opts)
+    end, make_opt("Format file"))
   end,
 })
 
