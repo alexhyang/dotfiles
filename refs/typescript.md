@@ -1,6 +1,6 @@
-# JavaScript
+# JavaScript/TypeScript
 
-This document contains JavaScript notes.
+This document contains JavaScript/TypeScript notes.
 
 Contents:
 * [Array](#array)
@@ -8,49 +8,127 @@ Contents:
 * [OOP](#oop)
 * [References](#references)
 
+## Some practical tips
+
+*   Boolean coercion (the following expressions return false, all others return
+    true)
+
+    ```typescript
+    Boolean(false)
+    Boolean("")
+    Boolean(0); Boolean(-0); Boolean(-0); Boolean (0n)
+    Boolean(undefined); Boolean(null); Boolean(Null)
+    ```
+
+*   Opaque types in TypeScript: avoid mix-ups between different types of the
+    same base type (e.g. string or number)
+
+    // TODO: add more details later
+
+    ```typescript
+    // Simpler example:
+    type ProductId = string & { readonly brand: unique symbol };
+    function createProductId(id: string): ProductId {
+        return id as ProductId;
+    }
+    function processProduct(id: ProductId) {
+        console.log("Processing...", id);
+    }
+    const productId: ProductId = createProductId("abcd1234");
+    console.log(productId);     // print "abcd1234"
+    processProduct(productId);  // print "Processing... abcd1234"
+
+    // A more complex example:
+    declare namespace Tag {
+        const OpaqueTagSymbol: unique symbol;
+
+        class OpaqueTag<T> {
+            private [OpaqueTagSymbol]: T;
+        }
+    }
+    type Id<T extends _HasId> = string & Tag.OpaqueTag<T>;
+    // usage
+    Id<User> = string & Tag.OpaqueTag<User>;
+    Id<Product> = string & Tag.OpaqueTag<Product>;
+    const userId: Id<User> = "user-123" as Id<User>;
+    const productId: Id<Product> = "user-123" as Id<Product>;
+    console.log(userId === productId);  // returns false
+    ```
+
+    [Example in more details](./typescript/opaqueTag.ts)
+
+*   Spread Operator
+
+    [Spread syntax - MDN][1]
+
+
+    ```typescript
+    // array
+    const arr1 = [1, 2, 3];
+    const arr2 = [11, 12, 13];
+    const expanded = [...arr1, 4, 5]; // [1,2,3,4,5]
+    const combined = [...arr1, ...arr2]; // [1,2,3,11,12,13]
+    // object
+    const obj1 = { x: 1 }
+    const obj2 = { ...obj1, y: 2} // { x: 1, y: 2 }
+    const obj3 = { ...obj2, y: 3} // { x: 1, y: 3 }
+    // string
+    const chars = [..."abc"] // ["a", "b", "c"]
+    // type and tuple
+    type A = [number, string]
+    type B = [...A, boolean]
+    const a: A = [1, "a"];
+    const b: B = [42, "hat", false]
+    ```
+
+*   Shallow and Deep Copy of Array
+
+    ```typescript
+    // array of primitive data
+    const arr = [1, 2, 3];
+    const deep = [...arr];
+    const shallow = arr;
+
+    deep[0] = 2;
+    console.log(arr[0]);        // 1
+    console.log(shallow[0]);    // 1
+    console.log(deep[0]);       // 2
+
+    shallow[0] = 100;
+    console.log(arr[0]);        // 100
+    console.log(shallow[0]);    // 100
+    console.log(deep[0]);       // 2
+
+    // array of objects (array stores pointers)
+    const arrObjs = [{ x: 1 }, { y: 2 }];
+    const newArr = [...arrObjs];
+
+    newArr[0].x = 99;
+    console.log(arrObjs[0].x);  // 99
+    console.log(newArr[0].x);   // 99
+    ```
+
+*   Shallow and Deep Copy of Objects
+
+    ```typescript
+    const obj = { x: 1 ,  y: 2 };
+    const deep = {...obj};
+    const shallow = obj;
+
+    deep.x = 99;
+    console.log(obj.x);         // 1
+    console.log(shallow.x);     // 1
+    console.log(deep.x);        // 99
+
+    deep.x = 42;
+    console.log(obj.x);         // 42
+    console.log(shallow.x);     // 42
+    console.log(deep.x);        // 99
+    ```
+
 ## Array
-```javascript
-// MDN Documentation:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-// ======== JavaScript.info ========
-// Elements
-let arr = [];
-console.log(arr.length);
-arr.indexOf(); // return first index or -1
-arr.lastIndexOf(); // return last index or -1
-arr.slice(); // return subarray
-arr.join(); // join elements to a string
-arr.toString();
-arr.toLocaleString(); // ??? how is it different from .toString()
-
-// Arrays
-arr.concat();
-
-// Array mutation
-arr.push(); // add one or more elements to the end
-arr.pop(); // remove and return last element
-arr.shift(); // remove and return first element
-arr.unshift(); // add one or more elements to the beginning
-
-arr.reverse();
-arr.sort();
-
-// Array Iteration
-arr.forEach(myFunc);
-arr.every(myFunc);
-arr.some(myFunc);
-arr.filter(myFunc);
-arr.map(myFunc);
-arr.reduce(muFunc); // reduce from left to right
-arr.reduceRight(myFunc); // reduce from right to left
-// vanilla javascript
-document.addEventListener("DOMContentLoaded", function () {
-  const id = document.querySelector("#task");
-  addElement();
-  headingListenToClick();
-});
-```
+See [Array - MDN Documentation][2]
 
 ## DOM
 ```javascript
@@ -78,101 +156,8 @@ $(function () {
 ```
 
 ## OOP
+
 ```javascript
-// ======== FreeCodeCamp ========
-// class and objects
-function Animal() {}
-Animal.prototype = {
-  constructor: Animal,
-  eat: function () {
-    console.log("nom nom");
-  },
-};
-
-let duck = Object.create(Animal.prototype);
-let beagle = Object.create(Animal.prototype);
-
-// ======== FreeCodeCamp ========
-// prototype, class, and objects
-function Animal() {}
-
-Animal.prototype = {
-  constructor: Animal,
-  eat: function () {
-    console.log("nom nom");
-  },
-};
-
-function Bird() {}
-function Dog() {}
-Bird.prototype = Object.create(Animal.prototype);
-Dog.prototype = Object.create(Animal.prototype);
-
-// update constructors (inherited constructor is Animal)
-// Bird.prototype.constructor: Animal -> Bird
-// Dog.prototype.constructor: Animal -> Dog
-Bird.prototype.constructor = Bird;
-Dog.prototype.constructor = Dog;
-
-let duck2 = new Bird();
-let beagle2 = new Dog();
-
-// ======== W3School ========
-// before ES6
-function Vehicle(brand) {
-  this.carname = brand;
-}
-
-Vehicle.prototype = {
-  present: function () {
-    return "I have a " + this.carname;
-  },
-};
-
-// how do I inherit parent constructor?
-function Model(brand, mod) {
-  this.brand = brand;
-  this.mod = mod;
-}
-
-Model.prototype = Object.create(Vehicle.prototype);
-Model.prototype.constructor = Model;
-
-// ======== W3School ========
-// ES6
-class Vehicle {
-  constructor(brand) {
-    this.carname = brand;
-  }
-  present() {
-    return "I have a " + this.carname;
-  }
-}
-
-class Model extends Vehicle {
-  constructor(brand, mod) {
-    super(brand); // inherit parent class
-    this.model = mod;
-  }
-  show() {
-    return this.present() + ", it is a " + this.model;
-  }
-}
-
-let myCar = new Model("Ford", "Mustang");
-
-// ======== Eloquent JS ========
-// prototype
-function Person(name) {
-  this.name = name;
-}
-let bob = new Person("bob");
-Object.getPrototypeOf(bob); // returns an empty object {}
-console.log(Person.prototype); // returns [Object: null prototype] {}
-console.log(Object.getPrototypeOf(bob) === Person.prototype); // returns true
-
-console.log(Object.getPrototypeOf(Object.prototype)); // returns null
-
 // ======== Eloquent JS ========
 // Symbol
 let id1 = Symbol("id");
@@ -251,7 +236,8 @@ for (let num of range) {
 }
 ```
 
-# Functions
+## Functions
+
 ```javascript
 /*
 three ways to declare a function in JavaScript:
@@ -289,3 +275,6 @@ exports.solution = solution;
 
 ## References
 *   [fff]()
+
+[1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+[2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
