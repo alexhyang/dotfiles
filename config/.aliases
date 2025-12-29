@@ -53,6 +53,7 @@ alias .nvim="cd $(.nvimcheck); tree"
 alias weather="curl wttr.in"
 
 # git
+alias gs.="gss ."
 alias lg="lazygit"
 alias glc="git log \
   --oneline --decorate \

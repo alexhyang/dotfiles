@@ -8,6 +8,13 @@ paths() {
   echo $PATH | tr -s ":" "\n"
 }
 
+temp() {
+  if [[ ! -d "$HOME/temp" ]]; then
+    mkdir $HOME/temp
+  fi
+  cd $HOME/temp
+}
+
 # move files
 setDst() {
   echo $(pwd) > ~/.mvDst
@@ -106,6 +113,11 @@ addPrefix() {
       echo "rename cancelled"
     fi
   fi
+}
+
+# get current folder name
+curF () {
+  basename $(pwd)
 }
 
 # check whether
@@ -210,7 +222,7 @@ tl() {
   tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
 }
 
-cht() {
+ch() {
   curl "cheat.sh/$@"
 }
 
