@@ -120,7 +120,11 @@ source ~/.localrc
 
 # Environment Variables
 export PATH=$HOME/.local/bin:/snap/bin:$PATH
-export VISUAL="vim"
+if command -v nvim >/dev/null 2>&1; then
+  export VISUAL="nvim"
+else
+  export VISUAL="vim"
+fi
 export EDITOR="$VISUAL"
 export TERM="xterm-256color"
 export HISTSIZE=5000
@@ -174,3 +178,10 @@ fi
 # ssh-add ~/.ssh/id_ed25519;
 # ssh-add -l
 
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  command yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
