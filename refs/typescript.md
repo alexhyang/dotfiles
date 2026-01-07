@@ -10,7 +10,7 @@ Contents:
 
 ## Some practical tips
 
-*   Boolean coercion (the following expressions return false, all others return
+*   *Boolean coercion* (the following expressions return false, all others return
     true)
 
     ```typescript
@@ -20,7 +20,7 @@ Contents:
     Boolean(undefined); Boolean(null); Boolean(Null)
     ```
 
-*   Opaque types in TypeScript: avoid mix-ups between different types of the
+*   *Opaque types* in TypeScript: avoid mix-ups between different types of the
     same base type (e.g. string or number)
 
     // TODO: add more details later
@@ -57,10 +57,9 @@ Contents:
 
     [Example in more details](./typescript/opaqueTag.ts)
 
-*   Spread Operator
+*   *Spread Operator*
 
     [Spread syntax - MDN][1]
-
 
     ```typescript
     // array
@@ -81,7 +80,7 @@ Contents:
     const b: B = [42, "hat", false]
     ```
 
-*   Shallow and Deep Copy of Array
+*   *Shallow and Deep Copy* of Array
 
     ```typescript
     // array of primitive data
@@ -108,7 +107,7 @@ Contents:
     console.log(newArr[0].x);   // 99
     ```
 
-*   Shallow and Deep Copy of Objects
+*   *Shallow and Deep Copy* of Objects
 
     ```typescript
     const obj = { x: 1 ,  y: 2 };
@@ -124,6 +123,159 @@ Contents:
     console.log(obj.x);         // 42
     console.log(shallow.x);     // 42
     console.log(deep.x);        // 99
+    ```
+
+*   *Type-checking variables*
+
+    *    primitive types
+
+         ```typescript
+         console.log(typeof 42)          // "number"
+         console.log(typeof "hello")     // "string"
+         console.log(typeof true)        // "boolean"
+         console.log(typeof undefined)   // "undefined"
+         console.log(typeof Symbol())    // "symbol"
+         console.log(typeof 42n)         // "bigint"
+         console.log(typeof null)        // "object"
+         console.log(typeof (() => {}))  // "function"
+         // any other object             // "object"
+         console.log(typeof new String("string"))  // "object"
+         console.log(typeof new Number(100))       // "object"
+         console.log(typeof new Function())        // "function"
+         ```
+
+         Why `typeof null === "object`? [Type tag for null (0x00) collides with
+         the type tag for object (0).][3]
+
+    *   objects
+
+        ```typescript
+        object instanceof constructor  // syntax of `instanceof`
+        // returns true if constructor.prototype appears in the prototype chain
+        //   of the object
+        ```
+
+    *   classes
+    *   custom types
+
+*   *Prototype chain*
+
+    [Inheritance and the prototype chain][4]
+
+    1.  Inheritance with the prototype chain
+
+        ```typescript
+        // 1.1 Inheriting properties
+        const o = {
+            a: 1,
+            b: 2,
+            // __proto__ sets the [[Prototype]]. It's specified here
+            // as another object literal.
+            __proto__: {
+                b: 3,
+                c: 4,
+                __proto__: {
+                d: 5,
+                },
+            },
+        };
+
+        // { a: 1, b: 2 } ---> { b: 3, c: 4 } ---> { d: 5 } ---> Object.prototype ---> null
+        console.log(o.d); // 5
+
+
+        // 1.2 Inheriting "methods"
+        const parent = {
+            value: 2,
+            method() {
+                return this.value + 1;
+            },
+        };
+
+        console.log(parent.method()); // 3
+        // When calling parent.method in this case, 'this' refers to parent
+
+        // child is an object that inherits from parent
+        const child = {
+            __proto__: parent,
+        };
+        console.log(child.method()); // 3
+        // When child.method is called, 'this' refers to child.
+        // So when child inherits the method of parent,
+        // The property 'value' is sought on child. However, since child
+        // doesn't have an own property called 'value', the property is
+        // found on the [[Prototype]], which is parent.value.
+
+        child.value = 4; // assign the value 4 to the property 'value' on child.
+        // This shadows the 'value' property on parent.
+        // The child object now looks like:
+        // { value: 4, __proto__: { value: 2, method: [Function] } }
+        console.log(child.method()); // 5
+        // Since child now has the 'value' property, 'this.value' means
+        // child.value instead
+        ```
+
+    1.  Constructor
+
+        ```typescript
+        // 2.1 - Constructor function
+        function Box(value) {
+            this.value = value;
+        }
+
+        //   Properties all boxes created from the Box() constructor will have
+        Box.prototype.getValue = function () {
+            return this.value;
+        };
+
+        const boxes = [new Box(1), new Box(2), new Box(3)];
+
+        //   Mutate Box.prototype after an instance has already been created.
+        //     However, re-assigning `Constructor.prototype` is a bad practice
+        Box.prototype.getValue = function () {
+            return this.value + 1;
+        };
+
+        boxes[0].getValue();  // 2
+
+        //   Rewritten in a class
+        class Box {
+            constructor(value) {
+                this.value = value;
+            }
+
+            // Methods are created on Box.prototype
+            getValue() {
+                return this.value;
+            }
+        }
+
+
+        // 2.2 - Building a longer prototype chain
+        function Base() {}
+        function Derived() {}
+        Object.setPrototypeOf(Derived.prototype, Base.prototype);  // instance properties
+        Object.setPrototypeOf(Derived, Base);                      // static properties
+        // TODO: compare static and instance properties
+        // Note: don't set prototype like:  `Derived.prototype = Object.create(Base.prototype)`
+
+        const obj = new Derived();
+        // obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
+
+        //   Rewrite in classes
+        class Base {}
+        class Derived extends Base {}
+        const obj = new Derived();
+        // obj ---> Derived.prototype ---> Base.prototype ---> Object.prototype ---> null
+        ```
+
+*   *Callable and Newable interface*
+
+    ```typescript
+    interface Nuke {
+        new(id: string): Nuke;      // Nuke is newable via `new Nuke(id)`
+        (id: string): Nuke;         // Nuke is callable via `Nuke(id)`
+    }
     ```
 
 ## Array
@@ -278,3 +430,5 @@ exports.solution = solution;
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+[3]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null
+[4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
