@@ -18,6 +18,7 @@ temp() {
 # move files
 setDst() {
   echo $(pwd) > ~/.mvDst
+  echo "set destination to $(getDst)"
 }
 
 getDst() {
@@ -30,10 +31,12 @@ goDst() {
 
 mvToDst() {
   mv $1 "$(eval getDst)"
+  echo "$1 moved to $(getDst)"
 }
 
 cpToDst() {
   cp $1 "$(eval getDst)"
+  echo "$1 copied to $(getDst)"
 }
 
 # set up ssh agent
@@ -74,15 +77,7 @@ addSuffix() {
 
     echo "adding suffix: $suffix"
     rename -n "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
-    promptMsg="Confirm rename? [y/N]: "
-
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMsg"
-    else
-      read -p "$promptMsg" confirm
-    fi
-
-    if [[ $confirm =~ ^[Yy]$ ]]; then
+    if util_confirm "Confirm rename?"; then
       rename "s/(.*)\.(.*)/\1-$suffix\.\2/" *$pattern*
     else
       echo "rename cancelled"
@@ -99,15 +94,7 @@ addPrefix() {
 
     echo "adding prefix: $prefix"
     rename -n "s/(.*)\.(.*)/$prefix-\1\.\2/" *$pattern*
-    promptMsg="Confirm rename? [y/N]: "
-
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMsg"
-    else
-      read -p "$promptMsg" confirm
-    fi
-
-    if [[ $confirm =~ ^[Yy]$ ]]; then
+    if util_confirm "Confirm rename?"; then
       rename "s/(.*)\.(.*)/$prefix-\1\.\2/" *$pattern*
     else
       echo "rename cancelled"
@@ -202,13 +189,7 @@ readme() {
   if [[ -f "./README.md" ]]; then
     vi ./README.md
   else
-    promptMsg="README.md doesn't exit! Create README.md? [y/N]: "
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMsg"
-    else
-      read -p "$promptMsg" confirm
-    fi
-    if [[ $confirm =~ ^[Yy]$ ]]; then
+    if util_confirm "README.md doesn't exit! Create README.md?"; then
       mdTemplate README.md || touch README.md && vi README.md
     fi
   fi
@@ -232,13 +213,7 @@ ch() {
 myrefs() {
   createRef() {
     promptMsg="Create $1? [y/N]"
-    if [[ $SHELL == "/usr/bin/zsh" ]]; then
-      read "confirm?$promptMsg"
-    else
-      read -p "$promptMsg" confirm
-    fi
-
-    if [[ $confirm =~ ^[Yy]$ ]]; then
+    if util_confirm "Create $1?"; then
       mdTemplate $1 && vi $1
     fi
   }
@@ -279,13 +254,7 @@ dropNotes() {
     mv ./$1 $dropbox/$1
   else
     if ! diff $dropbox/$1 ./$1; then
-      promptMsg="./$1 --> $dropbox/$1? [y/N]"
-      if [[ $SHELL == "/usr/bin/zsh" ]]; then
-        read "confirm?$promptMsg"
-      else
-        read -p "$promptMsg" confirm
-      fi
-      if [[ $confirm =~ ^[Yy]$ ]]; then
+      if util_confirm "./$1 --> $dropbox/$1?"
         mv ./$1 $dropbox/$1
       else
         echo "dropNotes canceled"
@@ -306,3 +275,30 @@ jrun () {
 crun () {
   gcc -std=gnu11 -g -o $1 $1.c
 }
+
+
+# =========================================================
+#       Helper Functions
+# =========================================================
+
+# Usage
+# if util_confirm "message"; then
+#   echo "success"
+# else
+#   echo "failure"
+# fi
+util_confirm() {
+  local promptMsg="${1:-Are you sure?} [y/N]: "
+  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+    read "confirmation?$promptMsg"
+  else
+    read -p "$promptMsg" confirmation
+  fi
+
+  if [[ $confirmation == "y" ]]; then
+    return 0;
+  else
+    return 1;
+  fi
+}
+
