@@ -13,6 +13,7 @@ yarn add <package>     # add a package as dependency
 yarn add -D <package>  # add a package as dev dependency
 yarn remove <package>  # remove a package
 yarn install           # install all packages
+yarn global list       # list global packages using yarn
 ```
 
 ## Usage of common packages

@@ -16,6 +16,7 @@ Contents:
 ## Advanced Editing
 
 ```vim
+^k      " in insert mode, enter diagraphs (:dig to check all digraphs)
 " SpellBad (word not recognized)
 " SpellCap (word not capitalized)
 " SpellRare (rare word)
@@ -34,10 +35,40 @@ zw      " add to bad word list
 zuw     " undo zw
 g C-g   " count the number of words (also works for selected block)
 
-/\<bar\> " search 'bar' as a whole word
+/\<bar\> " search 'bar' as a whole word (or use # in normal mode to search
+         "     the word that the cursor is on)
+ga       " (in normal mode) show the ASCII value of the current character
 ```
 
 [ref - Vim documentation: Spell](https://vimdoc.sourceforge.net/htmldoc/spell.html)
+
+## Marks
+
+```text
+Command       | Operation
+--------------|----------------------------------------------------------
+m{a-zA-Z}     | Sets the mark, for example `ma`
+'a            | Go to the mark set at `a`, the cursor would be positioned on the
+                    first non-blank character in the line
+`a            | Go to the mark set at `a`, the cursor would be positioned on the
+                    exact location
+]'            | Go to the next lowercase mark set, cursor positioned on the first
+                    non-blank character in the line
+]`            | Go to the next lowercase mark set, cursor positioned on the exact
+                    location
+['            | Go to the previous lowercase mark set, cursor positioned on the
+                    first non-blank character in the line
+[`            | Go to the previous lowercase mark set, cursor positioned on the
+                    exact location
+:marks        | Shows the list of marks
+:marks a      | Shows the list of mark at a
+:marks ab     | Shows the list of marks at a and b
+:marks a-c    | Shows the list of marks at a, b and c
+:delmarks a   | Deletes the mark at a
+:delmarks ab  | Deletes the mark at a and b
+:delmarks a-c | Deletes the mark at a, b and c
+:delmarks!    | Deletes all marks for current buffer (with lowercase {a-z})
+```
 
 ## Buffers, Tabs, and Windows
 
