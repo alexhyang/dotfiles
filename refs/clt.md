@@ -211,6 +211,11 @@ tldr                                        # simplified man pages (npm install 
     sed -i "7d" <filename>              # remove the 7th line in file
     sed -i "11,20d" <filename>          # remove lines (11-20) in file
     sed -i "/<patter>/d" <filename>     # remove lines that contain the patter
+
+    # in-place substitution
+    sed -Ei 's/([0-9]{1,2}:[0-9]{2})/\n\1/g' file.txt
+                                        # add "\n" before each timestamp x:xx or
+                                        #   xx:xx
     ```
 
 ### Monitoring processes

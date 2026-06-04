@@ -144,7 +144,7 @@ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 "   editing
 " Plug 'takac/vim-hardtime'               " stop basic movement keys
 Plug 'easymotion/vim-easymotion'        " easymotion - vim motion on speed
-Plug 'valloric/youcompleteme'           " youcompleteme - code completion
+"Plug 'valloric/youcompleteme'           " youcompleteme - code completion
 Plug 'scrooloose/nerdcommenter'         " NERD Commenter
 Plug 'junegunn/vim-easy-align'          " Easy align
 Plug 'godlygeek/tabular'                " Tabular - text filder and alignment
