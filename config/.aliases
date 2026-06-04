@@ -1,7 +1,7 @@
 #!/bin/bash
 # shell alias
 alias so="source"
-alias rl="source ~/.zshrc"
+alias rl="omz reload"
 alias cl="clear"
 alias b="popd"
 alias mv="mv -i"
@@ -18,8 +18,8 @@ alias cpD="cpToDst"
 alias np="nopassphrase"
 
 # edit and/or reload config files
-alias usevim="alias vi=\"vim\"; echo using vim";
-alias usenv="alias vi=\"nvim\"; #echo using nvim";
+alias usevm="alias vi=\"vim\"; echo using vim; lshu"
+alias usenv="alias vi=\"nvim\"; #echo using nvim; lshu"
 alias vi="nvim"
 
 alias vr="vi ~/.dotfiles/config/.vimrc"
@@ -59,6 +59,7 @@ alias glc="git log \
   --oneline --decorate \
   --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
   --date=short"
+alias gcmi="gcmsg 'init commit'"
 
 # fzf
 alias fzw="fzf \
