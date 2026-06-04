@@ -25,6 +25,8 @@ Contents:
     # apt
     sudo apt update                # update local database of packages available, run especially before installing or upgrading packages
     sudo apt upgrade               # upgrade installed packages
+    sudo apt-mark hold <package>   # prevent package from being upgraded by `sudo apt upgrade`
+    apt-mark showhold              # show packages prevented from upgrade
     sudo apt install <package>     # install package from repositories
     sudo apt remove <package>      # remove installed packages
     apt search <search_string>     # search a package using keyword

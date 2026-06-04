@@ -34,6 +34,7 @@ Contents:
     # -o example : output file with name "example"
     # -g         : producing debugging information
     # -Og        : optimizing debugging experience
+    # -O0        : do no optimizations
     # -Wall      : enable most compiler warnings
     # -Wno-unused-function : disables warnings about used functions
     ```
@@ -41,6 +42,7 @@ Contents:
     Flags:
     *   CC: program for compiling C programs, default 'cc'
     *   CXX: program for compiling C++ programs, default
+    *   CXXFLAGS: extra flags for compiler
     *   LDFLAGS: extra flags for linker
 
 
@@ -53,6 +55,8 @@ Contents:
 
     commands in debugger:
     *   b <location>: set breakpoint (e.g. b test.c:13)
+    *   del <breakpoint-number>:  remove a breakpoint (list all by `info break`)
+    *   disable <breakpoint-number>:  disable a breakpoint
     *   run [arguments]: run the program
     *   bt: print out a back-trace
     *   p <variable>: print out the given value/expression
