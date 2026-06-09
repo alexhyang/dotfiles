@@ -21,6 +21,7 @@ set backspace=indent,eol,start  " enable <BS> to remove autoindent,
                                 " end of line character, and start of line
 
 set spell spelllang=en_us       " spell checking
+set spellfile=~/.vim/spell/en.utf-8.add
 set wrap linebreak              " wrap linebreak
 " set columns=80                  " set column width limit
 set colorcolumn=80              " set column width (80) marker
@@ -89,7 +90,7 @@ set noerrorbells visualbell t_vb=
 " =====================================
 " map new tab command
 nnoremap <C-n> :tabnew<CR>
-
+autocmd FileType help wincmd L
 
 " =====================================
 "         Key mappings
@@ -130,7 +131,7 @@ nmap Q <Nop>
 " ===================================================
 call plug#begin()
 
-" Interface and Integration
+" --- Interface and Integration ---
 Plug 'tpope/vim-fugitive'               " fugitive.vim - a Git wrapper
 Plug 'scrooloose/nerdtree'              " nerd tree - tree explorer for vim
 Plug 'airblade/vim-gitgutter'           " vim gitgutter - show git diff markers
@@ -139,8 +140,10 @@ Plug 'vim-airline/vim-airline-themes'   " vim airline themes
 Plug 'altercation/vim-colors-solarized' " vim color theme solarized
 Plug 'majutsushi/tagbar'                " tagbar - outline classes, funcs, etc.
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'mattn/calendar-vim'
 
-" Editing, syntax, linting
+
+" --- Editing, syntax, linting ---
 "   editing
 " Plug 'takac/vim-hardtime'               " stop basic movement keys
 Plug 'easymotion/vim-easymotion'        " easymotion - vim motion on speed
@@ -172,11 +175,18 @@ Plug 'editorconfig/editorconfig-vim'    " vim support for .editorconfig
 " Plug 'lervag/vimtex', { 'tag': 'v2.15' } " vim latex plugin
 Plug 'vim-latex/vim-latex'              " vim latex plugin
 
-" Search
+" --- Search ---
 Plug 'mileszs/ack.vim'                  " ack - vim plugin for ack
 " ctrlp installed by 'ctrlpvim/ctrlp.vim' or manually by setUpVim.sh
 
-" Other
+" --- Workflow ---
+Plug 'vimwiki/vimwiki'
+Plug 'tools-life/taskwiki'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'farseer90718/vim-taskwarrior'
+" Note: to install tasklib, run 'pip3 install tasklib', don't use 'sudo'
+
+" --- Other ---
 Plug 'wakatime/vim-wakatime'            " wakatime dev stats
 
 
@@ -282,6 +292,19 @@ let g:airline_extensions = []
 " plugin: vim-hardtime
 " --------------------------------
 let g:hardtime_default_on = 1
+
+
+
+" --------------------------------
+" plugin: vimwiki
+" --------------------------------
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+let g:vimwiki_gloabal_ext = 0
+let g:vimwiki_markdown_link_ext = 1
+let g:vimwiki_ext2syntax = {}  " add extensions you want to turn off support for
+let g:vimwiki_folding = ''
+let g:vimwiki_use_calendar = 1
+
 
 " --------------------------------
 " plugin: ale
