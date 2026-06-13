@@ -16,7 +16,7 @@ if [ -f /etc/os-release ]; then
           ;;
       ubuntu|debian)
           alias starklauf="sudo apt update && sudo apt upgrade"
-          alias neuwerk="sudo apt install -y"
+          alias neuwerk="sudo apt update && sudo apt install -y"
           ;;
     esac
 fi
@@ -34,28 +34,34 @@ case "$ID" in
     neuwerk fastfetch
     ;;
   ubuntu)
-    neuwerk neofetch fasd 
+    sudo add-apt-repository ppa:aacebedo/fasd
+    neuwerk neofetch fasd
     ;;
 esac
 
 # neofetch : fast system info
 # fasd     : quick access to frequently used files/dirs
+#     https://github.com/clvv/fasd#install
 # fd-find  : fast search for files (alternative to find)
 # fzf      : interactive fuzzy finder
 # bat      : cat with syntax highlighting
 # ripgrep  : fast content search (alternative to grep)
-# autojump : quick navigation in directory
-
-# bind aliases due to name clash
-#   fdfind --> fd
-#   batcat --> bat
-mkdir -p ~/.local/bin
-if [ ! -f ~/.local/bin/fd ]; then
-  ln -s $(which fdfind) ~/.local/bin/fd
-fi
-if [ ! -f ~/.local/bin/bat ]; then
-  ln -s $(which batcat) ~/.local/bin/bat
-fi
+case "$ID" in
+  ubuntu)
+    # bind aliases due to name clash
+    #   fdfind --> fd
+    #   https://github.com/sharkdp/fd#on-ubuntu
+    mkdir -p ~/.local/bin
+    if [ ! -f ~/.local/bin/fd ]; then
+      ln -s $(which fdfind) ~/.local/bin/fd
+    fi
+    #   batcat --> bat
+    #   https://github.com/sharkdp/bat
+    if [ ! -f ~/.local/bin/bat ]; then
+      ln -s $(which batcat) ~/.local/bin/bat
+    fi
+    ;;
+esac
 
 # install lazygit
 case "$ID" in
