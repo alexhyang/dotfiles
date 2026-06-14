@@ -8,7 +8,7 @@ if [ -f /etc/os-release ]; then
           # starklauf: German word meaning "strong run". To upgrade packages
           alias starklauf="sudo dnf upgrade --refresh"
           # neuwerk: German word meaning "new work". To install packages
-          alias neuwerk="sudo dnf install"
+          alias neuwerk="sudo dnf install -y"
           ;;
       arch)
           alias starklauf="sudo pacman -Syu"
