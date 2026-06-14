@@ -19,17 +19,25 @@ Content:
 
 1.  install essential packages
 
-    ```sh
-    sudo apt update; sudo apt upgrade; \
-    sudo apt install -y curl git zsh vim tmux; \
-    apt list --installed curl git zsh vim tmux
-    ```
+    1.  Fedora
+        ```sh
+        sudo dnf upgrade; \
+        sudo dnf install -y zsh vim neovim tmux
+        ```
 
-    `sudo apt update` updates package information,
-    `sudo apt upgrade` installs available upgrades of all installed packages,
-    `sudo apt install -y` installs packages without confirmation,
-    `apt list --installed curl git zsh vim tmux` verifies packages are
-         successfully installed and ready for the next steps
+    1.  Ubuntu
+
+        ```sh
+        sudo apt update && sudo apt upgrade; \
+        sudo apt install -y curl git zsh vim tmux; \
+        apt list --installed curl git zsh vim tmux
+        ```
+
+        `sudo apt update` updates package information,
+        `sudo apt upgrade` installs available upgrades of all installed packages,
+        `sudo apt install -y` installs packages without confirmation,
+        `apt list --installed curl git zsh vim tmux` verifies packages are
+            successfully installed and ready for the next steps
 
 1.  establish GitHub connection (skip this step if no need to push code to
     GitHub)
