@@ -1,7 +1,7 @@
 # Linux Dotfiles
 
 This document contains notes about my personal configuration of development
-environment on Debian-based Linux distributions. For configuration on Linux on
+environment on different Linux distributions. For configuration on Linux on
 Android, checkout the [android branch][android-branch-ref].
 
 Content:
