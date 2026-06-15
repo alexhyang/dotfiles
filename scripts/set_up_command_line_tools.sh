@@ -28,26 +28,43 @@ if [[ $machine == "Debian" ]]; then
 fi
 
 # install productivity command line tools
-starklauf; neuwerk tree fd-find fzf bat ripgrep autojump
+starklauf; neuwerk autojump bat fd-find fzf make ripgrep tree
+
+case "$ID" in
+  ubuntu|debian)
+    # sudo add-apt-repository ppa:aacebedo/fasd
+    neuwerk fasd
+    ;;
+esac
+
 case "$ID" in
   fedora)
     neuwerk fastfetch
     ;;
   ubuntu)
-    sudo add-apt-repository ppa:aacebedo/fasd
-    neuwerk neofetch fasd
+    if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver >= 25.04) }'; then
+      neuwerk fastfetch
+    fi
+    ;;
+  debian)
+    if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver >= 13) }'; then
+      neuwerk fastfetch
+    fi
     ;;
 esac
 
-# neofetch : fast system info
-# fasd     : quick access to frequently used files/dirs
+# bat       : cat with syntax highlighting
+# fasd      : quick access to frequently used files/dirs
 #     https://github.com/clvv/fasd#install
-# fd-find  : fast search for files (alternative to find)
-# fzf      : interactive fuzzy finder
-# bat      : cat with syntax highlighting
-# ripgrep  : fast content search (alternative to grep)
+# fastfetch : fast system info
+# fd-find   : fast search for files (alternative to find)
+# fzf       : interactive fuzzy finder
+# make      : GNU make utility
+# ripgrep   : fast content search (alternative to grep)
+# tree      : list dir contents in tree-like format
+
 case "$ID" in
-  ubuntu)
+  ubuntu|debian)
     # bind aliases due to name clash
     #   fdfind --> fd
     #   https://github.com/sharkdp/fd#on-ubuntu
@@ -64,6 +81,15 @@ case "$ID" in
 esac
 
 # install lazygit
+# helper function to install from tar
+install_lg_from_tar() {
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+  LAZYGIT_ARCH=$(uname -m | sed -e 's/aarch64/arm64/')
+  curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
+  tar xf lazygit.tar.gz lazygit
+  sudo install lazygit -D -t /usr/local/bin/
+}
+
 case "$ID" in
   fedora)
     neuwerk --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
@@ -71,11 +97,14 @@ case "$ID" in
     ;;
   ubuntu)
     if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver <= 25.04) }'; then
-      LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
-      LAZYGIT_ARCH=$(uname -m | sed -e 's/aarch64/arm64/')
-      curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
-      tar xf lazygit.tar.gz lazygit
-      sudo install lazygit -D -t /usr/local/bin/
+      install_lg_from_tar
+    else
+      neuwerk lazygit
+    fi
+    ;;
+  debian)
+    if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver <= 12) }'; then
+      install_lg_from_tar
     else
       neuwerk lazygit
     fi
