@@ -25,7 +25,7 @@ Content:
         sudo dnf install -y zsh vim neovim tmux
         ```
 
-    1.  Ubuntu
+    1.  Debian/Ubuntu
 
         ```sh
         sudo apt update && sudo apt upgrade; \
