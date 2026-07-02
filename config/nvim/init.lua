@@ -26,11 +26,16 @@ opt.wrap = true
 opt.linebreak = true
 -- opt.backspace = indent,eol,start
 opt.spell = true
-opt.spelllang = "en_us"
+opt.spelllang = "en_us,de_de"
+opt.spellfile = {
+  vim.fn.expand("~/.local/share/nvim/site/spell/en.utf-8.add"),
+  vim.fn.expand("~/.local/share/nvim/site/spell/de.utf-8.add")
+}
+opt.spelloptions="camel"
 opt.colorcolumn = "78,80,120"
 opt.mouse:append("a")
 -- opt.cursorline = true
-opt.autocomplete = true
+opt.autocomplete = false
 
 
 -- =====================================
@@ -46,10 +51,10 @@ opt.hlsearch = true
 --         Macros
 -- =====================================
 -- Markdown formatting
-cmd("let @t = \"Bi`\\<Esc>Ea`\\<Esc>\"")
-cmd("let @b = \"Bi**\\<Esc>Ea**\\<Esc>\"")
-cmd("let @i = \"Bi*\\<Esc>Ea*\\<Esc>\"")
-cmd("let @l = \"Bi$\\<Esc>Ea$\\<Esc>\"")
+cmd("let @t = \"lBi`\\<Esc>Ea`\\<Esc>\"")
+cmd("let @b = \"lBi**\\<Esc>Ea**\\<Esc>\"")
+cmd("let @i = \"lBi*\\<Esc>Ea*\\<Esc>\"")
+cmd("let @l = \"lBi$\\<Esc>Ea$\\<Esc>\"")
 cmd("let @u = \"o*\\<Space>\\<Space>\\<Space>\"")
 cmd("let @o = \"o1.\\<Space>\\<Space>\"")
 cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
@@ -92,7 +97,7 @@ opt.signcolumn =
 "yes"                                                  -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true                                   -- Don't ignore case with capitals
 -- opt.smartindent = true                                 -- Insert indents automatically NOTE: conflicting tree sitter
-opt.spelllang = { "en" }
+-- opt.spelllang = { "en" } NOTE: conflict to previous settings
 opt.splitbelow = true                                  -- Put new windows below current
 opt.splitright = true                                  -- Put new windows right of current
 opt.tabstop = 2                                        -- Number of spaces tabs count for
@@ -126,7 +131,7 @@ keymap.set("n", "Q", "<Nop>")
 keymap.set("n", "<leader>mc", ":s/\\[ \\]/[x]<CR>", { desc = "check TODO" })
 keymap.set("n", "<leader>mu", ":s/\\[x\\]/[ ]<CR>", { desc = "uncheck TODO" })
 
--- cmd("noremap <Leader>p :lua vim.lsp.buf.format()<CR>")
+cmd("noremap :rl :restart")
 cmd("noremap :rn :set relativenumber")
 cmd("noremap :nrn :set norelativenumber")
 -- cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
@@ -218,33 +223,43 @@ require("lazy").setup({
     --   "preservim/tagbar",
     --   opts = {}
     -- },
+    -- { NOTE: dropped for Neovim 0.12
+    --   "OXY2DEV/markview.nvim",
+    --   lazy = false,  -- Recommended
+    --   priority = 49, -- 50 is lazy's default priority
+    --   opts = {
+    --     preview = { enable = false },
+    --     markdown = {
+    --       list_items = { enable = false },
+    --       headings = {
+    --         enable = true,
+    --         heading_1 = { style = "simple" },
+    --         heading_2 = { style = "simple" },
+    --         heading_3 = { style = "simple" },
+    --         heading_4 = { style = "simple" },
+    --       },
+    --     },
+    --     code_blocks = {
+    --       enable = true,
+    --       style = "simple",
+    --       min_width = 40,
+    --       border_hl = "MarkviewCode",
+    --     }
+    --   },
+    --   dependencies = {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     "nvim-tree/nvim-web-devicons"
+    --   },
+    -- },
+    -- Editing, Highlighting
+    -- NOTE: can be dropped for Neovim 0.12?
     {
-      "OXY2DEV/markview.nvim",
-      lazy = false,  -- Recommended
-      priority = 49, -- 50 is lazy's default priority
-      opts = {
-        preview = { enable = false },
-        markdown = {
-          list_items = { enable = false },
-          headings = {
-            enable = true,
-            heading_1 = { style = "simple" },
-            heading_2 = { style = "simple" },
-            heading_3 = { style = "simple" },
-            heading_4 = { style = "simple" },
-          },
-        },
-        code_blocks = {
-          enable = true,
-          style = "simple",
-          min_width = 40,
-          border_hl = "MarkviewCode",
-        }
-      },
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
-      },
+      "nvim-treesitter/nvim-treesitter",
+      -- branch = "main",
+      build = ":TSUpdate",
+      init = function()
+        require('nvim-treesitter').install({ 'javascript', 'cpp' })
+      end,
     },
     -- Editing, Highlighting
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -257,28 +272,55 @@ require("lazy").setup({
       event = "InsertEnter",
       opts = {}
     },
+    -- {
+    --   "phaazon/hop.nvim",
+    --   branch = "v2",
+    --   opts = {},
+    -- },
     {
-      "phaazon/hop.nvim",
-      branch = "v2",
-      opts = {},
+        'smoka7/hop.nvim',
+        version = "*",
+        opts = {
+            -- keys = 'etovxqpdygfblzhckisuran'
+            keys = 'asdfghjklqwertyuiopzxcvbnm'
+        }
     },
     { "junegunn/vim-easy-align" },
-    -- File Finder
     {
-      "nvim-telescope/telescope.nvim",
-      tag = "0.1.8",
-      dependencies = { "nvim-lua/plenary.nvim" }
+      "stevearc/conform.nvim", -- lightweight powerful formatter plugin
+      opts = {
+        formatters_by_ft = {
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          typescriptreact = { "prettier" },
+          json = { "prettier" },
+        },
+      },
+    },
+    -- File Finder
+    -- { NOTE: updated below
+    --   "nvim-telescope/telescope.nvim",
+    --   tag = "0.1.8",
+    --   dependencies = { "nvim-lua/plenary.nvim" }
+    -- },
+    {
+      'nvim-telescope/telescope.nvim', version = '*',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            -- optional but recommended
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+        }
     },
     -- LSP, auto-completion
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    -- "hrsh7th/cmp-nvim-lsp", -- NOTE: experiment with Nvim v0.12 built-in (this chunk of comment)
-    -- "hrsh7th/cmp-buffer",
-    -- "hrsh7th/cmp-path",
-    -- "hrsh7th/nvim-cmp",
-    -- "L3MON4D3/LuaSnip",
-    -- "saadparwaiz1/cmp_luasnip",
+    "hrsh7th/cmp-nvim-lsp", -- NOTE: experiment with Nvim v0.12 built-in (this chunk of comment)
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/nvim-cmp",
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
     -- Others
     {
@@ -437,7 +479,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
 
--- nvim-treesitter
+-- nvim-treesitter NOTE: plugin dropped fro native treesitter in Nvim v0.12
 require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site',
@@ -492,6 +534,11 @@ vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files'
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+-- fix error: vim.schedule callback attempt to call field 'ft_to_lang' (a nil value)
+vim.schedule(function()
+  local lang = vim.treesitter.language.get_lang(vim.bo.filetype) or vim.bo.filetype
+end)
 
 -- mason
 require("mason").setup({
@@ -563,6 +610,7 @@ vim.lsp.enable('pyright')
 -- vim.lsp.enable('pylsp')
 vim.lsp.enable('clangd')
 vim.lsp.enable('ruff')
+vim.lsp.enable('json-lsp')
 -- vim.lsp.enable('texlab')
 
 -- Global mappings.
@@ -599,93 +647,102 @@ vim.api.nvim_create_autocmd("LspAttach", {
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, make_opt("List workspace folder"))
     keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, make_opt("Select code action"))
+    -- keymap.set("n", "<leader>p", function()
+    --   vim.lsp.buf.format({ async = true })
+    -- end, make_opt("Format file"))
+    -- enhanced formatter setting
     keymap.set("n", "<leader>p", function()
-      vim.lsp.buf.format({ async = true })
-    end, make_opt("Format file"))
+      local has_conform, conform = pcall(require, "conform")
+      if has_conform then
+        conform.format({ async = true, lsp_fallback = false })
+      else
+        vim.lsp.buf.format({ async = true })
+      end
+    end, make_opt("Format file (Prettier)"))
   end,
 })
 
 -- cmp -- NOTE: experiment with Nvim v0.12 built-in
--- local cmp = require("cmp")
--- local luasnip = require("luasnip")
--- cmp.setup({
---   snippet = {
---     expand = function(args)
---       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
---       -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
---     end,
---   },
---   window = {
---     -- completion = cmp.config.window.bordered(),
---     -- documentation = cmp.config.window.bordered(),
---   },
---   mapping = cmp.mapping.preset.insert({
---     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
---     ['<C-f>'] = cmp.mapping.scroll_docs(4),
---     ['<C-Space>'] = cmp.mapping.complete(),
---     ['<C-e>'] = cmp.mapping.abort(),
---     ['<CR>'] = cmp.mapping.confirm({ select = true }),
---     ["<Tab>"] = cmp.mapping(function(fallback)
---       if cmp.visible() then
---         cmp.select_next_item()
---       elseif luasnip.expandable() then
---         luasnip.expand()
---       elseif luasnip.expand_or_jumpable() then
---         luasnip.expand_or_jump()
---       else
---         fallback()
---       end
---     end, { "i", "s", }),
---     ["<S-Tab>"] = cmp.mapping(function(fallback)
---       if cmp.visible() then
---         cmp.select_prev_item()
---       elseif luasnip.jumpable(-1) then
---         luasnip.jump(-1)
---       else
---         fallback()
---       end
---     end, { "i", "s", }),
---   }),
---   sources = cmp.config.sources({
---     { name = 'nvim_lsp' },
---     { name = 'luasnip' }, -- For luasnip users.
---     { name = 'path' },
---   }, {
---     { name = 'buffer' },
---   })
--- })
-local setup_native_completion = function()
-  -- Helper to check if the native Pop-Up Menu (PUM) is visible
-  local function pum_visible()
-    return vim.fn.pumvisible() == 1
-  end
-
-  -- <Tab>: Go to NEXT item if menu is open, otherwise insert normal indent
-  keymap.set("i", "<Tab>", function()
-    return pum_visible() and "<C-n>" or "<Tab>"
-  end, { expr = true, remap = false, desc = "Next completion / Indent" })
-
-  -- <S-Tab>: Go to PREVIOUS item if menu is open, otherwise normal Shift-Tab
-  keymap.set("i", "<S-Tab>", function()
-    return pum_visible() and "<C-p>" or "<S-Tab>"
-  end, { expr = true, remap = false, desc = "Prev completion" })
-
-  -- <CR> (Enter): Confirm completion selection if menu is open
-  keymap.set("i", "<CR>", function()
-    return pum_visible() and "<C-y>" or "<CR>"
-  end, { expr = true, remap = false, desc = "Confirm completion" })
-
-  -- <C-e>: Abort/Close the completion menu if open
-  keymap.set("i", "<C-e>", function()
-    return pum_visible() and "<C-e>" or "<C-e>" -- Natively, <C-e> cancels insert completion
-  end, { expr = true, remap = false, desc = "Abort completion" })
-
-  -- <C-Space>: Manually trigger completion popup menu
-  keymap.set("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger completion" })
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+    end,
+  },
+  window = {
+    -- completion = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { "i", "s", }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s", }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' }, -- For luasnip users.
+    { name = 'path' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+-- local setup_native_completion = function()
+--   -- Helper to check if the native Pop-Up Menu (PUM) is visible
+--   local function pum_visible()
+--     return vim.fn.pumvisible() == 1
+--   end
+--
+--   -- <Tab>: Go to NEXT item if menu is open, otherwise insert normal indent
+--   keymap.set("i", "<Tab>", function()
+--     return pum_visible() and "<C-n>" or "<Tab>"
+--   end, { expr = true, remap = false, desc = "Next completion / Indent" })
+--
+--   -- <S-Tab>: Go to PREVIOUS item if menu is open, otherwise normal Shift-Tab
+--   keymap.set("i", "<S-Tab>", function()
+--     return pum_visible() and "<C-p>" or "<S-Tab>"
+--   end, { expr = true, remap = false, desc = "Prev completion" })
+--
+--   -- <CR> (Enter): Confirm completion selection if menu is open
+--   keymap.set("i", "<CR>", function()
+--     return pum_visible() and "<C-y>" or "<CR>"
+--   end, { expr = true, remap = false, desc = "Confirm completion" })
+--
+--   -- <C-e>: Abort/Close the completion menu if open
+--   keymap.set("i", "<C-e>", function()
+--     return pum_visible() and "<C-e>" or "<C-e>" -- Natively, <C-e> cancels insert completion
+--   end, { expr = true, remap = false, desc = "Abort completion" })
+--
+--   -- <C-Space>: Manually trigger completion popup menu
+--   keymap.set("i", "<C-Space>", "<C-x><C-o>", { desc = "Trigger completion" })
+-- end
 
 -- Run the chunk to activate the keys
-setup_native_completion()
+-- setup_native_completion()
 
 -- todo comments
 vim.keymap.set("n", "]t", function()
@@ -718,6 +775,13 @@ vim.api.nvim_create_user_command(
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set:
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+
+-- Make sure this runs AFTER vim.cmd("colorscheme ...")
+-- Force the spell check undercurl to be bright red for spellbad and blue for spellcap
+-- https://catppuccin.com/palette/
+vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "#ed8796", fg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "SpellCap", { undercurl = true, sp = "#91d7e3", fg = "NONE", bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, fg = "#ff0000", bg = "NONE" })
 
 -- Disable autoformat for shell & markdown files
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -765,14 +829,14 @@ vim.keymap.set(
   { desc = "stop Persistence" }
 )
 
--- restore on startup
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argc() == 0 then
-      require("persistence").select()
-    end
-  end,
-})
+-- restore on startup NOTE: disabled b/c the msg is annoying
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   callback = function()
+--     if vim.fn.argc() == 0 then
+--       require("persistence").select()
+--     end
+--   end,
+-- })
 
 -- =====================================
 --      Using Nvim on Windows
