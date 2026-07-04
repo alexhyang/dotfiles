@@ -218,9 +218,9 @@ myrefs() {
     fi
   }
 
-  refroot=~/.dotfiles/refs
+  refroot=~/vimwiki
   if [[ $# -eq 0 && -d $refroot ]]; then
-    ls $refroot
+    fd -e md -d 1 --full-path $refroot | sort | less
   else
     if [[ $# -eq 1 ]]; then
       refname="$1"
@@ -241,8 +241,15 @@ myrefs() {
         ;;
       esac
     else
-      echo "Requested ref doesn't exit!"
-      createRef $refpath
+      case $flag in
+      -s)
+        fd $refname -t f -d 1 --full-path $refroot
+        ;;
+      *)
+        echo "Requested ref doesn't exit!"
+        createRef $refpath
+        ;;
+      esac
     fi
   fi
 }
