@@ -7,6 +7,8 @@
 " =====================================
 "             Editing
 " =====================================
+set nocompatible                " use vim defaults instead of vi defaults
+filetype plugin on
 syntax on
 
 " change leader to space
@@ -21,10 +23,11 @@ set backspace=indent,eol,start  " enable <BS> to remove autoindent,
                                 " end of line character, and start of line
 
 set spell spelllang=en_us       " spell checking
+set spelloptions=camel
 set spellfile=~/.vim/spell/en.utf-8.add
 set wrap linebreak              " wrap linebreak
 " set columns=80                  " set column width limit
-set colorcolumn=80              " set column width (80) marker
+set colorcolumn=78,80           " set column width (80) marker
 set mouse=a                     " add mouse support
 
 " Define command to fill line with = or #
@@ -181,10 +184,6 @@ Plug 'mileszs/ack.vim'                  " ack - vim plugin for ack
 
 " --- Workflow ---
 Plug 'vimwiki/vimwiki'
-Plug 'tools-life/taskwiki'
-Plug 'powerman/vim-plugin-AnsiEsc'
-Plug 'farseer90718/vim-taskwarrior'
-" Note: to install tasklib, run 'pip3 install tasklib', don't use 'sudo'
 
 " --- Other ---
 Plug 'wakatime/vim-wakatime'            " wakatime dev stats
@@ -300,7 +299,23 @@ let g:hardtime_default_on = 1
 " --------------------------------
 " plugin: vimwiki
 " --------------------------------
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+
+let wiki = {
+      \ 'path': '~/vimwiki/',
+      \ 'syntax': 'markdown',
+      \ 'ext': 'md',
+      \ 'links_space_char': '-'
+      \ }
+
+let obsidian = {
+      \ 'path': '~/Documents/Obsidian',
+      \ 'syntax': 'markdown',
+      \ 'ext': 'md',
+      \ 'links_space_char': '-'
+      \ }
+
+let g:vimwiki_list = [ wiki, obsidian ]
+
 let g:vimwiki_gloabal_ext = 0
 let g:vimwiki_markdown_link_ext = 1
 let g:vimwiki_ext2syntax = {}  " add extensions you want to turn off support for
