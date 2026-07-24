@@ -18,14 +18,12 @@ alias cpD="cpToDst"
 alias np="nopassphrase"
 
 # aliases for ls
-alias l="eza -lah || ls -lah"
+alias l="eza --icons || ls --color=tty"
+alias lsa="eza -lah || ls -lah"
 alias la="eza -lAh || ls -lAh"
-alias lsa="l"
-alias ls="eza || ls --color=tty"
 alias l.="eza -d .* || ls -d .* --color=auto"
 alias ll="eza -lh || ls -lh"
 alias ll.="eza -lh -d .* || ls -lh -d .*"
-alias li="eza --icons"
 alias lt="eza --tree -L"
 
 # edit and/or reload config files
