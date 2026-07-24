@@ -3,7 +3,7 @@
 alias so="source"
 alias rl="omz reload"
 alias cl="clear"
-alias b="popd"
+alias b="popd > /dev/null"
 alias mv="mv -i"
 alias cpi="cp -i"
 alias tL="tree -L"
@@ -16,6 +16,17 @@ alias gD="goDst"
 alias mD="mvToDst"
 alias cpD="cpToDst"
 alias np="nopassphrase"
+
+# aliases for ls
+alias l="eza -lah || ls -lah"
+alias la="eza -lAh || ls -lAh"
+alias lsa="l"
+alias ls="eza || ls --color=tty"
+alias l.="eza -d .* || ls -d .* --color=auto"
+alias ll="eza -lh || ls -lh"
+alias ll.="eza -lh -d .* || ls -lh -d .*"
+alias li="eza --icons"
+alias lt="eza --tree -L"
 
 # edit and/or reload config files
 alias usevm="alias vi=\"vim\"; echo using vim; lshu"
@@ -50,7 +61,8 @@ alias .nvimcheck="readlink -f $HOME/.config/nvim"
 alias .nvim="cd $(.nvimcheck); tree"
 
 # service
-alias weather="curl wttr.in"
+alias wttr="curl wttr.in"
+alias weather="wttr"
 
 # git
 alias gs.="gss ."
