@@ -219,6 +219,15 @@ require("lazy").setup({
       "lewis6991/gitsigns.nvim",
       opts = {},
     },
+    {
+      'stevearc/aerial.nvim',
+      opts = {},
+      -- Optional dependencies
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+      },
+    },
     -- {
     --   "preservim/tagbar",
     --   opts = {}
@@ -478,6 +487,7 @@ bufferline.setup({
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<F8>", ":AerialToggle<CR>")
 
 -- nvim-treesitter NOTE: plugin dropped fro native treesitter in Nvim v0.12
 require('nvim-treesitter').setup {
