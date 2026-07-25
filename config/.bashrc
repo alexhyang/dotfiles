@@ -128,7 +128,15 @@ if [ -f /etc/os-release ]; then
 fi
 
 # environment variables
-export PATH=$HOME/.local/bin:/snap/bin:$PATH
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+
+  case "$ID" in
+    ubuntu)
+      export PATH=/snap/bin:$PATH
+  esac
+fi
+export PATH=$HOME/.local/bin:$PATH
 
 # source dotfiles and executables
 source ~/.aliases
