@@ -166,31 +166,13 @@ cpformatter() {
 # =========================================================
 # NOTE-TAKING
 # =========================================================
-# Create md file from template
-#   if the argument is only a file name with extension,
-#     then it will be created under the current directory;
-#   but the argument can also be a full path
-mdTemplate() {
-  if [[ "$1" == *.md ]]; then
-    filepath="$1"
-  else
-    filepath="$1.md"
-  fi
-  if [[ -d "$HOME/research-notes" ]]; then
-    cp ~/research-notes/template.md $filepath
-    echo "$filepath created"
-  else
-    echo "research notes repo does not exit on local machine"
-  fi
-}
-
 # View or create README file
 readme() {
   if [[ -f "./README.md" ]]; then
     vi ./README.md
   else
     if util_confirm "README.md doesn't exit! Create README.md?"; then
-      mdTemplate README.md || touch README.md && vi README.md
+      touch README.md && vi README.md
     fi
   fi
 }
@@ -214,13 +196,16 @@ myrefs() {
   createRef() {
     promptMsg="Create $1? [y/N]"
     if util_confirm "Create $1?"; then
-      mdTemplate $1 && vi $1
+      touch $1 && vi $1
     fi
   }
 
-  refroot=~/vimwiki
+  refroot=~/vimwiki/notes
+  cd $refroot
+
   if [[ $# -eq 0 && -d $refroot ]]; then
-    fd -e md -d 1 --full-path $refroot | sort | less
+    # $ myrefs
+    fd -e md | sort | less
   else
     if [[ $# -eq 1 ]]; then
       refname="$1"
@@ -230,20 +215,26 @@ myrefs() {
       refname="$2"
     fi
 
-    refpath="$refroot/$refname.md"
+    refpath="$refname.md"
     if [[ -f $refpath ]]; then
+      # if refname.md exists
       case $flag in
       -e)
+        # $ myrefs -e xyz
         vi $refpath
         ;;
       *)
+        # $ myrefs <any other flags> xyz
         bat $refpath
         ;;
       esac
     else
+      # if refname.md does not exist
       case $flag in
       -s)
-        fd $refname -t f -d 1 --full-path $refroot
+        # $ myrefs -s xyz
+        # search pattern in wiki/notes
+        fd $refname -t f
         ;;
       *)
         echo "Requested ref doesn't exit!"
@@ -252,6 +243,7 @@ myrefs() {
       esac
     fi
   fi
+  popd > /dev/null
 }
 
 # Drop or publish files
@@ -307,5 +299,23 @@ util_confirm() {
   else
     return 1;
   fi
+}
+
+alias hist="nv ~/.zsh_history"
+rmHist() {
+  sed -i "/$1/d" ~/.zsh_history
+}
+
+enable_waka() {
+  local promptMsg="${1:-What do you want to call this project?}: "
+  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+    read "projectName?$promptMsg"
+  else
+    read -p "$promptMsg" projectName
+  fi
+  cp $HOME/.dotfiles/config/.wakatime ./.wakatime
+  echo ".wakatime copied"
+  echo $projectName > .wakatime-project
+  echo ".wakatime-project created"
 }
 
