@@ -119,7 +119,16 @@ source ~/.shell_utils
 source ~/.localrc
 
 # Environment Variables
-export PATH=$HOME/.local/bin:/snap/bin:$PATH
+if [ -f /etc/os-release ]; then
+  . /etc/os-release
+
+  case "$ID" in
+    ubuntu)
+      export PATH=/snap/bin:$PATH
+  esac
+fi
+export PATH=$HOME/.local/bin:$PATH
+
 if command -v nvim >/dev/null 2>&1; then
   export VISUAL="nvim"
 else
