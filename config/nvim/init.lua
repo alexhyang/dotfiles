@@ -154,11 +154,13 @@ cmd("noremap :clt :e ~/.dotfiles/refs/clt.md")
 -- %B → full month name (April)
 -- %d → day with leading zero (09)
 -- %e → day without leading zero ( 9)
+-- %a → day of week (Mon)
 -- %H → hour (24h)
 -- %M → minute
 -- %S → second
 keymap.set("n", "<leader>ie", "i<C-R>=strftime(\"%b %e\")<CR>", { desc = "insert date (Jan 1)" })
 keymap.set("n", "<leader>ia", "i<C-R>=strftime(\"%a %b %e\")<CR>", { desc = "insert date (Mon Jan 1)" })
+keymap.set("n", "<leader>im", "i<C-R>=strftime(\"%a %m-%d\")<CR>", { desc = "insert date (Mon 01-01)" })
 keymap.set("n", "<leader>ib", "i<C-R>=strftime(\"%e %b\")<CR>", { desc = "insert date (1 Jan)" })
 keymap.set("n", "<leader>id", "i<C-R>=strftime(\"%b-%d\")<CR>", { desc = "insert date (Jan-01)" })
 keymap.set("n", "<leader>iY", "i<C-R>=strftime(\"%Y-%m-%d\")<CR>", { desc = "insert date (2026-01-01)" })
@@ -218,6 +220,15 @@ require("lazy").setup({
     {
       "lewis6991/gitsigns.nvim",
       opts = {},
+    },
+    {
+      'stevearc/aerial.nvim',
+      opts = {},
+      -- Optional dependencies
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+      },
     },
     -- {
     --   "preservim/tagbar",
@@ -478,6 +489,7 @@ bufferline.setup({
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<F8>", ":AerialToggle<CR>")
 
 -- nvim-treesitter NOTE: plugin dropped fro native treesitter in Nvim v0.12
 require('nvim-treesitter').setup {
