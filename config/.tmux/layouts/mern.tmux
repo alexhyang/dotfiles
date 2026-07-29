@@ -1,8 +1,6 @@
-#!/bin/bash
-source-file ~/.tmux.conf
-
+# mern.tmux - source with `tmux source-file ~/.tmux/layouts/mern.tmux`
 # window 0: ref
-new-session -s mern -n ref
+rename-window ref
 
 # window 1: client
 new-window -n client
@@ -18,4 +16,4 @@ select-pane -t 0
 new-window -n shell
 select-pane -t 0
 
-select-window -t mern:1
+select-window -t 1
