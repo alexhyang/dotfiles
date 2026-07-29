@@ -81,31 +81,11 @@ alias fzw="fzf \
 alias fzp="fzf \
   --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-# tmux alias
-alias t="tmux"
-alias tns="tmux new -s"
-alias ta="tmux attach-session"
-alias tat="tmux attach-session -t"
-alias ta0="tat 0"
-alias tls="tmux ls"
-alias tkt="tmux kill-session -t"
-alias tk0="tkt 0"
-alias tka="tmux kill-session -a"
-alias tka0="tmux kill-session -a -t 0"
-
-alias tdev="tmux source-file ~/.tmux/dev.sh"
-alias tad="tmux attach-session -t dev"
-alias tkd="tmux kill-session -t dev; tmux ls"
-alias tmern="tmux source-file ~/.tmux/mern.sh"
-alias tam="tmux attach-session -t mern"
-alias tkm="tmux kill-session -t mern; tmux ls"
-alias tres="tmux source-file ~/.tmux/research.sh"
-alias tare="tmux attach-session -t research"
-alias tkr="tmux kill-session -t research; tmux ls"
-alias tle="tmux source-file ~/.tmux/leet.sh"
-alias tal="tmux attach-session -t leet"
-alias tkl="tmux kill-session -t leet; tmux ls"
 
 # development
 alias eslints="npx eslint . --ext .ts,.tsx"
 alias eslintjs="npx eslint . --ext .js,.jsx"
+
+# source aliases
+source "$HOME/.tmux/aliases.sh"
+
