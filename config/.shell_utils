@@ -2,6 +2,20 @@
 # =========================================================
 # SHELL
 # =========================================================
+reload_shell() {
+  case "$(ps -p $$ -o comm=)" in
+  "zsh")
+    echo "reload zsh..."
+    omz reload
+    ;;
+  "bash")
+    echo "reload bash..."
+    source ~/.bashrc
+    ;;
+  *)
+    ;;
+  esac
+}
 # Shell Utilities
 paths() {
   # echo $PATH | sed -E "s/:/\n/g"
