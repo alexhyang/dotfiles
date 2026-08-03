@@ -632,6 +632,15 @@ keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "prev diagnostic" })
 keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "next diagnostic" })
 keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "diagnostic setloclist" })
 
+keymap.set("n", "<leader>p", function()
+  local has_conform, conform = pcall(require, "conform")
+  if has_conform then
+    conform.format({ async = true, lsp_format = "fallback" })
+  else
+    vim.lsp.buf.format({ async = true })
+  end
+end, { desc = "Format file" })
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -663,14 +672,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   vim.lsp.buf.format({ async = true })
     -- end, make_opt("Format file"))
     -- enhanced formatter setting
-    keymap.set("n", "<leader>p", function()
-      local has_conform, conform = pcall(require, "conform")
-      if has_conform then
-        conform.format({ async = true, lsp_fallback = false })
-      else
-        vim.lsp.buf.format({ async = true })
-      end
-    end, make_opt("Format file (Prettier)"))
+    -- keymap.set("n", "<leader>p", function()
+    --   local has_conform, conform = pcall(require, "conform")
+    --   if has_conform then
+    --     conform.format({ async = true, lsp_format = "fallback" })
+    --   else
+    --     vim.lsp.buf.format({ async = true })
+    --   end
+    -- end, make_opt("Format file"))
   end,
 })
 
