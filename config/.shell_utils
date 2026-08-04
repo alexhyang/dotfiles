@@ -2,78 +2,88 @@
 # =========================================================
 # SHELL
 # =========================================================
-reload_shell() {
+reload_shell() { # reload shell (TODO: split into shell-based modules)
   case "$(ps -p $$ -o comm=)" in
-  "zsh")
-    echo "reload zsh..."
-    omz reload
-    ;;
-  "bash")
-    echo "reload bash..."
-    source ~/.bashrc
-    ;;
-  *)
-    ;;
+    "zsh")
+      echo "reload zsh..."
+      omz reload
+      ;;
+    "bash")
+      echo "reload bash..."
+      source ~/.bashrc
+      ;;
+    *)
+      ;;
   esac
 }
+
+list_shell_funcs() { # Util: show a list of all custom shell functions
+  rg -. "^\w+\(\) \{" ~/.localrc ~/.shell_utils
+}
+
+gig() { # Git: view (gig) or edit (gig -e) .gitignore
+  if [[ "$1" == "-e" ]]; then
+    vim .gitignore
+  else
+    cat .gitignore
+  fi
+}
+
 # Shell Utilities
-paths() {
+paths() { # ENV: show all current PATH's
   # echo $PATH | sed -E "s/:/\n/g"
   echo $PATH | tr -s ":" "\n"
 }
 
-temp() {
-  if [[ ! -d "$HOME/temp" ]]; then
-    mkdir $HOME/temp
-  fi
-  cd $HOME/temp
+tmp() { # cd: create $HOME/tmp if it doesn't exist, then cd to $HOME/tmp
+  mkdir -p $HOME/tmp && cd $HOME/tmp
 }
 
 # move files
-setDst() {
+set_dst() { # mark the full path to the current directory for later use
   echo $(pwd) > ~/.mvDst
   echo "set destination to $(getDst)"
 }
 
-getDst() {
+get_dst() { # get the full path of the marked directory
   cat ~/.mvDst
 }
 
-goDst() {
+go_dst() { # go to the marked directory
   cd $(getDst)
 }
 
-mvToDst() {
+mv_to_dst() { # move file(s) to the marked directory
   mv $1 "$(eval getDst)"
   echo "$1 moved to $(getDst)"
 }
 
-cpToDst() {
+cp_to_dst() { # copy file(s) to the marked directory
   cp $1 "$(eval getDst)"
   echo "$1 copied to $(getDst)"
 }
 
 # set up ssh agent
-nopassphrase() {
-  eval $(ssh-agent -s);
+nopassphrase() { # activate ssh key (so you don't have to enter it every time)
+  eval $(ssh-agent -s)
   if [[ $# -eq 1 ]]; then
     ssh-add "$HOME/.ssh/id_ed25519_$1"
   else
-    ssh-add ~/.ssh/id_ed25519;
+    ssh-add ~/.ssh/id_ed25519
   fi
   ssh-add -l
 }
 
 ## Search aliases and installed packages using pattern
-alias sals="alias | rg" # usage: `sals tmux`
+alias sals="alias | rg"                # usage: `sals tmux`
 alias spkg="apt list --installed | rg" # usage: `spkg htop`
 
 ## Stage path in git
-gaddp() {
+gaddp() { # stage files by pattern
   fd "$1" | git add
 }
 
-nkg() {
+nkg() { # JS/TS: view package.json file
   if [[ $# -eq 1 ]]; then
     bat $1/package.json
   else
@@ -82,7 +92,7 @@ nkg() {
 }
 
 # File Operations
-addSuffix() {
+add_suffix() { # add suffix to the filenames of regex result by pattern
   if [[ $# -eq 0 ]]; then
     echo "useage: addSuffix <suffix> <pattern>"
   else
@@ -99,7 +109,7 @@ addSuffix() {
   fi
 }
 
-addPrefix() {
+add_prefix() { # add prefix to the filenames of regex result by pattern
   if [[ $# -eq 0 ]]; then
     echo "useage: addPrefix <prefix> <pattern>"
   else
@@ -117,12 +127,12 @@ addPrefix() {
 }
 
 # get current folder name
-curF () {
+cur_dirname() { # get current folder name
   basename $(pwd)
 }
 
 # check whether
-weatherfull () {
+weather_full() { # check current weather
   if [[ $1 == "" ]]; then
     curl -s wttr.in/YVR\?format=%l:+%x+%C+%t+%w+%S-%s
     echo ""
@@ -141,8 +151,8 @@ weatherfull () {
 # =========================================================
 # Editor
 # =========================================================
-nvim-use() {
-  switchNvimConfig() {
+nvim_use() { # switch config files of nvim
+  switch_nvim_config() {
     if [[ $1 == "" ]]; then
       echo "Provide path to nvim config folder"
     else
@@ -153,26 +163,26 @@ nvim-use() {
   }
 
   case $1 in
-  "lazy")
-    echo "switching to lazyVim config..."
-    source="$HOME/.dotfiles/config/LazyVim_nvim"
-    switchNvimConfig $source
-    ;;
-  "vanilla")
-    echo "switching to vanillaVim config..."
-    source="$HOME/.dotfiles/config/vanilla_nvim"
-    switchNvimConfig $source
-    ;;
-  *)
-    echo "use \"lazy\" or \"vanilla\" as argument"
-    ;;
+    "lazy")
+      echo "switching to lazyVim config..."
+      source="$HOME/.dotfiles/config/LazyVim_nvim"
+      switchNvimConfig $source
+      ;;
+    "vanilla")
+      echo "switching to vanillaVim config..."
+      source="$HOME/.dotfiles/config/vanilla_nvim"
+      switchNvimConfig $source
+      ;;
+    *)
+      echo "use \"lazy\" or \"vanilla\" as argument"
+      ;;
   esac
 }
 
 # =========================================================
 # Project-setup
 # =========================================================
-cpformatter() {
+cp_formatter() { # coding project editor support
   cp ~/.dotfiles/config/.editorconfig ./.editorconfig
   cp ~/.dotfiles/config/.prettierrc.js ./.prettierrc.js
 }
@@ -181,7 +191,7 @@ cpformatter() {
 # NOTE-TAKING
 # =========================================================
 # View or create README file
-readme() {
+readme() { # view or edit README.md
   if [[ -f "./README.md" ]]; then
     vi ./README.md
   else
@@ -195,18 +205,25 @@ readme() {
 # HELP FILES AND REFERENCES
 # =========================================================
 # colorized tldr command helps
-tl() {
-  tldr $1 -t base16 || echo "Install tldr: npm install -g tldr"
-}
 
-ch() {
-  curl "cheat.sh/$@"
+q_refs() { # show help of specified command
+  if [[ $# -eq 0 ]]; then
+    echo "q_refs <command-to-search> [sub-command]"
+    return 1
+  fi
+
+  if [[ ! -f "/tmp/$1.ch_results" ]]; then
+    curl "cheat.sh/$1" > "/tmp/$1.ch_results"
+  fi
+
+  local pattern="${2:-}"
+  rg -B 1 -N "$2" "/tmp/$1.ch_results"
 }
 
 # List/open/create my personal terminal command helps
 # if there is no argument, list available refs
 # if ref name is given, open or create markdown file
-myrefs() {
+my_refs() { # get help from my references
   createRef() {
     promptMsg="Create $1? [y/N]"
     if util_confirm "Create $1?"; then
@@ -233,27 +250,31 @@ myrefs() {
     if [[ -f $refpath ]]; then
       # if refname.md exists
       case $flag in
-      -e)
-        # $ myrefs -e xyz
-        vi $refpath
-        ;;
-      *)
-        # $ myrefs <any other flags> xyz
-        bat $refpath
-        ;;
+        -e)
+          # $ myrefs -e xyz
+          vi $refpath
+          ;;
+        -g)
+          glow $refpath
+          ;;
+        *)
+          # $ myrefs <any other flags> xyz
+          bat $refpath
+          ;;
       esac
     else
       # if refname.md does not exist
       case $flag in
-      -s)
-        # $ myrefs -s xyz
-        # search pattern in wiki/notes
-        fd $refname -t f
-        ;;
-      *)
-        echo "Requested ref doesn't exit!"
-        createRef $refpath
-        ;;
+        # -s)
+        #   # $ myrefs -s xyz
+        #   # search pattern in wiki/notes
+        #   fd $refname -t f
+        #   ;;
+        *)
+          fd $refname -t f
+          echo "Requested ref doesn't exit!"
+          createRef $refpath
+          ;;
       esac
     fi
   fi
@@ -261,7 +282,7 @@ myrefs() {
 }
 
 # Drop or publish files
-dropNotes() {
+drop_notes() { # move a file in the notes dropbox
   dropbox="$HOME/research-notes/dropbox"
   if [[ ! -f $dropbox/$1 ]]; then
     mv ./$1 $dropbox/$1
@@ -281,14 +302,13 @@ dropNotes() {
 # =========================================================
 #       Programming Languages
 # =========================================================
-jrun () {
+jrun() { # shortcut to compile and run a simple java snippet
   javac $1.java; java $1
 }
 
-crun () {
-  gcc -std=gnu11 -g -o $1 $1.c
+crun() { # shortcut to compile and run a simple c snippet
+  gcc -std=gnu11 -g -o $1 $1.c; ."$1.c"
 }
-
 
 # =========================================================
 #       Helper Functions
@@ -300,27 +320,36 @@ crun () {
 # else
 #   echo "failure"
 # fi
-util_confirm() {
+util_confirm() { # receive user's confirmation on operation
   local promptMsg="${1:-Are you sure?} [y/N]: "
-  if [[ $SHELL == "/usr/bin/zsh" ]]; then
+  local confirmation
+
+  if [[ -n $ZHS_VERSION ]]; then
     read "confirmation?$promptMsg"
   else
-    read -p "$promptMsg" confirmation
+    read -r -p "$promptMsg" confirmation
   fi
 
-  if [[ $confirmation == "y" ]]; then
-    return 0;
-  else
-    return 1;
-  fi
+  case $confirmation in
+    [Yy] | [Yy][Ee][Ss])
+      return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
 }
 
 alias hist="nv ~/.zsh_history"
-rmHist() {
+rm_hist() { # remove command history that contains given pattern
   sed -i "/$1/d" ~/.zsh_history
 }
 
-enable_waka() {
+rg_hist() { # show commands in zsh history
+  rg $1 ~/.zsh_history
+}
+
+enable_waka() { # include current git repo in waka stats
   local promptMsg="${1:-What do you want to call this project?}: "
   if [[ $SHELL == "/usr/bin/zsh" ]]; then
     read "projectName?$promptMsg"
@@ -332,4 +361,3 @@ enable_waka() {
   echo $projectName > .wakatime-project
   echo ".wakatime-project created"
 }
-
