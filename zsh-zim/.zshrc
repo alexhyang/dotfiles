@@ -43,6 +43,7 @@ source ${ZIM_HOME}/init.zsh
 # source related dotfiles
 source ~/.aliases
 source ~/.shell_utils/utils.sh
+source ~/.tmux/aliases.sh
 source ~/.localrc
 
 # environment variables
