@@ -140,7 +140,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 # source dotfiles and executables
 source ~/.aliases
-source ~/.shell_utils
+source ~/.shell_utils/utils.sh
 source ~/.localrc
 
 eval "$(fasd --init auto)"

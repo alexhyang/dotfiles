@@ -115,7 +115,7 @@ source $ZSH/oh-my-zsh.sh
 
 # source related dotfiles
 source ~/.aliases
-source ~/.shell_utils
+source ~/.shell_utils/utils.sh
 source ~/.localrc
 
 # Environment Variables
