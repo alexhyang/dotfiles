@@ -42,7 +42,7 @@ tmp() { # cd: create $HOME/tmp if it doesn't exist, then cd to $HOME/tmp
 # move files
 set_dst() { # mark the full path to the current directory for later use
   echo $(pwd) > ~/.mvDst
-  echo "set destination to $(getDst)"
+  echo "set destination to $(get_dst)"
 }
 
 get_dst() { # get the full path of the marked directory
@@ -50,17 +50,17 @@ get_dst() { # get the full path of the marked directory
 }
 
 go_dst() { # go to the marked directory
-  cd $(getDst)
+  cd $(get_dst)
 }
 
 mv_to_dst() { # move file(s) to the marked directory
-  mv $1 "$(eval getDst)"
-  echo "$1 moved to $(getDst)"
+  mv $1 "$(eval get_dst)"
+  echo "$1 moved to $(get_dst)"
 }
 
 cp_to_dst() { # copy file(s) to the marked directory
-  cp $1 "$(eval getDst)"
-  echo "$1 copied to $(getDst)"
+  cp $1 "$(eval get_dst)"
+  echo "$1 copied to $(get_dst)"
 }
 
 # set up ssh agent
@@ -209,11 +209,13 @@ readme() { # view or edit README.md
 q_refs() { # show help of specified command
   if [[ $# -eq 0 ]]; then
     echo "q_refs <command-to-search> [sub-command]"
+    echo "cached quick refs:"
+    ls -x /tmp/*.ch_results | sed "s/\/tmp\///g" | sed "s/\.ch_results//g"
     return 1
   fi
 
   if [[ ! -f "/tmp/$1.ch_results" ]]; then
-    curl "cheat.sh/$1" > "/tmp/$1.ch_results"
+    curl --silent "cheat.sh/$1" > "/tmp/$1.ch_results"
   fi
 
   local pattern="${2:-}"
@@ -303,11 +305,13 @@ drop_notes() { # move a file in the notes dropbox
 #       Programming Languages
 # =========================================================
 jrun() { # shortcut to compile and run a simple java snippet
-  javac $1.java; java $1
+  javac $1.java
+  java $1
 }
 
 crun() { # shortcut to compile and run a simple c snippet
-  gcc -std=gnu11 -g -o $1 $1.c; ."$1.c"
+  gcc -std=gnu11 -g -o $1 $1.c
+  ."$1.c"
 }
 
 # =========================================================
@@ -351,13 +355,25 @@ rg_hist() { # show commands in zsh history
 
 enable_waka() { # include current git repo in waka stats
   local promptMsg="${1:-What do you want to call this project?}: "
-  if [[ $SHELL == "/usr/bin/zsh" ]]; then
-    read "projectName?$promptMsg"
-  else
-    read -p "$promptMsg" projectName
+  local user_input
+
+  case "$(ps -p $$ -o comm=)" in
+    "zsh")
+      read "user_input?$promptMsg"
+      ;;
+    "bash")
+      read -p "$promptMsg" user_input
+      ;;
+    *)
+      echo "shell not supported"
+      ;;
+  esac
+
+  echo "[settings]\n\ninclude = .*" > .wakatime
+  echo ".wakatime created"
+  if [[ $user_input != "" ]]; then
+    local project_name="${user_input:-}"
+    echo $project_name > .wakatime-project
+    echo ".wakatime-project created"
   fi
-  cp $HOME/.dotfiles/config/.wakatime ./.wakatime
-  echo ".wakatime copied"
-  echo $projectName > .wakatime-project
-  echo ".wakatime-project created"
 }

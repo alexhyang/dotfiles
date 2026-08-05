@@ -1,0 +1,4 @@
+[init]
+	defaultBranch = main
+[commit]
+	gpgSign = false
