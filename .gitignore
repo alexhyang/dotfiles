@@ -1,3 +1,4 @@
+.wakatime*
 test/
-config/.tmux/plugins
+tmux/.tmux/plugins
 **/*.swp
