@@ -37,11 +37,11 @@ alias brc="vi ~/.bashrc"
 alias zrc="vi ~/.zshrc"
 alias tcf="vi ~/.tmux.conf"
 ## aliases
-alias al="vi ~/.dotfiles/config/.aliases"
-alias lal="source ~/.dotfiles/config/.aliases; echo '~/.aliases updated'"
+alias al="vi ~/.aliases"
+alias lal="source ~/.aliases; echo '~/.aliases updated'"
 ## shell functions
-alias shu="vi ~/.dotfiles/config/.shell_utils"
-alias lshu="source ~/.dotfiles/config/.shell_utils; echo '~/.shell_utils updated'"
+alias shu="vi ~/.shell_utils"
+alias lshu="source ~/.shell_utils; echo '~/.shell_utils updated'"
 ## local environments and aliases
 alias lc="vi ~/.localrc"
 alias llc="source ~/.localrc; echo '~/.localrc updated'"
