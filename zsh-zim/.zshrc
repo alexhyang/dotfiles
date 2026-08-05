@@ -42,7 +42,7 @@ source ${ZIM_HOME}/init.zsh
 # Custom settings
 # source related dotfiles
 source ~/.aliases
-source ~/.shell_utils
+source ~/.shell_utils/utils.sh
 source ~/.localrc
 
 # environment variables
