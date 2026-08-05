@@ -1,7 +1,0 @@
-[user]
-	name = Alex Yang
-	email = alex.hyang.dev@gmail.com
-[init]
-	defaultBranch = main
-[commit]
-	gpgSign = false

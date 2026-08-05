@@ -24,7 +24,10 @@ alias la="eza -lAh || ls -lAh"
 alias l.="eza -d .* || ls -d .* --color=auto"
 alias ll="eza -lh || ls -lh"
 alias ll.="eza -lh -d .* || ls -lh -d .*"
-alias lt="eza --tree -L"
+alias lt="eza -a --tree -L 1"
+alias lt.="eza -d .* --tree -L 1"
+alias lt2="eza -a --tree -L 2"
+alias lt2.="eza -d .* --tree -L 2"
 
 # edit and/or reload config files
 alias usevm="alias vi=\"vim\"; echo using vim; lshu"
@@ -81,11 +84,9 @@ alias fzw="fzf \
 alias fzp="fzf \
   --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-
 # development
 alias eslints="npx eslint . --ext .ts,.tsx"
 alias eslintjs="npx eslint . --ext .js,.jsx"
 
 # source aliases
 source "$HOME/.tmux/aliases.sh"
-
