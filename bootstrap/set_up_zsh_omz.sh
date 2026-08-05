@@ -2,9 +2,6 @@
 
 echo "OhMyZsh setup starting..."
 
-ln -sf $DOTFILES/config/.zshrc.omz ~/.zshrc
-ln -sf $DOTFILES/config/.p10k.zsh.omz ~/.p10k.zsh
-
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]
 then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

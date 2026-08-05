@@ -28,7 +28,7 @@ if [[ $machine == "Debian" ]]; then
 fi
 
 # install productivity command line tools
-starklauf; neuwerk autojump bat fd-find fzf make ripgrep tree
+starklauf; neuwerk autojump bat fd-find fzf make ripgrep tree stow
 
 case "$ID" in
   ubuntu|debian)

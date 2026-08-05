@@ -3,7 +3,9 @@ echo "Setting up tmux...";
 
 echo "Installing catppuccin theme"
 mkdir -p ~/.config/tmux/plugins/catppuccin
-git clone -b v2.3.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+if [[ ! -d ~/.config/tmux/plugins/catppuccin/tmux ]]; then
+  git clone -b v2.3.0 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
+fi
 
 # integrate show live pomo timer in status bar
 # install pomo with: `go install github.com/Bahaaio/pomo@latest`
