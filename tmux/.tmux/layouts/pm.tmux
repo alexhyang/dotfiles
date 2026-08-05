@@ -11,7 +11,7 @@ select-pane -t 0
 
 # window 1: detailed todo's
 new-window -n details
-send-keys -t 0 "tdls" C-m
+send-keys -t 0 "tdlc" C-m
 
 split-window -h
 send-keys -t 1 "tde" C-m

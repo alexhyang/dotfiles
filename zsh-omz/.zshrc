@@ -116,6 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # source related dotfiles
 source ~/.aliases
 source ~/.shell_utils/utils.sh
+source ~/.tmux/aliases.sh
 source ~/.localrc
 
 # Environment Variables

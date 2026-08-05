@@ -1,14 +1,10 @@
 #!/bin/bash
 export DOTFILES="$HOME/.dotfiles"
-source $DOTFILES/scripts/utils.sh
-
-# local setup
-copy_dotfile .gitconfig
-copy_dotfile .localrc
+source $DOTFILES/bootstrap/utils.sh
 
 # universal setup
-source $DOTFILES/scripts/link_dotfiles.sh
 source $DOTFILES/scripts/set_up_command_line_tools.sh
+stow shell bash zsh-omz vim tmux proj-common
 source $DOTFILES/scripts/set_up_tmux.sh
 source $DOTFILES/scripts/set_up_vim.sh
 fastfetch
