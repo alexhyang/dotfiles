@@ -42,9 +42,8 @@ source ${ZIM_HOME}/init.zsh
 # Custom settings
 # source related dotfiles
 source ~/.aliases
-source ~/.shell_utils/utils.sh
-source ~/.tmux/aliases.sh
 source ~/.localrc
+for f in ~/.shell_utils/*.sh; do source $f; done
 
 # environment variables
 export PATH=$HOME/.local/bin:/snap/bin:$PATH

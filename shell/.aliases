@@ -17,21 +17,10 @@ alias mD="mv_to_dst"
 alias cpD="cp_to_dst"
 alias np="nopassphrase"
 
-# aliases for ls
-alias l="eza --icons || ls --color=tty"
-alias lsa="eza -lah || ls -lah"
-alias la="eza -lAh || ls -lAh"
-alias l.="eza -d .* || ls -d .* --color=auto"
-alias ll="eza -lh || ls -lh"
-alias ll.="eza -lh -d .* || ls -lh -d .*"
-alias lt="eza -a --tree -L 1"
-alias lt.="eza -d .* --tree -L 1"
-alias lt2="eza -a --tree -L 2"
-alias lt2.="eza -d .* --tree -L 2"
 
 # edit and/or reload config files
-alias usevm="alias vi=\"vim\"; echo using vim; lshu"
-alias usenv="alias vi=\"nvim\"; #echo using nvim; lshu"
+alias usevm="alias vi=\"vim\"; echo using vim; rl"
+alias usenv="alias vi=\"nvim\"; echo using nvim; rl"
 alias vi="nvim"
 
 alias vrc="vi ~/.vimrc"
@@ -55,7 +44,8 @@ export DOTFILES="$HOME/.dotfiles"
 alias sysinfo="cat ~/sysinfo"
 alias .f="cd $DOTFILES/"
 alias bootstrap="source $DOTFILES/bootstrap.sh"
-alias .s="cd $DOTFILES/bootstrap"
+alias .b="cd $DOTFILES/bootstrap"
+alias .s="cd $DOTFILES/shell/.shell_utils/"
 alias nv="nvim"
 alias .nvimcheck="readlink -f $HOME/.config/nvim"
 alias .nvim="cd $(.nvimcheck); tree"
@@ -63,15 +53,6 @@ alias .nvim="cd $(.nvimcheck); tree"
 # service
 alias wttr="curl wttr.in"
 alias weather="wttr"
-
-# git
-alias gs.="gss ."
-alias lg="lazygit"
-alias glc="git log \
-  --oneline --decorate \
-  --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
-  --date=short"
-alias gcmi="gcmsg 'init commit'"
 
 # fzf
 alias fzw="fzf \
@@ -82,9 +63,3 @@ alias fzw="fzf \
 alias fzp="fzf \
   --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
-# development
-alias eslints="npx eslint . --ext .ts,.tsx"
-alias eslintjs="npx eslint . --ext .js,.jsx"
-
-# source aliases
-source "$HOME/.tmux/aliases.sh"
