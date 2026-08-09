@@ -140,9 +140,8 @@ export PATH=$HOME/.local/bin:$PATH
 
 # source dotfiles and executables
 source ~/.aliases
-source ~/.shell_utils/utils.sh
-source ~/.tmux/aliases.sh
 source ~/.localrc
+for f in ~/.shell_utils/*.sh; do source $f; done
 
 eval "$(fasd --init auto)"
 
