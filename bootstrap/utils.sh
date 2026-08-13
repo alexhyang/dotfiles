@@ -2,13 +2,9 @@
 # This file provides utilities for bootstrap.sh
 
 gitpull() {
-  if [[ $(pwd) == $1 ]]; then
-    git pull
-  else
-    pushd $1
-    git pull
-    popd
-  fi
+  hop_in $1
+  git pull
+  hop_out
 }
 
 copy_dotfile() {

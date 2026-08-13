@@ -9,27 +9,17 @@ nvim_use() { # switch config files of nvim
   case $1 in
     "lazy")
       echo "switching to lazyVim config..."
-      if [[ $(pwd) == "~/.dotfiles" ]]; then
-        pushd
-      else 
-        cd ~/.dotfiles
-      fi
-
+      hop_in ~/.dotfiles
       stow -D nvim*
       stow nvim-lazyvim
-      popd
+      hop_out
       ;;
     "vanilla")
       echo "switching to vanillaVim config..."
-      if [[ $(pwd) == "~/.dotfiles" ]]; then
-        pushd
-      else 
-        cd ~/.dotfiles
-      fi
-
+      hop_in ~/.dotfiles
       stow -D nvim*
       stow nvim-lazyvim
-      popd
+      hop_out
       ;;
     *)
       echo "use \"lazy\" or \"vanilla\" as argument"
