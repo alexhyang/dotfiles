@@ -9,6 +9,17 @@ cur_dirname() { # get current folder name
   basename $(pwd)
 }
 
+hop_in()  { # cache directory for a subsequent hop_out
+  echo $(pwd) > /tmp/hop_from
+  cd $1
+}
+
+hop_out() { # popd only when hop_in from a different dir
+  if [[ "$(pwd)" != "$(cat /tmp/hop_from)" ]]; then
+    popd
+  fi
+}
+
 # File helpers
 set_dst() { # mark the full path to the current directory for later use
   echo $(pwd) > ~/.mvDst

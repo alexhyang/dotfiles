@@ -30,7 +30,7 @@ my_refs() { # get help from my references
   }
 
   refroot=~/vimwiki/notes
-  cd $refroot
+  hop_in $refroot
 
   if [[ $# -eq 0 && -d $refroot ]]; then
     # $ myrefs
@@ -76,5 +76,5 @@ my_refs() { # get help from my references
       esac
     fi
   fi
-  popd > /dev/null
+  hop_out > /dev/null
 }
