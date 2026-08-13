@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "Saving system information..."
 
 if [ ! -f "$HOME/sysinfo" ]

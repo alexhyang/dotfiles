@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 export DOTFILES="$HOME/.dotfiles"
 source $DOTFILES/bootstrap/utils.sh
 

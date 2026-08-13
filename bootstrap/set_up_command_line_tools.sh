@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "Setting up Command Line Tools..."
 if [ -f /etc/os-release ]; then
     . /etc/os-release

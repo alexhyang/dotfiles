@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "Setting up tmux...";
 
 echo "Installing catppuccin theme"

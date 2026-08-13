@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias t="tmux"
 alias tls="tmux ls"
