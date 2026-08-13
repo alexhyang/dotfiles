@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release

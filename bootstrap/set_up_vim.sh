@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 echo "Setting up Vim..."
 
 # Set up vim package manager: vim-plug

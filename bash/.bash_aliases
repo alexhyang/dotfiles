@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # shell
 alias bashrc="vim ~/.bashrc"
 

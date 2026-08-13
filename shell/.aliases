@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # shell alias
 alias so="source"
 alias rl="reload_shell"

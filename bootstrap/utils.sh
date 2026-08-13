@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This file provides utilities for bootstrap.sh
 
 gitpull() {

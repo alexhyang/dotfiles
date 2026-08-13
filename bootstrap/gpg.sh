@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Set up SSH agent
 # https://www.gnupg.org/documentation/manuals/gnupg/Agent-Examples.html

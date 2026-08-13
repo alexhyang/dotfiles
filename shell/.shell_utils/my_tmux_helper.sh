@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 tmux_create_attach() {
   local SESSION_NAME=$1
   local LAYOUT_DIR="$HOME/.tmux/layouts"
