@@ -141,7 +141,8 @@ export PATH=$HOME/.local/bin:$PATH
 # source dotfiles and executables
 source ~/.aliases
 source ~/.localrc
-for f in ~/.shell_utils/*.sh; do source $f; done
+source ~/.load_shell_utils.sh
+load_shell_utils
 
 eval "$(fasd --init auto)"
 

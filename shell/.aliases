@@ -19,8 +19,8 @@ alias np="nopassphrase"
 
 
 # edit and/or reload config files
-alias usevm="alias vi=\"vim\"; echo using vim; rl"
-alias usenv="alias vi=\"nvim\"; echo using nvim; rl"
+alias usevm="alias vi=\"vim\"; echo using vim; load_shell_utils"
+alias usenv="alias vi=\"nvim\"; echo using nvim; load_shell_utils"
 alias vi="nvim"
 
 alias vrc="vi ~/.vimrc"
