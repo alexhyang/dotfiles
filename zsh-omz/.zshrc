@@ -116,7 +116,8 @@ source $ZSH/oh-my-zsh.sh
 # source related dotfiles
 source ~/.aliases
 source ~/.localrc
-for f in ~/.shell_utils/*.sh; do source $f; done
+source ~/.load_shell_utils.sh
+load_shell_utils
 
 # Environment Variables
 if [ -f /etc/os-release ]; then

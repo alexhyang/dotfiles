@@ -43,7 +43,8 @@ source ${ZIM_HOME}/init.zsh
 # source related dotfiles
 source ~/.aliases
 source ~/.localrc
-for f in ~/.shell_utils/*.sh; do source $f; done
+source ~/.load_shell_utils.sh
+load_shell_utils
 
 # environment variables
 export PATH=$HOME/.local/bin:/snap/bin:$PATH
