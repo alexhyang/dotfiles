@@ -305,6 +305,9 @@ require("lazy").setup({
           typescript = { "prettier" },
           typescriptreact = { "prettier" },
           json = { "prettier" },
+          sh = { "shfmt" },
+          bash = { "shfmt" },
+          zsh = { "shfmt" },
         },
       },
     },
@@ -624,6 +627,8 @@ vim.lsp.enable('clangd')
 vim.lsp.enable('ruff')
 vim.lsp.enable('json-lsp')
 -- vim.lsp.enable('texlab')
+vim.lsp.enable('shfmt')
+vim.lsp.enable('bashls')
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
