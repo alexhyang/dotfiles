@@ -11,7 +11,6 @@ opt.termguicolors = true
 opt.guicursor = ""
 opt.signcolumn = "yes"
 
-
 -- =====================================
 --          Editing
 -- =====================================
@@ -29,14 +28,13 @@ opt.spell = true
 opt.spelllang = "en_us,de_de"
 opt.spellfile = {
   vim.fn.expand("~/.local/share/nvim/site/spell/en.utf-8.add"),
-  vim.fn.expand("~/.local/share/nvim/site/spell/de.utf-8.add")
+  vim.fn.expand("~/.local/share/nvim/site/spell/de.utf-8.add"),
 }
-opt.spelloptions="camel"
+opt.spelloptions = "camel"
 opt.colorcolumn = "78,80,120"
 opt.mouse:append("a")
 -- opt.cursorline = true
 opt.autocomplete = false
-
 
 -- =====================================
 --          Search and Replace
@@ -46,20 +44,18 @@ opt.smartcase = true
 opt.incsearch = true
 opt.hlsearch = true
 
-
 -- =====================================
 --         Macros
 -- =====================================
 -- Markdown formatting
-cmd("let @t = \"lBi`\\<Esc>Ea`\\<Esc>\"")
-cmd("let @b = \"lBi**\\<Esc>Ea**\\<Esc>\"")
-cmd("let @i = \"lBi*\\<Esc>Ea*\\<Esc>\"")
-cmd("let @l = \"lBi$\\<Esc>Ea$\\<Esc>\"")
-cmd("let @u = \"o*\\<Space>\\<Space>\\<Space>\"")
-cmd("let @o = \"o1.\\<Space>\\<Space>\"")
-cmd("let @c = \"o```\\<CR>```\\<Esc>kA\"")
-cmd("let @d = \"o*\\<Space>\\<Space>\\<Space>[\\<Space>]\\<Space>\"")
-
+cmd('let @t = "lBi`\\<Esc>Ea`\\<Esc>"')
+cmd('let @b = "lBi**\\<Esc>Ea**\\<Esc>"')
+cmd('let @i = "lBi*\\<Esc>Ea*\\<Esc>"')
+cmd('let @l = "lBi$\\<Esc>Ea$\\<Esc>"')
+cmd('let @u = "o*\\<Space>\\<Space>\\<Space>"')
+cmd('let @o = "o1.\\<Space>\\<Space>"')
+cmd('let @c = "o```\\<CR>```\\<Esc>kA"')
+cmd('let @d = "o*\\<Space>\\<Space>\\<Space>[\\<Space>]\\<Space>"')
 
 -- =====================================
 --          More options
@@ -93,8 +89,7 @@ opt.shortmess:append({ W = true, I = true, c = true }) -- Short file messages
 -- opt.showmode = false -- Dont show mode since we have a statusline
 opt.showmode = true                                    -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8                                  -- Columns of context
-opt.signcolumn =
-"yes"                                                  -- Always show the signcolumn, otherwise it would shift the text each time
+opt.signcolumn = "yes"                                 -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true                                   -- Don't ignore case with capitals
 -- opt.smartindent = true                                 -- Insert indents automatically NOTE: conflicting tree sitter
 -- opt.spelllang = { "en" } NOTE: conflict to previous settings
@@ -114,7 +109,6 @@ opt.winminwidth = 5                                    -- Minimum window width
 opt.conceallevel = 0
 vim.g.markdown_recommended_style = 0
 vim.g.markdown_syntax_conceal = 0
-
 
 -- =====================================
 --          Key map
@@ -136,13 +130,12 @@ cmd("noremap :rn :set relativenumber")
 cmd("noremap :nrn :set norelativenumber")
 -- cmd("noremap :Dof :lua vim.diagnostic.disable()<CR>")
 -- cmd("noremap :Don :lua vim.diagnostic.enable()<CR>")
-keymap.set("n", "<leader>d", vim.diagnostic.enable, { desc = "Toggle diagnostics globally"})
+keymap.set("n", "<leader>d", vim.diagnostic.enable, { desc = "Toggle diagnostics globally" })
 cmd("noremap :cat :lua vim.api.nvim_command('echo \"dark->bright: mocha, macchiato, frappe, latte \"')<CR>")
 -- cmd("noremap :ll :!pdflatex -shell-escape -interaction errorstopmode %<CR>")
 cmd("noremap :ll :!pdflatex -shell-escape %<CR>")
 -- cmd("noremap :Align :'<,'>EasyAlign *|")
 cmd("noremap :clt :e ~/.dotfiles/refs/clt.md")
-
 
 -- My Weekly Journals
 --
@@ -158,14 +151,13 @@ cmd("noremap :clt :e ~/.dotfiles/refs/clt.md")
 -- %H → hour (24h)
 -- %M → minute
 -- %S → second
-keymap.set("n", "<leader>ie", "i<C-R>=strftime(\"%b %e\")<CR>", { desc = "insert date (Jan 1)" })
-keymap.set("n", "<leader>ia", "i<C-R>=strftime(\"%a %b %e\")<CR>", { desc = "insert date (Mon Jan 1)" })
-keymap.set("n", "<leader>im", "i<C-R>=strftime(\"%a %m-%d\")<CR>", { desc = "insert date (Mon 01-01)" })
-keymap.set("n", "<leader>ib", "i<C-R>=strftime(\"%e %b\")<CR>", { desc = "insert date (1 Jan)" })
-keymap.set("n", "<leader>id", "i<C-R>=strftime(\"%b-%d\")<CR>", { desc = "insert date (Jan-01)" })
-keymap.set("n", "<leader>iY", "i<C-R>=strftime(\"%Y-%m-%d\")<CR>", { desc = "insert date (2026-01-01)" })
+keymap.set("n", "<leader>ie", 'i<C-R>=strftime("%b %e")<CR>', { desc = "insert date (Jan 1)" })
+keymap.set("n", "<leader>ia", 'i<C-R>=strftime("%a %b %e")<CR>', { desc = "insert date (Mon Jan 1)" })
+keymap.set("n", "<leader>im", 'i<C-R>=strftime("%a %m-%d")<CR>', { desc = "insert date (Mon 01-01)" })
+keymap.set("n", "<leader>ib", 'i<C-R>=strftime("%e %b")<CR>', { desc = "insert date (1 Jan)" })
+keymap.set("n", "<leader>id", 'i<C-R>=strftime("%b-%d")<CR>', { desc = "insert date (Jan-01)" })
+keymap.set("n", "<leader>iY", 'i<C-R>=strftime("%Y-%m-%d")<CR>', { desc = "insert date (2026-01-01)" })
 cmd("noremap :week :r !python3 ./Scripts/week_range.py<CR>")
-
 
 -- =====================================
 --          Plugin Manager
@@ -198,11 +190,11 @@ require("lazy").setup({
       priority = 1000,
       opts = function()
         cmd("colorscheme catppuccin-macchiato")
-      end
+      end,
     },
     {
       "nvim-lualine/lualine.nvim",
-      dependencies = { "nvim-tree/nvim-web-devicons" }
+      dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
       "akinsho/bufferline.nvim",
@@ -222,12 +214,12 @@ require("lazy").setup({
       opts = {},
     },
     {
-      'stevearc/aerial.nvim',
+      "stevearc/aerial.nvim",
       opts = {},
       -- Optional dependencies
       dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
       },
     },
     -- {
@@ -269,7 +261,7 @@ require("lazy").setup({
       -- branch = "main",
       build = ":TSUpdate",
       init = function()
-        require('nvim-treesitter').install({ 'javascript', 'cpp' })
+        require("nvim-treesitter").install({ "javascript", "cpp" })
       end,
     },
     -- Editing, Highlighting
@@ -281,7 +273,7 @@ require("lazy").setup({
     {
       "windwp/nvim-autopairs",
       event = "InsertEnter",
-      opts = {}
+      opts = {},
     },
     -- {
     --   "phaazon/hop.nvim",
@@ -289,12 +281,12 @@ require("lazy").setup({
     --   opts = {},
     -- },
     {
-        'smoka7/hop.nvim',
-        version = "*",
-        opts = {
-            -- keys = 'etovxqpdygfblzhckisuran'
-            keys = 'asdfghjklqwertyuiopzxcvbnm'
-        }
+      "smoka7/hop.nvim",
+      version = "*",
+      opts = {
+        -- keys = 'etovxqpdygfblzhckisuran'
+        keys = "asdfghjklqwertyuiopzxcvbnm",
+      },
     },
     { "junegunn/vim-easy-align" },
     {
@@ -318,12 +310,13 @@ require("lazy").setup({
     --   dependencies = { "nvim-lua/plenary.nvim" }
     -- },
     {
-      'nvim-telescope/telescope.nvim', version = '*',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            -- optional but recommended
-            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-        }
+      "nvim-telescope/telescope.nvim",
+      version = "*",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        -- optional but recommended
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      },
     },
     -- LSP, auto-completion
     "williamboman/mason.nvim",
@@ -396,7 +389,7 @@ require("lazy").setup({
     {
       "folke/persistence.nvim",
       event = "BufReadPre",
-      opts = {}
+      opts = {},
     },
     "wakatime/vim-wakatime",
     {
@@ -409,7 +402,6 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-
 -- =====================================
 --          Plugin Settings
 -- =====================================
@@ -418,7 +410,6 @@ require("lazy").setup({
 --   { desc = "Toggle Markview gloablly" })
 -- keymap.set("n", "<leader>s", ":Markview splitToggle<CR>",
 --   { desc = "Toggle 'splitview' for curent buffer" })
-
 
 -- lualine
 require("lualine").setup({
@@ -439,15 +430,26 @@ require("lualine").setup({
       statusline = 100,
       tabline = 100,
       winbar = 100,
-    }
+    },
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_b = {
+      "branch",
+      "diff",
+      "diagnostics",
+      function()
+        local char = vim.fn.getline("."):sub(vim.fn.col("."), vim.fn.col("."))
+        if char == "" then
+          return ""
+        end
+        return string.format("0x%02x", vim.fn.char2nr(char))
+      end,
+    },
     lualine_c = { "filename" },
     lualine_x = { "encoding", "fileformat", "filetype" },
     lualine_y = { "progress" },
-    lualine_z = { "location" }
+    lualine_z = { "location" },
   },
   inactive_sections = {
     lualine_a = {},
@@ -455,12 +457,12 @@ require("lualine").setup({
     lualine_c = { "filename" },
     lualine_x = { "location" },
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = {},
   },
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = {},
 })
 
 -- bufferline
@@ -471,7 +473,7 @@ bufferline.setup({
     style_preset = bufferline.style_preset.minimal,
     numbers = "none",
     indicator = {
-      style = "underline"
+      style = "underline",
     },
     tab_size = 12,
     diagnostics = "nvim_lsp",
@@ -479,13 +481,13 @@ bufferline.setup({
       {
         filetype = "NvimTree",
         textAlign = "left",
-        separator = false
-      }
+        separator = false,
+      },
     },
     show_buffer_icons = false,
     show_buffer_close_icons = false,
     separator_style = "thin",
-  }
+  },
 })
 
 -- nvim-tree
@@ -495,9 +497,9 @@ vim.keymap.set("n", "<F7>", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<F8>", ":AerialToggle<CR>")
 
 -- nvim-treesitter NOTE: plugin dropped fro native treesitter in Nvim v0.12
-require('nvim-treesitter').setup {
+require("nvim-treesitter").setup({
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
-  install_dir = vim.fn.stdpath('data') .. '/site',
+  install_dir = vim.fn.stdpath("data") .. "/site",
   ensure_installed = {
     "lua",
     "vim",
@@ -516,39 +518,39 @@ require('nvim-treesitter').setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-}
+})
 -- require("nvim-treesitter.configs").setup({
 -- })
 
 -- hop
-local hop = require('hop')
-local directions = require('hop.hint').HintDirection
-vim.keymap.set('', 'f', function()
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("", "f", function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 'F', function()
+vim.keymap.set("", "F", function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
 end, { remap = true })
-vim.keymap.set('', 't', function()
+vim.keymap.set("", "t", function()
   hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
 end, { remap = true })
-vim.keymap.set('', 'T', function()
+vim.keymap.set("", "T", function()
   hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
 end, { remap = true })
-vim.keymap.set('', '<leader><leader>f', ':HopWord<CR>');
+vim.keymap.set("", "<leader><leader>f", ":HopWord<CR>")
 
 -- telescope
-local builtin = require('telescope.builtin')
+local builtin = require("telescope.builtin")
 require("telescope").setup({
   defaults = {
-    file_ignore_patterns = { "node_modules", ".git" }
-  }
+    file_ignore_patterns = { "node_modules", ".git" },
+  },
 })
 
-vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- fix error: vim.schedule callback attempt to call field 'ft_to_lang' (a nil value)
 vim.schedule(function()
@@ -561,24 +563,38 @@ require("mason").setup({
     icons = {
       package_installed = "✓",
       package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
+      package_uninstalled = "✗",
+    },
+  },
 })
 require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
+    "stylua",
+    -- "bashls",
+    -- "shfmt",
+    "pyright",
+    "ruff",
+    -- "clangd",
+    -- "clang-format",
+    -- "rust-analyzer",
+    -- "rustfmt",
+    -- "gopls",
+    -- "gofumpt", -- stricter superset of gofmt
+    -- "ts_ls",
+    -- "prettier",
+    -- "marksman",
   },
 })
 
 -- Setup language servers.
 -- local capabilities = require("cmp_nvim_lsp").default_capabilities() -- NOTE: experiment with Nvim v0.12 built-in
-vim.lsp.config['lua_ls'] = {}
-vim.lsp.config['ts_ls'] = {}
+vim.lsp.config["lua_ls"] = {}
+vim.lsp.config["ts_ls"] = {}
 
 -- Pyright fast and lightweight
 -- PyLSP: Good for heavy linting/formatting integration
-vim.lsp.config['pyright'] = {
+vim.lsp.config["pyright"] = {
   -- capabilities = capabilities,
   cmd = { "pyright-langserver", "--stdio" },
   filetypes = { "python" },
@@ -594,41 +610,40 @@ vim.lsp.config['pyright'] = {
   },
 }
 
-vim.lsp.config['ruff'] = {
+vim.lsp.config["ruff"] = {
   cmd = { "ruff", "server" },
   filetypes = { "python" },
-  root_markers = { "pyproject.toml", "setup.py", ".git" }
+  root_markers = { "pyproject.toml", "setup.py", ".git" },
 }
-
 
 -- vim.lsp.config['pylsp'] = {
 --   capabilities = capabilities,
 -- }
 
-vim.lsp.config['clangd'] = {
-  cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+vim.lsp.config["clangd"] = {
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
   init_options = {
-    fallbackFlags = { '-std=c++17' },
+    fallbackFlags = { "-std=c++17" },
   },
 }
-vim.lsp.config['rust_analyzer'] = {
+vim.lsp.config["rust_analyzer"] = {
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
     ["rust-analyzer"] = {},
-  }
+  },
 }
 -- vim.lsp.config['texlab'] = {}
 
-vim.lsp.enable('lua_ls')
-vim.lsp.enable('ts_ls')
-vim.lsp.enable('pyright')
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("pyright")
 -- vim.lsp.enable('pylsp')
-vim.lsp.enable('clangd')
-vim.lsp.enable('ruff')
-vim.lsp.enable('json-lsp')
+vim.lsp.enable("clangd")
+vim.lsp.enable("ruff")
+vim.lsp.enable("json-lsp")
 -- vim.lsp.enable('texlab')
-vim.lsp.enable('shfmt')
-vim.lsp.enable('bashls')
+vim.lsp.enable("shfmt")
+vim.lsp.enable("bashls")
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -694,7 +709,7 @@ local luasnip = require("luasnip")
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
       -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
     end,
   },
@@ -703,11 +718,11 @@ cmp.setup({
     -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -718,7 +733,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", }),
+    end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -727,15 +742,15 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", }),
+    end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-    { name = 'path' },
+    { name = "nvim_lsp" },
+    { name = "luasnip" }, -- For luasnip users.
+    { name = "path" },
   }, {
-    { name = 'buffer' },
-  })
+    { name = "buffer" },
+  }),
 })
 -- local setup_native_completion = function()
 --   -- Helper to check if the native Pop-Up Menu (PUM) is visible
@@ -780,21 +795,35 @@ vim.keymap.set("n", "[t", function()
 end, { desc = "Previous todo comment" })
 
 -- easy align
-vim.api.nvim_create_user_command(
-  "Fmt",
-  function(opts)
-    vim.cmd(opts.line1 .. "," .. opts.line2 .. "EasyAlign *|")
-  end,
-  { range = true }
-)
+vim.keymap.set("x", "ga", "<Plug>(EasyAlign)")
+vim.keymap.set("n", "ga", "<Plug>(EasyAlign)")
 
-vim.api.nvim_create_user_command(
-  "Asearch",
-  function(opts)
-    vim.cmd(opts.line1 .. "," .. opts.line2 .. "EasyAlign//")
-  end,
-  { range = true }
-)
+vim.g.easy_align_delimiters = {
+  [">"] = { pattern = ">>\\|=>\\|>" },
+  ["/"] = {
+    pattern = "//\\+\\|/\\*\\|\\*/",
+    delimiter_align = "l",
+    ignore_groups = { "!Comment" },
+  },
+  ["]"] = {
+    pattern = "[[\\]]",
+    left_margin = 0,
+    right_margin = 0,
+    stick_to_left = 0,
+  },
+  [")"] = {
+    pattern = "[()]",
+    left_margin = 0,
+    right_margin = 0,
+    stick_to_left = 0,
+  },
+  ["d"] = {
+    pattern = " \\(\\S\\+\\s*[;=]\\)\\@=",
+    left_margin = 0,
+    right_margin = 0,
+  },
+}
+
 -- =====================================
 --          Autocmds
 -- =====================================
@@ -826,34 +855,30 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 --   title = "hover",
 -- })
-vim.keymap.set('n', 'K', function()
+vim.keymap.set("n", "K", function()
   vim.lsp.buf.hover({ border = "rounded" })
 end, { desc = "LSP hover with rounded border" })
 
 -- persistence
 -- load the session for the current directory
-vim.keymap.set(
-  "n", "<leader>qs", function() require("persistence").load() end,
-  { desc = "load session for current dir" }
-)
+vim.keymap.set("n", "<leader>qs", function()
+  require("persistence").load()
+end, { desc = "load session for current dir" })
 
 -- select a session to load
-vim.keymap.set(
-  "n", "<leader>qS", function() require("persistence").select() end,
-  { desc = "select session to load" }
-)
+vim.keymap.set("n", "<leader>qS", function()
+  require("persistence").select()
+end, { desc = "select session to load" })
 
 -- load the last session
-vim.keymap.set(
-  "n", "<leader>ql", function() require("persistence").load({ last = true }) end,
-  { desc = "load the last session" }
-)
+vim.keymap.set("n", "<leader>ql", function()
+  require("persistence").load({ last = true })
+end, { desc = "load the last session" })
 
 -- stop Persistence => session won't be saved on exit
-vim.keymap.set(
-  "n", "<leader>qd", function() require("persistence").stop() end,
-  { desc = "stop Persistence" }
-)
+vim.keymap.set("n", "<leader>qd", function()
+  require("persistence").stop()
+end, { desc = "stop Persistence" })
 
 -- restore on startup NOTE: disabled b/c the msg is annoying
 -- vim.api.nvim_create_autocmd("VimEnter", {
@@ -873,9 +898,9 @@ vim.keymap.set(
 
 -- gitsigns complete setup will cause neovim on Windows to freeze when quitting
 -- (COMMENT OUT the following gitsigns setup if using Windows)
-require('gitsigns').setup({
+require("gitsigns").setup({
   on_attach = function(bufnr)
-    local gitsigns = require('gitsigns')
+    local gitsigns = require("gitsigns")
 
     local function map(mode, l, r, opts)
       opts = opts or {}
@@ -884,54 +909,60 @@ require('gitsigns').setup({
     end
 
     -- Navigation
-    map('n', ']c', function()
-        if vim.wo.diff then
-          vim.cmd.normal({ ']c', bang = true })
-        else
-          gitsigns.nav_hunk('next')
-        end
-      end,
-      {
-        desc = "next hunk"
-      })
+    map("n", "]c", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]c", bang = true })
+      else
+        gitsigns.nav_hunk("next")
+      end
+    end, {
+      desc = "next hunk",
+    })
 
-    map('n', '[c', function()
-        if vim.wo.diff then
-          vim.cmd.normal({ '[c', bang = true })
-        else
-          gitsigns.nav_hunk('prev')
-        end
-      end,
-      {
-        desc = "prev hunk"
-      })
+    map("n", "[c", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[c", bang = true })
+      else
+        gitsigns.nav_hunk("prev")
+      end
+    end, {
+      desc = "prev hunk",
+    })
 
     -- Actions
-    map('n', '<leader>hs', gitsigns.stage_hunk, { desc = "stage hunk" })
-    map('n', '<leader>hr', gitsigns.reset_hunk, { desc = "reset hunk" })
-    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-      { desc = "stage hunk" })
-    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,
-      { desc = "reset hunk" })
-    map('n', '<leader>hS', gitsigns.stage_buffer, { desc = "stage buffer" })
-    map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
-    map('n', '<leader>hR', gitsigns.reset_buffer, { desc = "reset buffer" })
-    map('n', '<leader>hp', gitsigns.preview_hunk, { desc = "preview hunk" })
-    map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = "preview hunk inline" })
-    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end, { desc = "blame line" })
-    map('n', '<leader>hd', gitsigns.diffthis, { desc = "diff this (against index)" })
-    map('n', '<leader>hD', function() gitsigns.diffthis('~') end, { desc = "diff this (against HEAD)" })
-    map('n', '<leader>hq', gitsigns.setqflist, { desc = "list hunks in quickfix" })
-    map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, { desc = "list all hunks in quickfix" })
+    map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "stage hunk" })
+    map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "reset hunk" })
+    map("v", "<leader>hs", function()
+      gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end, { desc = "stage hunk" })
+    map("v", "<leader>hr", function()
+      gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end, { desc = "reset hunk" })
+    map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "stage buffer" })
+    map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "undo stage hunk" })
+    map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "reset buffer" })
+    map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "preview hunk" })
+    map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "preview hunk inline" })
+    map("n", "<leader>hb", function()
+      gitsigns.blame_line({ full = true })
+    end, { desc = "blame line" })
+    map("n", "<leader>hd", gitsigns.diffthis, { desc = "diff this (against index)" })
+    map("n", "<leader>hD", function()
+      gitsigns.diffthis("~")
+    end, { desc = "diff this (against HEAD)" })
+    map("n", "<leader>hq", gitsigns.setqflist, { desc = "list hunks in quickfix" })
+    map("n", "<leader>hQ", function()
+      gitsigns.setqflist("all")
+    end, { desc = "list all hunks in quickfix" })
 
     -- Toggles
-    map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = "toggle curr line blame" })
-    map('n', '<leader>td', gitsigns.toggle_deleted, { desc = "toggle deleted" })
-    map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = "toggle word diff" })
+    map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "toggle curr line blame" })
+    map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "toggle deleted" })
+    map("n", "<leader>tw", gitsigns.toggle_word_diff, { desc = "toggle word diff" })
 
     -- Text object
-    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+  end,
 })
 
 -- require('tagbar').setup({})
