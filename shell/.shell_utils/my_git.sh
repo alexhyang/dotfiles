@@ -10,14 +10,33 @@ alias glc="git log \
   --oneline --decorate \
   --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
   --date=short"
-alias gcmi="gcmsg 'init commit'"
+alias gcg="gcmsg"
+alias gci="gcmsg 'init commit'"
 
 gig() { # Git: view (gig) or edit (gig -e) .gitignore
-  if [[ "$1" == "-e" ]]; then
-    vim .gitignore
-  else
-    cat .gitignore
-  fi
+  while getopts ":eh" opt; do
+    case "$opt" in
+      e)
+        vim .gitignore
+        return 0
+        ;;
+      h)
+        echo "Usage: gig [-e]"
+        return 0
+        ;;
+      \?)
+        echo "Unknown flag: -$OPTARG" >&2
+        return 1
+        ;;
+      :)
+        echo "Option -$OPTARG requires an argument" >&2
+        return 1
+        ;;
+    esac
+  done
+
+  cat .gitignore
+  return 0
 }
 
 gaddp() { # stage files by pattern
