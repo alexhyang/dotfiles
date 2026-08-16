@@ -34,6 +34,8 @@ WEEKS_ROOT="$OBS_ROOT/Alex-weeks"
 TODO_ROOT="$WEEKS_ROOT/.todo"
 
 alias .v="cd $VIM_WIKI_ROOT"
+alias .vn="cd $VIM_WIKI_ROOT/notes"
+alias .vr="cd $VIM_WIKI_ROOT/refs"
 alias ww="hop_in $VIM_WIKI_ROOT; vm index.md; hop_out > /dev/null"
 alias .w="cd $WEEKS_ROOT"
 wk() { # go to WEEKS_ROOT/ and open the lastest week note in (n)vim
