@@ -17,8 +17,10 @@ q_refs() { # show help of specified command
 }
 
 refs() { # get help from my local references
-  local refroot="$HOME/vimwiki/notes"
-  local refname target
+  local wikiroot="$HOME/vimwiki"
+  local subfolder="refs"
+  local ref_root ref_basename ref_fullname
+  local edit=false
   local useglow=false
   local OPTIND=1 opt
 
@@ -27,38 +29,33 @@ refs() { # get help from my local references
   }
 
   show_refs() {
-    refname="$1"
-    target="$1.md"
+    ref_basename="$1"
+    ref_fullname="$1.md"
 
-    if [[ ! -f "$target" ]]; then
-      fd "$refname" -t f
+    if [[ ! -f "$ref_fullname" ]]; then
+      echo "Ref '$ref_fullname' doesn't exist..."
+      echo "Create the ref with 'refs -e $ref_basename'"
+      fd "$ref_basename" -t f
       return 1
     fi
 
     if $useglow; then
-      glow -p $target
+      glow -p $ref_fullname
     else
-      bat $target
+      bat $ref_fullname
     fi
   }
 
-  # check
-  if [[ ! -d "$refroot" ]]; then
-    echo "$refroot doesn't exit. Aborting..."
-    return 1
-  fi
-
-  while getopts ":e:gh" opt; do
+  while getopts ":e:d:gh" opt; do
     case "$opt" in
       e)
-        vi "$refroot/$OPTARG.md"
-        return 0
+        edit=true
+        ref_basename="$OPTARG"
         ;;
-      g)
-        useglow=true
-        ;;
+      g) useglow=true ;;
+      d) subfolder="$OPTARG" ;;
       h)
-        echo "Usage: refs [-e] [-g] [target]"
+        echo "Usage: refs [-e] [-g] [-d ref_subfolder_name] [refname]"
         return 0
         ;;
       \?)
@@ -73,7 +70,21 @@ refs() { # get help from my local references
   done
   shift $((OPTIND - 1))
 
-  hop_in $refroot
+  ref_root="$wikiroot/$subfolder"
+
+  # check
+  if [[ ! -d "$ref_root" ]]; then
+    echo "$ref_root doesn't exit. Aborting..."
+    return 1
+  fi
+
+  hop_in $ref_root
+  if $edit; then
+    ref_fullname="$ref_basename.md"
+    vi "$ref_root/$ref_fullname"
+    return 0
+  fi
+
   if [[ $# -eq 0 ]]; then
     list_refs
   else
