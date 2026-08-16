@@ -6,12 +6,12 @@ split-window -h
 send-keys -t 1 "pomo" C-m
 
 split-window -v
-send-keys -t 2 "tdlc" C-m
+send-keys -t 2 "tdls" C-m
 select-pane -t 0
 
 # window 1: detailed todo's
 new-window -n details
-send-keys -t 0 "tdlc" C-m
+send-keys -t 0 "clear; todo ls" C-m
 
 split-window -h
 send-keys -t 1 "tde" C-m
