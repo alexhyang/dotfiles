@@ -54,6 +54,8 @@ case "$ID" in
   debian)
     if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver >= 13) }'; then
       neuwerk fastfetch
+    else
+      neuwerk neofetch
     fi
     ;;
 esac
