@@ -93,6 +93,7 @@ plugins=(
         dotenv
         # thefuck
         virtualenv
+        docker
 )
 
 # if zsh-autosuggestions is installed properly but not showing anything, check
