@@ -10,8 +10,9 @@ alias glc="git log \
   --oneline --decorate \
   --pretty='%Cred%h%Creset - %Cgreen(%ad) %C(auto)%d%Creset %s %C(bold blue)<%an>%Creset' \
   --date=short"
-alias gcg="gcmsg"
-alias gci="gcmsg 'init commit'"
+alias gcg="git commit --message"
+alias gci="gcg 'init commit'"
+alias gfp="git fetch -p"
 
 gig() { # Git: view (gig) or edit (gig -e) .gitignore
   while getopts ":eh" opt; do
