@@ -1,5 +1,7 @@
 # Linux Dotfiles
 
+![CI](https://github.com/alexhyang/dotfiles/actions/workflows/ci.yml/badge.svg)
+
 This document contains notes about my personal configuration of development
 environment on different Linux distributions. For configuration on Linux on
 Android, checkout the [android branch][android-branch-ref].
