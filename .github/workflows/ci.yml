@@ -16,7 +16,18 @@ jobs:
 
   docker-build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        distro: [ubuntu, debian, fedora]
+        include:
+          - distro: ubuntu
+            dockerfile: Dockerfile
+          - distro: debian
+            dockerfile: Dockerfile.debian
+          - distro: fedora
+            dockerfile: Dockerfile.fedora
     steps:
       - uses: actions/checkout@v4
-      - name: Build Docker image
-        run: docker build -t dotfiles-test .
+      - name: Build Docker image (${{ matrix.distro }})
+        run: docker build -f ${{ matrix.dockerfile }} -t dotfiles-test-${{ matrix.distro }} .
