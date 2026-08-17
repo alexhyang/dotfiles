@@ -14,13 +14,13 @@ readme() { # view or edit README.md
 
 # Drop or publish files
 drop_notes() { # move a file in the notes dropbox
-  dropbox="$HOME/research-notes/dropbox"
+  dropbox="$HOME"/research-notes/dropbox
   if [[ ! -f $dropbox/$1 ]]; then
-    mv ./$1 $dropbox/$1
+    mv ./"$1" "$dropbox"/"$1"
   else
-    if ! diff $dropbox/$1 ./$1; then
+    if ! diff "$dropbox"/"$1" ./"$1"; then
       if util_confirm "./$1 --> $dropbox/$1?"; then
-        mv ./$1 $dropbox/$1
+        mv ./"$1" "$dropbox"/"$1"
       else
         echo "dropNotes canceled"
       fi

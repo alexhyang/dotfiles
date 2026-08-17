@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 echo "Setting up Command Line Tools..."
 if [ -f /etc/os-release ]; then
+  # shellcheck source=/dev/null
   . /etc/os-release
 
   case "$ID" in
@@ -23,7 +24,7 @@ if [ -f /etc/os-release ]; then
 fi
 
 # install man page for debian
-machine=$(cat /etc/os-release | grep -E "^NAME=\".*\"" | sed -E 's/^.*?"(\w+)(\s?).*"$/\1/')
+machine=$(grep -E "^NAME=\".*\"" /etc/os-release | sed -E 's/^.*?"(\w+)(\s?).*"$/\1/')
 if [[ $machine == "Debian" ]]; then
   neuwerk man-db
 fi
@@ -74,12 +75,12 @@ case "$ID" in
     #   https://github.com/sharkdp/fd#on-ubuntu
     mkdir -p ~/.local/bin
     if [ ! -f ~/.local/bin/fd ]; then
-      ln -s $(which fdfind) ~/.local/bin/fd
+      ln -s "$(which fdfind)" ~/.local/bin/fd
     fi
     #   batcat --> bat
     #   https://github.com/sharkdp/bat
     if [ ! -f ~/.local/bin/bat ]; then
-      ln -s $(which batcat) ~/.local/bin/bat
+      ln -s "$(which batcat)" ~/.local/bin/bat
     fi
     ;;
 esac
@@ -97,7 +98,7 @@ install_lg_from_tar() {
 
 case "$ID" in
   fedora)
-    neuwerk --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+    neuwerk --nogpgcheck --repofrompath "terra,https://repos.fyralabs.com/terra\$releasever" terra-release
     neuwerk lazygit
     ;;
   ubuntu)

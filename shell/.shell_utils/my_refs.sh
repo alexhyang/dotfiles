@@ -4,7 +4,7 @@ q_refs() { # show help of specified command
   if [[ $# -eq 0 ]]; then
     echo "q_refs <command-to-search> [sub-command]"
     echo "cached quick refs:"
-    ls -x /tmp/*.ch_results | sed "s/\/tmp\///g" | sed "s/\.ch_results//g"
+    find /tmp -maxdepth 1 -name "*.ch_results" -exec basename {} .ch_results \;
     return 1
   fi
 
@@ -13,7 +13,7 @@ q_refs() { # show help of specified command
   fi
 
   local pattern="${2:-}"
-  rg -B 1 -N "$2" "/tmp/$1.ch_results"
+  rg -B 1 -N "$pattern" "/tmp/$1.ch_results"
 }
 
 refs() { # get help from my local references
@@ -40,9 +40,9 @@ refs() { # get help from my local references
     fi
 
     if $useglow; then
-      glow -p $ref_fullname
+      glow -p "$ref_fullname"
     else
-      bat $ref_fullname
+      bat "$ref_fullname"
     fi
   }
 
@@ -78,7 +78,7 @@ refs() { # get help from my local references
     return 1
   fi
 
-  hop_in $ref_root
+  hop_in "$ref_root"
   if $edit; then
     ref_fullname="$ref_basename.md"
     vi "$ref_root/$ref_fullname"
@@ -88,7 +88,7 @@ refs() { # get help from my local references
   if [[ $# -eq 0 ]]; then
     list_refs
   else
-    show_refs $1
+    show_refs "$1"
   fi
   hop_out >/dev/null
   return 0

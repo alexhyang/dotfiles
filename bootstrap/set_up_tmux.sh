@@ -11,7 +11,7 @@ fi
 # install pomo with: `go install github.com/Bahaaio/pomo@latest`
 
 POMO_CONFIG_ROOT="$HOME/.config/pomo"
-mkdir -p $POMO_CONFIG_ROOT
-ln -snf $HOME/.dotfiles/tmux/dot-tmux/pomo.yaml $POMO_CONFIG_ROOT/pomo.yaml
+mkdir -p "$POMO_CONFIG_ROOT"
+ln -snf "$HOME"/.dotfiles/tmux/dot-tmux/pomo.yaml "$POMO_CONFIG_ROOT"/pomo.yaml
 
 echo "tmux configuration finished!"
