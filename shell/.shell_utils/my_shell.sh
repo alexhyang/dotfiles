@@ -17,7 +17,7 @@ reload_shell() { # reload shell
       ;;
     "bash")
       echo "reload bash..."
-      # shellcheck source=bash/.bashrc
+      # shellcheck source=/dev/null
       source ~/.bashrc
       ;;
     *)

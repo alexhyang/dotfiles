@@ -4,6 +4,7 @@ check_env_vars() { # scripts guard
   local env_var_name=$1
   case "$(ps -p $$ -o comm=)" in
   "zsh")
+    # shellcheck source=/dev/null
     source ./my_workflow.zsh
     ;;
   "bash")
