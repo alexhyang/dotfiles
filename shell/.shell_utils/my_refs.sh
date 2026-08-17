@@ -93,3 +93,6 @@ refs() { # get help from my local references
   hop_out >/dev/null
   return 0
 }
+
+alias refn="refs -d notes"
+alias refr="refs -d research"
