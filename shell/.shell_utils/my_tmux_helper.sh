@@ -18,9 +18,9 @@ tmux_create_attach() {
 }
 
 tmux_kill_list() {
-  tmux kill-session -t $1; tmux ls
+  tmux kill-session -t "$1"; tmux ls
 }
 
 tmux_list_layouts() {
-  ls $HOME/.tmux/layouts
+  ls "$HOME"/.tmux/layouts
 }

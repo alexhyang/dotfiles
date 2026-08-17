@@ -11,7 +11,7 @@ weather_full() { # check current weather
     curl -s wttr.in/JFK\?format=%l:+%x+%C+%t+%w+%S-%s
     echo ""
   else
-    curl -s wttr.in/$1\?format=%l:+%x+%C+%t+%w+%S-%s
+    curl -s wttr.in/"$1"\?format=%l:+%x+%C+%t+%w+%S-%s
     echo ""
   fi
 }
@@ -27,7 +27,7 @@ util_confirm() { # receive user's confirmation on operation
   local confirmation
 
   if [[ -n $ZHS_VERSION ]]; then
-    read "confirmation?$promptMsg"
+    read -r "confirmation?$promptMsg"
   else
     read -r -p "$promptMsg" confirmation
   fi

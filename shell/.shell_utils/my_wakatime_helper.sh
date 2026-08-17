@@ -7,21 +7,21 @@ enable_waka() { # include current git repo in waka stats
 
   case "$(ps -p $$ -o comm=)" in
     "zsh")
-      read "user_input?$promptMsg"
+      read -r "user_input?$promptMsg"
       ;;
     "bash")
-      read -p "$promptMsg" user_input
+      read -r -p "$promptMsg" user_input
       ;;
     *)
       echo "shell not supported"
       ;;
   esac
 
-  echo "[settings]\n\ninclude = .*" > .wakatime
+  printf "[settings]\n\ninclude = .*" > .wakatime
   echo ".wakatime created"
   if [[ $user_input != "" ]]; then
     local project_name="${user_input:-}"
-    echo $project_name > .wakatime-project
+    echo "$project_name" > .wakatime-project
     echo ".wakatime-project created"
   fi
 }

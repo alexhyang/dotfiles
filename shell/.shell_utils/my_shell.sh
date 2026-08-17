@@ -2,7 +2,7 @@
 
 paths() { # ENV: show all current PATH's
   # echo $PATH | sed -E "s/:/\n/g"
-  echo $PATH | tr -s ":" "\n" | awk '!seen[$0]++'
+  echo "$PATH" | tr -s ":" "\n" | awk '!seen[$0]++'
 }
 
 ## Search aliases and installed packages using pattern
@@ -17,6 +17,7 @@ reload_shell() { # reload shell
       ;;
     "bash")
       echo "reload bash..."
+      # shellcheck source=bash/.bashrc
       source ~/.bashrc
       ;;
     *)
@@ -37,5 +38,5 @@ hist_rm() { # remove command history that contains given pattern
 }
 
 hist_rg() { # show commands in zsh history
-  rg $1 ~/.zsh_history
+  rg "$1" ~/.zsh_history
 }
