@@ -1,0 +1,16 @@
+FROM ubuntu:24.04
+
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    vim \
+    tmux \
+    zsh \
+    sudo \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /root/.dotfiles
+
+COPY . .
+RUN ./bootstrap.sh
+CMD ["bash"]
