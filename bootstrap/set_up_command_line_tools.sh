@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 echo "Setting up Command Line Tools..."
 if [ -f /etc/os-release ]; then
-    . /etc/os-release
+  . /etc/os-release
 
-    case "$ID" in
-      fedora)
-          # starklauf: German word meaning "strong run". To upgrade packages
-          alias starklauf="sudo dnf upgrade --refresh"
-          # neuwerk: German word meaning "new work". To install packages
-          alias neuwerk="sudo dnf install -y"
-          ;;
-      arch)
-          alias starklauf="sudo pacman -Syu"
-          alias neuwerk="sudo dnf install"
-          ;;
-      ubuntu|debian)
-          alias starklauf="sudo apt update && sudo apt upgrade"
-          alias neuwerk="sudo apt update && sudo apt install -y"
-          ;;
-    esac
+  case "$ID" in
+    fedora)
+      # starklauf: German word meaning "strong run". To upgrade packages
+      starklauf() { sudo dnf upgrade --refresh; }
+      # neuwerk: German word meaning new work. To install packages
+      neuwerk() { sudo dnf install -y "$@"; }
+      ;;
+    arch)
+      starklauf() { sudo pacman -Syu; }
+      neuwerk() { sudo pacman -S "$@"; }
+      ;;
+    ubuntu | debian)
+      starklauf() { sudo apt update && sudo apt upgrade; }
+      sudo apt update
+      neuwerk() { sudo apt install -y "$@"; }
+      ;;
+  esac
 fi
 
 # install man page for debian
@@ -28,10 +29,11 @@ if [[ $machine == "Debian" ]]; then
 fi
 
 # install productivity command line tools
-starklauf; neuwerk autojump bat fd-find fzf make ripgrep tree stow
+starklauf
+neuwerk autojump bat fd-find fzf make ripgrep tree stow
 
 case "$ID" in
-  ubuntu|debian)
+  ubuntu | debian)
     # sudo add-apt-repository ppa:aacebedo/fasd
     neuwerk fasd
     ;;
@@ -44,6 +46,8 @@ case "$ID" in
   ubuntu)
     if awk -v ver="$VERSION_ID" 'BEGIN { exit !(ver >= 25.04) }'; then
       neuwerk fastfetch
+    else
+      neuwerk neofetch
     fi
     ;;
   debian)
@@ -64,7 +68,7 @@ esac
 # tree      : list dir contents in tree-like format
 
 case "$ID" in
-  ubuntu|debian)
+  ubuntu | debian)
     # bind aliases due to name clash
     #   fdfind --> fd
     #   https://github.com/sharkdp/fd#on-ubuntu
@@ -88,6 +92,7 @@ install_lg_from_tar() {
   curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz"
   tar xf lazygit.tar.gz lazygit
   sudo install lazygit -D -t /usr/local/bin/
+  rm lazygit*
 }
 
 case "$ID" in
@@ -110,4 +115,3 @@ case "$ID" in
     fi
     ;;
 esac
-
