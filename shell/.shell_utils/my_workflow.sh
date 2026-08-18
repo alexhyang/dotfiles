@@ -5,7 +5,7 @@ check_env_vars() { # scripts guard
   case "$(ps -p $$ -o comm=)" in
   "zsh")
     # shellcheck source=/dev/null
-    source ./my_workflow.zsh
+    source "$DOTFILES"/shell/.shell_utils/my_workflow.zsh
     ;;
   "bash")
     if [[ "${!env_var_name}" == "" ]]; then
@@ -35,7 +35,7 @@ alias .vr="cd \$VIM_WIKI_ROOT/refs"
 alias ww="hop_in \$VIM_WIKI_ROOT; vm index.md; hop_out > /dev/null"
 alias .w="cd \$WEEKS_ROOT"
 wk() { # go to WEEKS_ROOT/ and open the lastest week note in (n)vim
-  weeks
+  .w
   vi "$(realpath "$(fd 2026- "$WEEKS_ROOT" | tail -n 1)")"
 }
 
