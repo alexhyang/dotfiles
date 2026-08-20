@@ -19,14 +19,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distro: [ubuntu, debian, fedora]
+        distro: [ubuntu, debian, fedora, arch]
         include:
           - distro: ubuntu
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.ubuntu
           - distro: debian
             dockerfile: Dockerfile.debian
           - distro: fedora
             dockerfile: Dockerfile.fedora
+          - distro: arch
+            dockerfile: Dockerfile.arch
     steps:
       - uses: actions/checkout@v4
       - name: Build Docker image (${{ matrix.distro }})
